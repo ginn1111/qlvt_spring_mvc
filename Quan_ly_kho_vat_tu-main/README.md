@@ -1,0 +1,2 @@
+- Tài khoản MS SQL Server usernam = sa, password = 123
+- Thêm thư viện sau vào project (link download: https://drive.google.com/file/d/1yfCry2C02LjoVxOtC0p66KSF9kKwvWQt/view?usp=sharing)
