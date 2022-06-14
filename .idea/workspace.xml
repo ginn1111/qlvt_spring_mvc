@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e1d562b2-a4a6-45ac-8897-c9ba5ff0c55e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Query.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/auth/MyAuthenSucessHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controller/NhanVienController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controller/QuanLyController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controller/TestController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/entity/Account.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/interceptor/GlobalInterceptor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Quan_ly_kho_vat_tu-main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682/storage_v2/_src_/database/QLNVQTS.jYr8Qg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682/storage_v2/_src_/database/QLNVQTS.jYr8Qg/schema/INFORMATION_SCHEMA.NBgcMw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682/storage_v2/_src_/database/QLNVQTS.jYr8Qg/schema/dbo.sYMBAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682/storage_v2/_src_/database/QLNVQTS.jYr8Qg/schema/dbo.sYMBAA.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682/storage_v2/_src_/database/QLNVQTS.jYr8Qg/schema/sys.zb4BAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/libraries/sqljdbc4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/Query.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/java/auth/MyAuthenSucessHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/java/controller/NhanVienController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/java/controller/QuanLyController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/java/controller/TestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/java/entity/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/java/interceptor/GlobalInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/WEB-INF/configs/spring-config-hibernate.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/WEB-INF/configs/spring-config-interceptor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/WEB-INF/configs/spring-config-mvc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/WEB-INF/configs/spring-config-security.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/WEB-INF/tags/dialog-message.tag" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/WEB-INF/tags/navigation.tag" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/WEB-INF/tags/topbar.tag" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/WEB-INF/views/nhanvien/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/WEB-INF/views/quanly/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/WEB-INF/views/test.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/assets/imgs/cool-background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/resources/css/base.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/resources/css/dashboard.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/resources/css/sign-in.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/resources/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/resources/includes/footer.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/resources/includes/header.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/src/main/webapp/resources/js/sign-in.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/target/classes/auth/MyAuthenSucessHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/target/classes/controller/NhanVienController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/target/classes/controller/QuanLyController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/target/classes/controller/TestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/target/classes/entity/Account.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/target/classes/interceptor/GlobalInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quan_ly_kho_vat_tu-main/test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2AZp2aEZNV5Ya3hlXpiYbV0IXD2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e1d562b2-a4a6-45ac-8897-c9ba5ff0c55e" name="Changes" comment="" />
+      <created>1655226757141</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1655226757141</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
