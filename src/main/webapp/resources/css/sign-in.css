@@ -4,12 +4,8 @@
     border-radius: 5px;
     margin-block: 16px;
 }
-
 .input-box {
     position: relative;
-}
-.input-box > label {
-	width: 140px;
 }
 .input ~ label {
     position: absolute;
@@ -27,13 +23,12 @@
     justify-content: space-around;
     padding-inline: 8px;
 }
-
 .input ~ label:hover {
 	cursor: text;
 }
-
 .input ~ label > ion-icon {
     font-size: 21px;
+    margin-right: 4px;
 }
 
 .input.focus ~ label,
@@ -65,7 +60,7 @@ main.sign-in {
 
 .container__sign-in .title {
     font-weight: 400;
-    background: -webkit-linear-gradient(45deg, var(--blue), lightblue);
+    background: -webkit-linear-gradient(45deg, var(--primary), lightblue);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: 1px;
@@ -83,7 +78,7 @@ main.sign-in {
     color: #fff;
     border: none;
     outline: none;
-    background-color: var(--blue);
+    background-color: var(--primary);
     border-radius: 3px;
     box-shadow: 2px 40px 40px rgba(43, 46, 226, 0.4);
     cursor: pointer;

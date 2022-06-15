@@ -12,9 +12,10 @@
         <h2 class="title">Manage your work easier</h2>
 
         <div class="input-box">
-            <input id="username" type="text" class="input" name="username"/>
+            <input id="username" type="email" class="input" name="username"/>
             <label for="username">
-                <ion-icon name="person-outline"></ion-icon>Your username
+                <ion-icon name="mail-outline"></ion-icon>
+                <span>Email</span>
             </label>
         </div>
         <div class="input-box">
@@ -27,9 +28,9 @@
             <div class="toggle-password">
                 <ion-icon name="eye-outline"></ion-icon>
             </div>
-            <label for="password"> <ion-icon
-                    name="lock-closed-outline"></ion-icon>Your
-                password
+            <label for="password">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <span>Mật khẩu</span>
             </label>
         </div>
         <input type="submit" class="btn btn--sign-in" value="Continue" />

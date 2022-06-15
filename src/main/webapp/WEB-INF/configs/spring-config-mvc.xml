@@ -22,8 +22,10 @@
           class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
 
     <!-- Cấu hình package chứa các controller -->
-    <context:component-scan
-            base-package="controller" />
+    <context:component-scan base-package="controller" />
+    <context:component-scan base-package="dao" />
+    <context:component-scan base-package="service" />
+
 
      	<bean id="mySuccess" class="auth.MyAuthenSucessHandler"> </bean>
 </beans>

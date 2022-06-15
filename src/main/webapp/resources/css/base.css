@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap');
 * {
     padding: 0;
     margin: 0;
@@ -8,7 +8,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 24px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 body {
@@ -17,23 +17,19 @@ body {
 }
 
 :root {
-    --blue: #287bff;
+    --primary: #287bff;
     --white: #fff;
     --grey: #f5f5f5;
     --black1: #222;
     --black2: #999;
     --black3: #d3d3d3;
-    --top-bar-height: 60px;
-    --nav-width: 300px;
     --fadeIn: fadeIn;
     --fadeOut: fadeOut;
-    --mn-height: 40px;
-    --mn-card: 50vh;
 }
 
 *[id$=errors] {
-		color: red;
-	}
+    color: red;
+}
 
 .custom-scroll-bar::-webkit-scrollbar-track {
     background-color: #fff;
@@ -41,8 +37,8 @@ body {
 
 .custom-scroll-bar::-webkit-scrollbar,
 .custom-scroll-bar::-webkit-scrollbar-thumb {
-	color: var(--blue);
-	background-color: var(--blue);
+	color: var(--primary);
+	background-color: var(--primary);
     border-radius: 50px;
     width: 5px;
 }
@@ -73,10 +69,10 @@ label.form__input-checkbox {
     margin-left: 16px;
 }
 
-.form__input:focus:not([type='checkbox']) {
-    outline-color: var(--blue);
-    border-color: transparent;
-}
+/*.form__input:focus:not([type='checkbox']) {*/
+/*    outline-color: var(--primary);*/
+/*    border-color: transparent;*/
+/*}*/
 .form__input-checkbox > p {
     margin-right: 8px;
 }
@@ -140,7 +136,7 @@ textarea::placeholder {
 
 .dialog__title {
     font-weight: 600;
-    color: var(--blue);
+    color: var(--primary);
     transform: translateX(-8px);
 }
 
@@ -155,76 +151,6 @@ textarea::placeholder {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.card--hover:hover {
-    cursor: pointer;
-    background-color: var(--blue);
-    color: #fff;
-}
-
-.form__title {
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    color: var(--blue);
-    letter-spacing: 4px;
-}
-.form__title + span {
-	margin: 0 0 8px 12px;
-	align-self: flex-start;
-	font-size: 14px;
-}
-
-.form__item--action {
-    margin-top: 12px;
-    width: 70%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.form--password > .form__item--action {
-    width: 25%;
-    margin-left: auto;
-}
-
-.form__item {
-    margin-bottom: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
-}
-.form__item--password > label + label {
-	margin-left: 32px;
-}
-.form__item--tasks-for-shift {
-	display: flex;
-	align-items: center;
-}
-.form__item--tasks-for-shift > label:nth-child(2) {
-	margin-left: 12px;
-}
-.form__item--employee > label:first-child {
-	margin-right: 12px;
-}
-.form__item-change-emp > label,
-.form__item-evaluation  > label {
-	display: flex;
-    align-items: center;
-}
-.form__item-evaluation > label > span {
-	width: 50%;
-	font-size: 18px;
-}
-.form__item > label {
-    font-size: 16px;
-    width: 100%;
-}
-.form__item-change-emp > label > span {
-	width: 70%;
-	font-size: 18px;
 }
 
 .btn--customize {
@@ -244,45 +170,39 @@ textarea::placeholder {
     line-height: 20px;
 }
 
-.btn--gen-time-table {
-    width: 30%;
-    text-align: center;
-    margin-left: 50px;
-}
-
 .btn--customize + .btn--customize {
     margin-left: 12px;
 }
 
-.btn-confirm {
-    color: var(--blue);
+.btn--confirm {
+    color: var(--primary);
     text-align: center;
 }
-.btn-confirm.tasks {
+.btn--confirm.tasks {
 	margin-left: auto;
 }
-.btn-confirm:hover {
+.btn--confirm:hover {
     color: #fff;
-    background-color: var(--blue);
+    background-color: var(--primary);
 }
-.btn-cancel,
+.btn--cancel,
 .btn--warning {
     color: salmon;
 }
 
-.btn-cancel:hover,
+.btn--cancel:hover,
 .btn--warning:hover {
     color: #fff;
     background-color: salmon;
 }
 
 .btn--safe {
-    color: var(--blue);
+    color: var(--primary);
 }
 
 .btn--safe:hover {
     color: #fff;
-    background-color: var(--blue);
+    background-color: var(--primary);
 }
 
 select {
@@ -315,7 +235,7 @@ select {
     top: 0;
     right: 0;
     padding: 0 1em;
-    background: var(--blue);
+    background: var(--primary);
     cursor: pointer;
     pointer-events: none;
     -webkit-transition: 0.25s all ease;
@@ -352,16 +272,15 @@ input {
 
 textarea {
     padding: 4px 16px;
-    font-family:'Poppins' !important;
+    font-family:'IBM Plex Sans' !important;
     font-size: 16px;
 }
 
 select:focus,
 input:focus,
 textarea:focus {
-    border-color: transparent;
-    outline-color: var(--blue);
-    font-weight: 600;
+    transition: all 1000ms;
+    border-color: var(--primary);
 }
 
 @keyframes fadeIn {
@@ -381,13 +300,20 @@ textarea:focus {
         opacity: 0;
     }
 }
-
-@media only screen and (max-width: 750px) {
-	.topbar {
-		width: 100%;
-	}
+.btn--add:hover {
+    color: #fff;
+    background-color: var(--primary);
 }
-
+.btn--add {
+    color: var(--primary);
+}
+btn--remove:disabled {
+    pointer-events: none;
+    color: var(--black2);
+}
+.btn--remove {
+    color: salmon;
+}
 .chart {
 	display: flex;
 	justify-content: center;
@@ -411,7 +337,7 @@ textarea:focus {
         animation: prixClipFix 2s linear infinite ;
       }
       .loader::after{
-        border-color: var(--blue);
+        border-color: var(--primary);
         animation: prixClipFix 2s linear infinite , rotate 0.5s linear infinite reverse;
         inset: 6px;
       }
