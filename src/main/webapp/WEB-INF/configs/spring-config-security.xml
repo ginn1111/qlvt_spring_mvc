@@ -17,6 +17,7 @@
 			<!-- Quản lý - ROLE_1; Nhân viên ROLE_2 -->
 		<intercept-url pattern="/quanly/**" access="hasRole('ROLE_QUANLY')" />
 		<intercept-url pattern="/nhanvien/**" access="hasRole('ROLE_NHANVIEN')" />
+		<intercept-url pattern="/test.htm" access="permitAll()" />
         <access-denied-handler error-page="/403" />
         
 
