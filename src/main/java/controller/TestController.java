@@ -22,16 +22,6 @@ public class TestController {
     @Transactional
     @RequestMapping("test")
     public String test(ModelMap model) {
-        List<Account> listAccount = ss.getCurrentSession().createQuery("FROM Account AS A").list();
-
-        for (Account account:
-             listAccount) {
-            System.out.println(account.getIdRole() + " " + account.getPassword());
-        }
-
-        testService.testService();
-
-        model.addAttribute("tests", listAccount);
 
         return "test";
     }

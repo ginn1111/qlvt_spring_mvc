@@ -62,34 +62,34 @@
                         </div>
                         <form:form class="table__body custom-scroll-bar form-employees"
                                    action="quanly/nhan-vien.htm?delete#employees" method="POST"
-                                   modelAttribute="listNhanVienMuonXoa">
-                            <c:if test="${listNhanVien == null || listNhanVien.size() == 0}">
+                                   modelAttribute="deletedIdEmployeeList">
+                            <c:if test="${employeeModelList == null || employeeModelList.size() == 0}">
                                <h3 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">Không có nhân viên nào >_<...</h3>
                             </c:if>
-                            <c:if test="${listNhanVien != null && listNhanVien.size() != 0}">
-                                <c:forEach items="${listNhanVienMuonXoa.list}" varStatus="status">
+                            <c:if test="${employeeModelList != null && employeeModelList.size() != 0}">
+                                <c:forEach items="${deletedIdEmployeeList.list}" varStatus="status">
                                     <div class="table__item table__item--employees"
                                          data-control="employees">
                                         <form:checkbox
-                                                value="${listNhanVien.get(status.index).maNhanVien}"
+                                                value="${employeeModelList.get(status.index).employeeId}"
                                                 path="list[${status.index}]" />
-                                        <span>${listNhanVien.get(status.index).maNhanVien}</span>
-                                        <span>${listNhanVien.get(status.index).ten}</span>
-                                        <span><fmt:formatDate value="${listNhanVien.get(status.index).ngaySinh}" pattern="dd/MM/yyyy"/></span>
-                                        <span>${listNhanVien.get(status.index).diaChi}</span>
-                                        <c:set var="tmp" value="${listNhanVien.get(status.index).SDT}" />
+                                        <span>${employeeModelList.get(status.index).employeeId}</span>
+                                        <span>${employeeModelList.get(status.index).name}</span>
+                                        <span><fmt:formatDate value="${employeeModelList.get(status.index).dob}" pattern="dd/MM/yyyy"/></span>
+                                        <span>${employeeModelList.get(status.index).address}</span>
+                                        <c:set var="tmp" value="${employeeModelList.get(status.index).phone}" />
                                         <c:set var="phone" value="${fn:trim(tmp)}" />
                                         <span>
                                             ${fn:substring(phone, 0, 3)}
                                             ${fn:substring(phone, 3, 6)}
                                             ${fn:substring(phone, 6, 10)}
                                         </span>
-                                        <a href="quanly/nhan-vien/${listNhanVien.get(status.index).maNhanVien}.htm?update#employees">
+                                        <a href="quanly/nhan-vien/${employeeModelList.get(status.index).employeeId}.htm?update#employees">
                                             <span class="table__item--edit">
                                                 <ion-icon name="pencil-outline"></ion-icon>
                                             </span>
                                         </a>
-                                        <a href="quanly/nhan-vien/${listNhanVien.get(status.index).maNhanVien}.htm?accounts#employees">
+                                        <a href="quanly/nhan-vien/${employeeModelList.get(status.index).employeeId}.htm?accounts#employees">
                                             <span class="table__item--accounts" data-control="accounts">
                                                 <ion-icon name="key"></ion-icon>
                                             </span>
@@ -124,14 +124,14 @@
                             class="form form--employees"
                             action="${link}#employees"
                             method="POST"
-                            modelAttribute="nhanvien"
+                            modelAttribute="employeeModel"
                         >
                         <h5 class="form__title">Nhân viên</h5>
-                        <form:input type="hidden" path="maNhanVien" />
+                        <form:input type="hidden" path="employeeId" />
                         <div class="form__item form__item--employee">
                             <label>Tên
                                 <form:input
-                                    path="ten"
+                                    path="name"
                                     class="form__input"
                                     placeholder="Tên..."
                                     required="required"
@@ -142,7 +142,7 @@
                             <label>Số điện thoại
                                 <form:input
                                     type="number"
-                                    path="SDT"
+                                    path="phone"
                                     class="form__input"
                                     placeholder="số điện thoại..." />
                             </label>
@@ -151,7 +151,7 @@
                             <label>Ngày sinh
                                 <form:input
                                     type="date"
-                                    path="ngaySinh"
+                                    path="dob"
                                     class="form__input"
                                     format="yyyy-MM-dd"
                                 />
@@ -160,7 +160,7 @@
                         <div class="form__item">
                             <label>Địa chỉ
                                 <form:textarea
-                                    path="diaChi"
+                                    path="address"
                                     class="form__input"
                                     placeholder="địa chỉ..."
                                     rows="3"
@@ -179,13 +179,13 @@
                             class="form form--accounts"
                             action="quanly/nhan-vien.htm?accounts#employees"
                             method="POST"
-                            modelAttribute="taikhoan"
+                            modelAttribute="accountModel"
                         >
                             <h5 class="form__title">Thêm tài khoản cho nhân viên</h5>
-                            <form:input type="hidden" path="maNV" value="${sessionScope.nhanvien.maNhanVien}"/>
+                            <form:input type="hidden" path="employeeModel.employeeId" value="${sessionScope.employeeModel.employeeId}"/>
                             <div class="form__item">
                                 <label>
-                                    ${sessionScope.nhanvien.ten}
+                                    ${sessionScope.employeeModel.name}
                                 </label>
                             </div>
                             <div class="form__item">
@@ -197,17 +197,17 @@
                             <div class="form__item">
                                 <label>
                                     Mật khẩu
-                                    <form:input class="form__input" path="matkhau" type="password" placeholder="mật khẩu..."/>
+                                    <form:input class="form__input" path="password" type="password" placeholder="mật khẩu..."/>
                                 </label>
                             </div>
                             <div class="form__item">
                                 <label>Vai trò
                                     <div class="select">
                                         <form:select
-                                            items="${listVaiTro}"
-                                            itemLabel="tenVaiTro"
-                                            itemValue="maVaiTro"
-                                            path="maVaiTro"
+                                            items="${roleList}"
+                                            itemLabel="roleName.roleName"
+                                            itemValue="roleId"
+                                            path="roleId"
                                         />
                                     </div>
                                 </label>
