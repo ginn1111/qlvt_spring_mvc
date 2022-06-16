@@ -15,7 +15,7 @@ public class MyAuthenSucessHandler implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authenticate)
             throws IOException, ServletException {
         Set<String> roles = AuthorityUtils.authorityListToSet(authenticate.getAuthorities());
-        if(roles.contains("ROLE_1")) {
+        if(roles.contains("ROLE_QUANLY")) {
             response.sendRedirect(request.getContextPath() + "/quanly/index.htm");
             return;
         }

@@ -7,8 +7,12 @@ import java.util.Date;
 
 @Entity
 @Table(name="NHANVIEN")
+@NamedNativeQueries(
+        @NamedNativeQuery(name = "timNhanVienTheoTen", query="exec sp_tim_nhan_vien_theo_ten :ten", resultClass = NhanVien.class)
+)
 public class NhanVien {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="MANHANVIEN")
     private Integer maNhanVien;
 
@@ -38,6 +42,9 @@ public class NhanVien {
 
     public NhanVien() {
 
+    }
+    public NhanVien(Integer maNV) {
+        this.maNhanVien = maNV;
     }
 
     public Date getNgaySinh() {

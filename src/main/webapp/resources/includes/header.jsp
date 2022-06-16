@@ -15,6 +15,7 @@
    <link rel="stylesheet" href="<c:url value="resources/css/dashboard.css"/>">
    <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>">
    <link rel="stylesheet" href="<c:url value="resources/css/base.css"/>">
+   <link rel="stylesheet" href="<c:url value="resources/css/form.css"/>">
    <link rel="stylesheet" href="<c:url value="resources/css/quan-ly.css"/>">
 <script
        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"

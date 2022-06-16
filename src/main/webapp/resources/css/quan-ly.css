@@ -127,7 +127,7 @@
     background-color: #fff;
 }
 .table__item--edit,
-.table__item--change-password,
+.table__item--accounts,
 .table__item--delete {
     display: flex;
     align-items: center;
@@ -148,14 +148,14 @@
 .table__item--edit {
     color: lightgreen;
 }
-.table__item--change-password {
+.table__item--accounts {
     color: salmon;
 }
 .table__item:hover .table__item--delete {
     transform: translate(0, -50%);
 }
-.table__item.hovered .table__item--change-password,
-.table__item:hover .table__item--change-password {
+.table__item.hovered .table__item--accounts,
+.table__item:hover .table__item--accounts {
     transform: translate(-240%, -50%);
 }
 .table__item.hovered .table__item--edit,
@@ -165,4 +165,32 @@
 .table__item.hovered .table__item--delete {
     color: rgb(255, 70, 70);
     transform: translate(0, -50%);
+}
+
+/*List account*/
+
+.accounts-container {
+    align-items: center;
+    flex-flow: column nowrap;
+    text-align: center;
+}
+.list__account {
+    margin-top: 12px;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: center;
+    max-height: 30vh;
+}
+.accounts-container > span,
+.account {
+   font-size: 14px;
+}
+.account + .account {
+    margin-top: 8px;
+}
+.account {
+    width: 100%;
+    justify-content: space-between;
 }

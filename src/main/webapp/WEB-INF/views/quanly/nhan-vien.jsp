@@ -46,13 +46,13 @@
                             />
                         </form>
                         <div class="header__controller">
-                            <a href="manager/manage/employees.htm?new#employees"
+                            <a href="quanly/nhan-vien.htm?new#employees"
                                class="btn--customize btn--add"
                                data-control="employees"
                             >
                                 Thêm
                             </a>
-                            <button class="btn--customize btn--remove btn-remove-employees" disabled>Xoá</button>
+                            <button class="btn--customize btn--remove btn--remove-employees" disabled>Xoá</button>
                         </div>
                     </div>
                     <div class="manage__table">
@@ -61,7 +61,7 @@
                             <span>Địa chỉ</span><span>Số điện thoại</span>
                         </div>
                         <form:form class="table__body custom-scroll-bar form-employees"
-                                   action="manager/manage/employees.htm?delete#employees" method="POST"
+                                   action="quanly/nhan-vien.htm?delete#employees" method="POST"
                                    modelAttribute="listNhanVienMuonXoa">
                             <c:if test="${listNhanVien == null || listNhanVien.size() == 0}">
                                <h3 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">Không có nhân viên nào >_<...</h3>
@@ -84,13 +84,16 @@
                                             ${fn:substring(phone, 3, 6)}
                                             ${fn:substring(phone, 6, 10)}
                                         </span>
-                                        <a
-                                                href="manager/manage/employees/${listNhanVien.get(status.index).maNhanVien}.htm?edit#employees">
+                                        <a href="quanly/nhan-vien/${listNhanVien.get(status.index).maNhanVien}.htm?update#employees">
                                             <span class="table__item--edit">
                                                 <ion-icon name="pencil-outline"></ion-icon>
                                             </span>
                                         </a>
-
+                                        <a href="quanly/nhan-vien/${listNhanVien.get(status.index).maNhanVien}.htm?accounts#employees">
+                                            <span class="table__item--accounts" data-control="accounts">
+                                                <ion-icon name="key"></ion-icon>
+                                            </span>
+                                        </a>
                                         <span class="table__item--delete"> <ion-icon
                                                 name="trash-outline"></ion-icon>
                                         </span>
@@ -104,48 +107,129 @@
 
                 <!-- CONFIRM DIALOG -->
                 <dialog class="dialog">
-                    <h5 class="dialog__title">Notify</h5>
-                    <span class="dialog__message">Are you sure about that?</span>
+                    <h5 class="dialog__title">Thông báo!</h5>
+                    <span class="dialog__message">Xoá sẽ không khôi phục lại được, bạn có muốn xoá?</span>
                     <div class="dialog__control">
-                        <button class="btn--customize btn-confirm btn--warning">Delete</button>
-                        <button class="btn--customize btn-cancel btn--safe">Cancel</button>
+                        <button class="btn--customize btn--confirm btn--warning">Xoá</button>
+                        <button class="btn--customize btn--cancel btn--safe">Huỷ</button>
                     </div>
                 </dialog>
+                <%--END CONFIRM DIALOG--%>
+
                 <div class="backdrop">
                     <dialog class="modal">
 
-                        <!-- CHANGE PASSWORD FOR EMP -->
-                        <form class="form form--change-password" action="manager/manage/employees/change-password.htm#employees" method="POST">
-                            <h5 class="form__title">Change password</h5>
+                    <%--FORM NHAN VIEN--%>
+                        <form:form
+                            class="form form--employees"
+                            action="${link}#employees"
+                            method="POST"
+                            modelAttribute="nhanvien"
+                        >
+                        <h5 class="form__title">Nhân viên</h5>
+                        <form:input type="hidden" path="maNhanVien" />
+                        <div class="form__item form__item--employee">
+                            <label>Tên
+                                <form:input
+                                    path="ten"
+                                    class="form__input"
+                                    placeholder="Tên..."
+                                    required="required"
+                                />
+                            </label>
+                        </div>
+                        <div class="form__item form__item--employee">
+                            <label>Số điện thoại
+                                <form:input
+                                    type="number"
+                                    path="SDT"
+                                    class="form__input"
+                                    placeholder="số điện thoại..." />
+                            </label>
+                        </div>
+                        <div class="form__item form__item--employee">
+                            <label>Ngày sinh
+                                <form:input
+                                    type="date"
+                                    path="ngaySinh"
+                                    class="form__input"
+                                    format="yyyy-MM-dd"
+                                />
+                            </label>
+                        </div>
+                        <div class="form__item">
+                            <label>Địa chỉ
+                                <form:textarea
+                                    path="diaChi"
+                                    class="form__input"
+                                    placeholder="địa chỉ..."
+                                    rows="3"
+                                />
+                            </label>
+                        </div>
+                        <div class="form__item--action">
+                            <button type="submit" class="btn--confirm btn--customize">${btnTitle}</button>
+                            <button type="reset" class="btn--cancel btn--customize">Huỷ</button>
+                        </div>
+                    </form:form>
+                    <%--END FORM NHAN VIEN--%>
+
+                    <%--FORM THEM TAI KHOAN--%>
+                        <form:form
+                            class="form form--accounts"
+                            action="quanly/nhan-vien.htm?accounts#employees"
+                            method="POST"
+                            modelAttribute="taikhoan"
+                        >
+                            <h5 class="form__title">Thêm tài khoản cho nhân viên</h5>
+                            <form:input type="hidden" path="maNV" value="${sessionScope.nhanvien.maNhanVien}"/>
                             <div class="form__item">
                                 <label>
-                                    ${employee.idEmployee} - ${employee.fullNameAndPosition}
+                                    ${sessionScope.nhanvien.ten}
                                 </label>
                             </div>
                             <div class="form__item">
                                 <label>
-                                    New password
-                                    <input class="form__input" name="new-password" type="password" placeholder="new password..."/>
+                                    Email
+                                    <form:input class="form__input" path="email" type="email" placeholder="email..."/>
                                 </label>
+                            </div>
+                            <div class="form__item">
+                                <label>
+                                    Mật khẩu
+                                    <form:input class="form__input" path="matkhau" type="password" placeholder="mật khẩu..."/>
+                                </label>
+                            </div>
+                            <div class="form__item">
+                                <label>Vai trò
+                                    <div class="select">
+                                        <form:select
+                                            items="${listVaiTro}"
+                                            itemLabel="tenVaiTro"
+                                            itemValue="maVaiTro"
+                                            path="maVaiTro"
+                                        />
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="form__item accounts-container">
+                               <span>Các tài khoản của nhân viên</span>
+                                <ul class="list__account custom-scroll-bar">
+                                    <li class="card card--hover account">
+                                        <span>tk01@gmail.com</span>
+                                        <span>Quản lý</span>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="form__item--action">
-                                <button type="submit" class="btn-confirm btn--customize">Change</button>
-                                <button type="reset" class="btn-cancel btn--customize">Cancel</button>
+                                <button type="submit" class="btn--confirm btn--customize">Thêm</button>
+                                <button type="reset" class="btn--cancel btn--customize">Huỷ</button>
                             </div>
-                        </form>
-                        <!-- CHANGE PASSWORD FOR EMP END-->
-
-                        <!-- FORM EMPLOYEES -->
->
-                        <!-- FORM EMPLOYEES END-->
+                        </form:form>
+                    <%--END FORM THEM TAI KHOAN--%>
                     </dialog>
                 </div>
             </section>
-        </div>
-
-        <div class="backdrop">
-            <dialog class="modal">
-            </dialog>
         </div>
     </div>
 </div>

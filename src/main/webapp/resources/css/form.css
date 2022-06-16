@@ -1,0 +1,201 @@
+.form__title {
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    color: var(--primary);
+    letter-spacing: 4px;
+    text-align: center;
+}
+.form {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.form__item {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+}
+.form__input-checkbox > p {
+    margin-right: 8px;
+}
+.form__input {
+    outline: 1px solid transparent;
+    border-radius: 5px;
+    padding-block: 8px;
+    border: 1px solid var(--black2);
+    transition: outline-color 200ms, border-color 200ms;
+    width: 100%;
+}
+input[type='checkbox'] {
+    width: unset;
+    outline: none;
+}
+.form__item > label {
+    font-size: 14px;
+    width: 100%;
+}
+label.form__input-checkbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 16px;
+}
+input::placeholder,
+textarea::placeholder {
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+select:focus,
+input:focus,
+textarea:focus {
+    transition: border 1000ms;
+    border-color: var(--primary);
+}
+.btn--add:hover {
+    color: #fff;
+    background-color: var(--primary);
+}
+.btn--add {
+    color: var(--primary);
+}
+.btn--remove:disabled {
+    pointer-events: none;
+    color: var(--black2);
+}
+.btn--remove {
+    color: salmon;
+}
+.btn--customize {
+    outline: none;
+    text-decoration: none;
+    border: 1px solid currentColor;
+    padding: 8px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    transition: color 200ms, background-color 200ms;
+    min-width: 50px;
+    min-height: 30px;
+    line-height: 20px;
+}
+
+.btn--customize + .btn--customize {
+    margin-left: 12px;
+}
+
+.btn--confirm {
+    color: var(--primary);
+    text-align: center;
+}
+.btn--confirm.tasks {
+    margin-left: auto;
+}
+.btn--confirm:hover {
+    color: #fff;
+    background-color: var(--primary);
+}
+.btn--cancel,
+.btn--warning {
+    color: salmon;
+}
+
+.btn--cancel:hover,
+.btn--warning:hover {
+    color: #fff;
+    background-color: salmon;
+}
+
+.btn--safe {
+    color: var(--primary);
+}
+
+.btn--safe:hover {
+    color: #fff;
+    background-color: var(--primary);
+}
+
+select {
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    border: 1px solid var(--black2);
+    outline: 1px solid transparent;
+    border-radius: 5px;
+    flex: 1;
+    padding-inline: 20px;
+    color: var(--black1);
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    max-height: 60px;
+}
+.select {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 40px;
+    line-height: 3;
+    background: #fff;
+    border-radius: 5px;
+}
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: var(--primary);
+    cursor: pointer;
+    pointer-events: none;
+    -webkit-transition: 0.25s all ease;
+    -o-transition: 0.25s all ease;
+    transition: 0.25s all ease;
+    color: white;
+    height: 100%;
+    border-radius: 0 5px 5px 0;
+}
+.select.disabled::after {
+    content: '\25BC';
+    background-color: #e3e3e3;
+    cursor: not-allowed;
+}
+select:disabled {
+    cursor: not-allowed;
+}
+.select:not(.disabled):hover::after {
+    color: Gainsboro;
+}
+input {
+    font-size: 16px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    width: unset;
+    padding: 4px 16px;
+    width: 100%;
+    outline: 1px solid transparent;
+    border-radius: 3px;
+    border: 1px solid var(--black2);
+    transition: outline-color 200ms, border-color 200ms;
+}
+
+textarea {
+    padding: 4px 16px;
+    font-family:'IBM Plex Sans', sans-serif !important;
+    font-size: 16px;
+}
+.form__item--action {
+    margin-top: 12px;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

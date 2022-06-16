@@ -4,11 +4,11 @@
 <c:if test="${message.length() != 0 && message != null}">
 	<div class="backdrop" style="display: block;">
 		<dialog class="modal" style="display: block;">
-		<h5 class="dialog__title">Notice!</h5>
+		<h5 class="dialog__title">Thông báo!</h5>
 		<span class="dialog__message">${message}</span>
 		<div style="justify-content: flex-end; margin-left: auto"
 			class="form__item--action">
-			<button class="btn-cancel btn--customize">OK</button>
+			<button class="btn--cancel btn--customize">OK</button>
 		</div>
 		</dialog>
 	</div>

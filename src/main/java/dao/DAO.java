@@ -1,12 +1,12 @@
 package dao;
 
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
-public interface DAO {
-    List getList();
-    boolean addNew();
-    boolean deleteById();
-    boolean updateById();
+public interface DAO<T> {
+    List<T> getList();
+    boolean addNew(T t);
+    boolean deleteById(T t);
+    boolean update(T t);
+    boolean deleteByListId(List<T> list);
+    T findById(T t);
 }
