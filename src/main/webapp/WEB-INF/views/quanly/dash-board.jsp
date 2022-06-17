@@ -31,7 +31,7 @@
                     <div class="overall">
                         <div class="card--hover card detail">
                             <h3 class="detail__number">
-                                3001
+                                ${numberOfInCP}
                             </h3>
                             <div class="detail__des">
                                 <div class="detail__icon">
@@ -42,7 +42,7 @@
                         </div>
                         <div class="card--hover card detail">
                             <h3 class="detail__number">
-                                3001
+                                ${numberOfExCP}
                             </h3>
                             <div class="detail__des">
                                 <div class="detail__icon">
@@ -64,7 +64,7 @@
                         </div>
                         <div class="card--hover card detail">
                             <h3 class="detail__number">
-                                3001
+                                ${numberOfPayedCP}
                             </h3>
                             <div class="detail__des">
                                 <div class="detail__icon">
@@ -75,7 +75,7 @@
                             </div>
                         <div class="card--hover card detail">
                             <h3 class="detail__number">
-                                3001
+                                ${numberOfTransCP}
                             </h3>
                             <div class="detail__des">
                                 <div class="detail__icon">

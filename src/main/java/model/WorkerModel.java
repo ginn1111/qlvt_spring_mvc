@@ -5,38 +5,18 @@ import entity.Worker;
 import java.util.Date;
 
 public class WorkerModel {
-    public Integer workerId;
-    public String address;
-    public String phone;
-    public Date dob;
-    public String name;
-
-    public WorkerModel(Integer workerId, String address, String phone, Date dob, String name) {
-        this.workerId = workerId;
-        this.address = address;
-        this.phone = phone;
-        this.dob = dob;
-        this.name = name;
-    }
+    private Integer workerId;
+    private String name;
+    private String phone;
+    private String address;
+    private Date dob;
 
     public WorkerModel(Worker worker) {
         this.workerId = worker.getWorkerId();
-        this.address = worker.getAddress();
-        this.phone = worker.getPhone();
-        this.dob = worker.getDob();
         this.name = worker.getName();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public WorkerModel() {
-        this.dob = new Date();
+        this.phone = worker.getPhone();
+        this.address = worker.getAddress();
+        this.dob = worker.getDob();
     }
 
     public Integer getWorkerId() {
@@ -47,12 +27,12 @@ public class WorkerModel {
         this.workerId = workerId;
     }
 
-    public String getAddress() {
-        return address;
+    public String getName() {
+        return name;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhone() {
@@ -63,11 +43,30 @@ public class WorkerModel {
         this.phone = phone;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public Date getDob() {
         return dob;
     }
 
     public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public WorkerModel() {
+    }
+
+    public WorkerModel(Integer workerId, String name, String phone, String address, Date dob) {
+        this.workerId = workerId;
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
         this.dob = dob;
     }
 }

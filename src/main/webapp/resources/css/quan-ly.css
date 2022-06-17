@@ -4,8 +4,6 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-}
-.manage--employees {
     grid-column: 1/3;
 }
 .manage__container {
@@ -72,13 +70,13 @@
     text-align: center;
     flex-basis: 100%;
 }
-.manage--employees .table__item > span:nth-child(3),
-.manage--employees .table__item > span:nth-child(5),
-.manage--employees .table__item > span:nth-child(6),
-.manage--employees .table__item > span:nth-child(7) {
+.manage .table__item > span:nth-child(3),
+.manage .table__item > span:nth-child(5),
+.manage .table__item > span:nth-child(6),
+.manage .table__item > span:nth-child(7) {
     text-align: center;
 }
-.manage--employees .table__item > span {
+.manage .table__item > span {
     flex-basis: 100%;
 }
 .table__item > input[type="checkbox"] {
@@ -88,7 +86,7 @@
     display: none;
 }
 
-.manage--employees .table__body {
+.manage .table__body {
     height: calc(100vh - 240px);
 }
 .table__body {

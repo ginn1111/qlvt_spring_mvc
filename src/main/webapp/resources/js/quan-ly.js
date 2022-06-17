@@ -58,6 +58,7 @@ $(function() {
     }
 
     enableBtnRemove('employees');
+    enableBtnRemove('workers');
 
     $('.btn--customize.btn--add').click(function() {
         handleShowDialogEdit.call(this);
