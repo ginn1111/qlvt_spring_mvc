@@ -1,39 +1,36 @@
 package entity;
 
+import model.RoleModel;
+
 import javax.persistence.*;
 
 @Entity
+@Table(name="TAIKHOAN")
 public class Account {
-    @Id
-    @Column(name = "id")
-    private String id;
+   @Id
+   @Column(name="EMAIL")
+    private String email;
 
-    @Column(name = "password")
+   @Column(name="MATKHAU")
     private String password;
 
-    @Column(name = "enable")
-    private Boolean enable;
+    @ManyToOne
+    @JoinColumn(name = "MAVAITRO")
+    private Role role;
 
-    @Column(name = "id_role")
-    private Integer idRole;
+    @ManyToOne
+    @JoinColumn(name = "MANHANVIEN")
+    private Employee employee ;
 
-    public Account(String id, String password, Boolean enable, Integer idRole) {
-        this.id = id;
-        this.password = password;
-        this.enable = enable;
-        this.idRole = idRole;
+    @Column(name="TRANGTHAI")
+    private Boolean status;
+
+    public String getEmail() {
+        return email;
     }
 
-    public Account() {
-
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -44,19 +41,38 @@ public class Account {
         this.password = password;
     }
 
-    public Boolean getEnable() {
-        return enable;
+    public Boolean getStatus() {
+        return status;
     }
 
-    public void setEnable(Boolean enable) {
-        this.enable = enable;
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
-    public Integer getIdRole() {
-        return idRole;
+    public Account() {
     }
 
-    public void setIdRole(Integer idRole) {
-        this.idRole = idRole;
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Account(String email, String password, Role role, Employee employee, Boolean status) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.employee = employee;
+        this.status = status;
     }
 }

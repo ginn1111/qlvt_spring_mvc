@@ -5,13 +5,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1d562b2-a4a6-45ac-8897-c9ba5ff0c55e" name="Changes" comment="add dashboard page of quanly, base config structure of project">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ManagerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/RoleDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/WorkerDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/AccountModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/EmployeeModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/RoleModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/EmployeeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/RoleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Query.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Query.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/NhanVienController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/QuanLyController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/NhanVienDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/TestDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/VaiTroDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/NhanVien.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/VaiTro.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/NhanVienModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/TaiKhoanModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/VaiTroModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/request_bean/ListMaNhanVienMuonXoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/request_bean/DeletedIdEmployeeList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/request_bean/NhanVienRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/request_bean/EmployeeRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/NhanVienService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/TestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/VaiTroService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/configs/spring-config-security.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/configs/spring-config-security.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/NhanVienController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/QuanLyController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/TestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/TestController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/NhanVien.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/NhanVien.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/NhanVienDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/VaiTroDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/NhanVien.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/VaiTro.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/NhanVienModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/TaiKhoanModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/TenVaiTro.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/VaiTroModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/request_bean/ListMaNhanVienMuonXoa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/request_bean/NhanVienRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/NhanVienService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/VaiTroService.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,27 +101,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/5510/Desktop/Freelance/VatTu/FIle/sqljdbc4.jar",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.31839082",
-    "settings.editor.selected.configurable": "com.poratu.idea.plugins.tomcat.setting.TomcatSettingConfigurable",
-    "spring.configuration.checksum": "50429b6e54d51d9147266173dd0e7b21"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/5510/Desktop/Freelance/VatTu/FIle/sqljdbc4.jar&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.31839082&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.poratu.idea.plugins.tomcat.setting.TomcatSettingConfigurable&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;50429b6e54d51d9147266173dd0e7b21&quot;
   },
-  "keyToStringList": {
-    "ChangesTree.GroupingKeys": [
-      "module",
-      "repository",
-      "directory"
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;module&quot;,
+      &quot;repository&quot;,
+      &quot;directory&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Dev\manage\src\main\java\utils" />
@@ -119,7 +163,9 @@
       <workItem from="1655343809161" duration="1105000" />
       <workItem from="1655345338885" duration="1899000" />
       <workItem from="1655347660154" duration="2679000" />
-      <workItem from="1655350478805" duration="2370000" />
+      <workItem from="1655350478805" duration="3092000" />
+      <workItem from="1655391311569" duration="4062000" />
+      <workItem from="1655432333431" duration="4821000" />
     </task>
     <servers />
   </component>
