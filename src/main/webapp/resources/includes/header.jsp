@@ -9,7 +9,7 @@
 <head>
 <base href="${pageContext.servletContext.contextPath}/">
 <meta charset="UTF-8">
-<title>Espresso</title>
+<title>Quản lý vật tư</title>
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <link rel="stylesheet" href="<c:url value="resources/css/sign-in.css"/>">
    <link rel="stylesheet" href="<c:url value="resources/css/dashboard.css"/>">

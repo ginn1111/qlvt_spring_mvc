@@ -1,6 +1,9 @@
 package dao;
 
+import entity.Employee;
 import entity.Worker;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,11 +22,27 @@ public class WorkerDAO extends DAO<Worker>{
 
     @Override
     public boolean deleteByListId(List<Worker> list) {
-        return false;
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            for (Worker worker:
+                    list) {
+                session.delete(worker);
+            }
+            transaction.commit();
+        } catch(Exception ex) {
+            transaction.rollback();
+            ex.printStackTrace();
+            return false;
+        } finally {
+            session.close();
+        }
+        return true;
     }
 
     @Override
     public Worker findById(Worker worker) {
-        return null;
+        return sessionFactory.getCurrentSession().get(Worker.class, worker.getWorkerId());
     }
 }

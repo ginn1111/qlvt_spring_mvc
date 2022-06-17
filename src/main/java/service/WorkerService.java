@@ -1,6 +1,7 @@
 package service;
 
 import dao.WorkerDAO;
+import entity.Employee;
 import entity.Worker;
 import model.WorkerModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,14 +45,40 @@ public class WorkerService {
     }
 
     public WorkerModel findWorkerById(Integer workerId) {
-        return null;
+        Worker worker = new Worker();
+        worker.setWorkerId(workerId);
+        return new WorkerModel(workerDAO.findById(worker));
     }
 
     public String editWorker(WorkerModel workerModel) {
-        return null;
+        Worker worker = new Worker();
+        worker.setWorkerId(workerModel.getWorkerId());
+        worker.setName(workerModel.getName());
+        worker.setDob(workerModel.getDob());
+        worker.setStatus(true);
+        worker.setAddress(workerModel.getAddress());
+        worker.setPhone(workerModel.getPhone());
+        if(workerDAO.update(worker)) {
+            return "Cập nhật thành công!";
+        }
+        return "Cập nhật thất bại!";
     }
 
-    public String deleteWorker(DeletedIdList deletedIdList) {
-        return null;
+    public String deleteWorker(DeletedIdList list) {
+        List<Worker> workerList = new ArrayList<Worker>();
+        Worker tmp;
+        for (Integer workerId :
+                list.getList()) {
+            if (workerId != null) {
+                tmp = new Worker();
+                tmp.setWorkerId(workerId);
+                workerList.add(tmp);
+            }
+        }
+
+        if(workerDAO.deleteByListId(workerList)) {
+            return "Xoá công nhân thành công!";
+        }
+        return "Có lỗi xảy ra, vui lòng thử lại.";
     }
 }

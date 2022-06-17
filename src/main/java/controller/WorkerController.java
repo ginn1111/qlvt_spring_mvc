@@ -3,16 +3,17 @@ package controller;
 import model.AccountModel;
 import model.WorkerModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import request_bean.DeletedIdList;
 import service.WorkerService;
+import utils.MyUtils;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -24,11 +25,16 @@ public class WorkerController {
     private static String link;
     private static String btnTitle;
 
+    @InitBinder
+    public void customizeBinding (WebDataBinder binder) {
+        MyUtils.DF_DATE.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(MyUtils.DF_DATE, false));
+    }
     @Autowired
     WorkerService workerService;
 
     @RequestMapping("cong-nhan")
-    public String employee(ModelMap model) {
+    public String worker(ModelMap model) {
 
         List<Object> resultWorkerService = workerService.getWorkerList();
         List<WorkerModel> workerModelList = (List<WorkerModel>)resultWorkerService.get(0);
@@ -41,7 +47,7 @@ public class WorkerController {
         model.addAttribute("btnTitle", btnTitle);
         model.addAttribute("message", message);
         message = "";
-        return "cong-nhan";
+        return "common/cong-nhan";
     }
 
     // GET cong-nhan.htm?new
@@ -55,7 +61,7 @@ public class WorkerController {
 
     // POST cong-nhan.htm?insert
     @RequestMapping(value="cong-nhan", params = "insert", method = RequestMethod.POST)
-    public String addEmployee(@ModelAttribute("workerModel") WorkerModel workerModel) {
+    public String addWorker(@ModelAttribute("workerModel") WorkerModel workerModel) {
         // Todo: validate
         message = workerService.addWorker(workerModel);
         return "redirect:/cong-nhan.htm";
@@ -63,7 +69,7 @@ public class WorkerController {
 
     // GET cong-nhan/{workerId}.htm?update
     @RequestMapping(value="cong-nhan/{workerId}", params = "update")
-    public String editEmployee(@PathVariable("workerId") Integer workerId) {
+    public String editWorker(@PathVariable("workerId") Integer workerId) {
         workerModel = workerService.findWorkerById(workerId);
         link = "cong-nhan.htm?update";
         btnTitle = "Sửa";
@@ -72,14 +78,14 @@ public class WorkerController {
 
     // GET cong-nhan.htm?update
     @RequestMapping(value="cong-nhan", params = "update")
-    public String editEmployee(@ModelAttribute("workerModel") WorkerModel workerModel) {
+    public String editWorker(@ModelAttribute("workerModel") WorkerModel workerModel) {
         message = workerService.editWorker(workerModel);
         return "redirect:/cong-nhan.htm";
     }
 
     // POST cong-nhan.htm?delete
     @RequestMapping(value="cong-nhan", params = "delete", method = RequestMethod.POST)
-    public String deleteEmployee(@ModelAttribute("deletedIdWorkerList") DeletedIdList deletedIdList) {
+    public String deleteWorker(@ModelAttribute("deletedIdWorkerList") DeletedIdList deletedIdList) {
         message = workerService.deleteWorker(deletedIdList);
         return "redirect:/cong-nhan.htm";
     }

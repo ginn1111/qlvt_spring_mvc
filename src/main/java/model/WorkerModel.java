@@ -60,6 +60,7 @@ public class WorkerModel {
     }
 
     public WorkerModel() {
+        this.dob = new Date();
     }
 
     public WorkerModel(Integer workerId, String name, String phone, String address, Date dob) {

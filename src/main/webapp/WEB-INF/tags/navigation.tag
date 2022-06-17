@@ -66,7 +66,7 @@
     </c:if>
     <c:if test="${uri2 != null}">
         <li>
-            <a class="list__item" data-uri="${uri2}" href="${prefix}/${link2}">
+            <a class="list__item" data-uri="${uri2}" href="${link2}">
 			<span class="icon"> <ion-icon name="${icon2}"></ion-icon>
             </span> <span class="title">${name2}</span>
             </a>
@@ -74,7 +74,7 @@
     </c:if>
     <c:if test="${uri3 != null}">
         <li>
-            <a class="list__item" data-uri="${uri3}" href="${prefix}/${link3}">
+            <a class="list__item" data-uri="${uri3}" href="$${link3}">
                 <span class="icon"> <ion-icon name="${icon3}"></ion-icon>
                 </span> <span class="title">${name3}</span>
             </a>
@@ -82,7 +82,7 @@
     </c:if>
     <c:if test="${uri4 != null}">
         <li>
-            <a class="list__item" data-uri="${uri4}" href="${prefix}/${link4}">
+            <a class="list__item" data-uri="${uri4}" href="${link4}">
 				<span class="icon"> <ion-icon name="${icon4}"></ion-icon>
                 </span> <span class="title">${name4}</span>
             </a>
@@ -90,7 +90,7 @@
     </c:if>
     <c:if test="${uri5 != null}">
         <li>
-            <a class="list__item" data-uri="${uri5}" href="${prefix}/${link5}">
+            <a class="list__item" data-uri="${uri5}" href="${link5}">
 				<span class="icon"> <ion-icon name="${icon5}"></ion-icon>
                 </span> <span class="title">${name5}</span>
             </a>
@@ -98,7 +98,7 @@
     </c:if>
     <c:if test="${uri6 != null}">
         <li>
-            <a class="list__item" data-uri="${uri6}" href="${prefix}/${link6}">
+            <a class="list__item" data-uri="${uri6}" href="${link6}">
 				<span class="icon"> <ion-icon name="${icon6}"></ion-icon>
                 </span> <span class="title">${name6}</span>
             </a>
@@ -106,7 +106,7 @@
     </c:if>
     <c:if test="${uri7 != null}">
         <li>
-            <a class="list__item" data-uri="${uri7}" href="${prefix}/${link7}">
+            <a class="list__item" data-uri="${uri7}" href="${link7}">
 				<span class="icon"> <ion-icon name="${icon7}"></ion-icon>
                 </span> <span class="title">${name7}</span>
             </a>

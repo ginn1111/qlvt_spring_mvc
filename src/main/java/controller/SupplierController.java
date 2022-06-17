@@ -15,15 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import request_bean.DeletedIdList;
 import service.SupplierService;
 
-import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Controller
 @Transactional
-@RequestMapping("nhacungcap")
 public class SupplierController {
-
     private static String message = "";
     private static SupplierModel supplierModel = new SupplierModel();
     private static String link;
@@ -31,7 +28,8 @@ public class SupplierController {
 
     @Autowired
     SupplierService supplierService;
-    @RequestMapping("index")
+
+    @RequestMapping("nha-cung-cap")
     public String index(ModelMap model) {
         List<Object> resultSupplierService = supplierService.getSupplierList();
         List<SupplierModel> supplierModelList = (List<SupplierModel>)resultSupplierService.get(0);
@@ -47,42 +45,39 @@ public class SupplierController {
         return "common/nha-cung-cap";
     }
 
-    @RequestMapping(value="nhan-vien", params = "new")
+    @RequestMapping(value="nha-cung-cap", params = "new")
     public String newSupplier() {
 
         supplierModel = new SupplierModel();
         btnTitle = "Thêm";
-        link="nhacungcap/nhan-vien.htm?insert";
-        return "redirect:/quanly/nhan-vien.htm";
+        link="nha-cung-cap.htm?insert";
+        return "redirect:/nha-cung-cap.htm";
     }
 
-    @RequestMapping(value="nhan-vien", params = "insert", method = RequestMethod.POST)
+    @RequestMapping(value="nha-cung-cap", params = "insert", method = RequestMethod.POST)
     public String addSupplier(@ModelAttribute("supplierModel") SupplierModel supplierModel) {
         // Todo: validate
         message = supplierService.addSupplier(supplierModel);
-        return "redirect:/quanly/nhan-vien.htm";
+        return "redirect:/nha-cung-cap.htm";
     }
 
-    @RequestMapping(value="nhan-vien/{supplierId}", params = "update")
+    @RequestMapping(value="nha-cung-cap/{supplierId}", params = "update")
     public String editSupplier(@PathVariable("supplierId") Integer supplierId) {
         supplierModel = supplierService.findSupplierById(supplierId);
-
-        link = "quanly/nhan-vien.htm?update";
+        link = "nha-cung-cap.htm?update";
         btnTitle = "Sửa";
-        return "redirect:/quanly/nhan-vien.htm";
+        return "redirect:/nha-cung-cap.htm";
     }
 
-    @RequestMapping(value="nhan-vien", params = "update")
+    @RequestMapping(value="nha-cung-cap", params = "update")
     public String editSupplier(@ModelAttribute("supplierModel") SupplierModel supplierModel) {
         message = supplierService.editSupplier(supplierModel);
-        return "redirect:/quanly/nhan-vien.htm";
+        return "redirect:/nha-cung-cap.htm";
     }
 
-    // POST quanly/nhan-vien.htm?delete
-    @RequestMapping(value="nhan-vien", params = "delete", method = RequestMethod.POST)
+    @RequestMapping(value="nha-cung-cap", params = "delete", method = RequestMethod.POST)
     public String deleteSupplier(@ModelAttribute("deletedSupplierIdList") DeletedIdList deletedSupplierIdList) {
         message = supplierService.deleteSupplier(deletedSupplierIdList);
-        return "redirect:/quanly/nhan-vien.htm";
+        return "redirect:/nha-cung-cap.htm";
     }
-
 }

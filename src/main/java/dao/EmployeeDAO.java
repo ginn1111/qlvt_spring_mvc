@@ -15,19 +15,13 @@ public class EmployeeDAO extends DAO<Employee> {
         return super.getList(query);
     }
 
-    public boolean addNew(Employee employee) {
-        return super.addNew(employee);
-    }
-
     @Override
     public boolean deleteById(Employee employee) {
         return true;
-
     }
 
     @Override
     public boolean update(Employee employee) {
-
         return super.update(employee);
     }
 

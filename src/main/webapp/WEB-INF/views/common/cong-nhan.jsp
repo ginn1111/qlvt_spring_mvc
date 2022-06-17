@@ -31,7 +31,7 @@
                     <div class="manage__header">
                         <h5 class="header__title">Công nhân</h5>
                         <form
-                                action="manager/manage/workers/search.htm"
+                                action="cong-nhan.htm?search"
                                 method="POST"
                                 class="search-box">
                             <ion-icon
@@ -46,7 +46,7 @@
                             />
                         </form>
                         <div class="header__controller">
-                            <a href="quanly/nhan-vien.htm?new#workers"
+                            <a href="cong-nhan.htm?new#workers"
                                class="btn--customize btn--add"
                                data-control="workers"
                             >
@@ -61,7 +61,7 @@
                             <span>Địa chỉ</span><span>Số điện thoại</span>
                         </div>
                         <form:form class="table__body custom-scroll-bar form-workers"
-                                   action="quanly/nhan-vien.htm?delete#workers" method="POST"
+                                   action="cong-nhan.htm?delete#workers" method="POST"
                                    modelAttribute="deletedIdWorkerList">
                             <c:if test="${workerModelList == null || workerModelList.size() == 0}">
                                 <h3 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">Không có công nhân nào >_<...</h3>
@@ -84,7 +84,7 @@
                                             ${fn:substring(phone, 3, 6)}
                                             ${fn:substring(phone, 6, 10)}
                                         </span>
-                                        <a href="quanly/nhan-vien/${workerModelList.get(status.index).workerId}.htm?update#workers">
+                                        <a href="cong-nhan/${workerModelList.get(status.index).workerId}.htm?update#workers">
                                             <span class="table__item--edit">
                                                 <ion-icon name="pencil-outline"></ion-icon>
                                             </span>

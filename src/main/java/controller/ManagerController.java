@@ -36,25 +36,22 @@ public class ManagerController {
     EmployeeService employeeService;
     @Autowired
     RoleService roleService;
-
     @Autowired
-    BorrowedCouponService borrowedCouponService;
+    InCouponService inCouponService;
     @Autowired
     ExCouponService exCouponService;
     @Autowired
-    InCouponService inCouponService;
+    BorrowedCouponService borrowedCouponService;
     @Autowired
     PayedCouponService payedCouponService;
     @Autowired
     TransCouponService transCouponService;
-
-
     @RequestMapping("index")
     public String index(ModelMap model) {
 
-        model.addAttribute("numberOfBorrowedCP", borrowedCouponService.getNumberOfCPInMonth());
-        model.addAttribute("numberOfExCP", exCouponService.getNumberOfCPInMonth());
         model.addAttribute("numberOfInCP", inCouponService.getNumberOfCPInMonth());
+        model.addAttribute("numberOfExCP", exCouponService.getNumberOfCPInMonth());
+        model.addAttribute("numberOfBorrowedCP", borrowedCouponService.getNumberOfCPInMonth());
         model.addAttribute("numberOfPayedCP", payedCouponService.getNumberOfCPInMonth());
         model.addAttribute("numberOfTransCP", transCouponService.getNumberOfCPInMonth());
         return "quanly/dash-board";
@@ -65,10 +62,11 @@ public class ManagerController {
     public String employee(ModelMap model) {
         List<Object> resultEmployeeService = employeeService.getEmployeeList();
         List<EmployeeModel> employeeModelList = (List<EmployeeModel>)resultEmployeeService.get(0);
-        DeletedIdList deletedIdList = (DeletedIdList) resultEmployeeService.get(1);
-        System.out.println(employeeModelList.get(0).getName());
+        DeletedIdList deletedIdEmployeeList = (DeletedIdList) resultEmployeeService.get(1);
+
+
         model.addAttribute("employeeModelList", employeeModelList);
-        model.addAttribute("deletedIdList", deletedIdList);
+        model.addAttribute("deletedIdEmployeeList", deletedIdEmployeeList);
         model.addAttribute("employeeModel", employeeModel);
         model.addAttribute("accountModel", accountModel);
         model.addAttribute("link", link);

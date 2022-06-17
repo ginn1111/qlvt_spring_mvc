@@ -2,6 +2,8 @@ package dao;
 
 import entity.Supplier;
 import entity.Worker;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,8 +26,6 @@ public class SupplierDAO extends DAO<Supplier>{
         return super.update(supplier);
     }
 
-
-
     @Override
     public boolean deleteById(Supplier supplier) {
         return false;
@@ -33,11 +33,27 @@ public class SupplierDAO extends DAO<Supplier>{
 
     @Override
     public boolean deleteByListId(List<Supplier> list) {
-        return false;
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            for (Supplier sup:
+                    list) {
+                session.delete(sup);
+            }
+            transaction.commit();
+        } catch(Exception ex) {
+            transaction.rollback();
+            ex.printStackTrace();
+            return false;
+        } finally {
+            session.close();
+        }
+        return true;
     }
 
     @Override
     public Supplier findById(Supplier supplier) {
-        return null;
+        return super.sessionFactory.getCurrentSession().get(Supplier.class, supplier.getSupplierId());
     }
 }

@@ -58,7 +58,7 @@ public class SupplierService {
         }
 
         if(supplierDAO.deleteByListId(listSupplier)) {
-            return "Xoá công nhân thành công!";
+            return "Xoá nhà cung cấp thành công!";
         }
         return "Có lỗi xảy ra, vui lòng thử lại.";
     }

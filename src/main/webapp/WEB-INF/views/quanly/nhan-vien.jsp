@@ -62,12 +62,12 @@
                         </div>
                         <form:form class="table__body custom-scroll-bar form-employees"
                                    action="quanly/nhan-vien.htm?delete#employees" method="POST"
-                                   modelAttribute="deletedIdList">
+                                   modelAttribute="deletedIdEmployeeList">
                             <c:if test="${employeeModelList == null || employeeModelList.size() == 0}">
                                <h3 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">Không có nhân viên nào >_<...</h3>
                             </c:if>
                             <c:if test="${employeeModelList != null && employeeModelList.size() != 0}">
-                                <c:forEach items="${deletedIdList.list}" varStatus="status">
+                                <c:forEach items="${deletedIdEmployeeList.list}" varStatus="status">
                                     <div class="table__item table__item--employees"
                                          data-control="employees">
                                         <form:checkbox
@@ -104,80 +104,6 @@
                     </div>
                 </div>
                 <!-- EMPLOYEES END -->
-
-                <%--WORKER--%>
-                <div id="workers" class="card manage">
-                    <div class="manage__header">
-                        <h5 class="header__title">Công nhân</h5>
-                        <form
-                                action="manager/manage/workers/search.htm"
-                                method="POST"
-                                class="search-box">
-                            <ion-icon
-                                    name="search-outline"
-                                    class="search__icon"
-                            ></ion-icon>
-                            <input
-                                    required="required"
-                                    name="data"
-                                    type="search"
-                                    placeholder="Tên..."
-                            />
-                        </form>
-                        <div class="header__controller">
-                            <a href="quanly/nhan-vien.htm?new#workers"
-                               class="btn--customize btn--add"
-                               data-control="workers"
-                            >
-                                Thêm
-                            </a>
-                            <button class="btn--customize btn--remove btn--remove-workers" disabled>Xoá</button>
-                        </div>
-                    </div>
-                    <div class="manage__table">
-                        <div class="table__head">
-                            <span>Mã công nhân</span><span>Tên</span><span>Ngày sinh</span>
-                            <span>Địa chỉ</span><span>Số điện thoại</span>
-                        </div>
-                        <form:form class="table__body custom-scroll-bar form-workers"
-                                   action="quanly/nhan-vien.htm?delete#workers" method="POST"
-                                   modelAttribute="deletedIdWorkerList">
-                            <c:if test="${workerModelList == null || workerModelList.size() == 0}">
-                                <h3 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">Không có công nhân nào >_<...</h3>
-                            </c:if>
-                            <c:if test="${workerModelList != null && workerModelList.size() != 0}">
-                                <c:forEach items="${deletedIdWorkerList.list}" varStatus="status">
-                                    <div class="table__item table__item--workers"
-                                         data-control="workers">
-                                        <form:checkbox
-                                                value="${workerModelList.get(status.index).workerId}"
-                                                path="list[${status.index}]" />
-                                        <span>${workerModelList.get(status.index).workerId}</span>
-                                        <span>${workerModelList.get(status.index).name}</span>
-                                        <span><fmt:formatDate value="${workerModelList.get(status.index).dob}" pattern="dd/MM/yyyy"/></span>
-                                        <span>${workerModelList.get(status.index).address}</span>
-                                        <c:set var="tmp" value="${workerModelList.get(status.index).phone}" />
-                                        <c:set var="phone" value="${fn:trim(tmp)}" />
-                                        <span>
-                                            ${fn:substring(phone, 0, 3)}
-                                            ${fn:substring(phone, 3, 6)}
-                                            ${fn:substring(phone, 6, 10)}
-                                        </span>
-                                        <a href="quanly/nhan-vien/${workerModelList.get(status.index).workerId}.htm?update#workers">
-                                            <span class="table__item--edit">
-                                                <ion-icon name="pencil-outline"></ion-icon>
-                                            </span>
-                                        </a>
-                                        <span class="table__item--delete"> <ion-icon
-                                                name="trash-outline"></ion-icon>
-                                        </span>
-                                    </div>
-                                </c:forEach>
-                            </c:if>
-                        </form:form>
-                    </div>
-                </div>
-                <%--END WORKER--%>
 
                 <!-- CONFIRM DIALOG -->
                 <dialog class="dialog">
@@ -303,60 +229,6 @@
                         </form:form>
                     <%--END FORM THEM TAI KHOAN--%>
 
-                    <%--FORM WORKER--%>
-                        <form:form
-                                class="form form--workers"
-                                action="${link}#workers"
-                                method="POST"
-                                modelAttribute="workerModel"
-                        >
-                            <h5 class="form__title">Công nhân</h5>
-                            <form:input type="hidden" path="workerId" />
-                            <div class="form__item form__item--employee">
-                                <label>Tên
-                                    <form:input
-                                            path="name"
-                                            class="form__input"
-                                            placeholder="Tên..."
-                                            required="required"
-                                    />
-                                </label>
-                            </div>
-                            <div class="form__item form__item--employee">
-                                <label>Số điện thoại
-                                    <form:input
-                                            type="number"
-                                            path="phone"
-                                            class="form__input"
-                                            placeholder="số điện thoại..." />
-                                </label>
-                            </div>
-                            <div class="form__item form__item--employee">
-                                <label>Ngày sinh
-                                    <form:input
-                                            type="date"
-                                            path="dob"
-                                            class="form__input"
-                                            format="yyyy-MM-dd"
-                                    />
-                                </label>
-                            </div>
-                            <div class="form__item">
-                                <label>Địa chỉ
-                                    <form:textarea
-                                            path="address"
-                                            class="form__input"
-                                            placeholder="địa chỉ..."
-                                            rows="3"
-                                    />
-                                </label>
-                            </div>
-                            <div class="form__item--action">
-                                <button type="submit" class="btn--confirm btn--customize">${btnTitle}</button>
-                                <button type="reset" class="btn--cancel btn--customize">Huỷ</button>
-                            </div>
-                        </form:form>
-                    <%--END FORM WORKER--%>
                     </dialog>
                 </div>
             </section>
