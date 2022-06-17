@@ -2,6 +2,7 @@ package service;
 
 import dao.EmployeeDAO;
 import entity.Employee;
+import model.AccountModel;
 import model.EmployeeModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,11 +45,11 @@ public class EmployeeService {
     public String deleteEmployee(DeletedIdList list) {
         List<Employee> listEmployee = new ArrayList<Employee>();
         Employee tmp;
-        for (Integer employeeId :
+        for (Integer maNV :
                 list.getList()) {
-            if (employeeId != null) {
+            if (maNV != null) {
                 tmp = new Employee();
-                tmp.setEmployeeId(employeeId);
+                tmp.setEmployeeId(maNV);
                 listEmployee.add(tmp);
             }
         }
@@ -79,6 +80,16 @@ public class EmployeeService {
             return "Sửa nhân viên thành công!";
         }
         return "Sửa nhân viên thất bại!";
+    }
+
+    public List<AccountModel> getAccountModelListOfEmployee(Integer employeeId) {
+        Employee employee = new Employee();
+        employee.setEmployeeId(employeeId);
+        return employeeDAO.findById(employee)
+                .getAccountList()
+                .stream()
+                .map(AccountModel::new)
+                .collect(Collectors.toList());
     }
 
     public EmployeeModel getEmployee(Integer employeeId) {

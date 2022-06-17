@@ -215,10 +215,12 @@
                             <div class="form__item accounts-container">
                                <span>Các tài khoản của nhân viên</span>
                                 <ul class="list__account custom-scroll-bar">
-                                    <li class="card card--hover account">
-                                        <span>tk01@gmail.com</span>
-                                        <span>Quản lý</span>
-                                    </li>
+                                    <c:forEach items="${sessionScope.accountModelList}" var="account">
+                                        <li class="card card--hover account">
+                                            <span>${account.email}</span>
+                                            <span>${account.roleId}</span>
+                                        </li>
+                                    </c:forEach>
                                 </ul>
                             </div>
                             <div class="form__item--action">

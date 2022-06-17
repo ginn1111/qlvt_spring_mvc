@@ -1,16 +1,12 @@
 package dao;
 
 import entity.Role;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
 public class RoleDAO extends DAO<Role> {
-
-
     public List<Role> getList() {
         String query = "FROM Role";
        return super.getList(query);

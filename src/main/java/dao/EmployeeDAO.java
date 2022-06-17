@@ -52,7 +52,6 @@ public class EmployeeDAO extends DAO<Employee> {
         return true;
     }
 
-
     @Override
     public Employee findById(Employee employee) {
         return sessionFactory.getCurrentSession().get(Employee.class, employee.getEmployeeId());
