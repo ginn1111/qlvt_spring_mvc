@@ -1,5 +1,6 @@
 package controller;
 
+import dao.BorrowedCouponDAO;
 import entity.Role;
 import model.EmployeeModel;
 import model.AccountModel;
@@ -11,6 +12,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import request_bean.DeletedIdEmployeeList;
+import service.AccountService;
+import service.BorrowedCouponService;
 import service.EmployeeService;
 import service.RoleService;
 import utils.MyUtils;
@@ -38,8 +41,17 @@ public class ManagerController {
     EmployeeService employeeService;
     @Autowired
     RoleService roleService;
+
+    @Autowired
+    AccountService accountService;
+
+    @Autowired
+    BorrowedCouponService borrowedCouponService;
+
     @RequestMapping("index")
-    public String index() {
+    public String index(ModelMap model) {
+
+        model.addAttribute("numberOfBorrowedCP", borrowedCouponService.getNumberOfCPInMonth());
         return "quanly/dash-board";
     }
 
@@ -106,13 +118,15 @@ public class ManagerController {
     @RequestMapping(value="nhan-vien/{employeeId}", params = "accounts")
     public String employeeAccount(@PathVariable("employeeId") Integer employeeId, HttpSession httpSession) {
         httpSession.setAttribute("employeeModel", employeeService.getEmployee(employeeId));
+        List<AccountModel> accountModelList = employeeService.getAccountModelListOfEmployee(employeeId);
+        httpSession.setAttribute("accountModelList", accountModelList);
         link = "quanly/nhan-vien.htm?accounts";
         return "redirect:/quanly/nhan-vien.htm";
     }
 
     @RequestMapping(value="nhan-vien", params = "accounts", method = RequestMethod.POST)
     public String employeeAccount(@ModelAttribute("accountModel") AccountModel accountModel) {
-        System.out.println(accountModel.getEmail() + " " + accountModel.getPassword());
+        message = accountService.addNewAccount(accountModel);
         return "redirect:/quanly/nhan-vien.htm";
     }
 

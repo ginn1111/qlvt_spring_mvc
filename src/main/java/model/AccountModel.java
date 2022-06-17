@@ -26,7 +26,12 @@ public class AccountModel {
     public AccountModel() {
     }
 
-
+    public AccountModel(Account account) {
+       this.email = account.getEmail();
+       this.password = account.getPassword();
+       this.employeeModel = new EmployeeModel(account.getEmployee());
+       this.roleId = account.getRole().getRoleId();
+    }
 
     public EmployeeModel getEmployeeModel() {
         return employeeModel;

@@ -1,26 +1,20 @@
 package dao;
 
 import entity.Role;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class RoleDAO implements  DAO<Role> {
-    @Autowired
-    SessionFactory sessionFactory;
-
-    @Override
+public class RoleDAO extends DAO<Role> {
     public List<Role> getList() {
-       List<Role> list = sessionFactory.getCurrentSession().createQuery("FROM Role").list();
-       return list;
+        String query = "FROM Role";
+       return super.getList(query);
     }
 
     @Override
     public boolean addNew(Role role) {
-        return false;
+        return super.addNew(role);
     }
 
     @Override
@@ -30,7 +24,7 @@ public class RoleDAO implements  DAO<Role> {
 
     @Override
     public boolean update(Role role) {
-        return false;
+        return super.update(role);
     }
 
     @Override

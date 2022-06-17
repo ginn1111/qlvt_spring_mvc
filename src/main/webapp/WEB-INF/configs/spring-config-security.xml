@@ -17,6 +17,7 @@
 			<!-- Quản lý - ROLE_1; Nhân viên ROLE_2 -->
 		<intercept-url pattern="/quanly/**" access="hasRole('ROLE_QUANLY')" />
 		<intercept-url pattern="/nhanvien/**" access="hasRole('ROLE_NHANVIEN')" />
+		<intercept-url pattern="/test.htm" access="permitAll()" />
         <access-denied-handler error-page="/403" />
         
 
@@ -43,9 +44,9 @@
 		<!-- authentication from database -->
 		<authentication-provider>
 			<jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="SELECT EMAIL, MATKHAU, TRANGTHAI FROM TAIKHOAN WHERE EMAIL=?"
+				users-by-username-query="SELECT EMAIL, MATKHAU, TRANGTHAI FROM TAIKHOAN WHERE TRANGTHAI = 1 AND EMAIL=?"
 				authorities-by-username-query="SELECT EMAIL, TENVAITRO=CONCAT('ROLE_', TENVAITRO) FROM VAITRO VT INNER JOIN
-				 TAIKHOAN TK ON TK.MAVAITRO = VT.MAVAITRO WHERE EMAIL=?"
+				 TAIKHOAN TK ON TK.MAVAITRO = VT.MAVAITRO WHERE TRANGTHAI = 1 AND EMAIL=?"
 			/>
 			<password-encoder hash="bcrypt" />
 		</authentication-provider>

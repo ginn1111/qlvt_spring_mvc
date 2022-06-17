@@ -22,15 +22,12 @@
       <change afterPath="$PROJECT_DIR$/../Test/untitled/src/main/webapp/WEB-INF/configs/spring-config-mvc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Test/untitled/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Test/untitled/src/main/webapp/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/VaiTroDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/VaiTro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/TaiKhoanModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/VaiTroModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/request_bean/NhanVienRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/VaiTroService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/MyUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/form.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/quan-ly.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/WorkerDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/controller/LoginController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dao/DAO2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dao/WorkerDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/.env" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/README.md" beforeDir="false" />
@@ -46,30 +43,39 @@
       <change beforePath="$PROJECT_DIR$/../client/src/index.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/reportWebVitals.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/setupTests.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/auth/MyAuthenSucessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/auth/MyAuthenSucessHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/QuanLyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/QuanLyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Query.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Query.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TestController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/NhanVienDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/NhanVienDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/NhanVien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/NhanVien.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/NhanVienService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/NhanVienService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/HibernateUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/RoleDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/RoleDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/TestDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/TestService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/configs/spring-config-security.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/configs/spring-config-security.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/dialog-message.tag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/dialog-message.tag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/quan-ly.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/quan-ly.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/includes/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/includes/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/includes/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/includes/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/QuanLyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/QuanLyController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/DAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/DAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/NhanVienDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/NhanVienDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/NhanVien.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/NhanVien.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/NhanVienService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/NhanVienService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/HibernateUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/NhanVienController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/TestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/EmployeeDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/EmployeeDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/NhanVienDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/VaiTroDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/Employee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/NhanVien.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/VaiTro.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/AccountModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/AccountModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/EmployeeModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/EmployeeModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/NhanVienModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/TaiKhoanModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/TenVaiTro.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/VaiTroModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/request_bean/ListMaNhanVienMuonXoa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/request_bean/NhanVienRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/EmployeeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/EmployeeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/NhanVienService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/VaiTroService.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,31 +121,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Dev/manage/src/main/java/utils&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.31839082&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.maddyhome.idea.vim.ui.VimEmulationConfigurable&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;70682896e24287b0476eff2a14c148f0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Dev/manage/src/main/java/utils",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.31839082",
+    "settings.editor.selected.configurable": "com.maddyhome.idea.vim.ui.VimEmulationConfigurable",
+    "spring.configuration.checksum": "70682896e24287b0476eff2a14c148f0"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ChangesTree.GroupingKeys&quot;: [
-      &quot;module&quot;,
-      &quot;repository&quot;,
-      &quot;directory&quot;
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "module",
+      "repository",
+      "directory"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Dev\manage\src\main\java\utils" />
       <recent name="D:\Dev\manage\src\main\webapp\resources\js" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="dao" />
     </key>
   </component>
   <component name="RunManager">
@@ -180,6 +190,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="SHOW_OTHER_BRANCHES" value="true" />
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

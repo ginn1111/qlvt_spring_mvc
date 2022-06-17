@@ -53,7 +53,7 @@
                             </div>
                         <div class="card--hover card detail">
                             <h3 class="detail__number">
-                                3001
+                                ${numberOfBorrowedCP}
                             </h3>
                             <div class="detail__des">
                                 <div class="detail__icon">

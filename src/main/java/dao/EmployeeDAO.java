@@ -2,66 +2,33 @@ package dao;
 
 import entity.Employee;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class EmployeeDAO implements DAO<Employee> {
-    @Autowired
-    SessionFactory sessionFactory;
+public class EmployeeDAO extends DAO<Employee> {
 
-    @Override
     public List<Employee> getList() {
-        List<Employee> listEmployee = sessionFactory
-                .getCurrentSession().createQuery("FROM Employee").list();
-        return listEmployee;
+        String query = "FROM Employee AS E WHERE E.status = true";
+        return super.getList(query);
     }
 
-    @Override
     public boolean addNew(Employee employee) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-
-        try {
-            session.save(employee);
-            transaction.commit();
-        } catch(Exception ex) {
-           transaction.rollback();
-           ex.printStackTrace();
-           return false;
-        } finally {
-            session.close();
-        }
-        return true;
+        return super.addNew(employee);
     }
 
     @Override
     public boolean deleteById(Employee employee) {
-
         return true;
+
     }
 
     @Override
     public boolean update(Employee employee) {
 
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-
-        try {
-            session.update(employee);
-            transaction.commit();
-        } catch(Exception ex) {
-            transaction.rollback();
-            ex.printStackTrace();
-            return false;
-        } finally {
-            session.close();
-        }
-        return true;
+        return super.update(employee);
     }
 
     @Override

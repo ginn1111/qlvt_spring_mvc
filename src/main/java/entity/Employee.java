@@ -3,6 +3,7 @@ package entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -31,6 +32,17 @@ public class Employee {
 
     @Column(name = "TRANGTHAI")
     private Boolean status;
+
+    public Collection<Account> getAccountList() {
+        return accountList;
+    }
+
+    public void setAccountList(Collection<Account> accountList) {
+        this.accountList = accountList;
+    }
+
+    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+    private Collection<Account> accountList;
 
     public Employee(Integer employeeId, String name, String phone, String address, Boolean status, Date dob) {
         this.employeeId = employeeId;
