@@ -1,9 +1,7 @@
 package controller;
 
 
-import model.AccountModel;
-import model.EmployeeModel;
-import model.RoleModel;
+import model.ConstructionModel;
 import model.SupplierModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,33 +11,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import request_bean.DeletedIdList;
-import service.SupplierService;
+import service.ConstructionService;
 
-import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Controller
 @Transactional
-@RequestMapping("nhacungcap")
-public class SupplierController {
+public class ConstructionController {
 
     private static String message = "";
-    private static SupplierModel supplierModel = new SupplierModel();
+    private static ConstructionModel constructionModel = new ConstructionModel();
     private static String link;
     private static String btnTitle;
 
     @Autowired
-    SupplierService supplierService;
+    ConstructionService constructionService;
     @RequestMapping("index")
     public String index(ModelMap model) {
-        List<Object> resultSupplierService = supplierService.getSupplierList();
-        List<SupplierModel> supplierModelList = (List<SupplierModel>)resultSupplierService.get(0);
-        DeletedIdList deletedSupplierIdList = (DeletedIdList) resultSupplierService.get(1);
+        List<Object> resultConstructionService = constructionService.getConstructionList();
+        List<ConstructionModel> constructionModelList = (List<ConstructionModel>)resultConstructionService.get(0);
+        DeletedIdList deletedConstructionIdList = (DeletedIdList) resultConstructionService.get(1);
 
-        model.addAttribute("supplierModelList", supplierModelList);
-        model.addAttribute("deletedSupplierIdList", deletedSupplierIdList);
-        model.addAttribute("supplierModel", supplierModel);
+        model.addAttribute("constructionModelList", constructionModelList);
+        model.addAttribute("deletedConstructionIdList", deletedConstructionIdList);
+        model.addAttribute("constructionModel", constructionModel);
         model.addAttribute("link", link);
         model.addAttribute("btnTitle", btnTitle);
         model.addAttribute("message", message);
@@ -48,24 +44,24 @@ public class SupplierController {
     }
 
     @RequestMapping(value="nhan-vien", params = "new")
-    public String newSupplier() {
+    public String newConstruction() {
 
-        supplierModel = new SupplierModel();
+        constructionModel = new ConstructionModel();
         btnTitle = "Thêm";
         link="nhacungcap/nhan-vien.htm?insert";
         return "redirect:/quanly/nhan-vien.htm";
     }
 
     @RequestMapping(value="nhan-vien", params = "insert", method = RequestMethod.POST)
-    public String addSupplier(@ModelAttribute("supplierModel") SupplierModel supplierModel) {
+    public String addConstruction(@ModelAttribute("constructionModel") ConstructionModel constructionModel) {
         // Todo: validate
-        message = supplierService.addSupplier(supplierModel);
+        message = constructionService.addConstruction(constructionModel);
         return "redirect:/quanly/nhan-vien.htm";
     }
 
-    @RequestMapping(value="nhan-vien/{supplierId}", params = "update")
-    public String editSupplier(@PathVariable("supplierId") Integer supplierId) {
-        supplierModel = supplierService.findSupplierById(supplierId);
+    @RequestMapping(value="nhan-vien/{constructionId}", params = "update")
+    public String editConstruction(@PathVariable("constructionId") Integer constructionId) {
+        constructionModel = constructionService.findConstructionById(constructionId);
 
         link = "quanly/nhan-vien.htm?update";
         btnTitle = "Sửa";
@@ -73,16 +69,15 @@ public class SupplierController {
     }
 
     @RequestMapping(value="nhan-vien", params = "update")
-    public String editSupplier(@ModelAttribute("supplierModel") SupplierModel supplierModel) {
-        message = supplierService.editSupplier(supplierModel);
+    public String editSConstruction(@ModelAttribute("constructionModel") ConstructionModel constructionModel) {
+        message = constructionService.editConstruction(constructionModel);
         return "redirect:/quanly/nhan-vien.htm";
     }
 
     // POST quanly/nhan-vien.htm?delete
     @RequestMapping(value="nhan-vien", params = "delete", method = RequestMethod.POST)
-    public String deleteSupplier(@ModelAttribute("deletedSupplierIdList") DeletedIdList deletedSupplierIdList) {
-        message = supplierService.deleteSupplier(deletedSupplierIdList);
+    public String deleteConstruction(@ModelAttribute("deletedSupplierIdList") DeletedIdList deletedConstructionIdList) {
+        message = constructionService.deleteConstruction(deletedConstructionIdList);
         return "redirect:/quanly/nhan-vien.htm";
     }
-
 }

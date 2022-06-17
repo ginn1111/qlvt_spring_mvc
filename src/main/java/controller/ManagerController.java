@@ -10,8 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import request_bean.DeletedIdList;
-import service.EmployeeService;
-import service.RoleService;
+import service.*;
 import utils.MyUtils;
 
 import javax.servlet.http.HttpSession;
@@ -37,8 +36,27 @@ public class ManagerController {
     EmployeeService employeeService;
     @Autowired
     RoleService roleService;
+
+    @Autowired
+    BorrowedCouponService borrowedCouponService;
+    @Autowired
+    ExCouponService exCouponService;
+    @Autowired
+    InCouponService inCouponService;
+    @Autowired
+    PayedCouponService payedCouponService;
+    @Autowired
+    TransCouponService transCouponService;
+
+
     @RequestMapping("index")
-    public String index() {
+    public String index(ModelMap model) {
+
+        model.addAttribute("numberOfBorrowedCP", borrowedCouponService.getNumberOfCPInMonth());
+        model.addAttribute("numberOfExCP", exCouponService.getNumberOfCPInMonth());
+        model.addAttribute("numberOfInCP", inCouponService.getNumberOfCPInMonth());
+        model.addAttribute("numberOfPayedCP", payedCouponService.getNumberOfCPInMonth());
+        model.addAttribute("numberOfTransCP", transCouponService.getNumberOfCPInMonth());
         return "quanly/dash-board";
     }
 

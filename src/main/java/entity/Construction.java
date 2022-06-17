@@ -13,6 +13,9 @@ public class Construction {
     @Column(name = "TENCONGTRINH")
     private String name;
 
+    @Column(name = "TRANGTHAI")
+    private Boolean status;
+
     public Integer getConstructionId() {
         return constructionId;
     }
@@ -39,13 +42,14 @@ public class Construction {
 
     public Construction() {
     }
+    public Construction(Integer constructionId) {
+        this.constructionId = constructionId;
+    }
 
     public Construction(Integer constructionId, String name, Boolean status) {
         this.constructionId = constructionId;
         this.name = name;
-        this.status = status;
     }
 
-    @Column(name = "TRANGTHAI")
-    private Boolean status;
+
 }
