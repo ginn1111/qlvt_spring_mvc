@@ -5,7 +5,7 @@ import entity.Employee;
 import model.EmployeeModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import request_bean.DeletedIdEmployeeList;
+import request_bean.DeletedIdList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,8 +23,8 @@ public class EmployeeService {
         for(int i = 0; i < employeeList.size(); i++) {
             dummyList.add(null);
         }
-        DeletedIdEmployeeList deletedIdEmployeeList = new DeletedIdEmployeeList(dummyList);
-        return Arrays.asList(employeeList, deletedIdEmployeeList);
+        DeletedIdList deletedIdList = new DeletedIdList(dummyList);
+        return Arrays.asList(employeeList, deletedIdList);
     }
 
     public String addEmployee(EmployeeModel employeeModel) {
@@ -41,7 +41,7 @@ public class EmployeeService {
         return "Thêm nhân viên thất bại, có lỗi xảy ra!";
     }
     
-    public String deleteEmployee(DeletedIdEmployeeList list) {
+    public String deleteEmployee(DeletedIdList list) {
         List<Employee> listEmployee = new ArrayList<Employee>();
         Employee tmp;
         for (Integer employeeId :

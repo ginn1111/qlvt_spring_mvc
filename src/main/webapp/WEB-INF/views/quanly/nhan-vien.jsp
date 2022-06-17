@@ -62,12 +62,12 @@
                         </div>
                         <form:form class="table__body custom-scroll-bar form-employees"
                                    action="quanly/nhan-vien.htm?delete#employees" method="POST"
-                                   modelAttribute="deletedIdEmployeeList">
+                                   modelAttribute="deletedIdList">
                             <c:if test="${employeeModelList == null || employeeModelList.size() == 0}">
                                <h3 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">Không có nhân viên nào >_<...</h3>
                             </c:if>
                             <c:if test="${employeeModelList != null && employeeModelList.size() != 0}">
-                                <c:forEach items="${deletedIdEmployeeList.list}" varStatus="status">
+                                <c:forEach items="${deletedIdList.list}" varStatus="status">
                                     <div class="table__item table__item--employees"
                                          data-control="employees">
                                         <form:checkbox

@@ -5,56 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1d562b2-a4a6-45ac-8897-c9ba5ff0c55e" name="Changes" comment="add dashboard page of quanly, base config structure of project">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ManagerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/RoleDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/WorkerDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/AccountModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/EmployeeModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/RoleModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/EmployeeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/SupplierController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Sector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Supply.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Worker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/WorkerModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/SupplierService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/WorkerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Query.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Query.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/NhanVienController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/QuanLyController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/NhanVienDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/TestDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/VaiTroDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/NhanVien.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/VaiTro.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/NhanVienModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/TaiKhoanModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/VaiTroModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/request_bean/ListMaNhanVienMuonXoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/request_bean/DeletedIdEmployeeList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/request_bean/NhanVienRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/request_bean/EmployeeRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/NhanVienService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/TestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/VaiTroService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/configs/spring-config-security.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/configs/spring-config-security.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/WorkerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/WorkerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/request_bean/DeletedIdEmployeeList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/request_bean/DeletedIdList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/TestService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/NhanVienController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/QuanLyController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/TestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/TestController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/NhanVienDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/VaiTroDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/NhanVien.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/VaiTro.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/NhanVienModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/TaiKhoanModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/TenVaiTro.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/VaiTroModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/request_bean/ListMaNhanVienMuonXoa.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/request_bean/NhanVienRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/NhanVienService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/VaiTroService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/DAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/DAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/DAO2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/EmployeeDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/EmployeeDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/RoleDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/RoleDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/TestDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/WorkerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/WorkerDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/request_bean/DeletedIdEmployeeList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/EmployeeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/EmployeeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/TestService.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +141,8 @@
       <workItem from="1655347660154" duration="2679000" />
       <workItem from="1655350478805" duration="3092000" />
       <workItem from="1655391311569" duration="4062000" />
-      <workItem from="1655432333431" duration="4821000" />
+      <workItem from="1655432333431" duration="13597000" />
+      <workItem from="1655448561234" duration="45000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,5 @@
 package controller;
 
-import entity.Role;
 import model.EmployeeModel;
 import model.AccountModel;
 import model.RoleModel;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import request_bean.DeletedIdEmployeeList;
+import request_bean.DeletedIdList;
 import service.EmployeeService;
 import service.RoleService;
 import utils.MyUtils;
@@ -48,10 +47,10 @@ public class ManagerController {
     public String employee(ModelMap model) {
         List<Object> resultEmployeeService = employeeService.getEmployeeList();
         List<EmployeeModel> employeeModelList = (List<EmployeeModel>)resultEmployeeService.get(0);
-        DeletedIdEmployeeList deletedIdEmployeeList = (DeletedIdEmployeeList) resultEmployeeService.get(1);
-
+        DeletedIdList deletedIdList = (DeletedIdList) resultEmployeeService.get(1);
+        System.out.println(employeeModelList.get(0).getName());
         model.addAttribute("employeeModelList", employeeModelList);
-        model.addAttribute("deletedIdEmployeeList", deletedIdEmployeeList);
+        model.addAttribute("deletedIdList", deletedIdList);
         model.addAttribute("employeeModel", employeeModel);
         model.addAttribute("accountModel", accountModel);
         model.addAttribute("link", link);
@@ -97,8 +96,8 @@ public class ManagerController {
 
     // POST quanly/nhan-vien.htm?delete
     @RequestMapping(value="nhan-vien", params = "delete", method = RequestMethod.POST)
-    public String deleteEmployee(@ModelAttribute("deletedIdEmployeeList") DeletedIdEmployeeList deletedIdEmployeeList) {
-        message = employeeService.deleteEmployee(deletedIdEmployeeList);
+    public String deleteEmployee(@ModelAttribute("deletedIdEmployeeList") DeletedIdList deletedIdList) {
+        message = employeeService.deleteEmployee(deletedIdList);
         return "redirect:/quanly/nhan-vien.htm";
     }
 
