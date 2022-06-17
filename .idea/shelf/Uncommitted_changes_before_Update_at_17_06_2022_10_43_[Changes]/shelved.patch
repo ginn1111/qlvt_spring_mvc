@@ -1,0 +1,854 @@
+Index: src/main/java/entity/Employee.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package entity;\r\n\r\nimport org.springframework.format.annotation.DateTimeFormat;\r\n\r\nimport javax.persistence.*;\r\nimport java.util.Date;\r\n\r\n@Entity\r\n@Table(name=\"NHANVIEN\")\r\n//@NamedNativeQueries(\r\n//        @NamedNativeQuery(name = \"findEmployeeByName\", query=\"exec sp_findEmployeeByName\", resultClass = Employee.class)\r\n//)\r\npublic class Employee {\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n    @Column(name=\"MANHANVIEN\")\r\n    private Integer employeeId;\r\n\r\n    @Temporal(TemporalType.DATE)\r\n    @DateTimeFormat(pattern = \"yyyy-MM-dd\")\r\n    @Column(name=\"NGAYSINH\")\r\n    private Date dob;\r\n    @Column(name=\"TEN\")\r\n    private String name;\r\n\r\n    @Column(name = \"SDT\")\r\n    private String phone;\r\n\r\n    @Column(name = \"DIACHI\")\r\n    private String address;\r\n\r\n    @Column(name = \"TRANGTHAI\")\r\n    private Boolean status;\r\n\r\n    public Employee(Integer employeeId, String name, String phone, String address, Boolean status, Date dob) {\r\n        this.employeeId = employeeId;\r\n        this.name = name;\r\n        this.phone = phone;\r\n        this.address = address;\r\n        this.status = status;\r\n        this.dob = dob;\r\n    }\r\n\r\n    public Employee() {\r\n\r\n    }\r\n    public Employee(Integer employeeId) {\r\n        this.employeeId = employeeId;\r\n    }\r\n\r\n    public Date getDob() {\r\n        return this.dob;\r\n    }\r\n\r\n    public void setDob(Date dob) {\r\n        this.dob = dob;\r\n    }\r\n\r\n    public Integer getEmployeeId() {\r\n        return employeeId;\r\n    }\r\n\r\n    public void setEmployeeId(Integer employeeId) {\r\n        this.employeeId = employeeId;\r\n    }\r\n\r\n    public String getName() {\r\n        return name;\r\n    }\r\n\r\n    public void setName(String name) {\r\n        this.name = name;\r\n    }\r\n\r\n    public String getPhone() {\r\n        return phone;\r\n    }\r\n\r\n    public void setPhone(String phone) {\r\n        this.phone = phone;\r\n    }\r\n\r\n    public String getAddress() {\r\n        return address;\r\n    }\r\n\r\n    public void setAddress(String address) {\r\n        this.address = address;\r\n    }\r\n\r\n    public Boolean getStatus() {\r\n        return status;\r\n    }\r\n\r\n    public void setStatus(Boolean status) {\r\n        this.status = status;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/entity/Employee.java b/src/main/java/entity/Employee.java
+--- a/src/main/java/entity/Employee.java	(revision 3bd538b000cda44e45c98633abdd86054428fa5f)
++++ b/src/main/java/entity/Employee.java	(date 1655391850007)
+@@ -3,6 +3,7 @@
+ import org.springframework.format.annotation.DateTimeFormat;
+ 
+ import javax.persistence.*;
++import java.util.Collection;
+ import java.util.Date;
+ 
+ @Entity
+@@ -22,16 +23,16 @@
+     private Date dob;
+     @Column(name="TEN")
+     private String name;
+-
+     @Column(name = "SDT")
+     private String phone;
+-
+     @Column(name = "DIACHI")
+     private String address;
+-
+     @Column(name = "TRANGTHAI")
+     private Boolean status;
+ 
++    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
++    private Collection<Account> accountList;
++
+     public Employee(Integer employeeId, String name, String phone, String address, Boolean status, Date dob) {
+         this.employeeId = employeeId;
+         this.name = name;
+@@ -41,6 +42,14 @@
+         this.dob = dob;
+     }
+ 
++    public Collection<Account> getAccountList() {
++        return accountList;
++    }
++
++    public void setAccountList(Collection<Account> accountList) {
++        this.accountList = accountList;
++    }
++
+     public Employee() {
+ 
+     }
+Index: src/main/java/dao/EmployeeDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dao;\r\n\r\nimport entity.Employee;\r\nimport org.hibernate.Session;\r\nimport org.hibernate.SessionFactory;\r\nimport org.hibernate.Transaction;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.stereotype.Repository;\r\n\r\nimport java.util.List;\r\n\r\n@Repository\r\npublic class EmployeeDAO implements DAO<Employee> {\r\n    @Autowired\r\n    SessionFactory sessionFactory;\r\n\r\n    @Override\r\n    public List<Employee> getList() {\r\n        List<Employee> listEmployee = sessionFactory\r\n                .getCurrentSession().createQuery(\"FROM Employee\").list();\r\n        return listEmployee;\r\n    }\r\n\r\n    @Override\r\n    public boolean addNew(Employee employee) {\r\n        Session session = sessionFactory.openSession();\r\n        Transaction transaction = session.beginTransaction();\r\n\r\n        try {\r\n            session.save(employee);\r\n            transaction.commit();\r\n        } catch(Exception ex) {\r\n           transaction.rollback();\r\n           ex.printStackTrace();\r\n           return false;\r\n        } finally {\r\n            session.close();\r\n        }\r\n        return true;\r\n    }\r\n\r\n    @Override\r\n    public boolean deleteById(Employee employee) {\r\n\r\n        return true;\r\n    }\r\n\r\n    @Override\r\n    public boolean update(Employee employee) {\r\n\r\n        Session session = sessionFactory.openSession();\r\n        Transaction transaction = session.beginTransaction();\r\n\r\n        try {\r\n            session.update(employee);\r\n            transaction.commit();\r\n        } catch(Exception ex) {\r\n            transaction.rollback();\r\n            ex.printStackTrace();\r\n            return false;\r\n        } finally {\r\n            session.close();\r\n        }\r\n        return true;\r\n    }\r\n\r\n    @Override\r\n    public boolean deleteByListId(List<Employee> list) {\r\n        Session session = sessionFactory.openSession();\r\n        Transaction transaction = session.beginTransaction();\r\n\r\n        try {\r\n            for (Employee employee :\r\n                    list) {\r\n                session.delete(employee);\r\n            }\r\n            transaction.commit();\r\n        } catch(Exception ex) {\r\n            transaction.rollback();\r\n            ex.printStackTrace();\r\n            return false;\r\n        } finally {\r\n            session.close();\r\n        }\r\n        return true;\r\n    }\r\n\r\n    @Override\r\n    public Employee findById(Employee employee) {\r\n        return sessionFactory.getCurrentSession().get(Employee.class, employee.getEmployeeId());\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/dao/EmployeeDAO.java b/src/main/java/dao/EmployeeDAO.java
+--- a/src/main/java/dao/EmployeeDAO.java	(revision 3bd538b000cda44e45c98633abdd86054428fa5f)
++++ b/src/main/java/dao/EmployeeDAO.java	(date 1655430528033)
+@@ -1,5 +1,6 @@
+ package dao;
+ 
++import entity.Account;
+ import entity.Employee;
+ import org.hibernate.Session;
+ import org.hibernate.SessionFactory;
+@@ -7,6 +8,7 @@
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Repository;
+ 
++import java.util.Collection;
+ import java.util.List;
+ 
+ @Repository
+@@ -17,7 +19,7 @@
+     @Override
+     public List<Employee> getList() {
+         List<Employee> listEmployee = sessionFactory
+-                .getCurrentSession().createQuery("FROM Employee").list();
++                .getCurrentSession().createQuery("FROM Employee AS E WHERE E.status = true").list();
+         return listEmployee;
+     }
+ 
+@@ -69,10 +71,13 @@
+         Session session = sessionFactory.openSession();
+         Transaction transaction = session.beginTransaction();
+ 
++        Employee eTmp;
+         try {
+             for (Employee employee :
+                     list) {
+-                session.delete(employee);
++                eTmp = session.get(Employee.class, employee.getEmployeeId());
++                eTmp.setStatus(false);
++                session.update(eTmp);
+             }
+             transaction.commit();
+         } catch(Exception ex) {
+@@ -90,4 +95,8 @@
+         return sessionFactory.getCurrentSession().get(Employee.class, employee.getEmployeeId());
+     }
+ 
++    public Collection<Account> getAccountListOfEmployee(Employee employee) {
++       return this.findById(employee).getAccountList();
++    }
++
+ }
+Index: src/main/java/controller/ManagerController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controller;\r\n\r\nimport entity.Role;\r\nimport model.EmployeeModel;\r\nimport model.AccountModel;\r\nimport model.RoleModel;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.beans.propertyeditors.CustomDateEditor;\r\nimport org.springframework.stereotype.Controller;\r\nimport org.springframework.ui.ModelMap;\r\nimport org.springframework.web.bind.WebDataBinder;\r\nimport org.springframework.web.bind.annotation.*;\r\nimport request_bean.DeletedIdEmployeeList;\r\nimport service.EmployeeService;\r\nimport service.RoleService;\r\nimport utils.MyUtils;\r\n\r\nimport javax.servlet.http.HttpSession;\r\nimport javax.transaction.Transactional;\r\nimport java.util.Date;\r\nimport java.util.List;\r\n\r\n@Controller\r\n@Transactional\r\n@RequestMapping(\"quanly\")\r\npublic class ManagerController {\r\n    private static String message = \"\";\r\n    private static EmployeeModel employeeModel = new EmployeeModel();\r\n    private static AccountModel accountModel = new AccountModel();\r\n    private static String link;\r\n    private static String btnTitle;\r\n    @InitBinder\r\n    public void customizeBinding (WebDataBinder binder) {\r\n        MyUtils.DF_DATE.setLenient(false);\r\n        binder.registerCustomEditor(Date.class, new CustomDateEditor(MyUtils.DF_DATE, false));\r\n    }\r\n    @Autowired\r\n    EmployeeService employeeService;\r\n    @Autowired\r\n    RoleService roleService;\r\n    @RequestMapping(\"index\")\r\n    public String index() {\r\n        return \"quanly/dash-board\";\r\n    }\r\n\r\n    // GET quanly/nhan-vien.htm\r\n    @RequestMapping(\"nhan-vien\")\r\n    public String employee(ModelMap model) {\r\n        List<Object> resultEmployeeService = employeeService.getEmployeeList();\r\n        List<EmployeeModel> employeeModelList = (List<EmployeeModel>)resultEmployeeService.get(0);\r\n        DeletedIdEmployeeList deletedIdEmployeeList = (DeletedIdEmployeeList) resultEmployeeService.get(1);\r\n\r\n        model.addAttribute(\"employeeModelList\", employeeModelList);\r\n        model.addAttribute(\"deletedIdEmployeeList\", deletedIdEmployeeList);\r\n        model.addAttribute(\"employeeModel\", employeeModel);\r\n        model.addAttribute(\"accountModel\", accountModel);\r\n        model.addAttribute(\"link\", link);\r\n        model.addAttribute(\"btnTitle\", btnTitle);\r\n        model.addAttribute(\"message\", message);\r\n        message = \"\";\r\n        return \"quanly/nhan-vien\";\r\n    }\r\n\r\n    // GET quanly/nhan-vien.htm?new\r\n    @RequestMapping(value=\"nhan-vien\", params = \"new\")\r\n    public String newEmployee() {\r\n\r\n        employeeModel = new EmployeeModel();\r\n        btnTitle = \"Thêm\";\r\n        link=\"quanly/nhan-vien.htm?insert\";\r\n        return \"redirect:/quanly/nhan-vien.htm\";\r\n    }\r\n\r\n    // POST quanly/nhan-vien.htm?insert\r\n    @RequestMapping(value=\"nhan-vien\", params = \"insert\", method = RequestMethod.POST)\r\n    public String addEmployee(@ModelAttribute(\"employeeModel\") EmployeeModel employeeModel) {\r\n        // Todo: validate\r\n        message = employeeService.addEmployee(employeeModel);\r\n        return \"redirect:/quanly/nhan-vien.htm\";\r\n    }\r\n\r\n    // GET quanly/nhan-vien/{employeeId}.htm?update\r\n    @RequestMapping(value=\"nhan-vien/{employeeId}\", params = \"update\")\r\n    public String editEmployee(@PathVariable(\"employeeId\") Integer employeeId) {\r\n        employeeModel = employeeService.findEmployeeById(employeeId);\r\n        link = \"quanly/nhan-vien.htm?update\";\r\n        btnTitle = \"Sửa\";\r\n        return \"redirect:/quanly/nhan-vien.htm\";\r\n    }\r\n\r\n    // GET quanly/nhan-vien.htm?update\r\n    @RequestMapping(value=\"nhan-vien\", params = \"update\")\r\n    public String editEmployee(@ModelAttribute(\"employeeModel\") EmployeeModel employeeModel) {\r\n        message = employeeService.editEmployee(employeeModel);\r\n        return \"redirect:/quanly/nhan-vien.htm\";\r\n    }\r\n\r\n    // POST quanly/nhan-vien.htm?delete\r\n    @RequestMapping(value=\"nhan-vien\", params = \"delete\", method = RequestMethod.POST)\r\n    public String deleteEmployee(@ModelAttribute(\"deletedIdEmployeeList\") DeletedIdEmployeeList deletedIdEmployeeList) {\r\n        message = employeeService.deleteEmployee(deletedIdEmployeeList);\r\n        return \"redirect:/quanly/nhan-vien.htm\";\r\n    }\r\n\r\n    // GET quanly/nhan-vien/{employeeId}.htm?update\r\n    @RequestMapping(value=\"nhan-vien/{employeeId}\", params = \"accounts\")\r\n    public String employeeAccount(@PathVariable(\"employeeId\") Integer employeeId, HttpSession httpSession) {\r\n        httpSession.setAttribute(\"employeeModel\", employeeService.getEmployee(employeeId));\r\n        link = \"quanly/nhan-vien.htm?accounts\";\r\n        return \"redirect:/quanly/nhan-vien.htm\";\r\n    }\r\n\r\n    @RequestMapping(value=\"nhan-vien\", params = \"accounts\", method = RequestMethod.POST)\r\n    public String employeeAccount(@ModelAttribute(\"accountModel\") AccountModel accountModel) {\r\n        System.out.println(accountModel.getEmail() + \" \" + accountModel.getPassword());\r\n        return \"redirect:/quanly/nhan-vien.htm\";\r\n    }\r\n\r\n    @ModelAttribute(\"roleList\")\r\n    public List<RoleModel> getRoleList() {\r\n        return roleService.getRoleList();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/controller/ManagerController.java b/src/main/java/controller/ManagerController.java
+--- a/src/main/java/controller/ManagerController.java	(revision 3bd538b000cda44e45c98633abdd86054428fa5f)
++++ b/src/main/java/controller/ManagerController.java	(date 1655429892476)
+@@ -1,5 +1,6 @@
+ package controller;
+ 
++import entity.Employee;
+ import entity.Role;
+ import model.EmployeeModel;
+ import model.AccountModel;
+@@ -11,6 +12,7 @@
+ import org.springframework.web.bind.WebDataBinder;
+ import org.springframework.web.bind.annotation.*;
+ import request_bean.DeletedIdEmployeeList;
++import service.AccountService;
+ import service.EmployeeService;
+ import service.RoleService;
+ import utils.MyUtils;
+@@ -38,6 +40,10 @@
+     EmployeeService employeeService;
+     @Autowired
+     RoleService roleService;
++
++    @Autowired
++    AccountService accountService;
++
+     @RequestMapping("index")
+     public String index() {
+         return "quanly/dash-board";
+@@ -105,14 +111,18 @@
+     // GET quanly/nhan-vien/{employeeId}.htm?update
+     @RequestMapping(value="nhan-vien/{employeeId}", params = "accounts")
+     public String employeeAccount(@PathVariable("employeeId") Integer employeeId, HttpSession httpSession) {
++        EmployeeModel employeeModel = new EmployeeModel();
++        employeeModel.setEmployeeId(employeeId);
+         httpSession.setAttribute("employeeModel", employeeService.getEmployee(employeeId));
++        List<AccountModel> accountModelList = employeeService.getAccountModelListOfEmployee(employeeModel);
++        httpSession.setAttribute("accountModelList", accountModelList);
+         link = "quanly/nhan-vien.htm?accounts";
+         return "redirect:/quanly/nhan-vien.htm";
+     }
+ 
+     @RequestMapping(value="nhan-vien", params = "accounts", method = RequestMethod.POST)
+     public String employeeAccount(@ModelAttribute("accountModel") AccountModel accountModel) {
+-        System.out.println(accountModel.getEmail() + " " + accountModel.getPassword());
++        message = accountService.addNewAccount(accountModel);
+         return "redirect:/quanly/nhan-vien.htm";
+     }
+ 
+Index: src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page language=\"java\" contentType=\"text/html; charset=UTF-8\"\r\n         pageEncoding=\"UTF-8\"%>\r\n<%@include file=\"/resources/includes/header.jsp\"%>\r\n\r\n<div class=\"container\">\r\n    <tg:dialog-message message=\"${message}\" />\r\n    <!-- Navigation -->\r\n    <nav class=\"navigation active\">\r\n        <tg:navigation prefix=\"quanly\"\r\n                       link1=\"./nhan-vien.htm\" link2=\"./tai-khoan.htm\" link3=\"./phieu.htm\" link4=\"./cong-nhan.htm\"\r\n                       link5=\"./nha-cung-cap.htm\" link6=\"./cong-trinh-va-kho.htm\" link7=\"danh-muc-va-khu-vuc.htm\"\r\n                       uri1=\"nhan-vien\" uri2=\"tai-khoan\" uri3=\"phieu\" uri4=\"cong-nhan\" uri5=\"nha-cung-cap\"\r\n                       uri6=\"cong-trinh-va-kho\" uri7=\"danh-muc-va-khu-vuc\"\r\n                       name1=\"Nhân viên\" name2=\"Tài khoản\" name3=\"Phiếu\" name4=\"Công nhân\" name5=\"Nhà cung cấp\"\r\n                       name6=\"Công trình và kho\" name7=\"Danh mục và khu vực\"\r\n                       icon1=\"person-outline\" icon2=\"key-outline\" icon3=\"book-outline\" icon4=\"bicycle-outline\"\r\n                       icon5=\"file-tray-stacked-outline\" icon6=\"podium-outline\" icon7=\"library-outline\"\r\n        />\r\n    </nav>\r\n    <div class=\"main active\">\r\n\r\n        <!-- Tool bar -->\r\n        <section class=\"topbar\">\r\n            <tg:topbar />\r\n        </section>\r\n        <%--Content --%>\r\n        <div class=\"main__content\">\r\n            <section class=\"manage__container\">\r\n                <!-- EMPLOYEES -->\r\n                <div id=\"employees\" class=\"card manage manage--employees\">\r\n                    <div class=\"manage__header\">\r\n                        <h5 class=\"header__title\">Nhân viên</h5>\r\n                        <form\r\n                                action=\"manager/manage/employees/search.htm\"\r\n                                method=\"POST\"\r\n                                class=\"search-box\">\r\n                            <ion-icon\r\n                                    name=\"search-outline\"\r\n                                    class=\"search__icon\"\r\n                            ></ion-icon>\r\n                            <input\r\n                                    required=\"required\"\r\n                                    name=\"data\"\r\n                                    type=\"search\"\r\n                                    placeholder=\"Tên...\"\r\n                            />\r\n                        </form>\r\n                        <div class=\"header__controller\">\r\n                            <a href=\"quanly/nhan-vien.htm?new#employees\"\r\n                               class=\"btn--customize btn--add\"\r\n                               data-control=\"employees\"\r\n                            >\r\n                                Thêm\r\n                            </a>\r\n                            <button class=\"btn--customize btn--remove btn--remove-employees\" disabled>Xoá</button>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"manage__table\">\r\n                        <div class=\"table__head\">\r\n                            <span>Mã nhân viên</span><span>Tên</span><span>Ngày sinh</span>\r\n                            <span>Địa chỉ</span><span>Số điện thoại</span>\r\n                        </div>\r\n                        <form:form class=\"table__body custom-scroll-bar form-employees\"\r\n                                   action=\"quanly/nhan-vien.htm?delete#employees\" method=\"POST\"\r\n                                   modelAttribute=\"deletedIdEmployeeList\">\r\n                            <c:if test=\"${employeeModelList == null || employeeModelList.size() == 0}\">\r\n                               <h3 style=\"position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;\">Không có nhân viên nào >_<...</h3>\r\n                            </c:if>\r\n                            <c:if test=\"${employeeModelList != null && employeeModelList.size() != 0}\">\r\n                                <c:forEach items=\"${deletedIdEmployeeList.list}\" varStatus=\"status\">\r\n                                    <div class=\"table__item table__item--employees\"\r\n                                         data-control=\"employees\">\r\n                                        <form:checkbox\r\n                                                value=\"${employeeModelList.get(status.index).employeeId}\"\r\n                                                path=\"list[${status.index}]\" />\r\n                                        <span>${employeeModelList.get(status.index).employeeId}</span>\r\n                                        <span>${employeeModelList.get(status.index).name}</span>\r\n                                        <span><fmt:formatDate value=\"${employeeModelList.get(status.index).dob}\" pattern=\"dd/MM/yyyy\"/></span>\r\n                                        <span>${employeeModelList.get(status.index).address}</span>\r\n                                        <c:set var=\"tmp\" value=\"${employeeModelList.get(status.index).phone}\" />\r\n                                        <c:set var=\"phone\" value=\"${fn:trim(tmp)}\" />\r\n                                        <span>\r\n                                            ${fn:substring(phone, 0, 3)}\r\n                                            ${fn:substring(phone, 3, 6)}\r\n                                            ${fn:substring(phone, 6, 10)}\r\n                                        </span>\r\n                                        <a href=\"quanly/nhan-vien/${employeeModelList.get(status.index).employeeId}.htm?update#employees\">\r\n                                            <span class=\"table__item--edit\">\r\n                                                <ion-icon name=\"pencil-outline\"></ion-icon>\r\n                                            </span>\r\n                                        </a>\r\n                                        <a href=\"quanly/nhan-vien/${employeeModelList.get(status.index).employeeId}.htm?accounts#employees\">\r\n                                            <span class=\"table__item--accounts\" data-control=\"accounts\">\r\n                                                <ion-icon name=\"key\"></ion-icon>\r\n                                            </span>\r\n                                        </a>\r\n                                        <span class=\"table__item--delete\"> <ion-icon\r\n                                                name=\"trash-outline\"></ion-icon>\r\n                                        </span>\r\n                                    </div>\r\n                                </c:forEach>\r\n                            </c:if>\r\n                        </form:form>\r\n                    </div>\r\n                </div>\r\n                <!-- EMPLOYEES END -->\r\n\r\n                <!-- CONFIRM DIALOG -->\r\n                <dialog class=\"dialog\">\r\n                    <h5 class=\"dialog__title\">Thông báo!</h5>\r\n                    <span class=\"dialog__message\">Xoá sẽ không khôi phục lại được, bạn có muốn xoá?</span>\r\n                    <div class=\"dialog__control\">\r\n                        <button class=\"btn--customize btn--confirm btn--warning\">Xoá</button>\r\n                        <button class=\"btn--customize btn--cancel btn--safe\">Huỷ</button>\r\n                    </div>\r\n                </dialog>\r\n                <%--END CONFIRM DIALOG--%>\r\n\r\n                <div class=\"backdrop\">\r\n                    <dialog class=\"modal\">\r\n\r\n                    <%--FORM NHAN VIEN--%>\r\n                        <form:form\r\n                            class=\"form form--employees\"\r\n                            action=\"${link}#employees\"\r\n                            method=\"POST\"\r\n                            modelAttribute=\"employeeModel\"\r\n                        >\r\n                        <h5 class=\"form__title\">Nhân viên</h5>\r\n                        <form:input type=\"hidden\" path=\"employeeId\" />\r\n                        <div class=\"form__item form__item--employee\">\r\n                            <label>Tên\r\n                                <form:input\r\n                                    path=\"name\"\r\n                                    class=\"form__input\"\r\n                                    placeholder=\"Tên...\"\r\n                                    required=\"required\"\r\n                                />\r\n                            </label>\r\n                        </div>\r\n                        <div class=\"form__item form__item--employee\">\r\n                            <label>Số điện thoại\r\n                                <form:input\r\n                                    type=\"number\"\r\n                                    path=\"phone\"\r\n                                    class=\"form__input\"\r\n                                    placeholder=\"số điện thoại...\" />\r\n                            </label>\r\n                        </div>\r\n                        <div class=\"form__item form__item--employee\">\r\n                            <label>Ngày sinh\r\n                                <form:input\r\n                                    type=\"date\"\r\n                                    path=\"dob\"\r\n                                    class=\"form__input\"\r\n                                    format=\"yyyy-MM-dd\"\r\n                                />\r\n                            </label>\r\n                        </div>\r\n                        <div class=\"form__item\">\r\n                            <label>Địa chỉ\r\n                                <form:textarea\r\n                                    path=\"address\"\r\n                                    class=\"form__input\"\r\n                                    placeholder=\"địa chỉ...\"\r\n                                    rows=\"3\"\r\n                                />\r\n                            </label>\r\n                        </div>\r\n                        <div class=\"form__item--action\">\r\n                            <button type=\"submit\" class=\"btn--confirm btn--customize\">${btnTitle}</button>\r\n                            <button type=\"reset\" class=\"btn--cancel btn--customize\">Huỷ</button>\r\n                        </div>\r\n                    </form:form>\r\n                    <%--END FORM NHAN VIEN--%>\r\n\r\n                    <%--FORM THEM TAI KHOAN--%>\r\n                        <form:form\r\n                            class=\"form form--accounts\"\r\n                            action=\"quanly/nhan-vien.htm?accounts#employees\"\r\n                            method=\"POST\"\r\n                            modelAttribute=\"accountModel\"\r\n                        >\r\n                            <h5 class=\"form__title\">Thêm tài khoản cho nhân viên</h5>\r\n                            <form:input type=\"hidden\" path=\"employeeModel.employeeId\" value=\"${sessionScope.employeeModel.employeeId}\"/>\r\n                            <div class=\"form__item\">\r\n                                <label>\r\n                                    ${sessionScope.employeeModel.name}\r\n                                </label>\r\n                            </div>\r\n                            <div class=\"form__item\">\r\n                                <label>\r\n                                    Email\r\n                                    <form:input class=\"form__input\" path=\"email\" type=\"email\" placeholder=\"email...\"/>\r\n                                </label>\r\n                            </div>\r\n                            <div class=\"form__item\">\r\n                                <label>\r\n                                    Mật khẩu\r\n                                    <form:input class=\"form__input\" path=\"password\" type=\"password\" placeholder=\"mật khẩu...\"/>\r\n                                </label>\r\n                            </div>\r\n                            <div class=\"form__item\">\r\n                                <label>Vai trò\r\n                                    <div class=\"select\">\r\n                                        <form:select\r\n                                            items=\"${roleList}\"\r\n                                            itemLabel=\"roleName.roleName\"\r\n                                            itemValue=\"roleId\"\r\n                                            path=\"roleId\"\r\n                                        />\r\n                                    </div>\r\n                                </label>\r\n                            </div>\r\n                            <div class=\"form__item accounts-container\">\r\n                               <span>Các tài khoản của nhân viên</span>\r\n                                <ul class=\"list__account custom-scroll-bar\">\r\n                                    <li class=\"card card--hover account\">\r\n                                        <span>tk01@gmail.com</span>\r\n                                        <span>Quản lý</span>\r\n                                    </li>\r\n                                </ul>\r\n                            </div>\r\n                            <div class=\"form__item--action\">\r\n                                <button type=\"submit\" class=\"btn--confirm btn--customize\">Thêm</button>\r\n                                <button type=\"reset\" class=\"btn--cancel btn--customize\">Huỷ</button>\r\n                            </div>\r\n                        </form:form>\r\n                    <%--END FORM THEM TAI KHOAN--%>\r\n                    </dialog>\r\n                </div>\r\n            </section>\r\n        </div>\r\n    </div>\r\n</div>\r\n<%@include file=\"/resources/includes/footer.jsp\"%>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp b/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp
+--- a/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp	(revision 3bd538b000cda44e45c98633abdd86054428fa5f)
++++ b/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp	(date 1655429897998)
+@@ -215,10 +215,12 @@
+                             <div class="form__item accounts-container">
+                                <span>Các tài khoản của nhân viên</span>
+                                 <ul class="list__account custom-scroll-bar">
+-                                    <li class="card card--hover account">
+-                                        <span>tk01@gmail.com</span>
+-                                        <span>Quản lý</span>
+-                                    </li>
++                                    <c:forEach items="${sessionScope.accountModelList}" var="account">
++                                        <li class="card card--hover account">
++                                            <span>${account.email}</span>
++                                            <span>${account.roleId}</span>
++                                        </li>
++                                    </c:forEach>
+                                 </ul>
+                             </div>
+                             <div class="form__item--action">
+Index: src/main/java/model/AccountModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package model;\r\n\r\nimport entity.Account;\r\n\r\npublic class AccountModel {\r\n    private String email;\r\n    private String password;\r\n    private EmployeeModel employeeModel;\r\n    private Integer roleId;\r\n    public String getEmail() {\r\n        return email;\r\n    }\r\n\r\n    public void setEmail(String email) {\r\n        this.email = email;\r\n    }\r\n\r\n    public String getPassword() {\r\n        return password;\r\n    }\r\n\r\n    public void setPassword(String password) {\r\n        this.password = password;\r\n    }\r\n\r\n    public AccountModel() {\r\n    }\r\n\r\n\r\n\r\n    public EmployeeModel getEmployeeModel() {\r\n        return employeeModel;\r\n    }\r\n\r\n    public void setEmployeeModel(EmployeeModel employeeModel) {\r\n        this.employeeModel = employeeModel;\r\n    }\r\n\r\n    public Integer getRoleId() {\r\n        return roleId;\r\n    }\r\n\r\n    public void setRoleId(Integer roleId) {\r\n        this.roleId = roleId;\r\n    }\r\n\r\n    public AccountModel(String email, String password, EmployeeModel employeeModel, Integer roleId) {\r\n        this.email = email;\r\n        this.password = password;\r\n        this.employeeModel = employeeModel;\r\n        this.roleId = roleId;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/model/AccountModel.java b/src/main/java/model/AccountModel.java
+--- a/src/main/java/model/AccountModel.java	(revision 3bd538b000cda44e45c98633abdd86054428fa5f)
++++ b/src/main/java/model/AccountModel.java	(date 1655392396024)
+@@ -26,7 +26,12 @@
+     public AccountModel() {
+     }
+ 
+-
++    public AccountModel(Account account) {
++        this.email = account.getEmail();
++        this.password = account.getPassword();
++        this.employeeModel = new EmployeeModel(account.getEmployee());
++        this.roleId = account.getRole().getRoleId();
++    }
+ 
+     public EmployeeModel getEmployeeModel() {
+         return employeeModel;
+Index: src/main/java/service/AccountService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/service/AccountService.java b/src/main/java/service/AccountService.java
+new file mode 100644
+--- /dev/null	(date 1655391849976)
++++ b/src/main/java/service/AccountService.java	(date 1655391849976)
+@@ -0,0 +1,45 @@
++package service;
++
++import dao.AccountDAO;
++import entity.Account;
++import entity.Employee;
++import entity.Role;
++import model.AccountModel;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Service;
++import utils.MyUtils;
++
++import java.util.List;
++
++@Service
++public class AccountService {
++    @Autowired
++    AccountDAO accountDAO;
++//    public List<AccountModel> getAccountModelListByEmployeeId()
++
++    public String addNewAccount(AccountModel accountModel) {
++        Account account = new Account();
++        Employee employee = new Employee();
++        Role role = new Role();
++        account.setEmail(accountModel.getEmail());
++        account.setPassword(MyUtils.passwordEncoder.encode(accountModel.getPassword()));
++        employee.setEmployeeId(accountModel.getEmployeeModel().getEmployeeId());
++        account.setEmployee(employee);
++        role.setRoleId(accountModel.getRoleId());
++        account.setRole(role);
++        account.setStatus(true);
++        if(checkExistsAccount(accountModel)) {
++            return "Email đã được đăng ký, vui lòng thử một email khác!";
++        }
++        if(accountDAO.addNew(account)) {
++           return "Thêm tài khoản thành công!" ;
++        }
++        return "Thêm tài khoản thất bại, vui lòng thử lại sau!";
++    }
++
++    public boolean checkExistsAccount(AccountModel accountModel) {
++        Account account = new Account();
++        account.setEmail(accountModel.getEmail());
++        return accountDAO.findById(account) != null;
++    }
++}
+Index: src/main/java/entity/CouponStatus.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/entity/CouponStatus.java b/src/main/java/entity/CouponStatus.java
+new file mode 100644
+--- /dev/null	(date 1655436959689)
++++ b/src/main/java/entity/CouponStatus.java	(date 1655436959689)
+@@ -0,0 +1,39 @@
++package entity;
++
++import javax.persistence.*;
++
++@Entity
++@Table(name = "TRANGTHAIPHIEU")
++public class CouponStatus {
++    @Id
++    @GeneratedValue(strategy =  GenerationType.IDENTITY)
++    @Column(name = "MATRANGTHAI")
++    private Integer cpStatusId;
++
++    public Integer getCpStatusId() {
++        return cpStatusId;
++    }
++
++    public void setCpStatusId(Integer cpStatusId) {
++        this.cpStatusId = cpStatusId;
++    }
++
++    public String getCpStatusName() {
++        return cpStatusName;
++    }
++
++    public void setCpStatusName(String cpStatusName) {
++        this.cpStatusName = cpStatusName;
++    }
++
++    public CouponStatus() {
++    }
++
++    public CouponStatus(Integer cpStatusId, String cpStatusName) {
++        this.cpStatusId = cpStatusId;
++        this.cpStatusName = cpStatusName;
++    }
++
++    @Column(name = "TENTRANGTHAI")
++    private String cpStatusName;
++}
+Index: src/main/java/service/EmployeeService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package service;\r\n\r\nimport dao.EmployeeDAO;\r\nimport entity.Employee;\r\nimport model.EmployeeModel;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.stereotype.Service;\r\nimport request_bean.DeletedIdEmployeeList;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Arrays;\r\nimport java.util.List;\r\nimport java.util.stream.Collectors;\r\n\r\n@Service\r\npublic class EmployeeService {\r\n    @Autowired\r\n    EmployeeDAO employeeDAO;\r\n    public List<Object> getEmployeeList() {\r\n        List<EmployeeModel> employeeList = employeeDAO.getList().stream()\r\n                .map(EmployeeModel::new).collect(Collectors.toList());\r\n        List<Integer> dummyList = new ArrayList<Integer>();\r\n        for(int i = 0; i < employeeList.size(); i++) {\r\n            dummyList.add(null);\r\n        }\r\n        DeletedIdEmployeeList deletedIdEmployeeList = new DeletedIdEmployeeList(dummyList);\r\n        return Arrays.asList(employeeList, deletedIdEmployeeList);\r\n    }\r\n\r\n    public String addEmployee(EmployeeModel employeeModel) {\r\n        Employee employee = new Employee();\r\n        employee.setName(employeeModel.getName());\r\n        employee.setAddress(employeeModel.getAddress());\r\n        employee.setPhone(employeeModel.getPhone());\r\n        employee.setDob(employeeModel.getDob());\r\n        // default value\r\n        employee.setStatus(true);\r\n        if(employeeDAO.addNew(employee)) {\r\n            return \"Thêm nhân viên thành công!\";\r\n        }\r\n        return \"Thêm nhân viên thất bại, có lỗi xảy ra!\";\r\n    }\r\n    \r\n    public String deleteEmployee(DeletedIdEmployeeList list) {\r\n        List<Employee> listEmployee = new ArrayList<Employee>();\r\n        Employee tmp;\r\n        for (Integer maNV :\r\n                list.getList()) {\r\n            if (maNV != null) {\r\n                tmp = new Employee();\r\n                tmp.setEmployeeId(maNV);\r\n                listEmployee.add(tmp);\r\n            }\r\n        }\r\n\r\n       if(employeeDAO.deleteByListId(listEmployee)) {\r\n           return \"Xoá nhân viên thành công!\";\r\n       }\r\n       return \"Có lỗi xảy ra, vui lòng thử lại.\";\r\n    }\r\n\r\n    public EmployeeModel findEmployeeById(Integer employeeId) {\r\n        Employee employee = new Employee();\r\n        employee.setEmployeeId(employeeId);\r\n        EmployeeModel employeeModel = new EmployeeModel(employeeDAO.findById(employee));\r\n\r\n        return employeeModel;\r\n    }\r\n\r\n    public String editEmployee(EmployeeModel employeeModel) {\r\n        Employee employee = new Employee();\r\n        employee.setEmployeeId(employeeModel.getEmployeeId());\r\n        employee.setName(employeeModel.getName());\r\n        employee.setAddress(employeeModel.getAddress());\r\n        employee.setPhone(employeeModel.getPhone());\r\n        employee.setDob(employeeModel.getDob());\r\n        employee.setStatus(true);\r\n        if(employeeDAO.update(employee)) {\r\n            return \"Sửa nhân viên thành công!\";\r\n        }\r\n        return \"Sửa nhân viên thất bại!\";\r\n    }\r\n\r\n    public EmployeeModel getEmployee(Integer employeeId) {\r\n        return new EmployeeModel(employeeDAO.findById(new Employee(employeeId)));\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/service/EmployeeService.java b/src/main/java/service/EmployeeService.java
+--- a/src/main/java/service/EmployeeService.java	(revision 3bd538b000cda44e45c98633abdd86054428fa5f)
++++ b/src/main/java/service/EmployeeService.java	(date 1655429462787)
+@@ -2,6 +2,7 @@
+ 
+ import dao.EmployeeDAO;
+ import entity.Employee;
++import model.AccountModel;
+ import model.EmployeeModel;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Service;
+@@ -9,6 +10,7 @@
+ 
+ import java.util.ArrayList;
+ import java.util.Arrays;
++import java.util.Collection;
+ import java.util.List;
+ import java.util.stream.Collectors;
+ 
+@@ -84,4 +86,12 @@
+     public EmployeeModel getEmployee(Integer employeeId) {
+         return new EmployeeModel(employeeDAO.findById(new Employee(employeeId)));
+     }
++    public List<AccountModel> getAccountModelListOfEmployee(EmployeeModel employeeModel) {
++       Employee employee = new Employee();
++       employee.setEmployeeId(employeeModel.getEmployeeId());
++       return employeeDAO.getAccountListOfEmployee(employee)
++               .stream().map(AccountModel::new)
++               .collect(Collectors.toList());
++    }
+ }
++
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e1d562b2-a4a6-45ac-8897-c9ba5ff0c55e\" name=\"Changes\" comment=\"add dashboard page of quanly, base config structure of project\">\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/test/.idea/.gitignore\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/test/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/test/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/test/pom.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/test/src/main/webapp/WEB-INF/applicationContext.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/test/src/main/webapp/WEB-INF/log4j.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/test/src/main/webapp/WEB-INF/web.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/untitled/.idea/.gitignore\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/untitled/.idea/compiler.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/untitled/.idea/encodings.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/untitled/.idea/jarRepositories.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/untitled/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/untitled/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/untitled/pom.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/untitled/src/main/webapp/WEB-INF/configs/spring-config-mvc.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/untitled/src/main/webapp/WEB-INF/web.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/../Test/untitled/src/main/webapp/index.jsp\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/dao/VaiTroDAO.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/entity/VaiTro.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/model/TaiKhoanModel.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/model/VaiTroModel.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/request_bean/NhanVienRequest.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/service/VaiTroService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/utils/MyUtils.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/webapp/resources/css/form.css\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/webapp/resources/js/quan-ly.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/../client/.env\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/../client/.gitignore\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/../client/README.md\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/../client/package-lock.json\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/../client/package.json\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/../client/public/index.html\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/../client/public/manifest.json\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/../client/public/robots.txt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/../client/src/App.css\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/../client/src/App.js\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/../client/src/App.test.js\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/../client/src/index.css\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/../client/src/index.js\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/../client/src/reportWebVitals.js\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/../client/src/setupTests.js\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/auth/MyAuthenSucessHandler.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/auth/MyAuthenSucessHandler.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/controller/QuanLyController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/controller/QuanLyController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/dao/DAO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/dao/DAO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/dao/NhanVienDAO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/dao/NhanVienDAO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/entity/NhanVien.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/entity/NhanVien.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/service/NhanVienService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/service/NhanVienService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/utils/HibernateUtils.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/configs/spring-config-security.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/configs/spring-config-security.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/dialog-message.tag\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/dialog-message.tag\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/index.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/index.jsp\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/resources/css/base.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/resources/css/base.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/resources/css/quan-ly.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/resources/css/quan-ly.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/resources/includes/footer.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/resources/includes/footer.jsp\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/resources/includes/header.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/resources/includes/header.jsp\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/resources/js/main.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/resources/js/main.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/controller/QuanLyController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/controller/QuanLyController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/dao/DAO.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/dao/DAO.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/dao/NhanVienDAO.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/dao/NhanVienDAO.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/entity/NhanVien.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/entity/NhanVien.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/service/NhanVienService.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/service/NhanVienService.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/utils/HibernateUtils.class\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Jsp File\" />\r\n        <option value=\"JavaScript File\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\r\n  </component>\r\n  <component name=\"JpbToolWindowState\">\r\n    <option name=\"myId2FirstActivated\">\r\n      <map>\r\n        <entry key=\"com.haulmont.jpb.jpaInspector\" value=\"true\" />\r\n        <entry key=\"com.haulmont.jpb.jpaPalette\" value=\"true\" />\r\n        <entry key=\"com.haulmont.jpb.jpaStructure\" value=\"true\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"myId2Visible\">\r\n      <map>\r\n        <entry key=\"com.haulmont.jpb.jpaInspector\" value=\"false\" />\r\n        <entry key=\"com.haulmont.jpb.jpaPalette\" value=\"false\" />\r\n        <entry key=\"com.haulmont.jpb.jpaStructure\" value=\"false\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2AZp2aEZNV5Ya3hlXpiYbV0IXD2\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"last_opened_file_path\": \"D:/Dev/manage/src/main/java/utils\",\r\n    \"project.structure.last.edited\": \"Project\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.31839082\",\r\n    \"settings.editor.selected.configurable\": \"com.maddyhome.idea.vim.ui.VimEmulationConfigurable\",\r\n    \"spring.configuration.checksum\": \"70682896e24287b0476eff2a14c148f0\"\r\n  },\r\n  \"keyToStringList\": {\r\n    \"ChangesTree.GroupingKeys\": [\r\n      \"module\",\r\n      \"repository\",\r\n      \"directory\"\r\n    ]\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\Dev\\manage\\src\\main\\java\\utils\" />\r\n      <recent name=\"D:\\Dev\\manage\\src\\main\\webapp\\resources\\js\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Tomcat 8.5\" type=\"com.poratu.idea.plugins.tomcat\" factoryName=\"SMART_TOMCAT_FACTORY\">\r\n      <option name=\"adminPort\" value=\"8005\" />\r\n      <option name=\"contextPath\" value=\"/manage\" />\r\n      <option name=\"docBase\" value=\"D:\\Dev\\manage\\src\\main\\webapp\" />\r\n      <option name=\"envOptions\" />\r\n      <option name=\"passParentEnvironmentVariables\" value=\"true\" />\r\n      <option name=\"port\" value=\"8080\" />\r\n      <option name=\"tomcatInfo\">\r\n        <TomcatInfo>\r\n          <option name=\"name\" value=\"Apache Tomcat/8.5.75\" />\r\n          <option name=\"number\" value=\"0\" />\r\n          <option name=\"path\" value=\"D:\\Tools\\apache-tomcat-8.5.75\" />\r\n          <option name=\"version\" value=\"8.5.75.0\" />\r\n        </TomcatInfo>\r\n      </option>\r\n      <option name=\"vmOptions\" value=\"\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e1d562b2-a4a6-45ac-8897-c9ba5ff0c55e\" name=\"Changes\" comment=\"\" />\r\n      <created>1655226757141</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1655226757141</updated>\r\n      <workItem from=\"1655258255548\" duration=\"47487000\" />\r\n      <workItem from=\"1655343809161\" duration=\"1105000\" />\r\n      <workItem from=\"1655345338885\" duration=\"1899000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"add dashboard page of quanly, base congif structure of project\" />\r\n    <MESSAGE value=\"add dashboard page of quanly, base config structure of project\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"add dashboard page of quanly, base config structure of project\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 3bd538b000cda44e45c98633abdd86054428fa5f)
++++ b/.idea/workspace.xml	(date 1655437379175)
+@@ -4,7 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="e1d562b2-a4a6-45ac-8897-c9ba5ff0c55e" name="Changes" comment="add dashboard page of quanly, base config structure of project">
++    <list default="true" id="e1d562b2-a4a6-45ac-8897-c9ba5ff0c55e" name="Changes" comment="update">
+       <change afterPath="$PROJECT_DIR$/../Test/test/.idea/.gitignore" afterDir="false" />
+       <change afterPath="$PROJECT_DIR$/../Test/test/.idea/misc.xml" afterDir="false" />
+       <change afterPath="$PROJECT_DIR$/../Test/test/.idea/vcs.xml" afterDir="false" />
+@@ -19,21 +19,15 @@
+       <change afterPath="$PROJECT_DIR$/../Test/untitled/.idea/misc.xml" afterDir="false" />
+       <change afterPath="$PROJECT_DIR$/../Test/untitled/.idea/vcs.xml" afterDir="false" />
+       <change afterPath="$PROJECT_DIR$/../Test/untitled/pom.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/../Test/untitled/src/main/webapp/WEB-INF/configs/spring-config-mvc.xml" afterDir="false" />
+       <change afterPath="$PROJECT_DIR$/../Test/untitled/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+       <change afterPath="$PROJECT_DIR$/../Test/untitled/src/main/webapp/index.jsp" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/VaiTroDAO.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/VaiTro.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/model/TaiKhoanModel.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/model/VaiTroModel.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/request_bean/NhanVienRequest.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/service/VaiTroService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/MyUtils.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/form.css" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/quan-ly.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/dao/AccountDAO.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/entity/CouponStatus.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/entity/InCoupon.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Supplier.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/service/AccountService.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/../client/.env" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/../client/.gitignore" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/../client/README.md" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/../client/package-lock.json" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/../client/package.json" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/../client/public/index.html" beforeDir="false" />
+@@ -46,30 +40,27 @@
+       <change beforePath="$PROJECT_DIR$/../client/src/index.js" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/../client/src/reportWebVitals.js" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/../client/src/setupTests.js" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/auth/MyAuthenSucessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/auth/MyAuthenSucessHandler.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/QuanLyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/QuanLyController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DAO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/NhanVienDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/NhanVienDAO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/NhanVien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/NhanVien.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/service/NhanVienService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/NhanVienService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/HibernateUtils.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/configs/spring-config-security.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/configs/spring-config-security.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/dialog-message.tag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/dialog-message.tag" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ManagerController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Employee.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/model/AccountModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/AccountModel.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/model/EmployeeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/EmployeeModel.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/EmployeeService.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/base.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/quan-ly.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/quan-ly.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/includes/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/includes/footer.jsp" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/includes/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/includes/header.jsp" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/main.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/controller/QuanLyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/QuanLyController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/dao/DAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/DAO.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/dao/NhanVienDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/NhanVienDAO.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/entity/NhanVien.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/NhanVien.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/service/NhanVienService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/NhanVienService.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/utils/HibernateUtils.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/controller/NhanVienController.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/dao/NhanVienDAO.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/dao/VaiTroDAO.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/entity/NhanVien.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/entity/VaiTro.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/model/NhanVienModel.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/model/TaiKhoanModel.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/model/TenVaiTro.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/model/VaiTroModel.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/request_bean/ListMaNhanVienMuonXoa.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/request_bean/NhanVienRequest.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/service/NhanVienService.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/service/VaiTroService.class" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -116,27 +107,27 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "last_opened_file_path": "D:/Dev/manage/src/main/java/utils",
+-    "project.structure.last.edited": "Project",
+-    "project.structure.proportion": "0.15",
+-    "project.structure.side.proportion": "0.31839082",
+-    "settings.editor.selected.configurable": "com.maddyhome.idea.vim.ui.VimEmulationConfigurable",
+-    "spring.configuration.checksum": "70682896e24287b0476eff2a14c148f0"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;last_opened_file_path&quot;: &quot;D:/Dev/manage/src/main/java/utils&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.31839082&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;com.maddyhome.idea.vim.ui.VimEmulationConfigurable&quot;,
++    &quot;spring.configuration.checksum&quot;: &quot;174f7816b62e76419c396afd06125e2f&quot;
+   },
+-  "keyToStringList": {
+-    "ChangesTree.GroupingKeys": [
+-      "module",
+-      "repository",
+-      "directory"
++  &quot;keyToStringList&quot;: {
++    &quot;ChangesTree.GroupingKeys&quot;: [
++      &quot;module&quot;,
++      &quot;repository&quot;,
++      &quot;directory&quot;
+     ]
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="D:\Dev\manage\src\main\java\utils" />
+@@ -175,8 +166,20 @@
+       <updated>1655226757141</updated>
+       <workItem from="1655258255548" duration="47487000" />
+       <workItem from="1655343809161" duration="1105000" />
+-      <workItem from="1655345338885" duration="1899000" />
++      <workItem from="1655345338885" duration="6775000" />
++      <workItem from="1655381895359" duration="2914000" />
++      <workItem from="1655387631265" duration="4897000" />
++      <workItem from="1655428689102" duration="1895000" />
++      <workItem from="1655432740017" duration="3940000" />
+     </task>
++    <task id="LOCAL-00001" summary="add edit, add, remove employees">
++      <created>1655388554661</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1655388554661</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -197,6 +200,7 @@
+     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+     <MESSAGE value="add dashboard page of quanly, base congif structure of project" />
+     <MESSAGE value="add dashboard page of quanly, base config structure of project" />
+-    <option name="LAST_COMMIT_MESSAGE" value="add dashboard page of quanly, base config structure of project" />
++    <MESSAGE value="add edit, add, remove employees" />
++    <option name="LAST_COMMIT_MESSAGE" value="add edit, add, remove employees" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/main/java/entity/InCoupon.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/entity/InCoupon.java b/src/main/java/entity/InCoupon.java
+new file mode 100644
+--- /dev/null	(date 1655437056629)
++++ b/src/main/java/entity/InCoupon.java	(date 1655437056629)
+@@ -0,0 +1,114 @@
++package entity;
++
++import org.springframework.format.annotation.DateTimeFormat;
++
++import javax.persistence.*;
++import java.math.BigDecimal;
++import java.util.Date;
++
++@Entity
++@Table(name="PHIEUNHAP")
++@NamedNativeQueries({
++        @NamedNativeQuery(name = "getTopVatTuNhapTrongThang"
++                    , query = "exec sp_getTopVatTuNhapTrongThang :num :m :y"
++                    , resultClass = InCoupon.class
++        )
++})
++public class InCoupon {
++    @Id
++    @GeneratedValue(strategy = GenerationType.IDENTITY)
++    @Column(name = "MAPHIEUNHAP")
++    private Integer couponId;
++
++    @ManyToOne
++    @JoinColumn(name="MANHANVIEN")
++    private Employee employee;
++
++    @ManyToOne
++    @JoinColumn(name="MANHACUNGCAP")
++    private Supplier supplier;
++
++    @Temporal(TemporalType.DATE)
++    @DateTimeFormat(pattern = "HH:mm")
++    @Column(name="THOIGIAN")
++    private Date time;
++
++    @Column(name = "TONGTIEN")
++    private BigDecimal total;
++
++    @ManyToOne
++    @JoinColumn(name = "MATRANGTHAI")
++    private CouponStatus cpStatus;
++
++    @Column(name = "GHICHU")
++    private String note;
++
++    public Integer getCouponId() {
++        return couponId;
++    }
++
++    public void setCouponId(Integer couponId) {
++        this.couponId = couponId;
++    }
++
++    public Employee getEmployee() {
++        return employee;
++    }
++
++    public void setEmployee(Employee employee) {
++        this.employee = employee;
++    }
++
++    public Supplier getSupplier() {
++        return supplier;
++    }
++
++    public void setSupplier(Supplier supplier) {
++        this.supplier = supplier;
++    }
++
++    public Date getTime() {
++        return time;
++    }
++
++    public void setTime(Date time) {
++        this.time = time;
++    }
++
++    public BigDecimal getTotal() {
++        return total;
++    }
++
++    public void setTotal(BigDecimal total) {
++        this.total = total;
++    }
++
++    public CouponStatus getCpStatus() {
++        return cpStatus;
++    }
++
++    public void setCpStatus(CouponStatus cpStatus) {
++        this.cpStatus = cpStatus;
++    }
++
++    public String getNote() {
++        return note;
++    }
++
++    public void setNote(String note) {
++        this.note = note;
++    }
++
++    public InCoupon() {
++    }
++
++    public InCoupon(Integer couponId, Employee employee, Supplier supplier, Date time, BigDecimal total, CouponStatus cpStatus, String note) {
++        this.couponId = couponId;
++        this.employee = employee;
++        this.supplier = supplier;
++        this.time = time;
++        this.total = total;
++        this.cpStatus = cpStatus;
++        this.note = note;
++    }
++}
+Index: src/main/java/model/EmployeeModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package model;\r\n\r\nimport entity.Employee;\r\n\r\nimport java.util.Date;\r\n\r\npublic class EmployeeModel {\r\n    public Integer employeeId;\r\n    public String address;\r\n    public String phone;\r\n    public Date dob;\r\n    public String name;\r\n\r\n    public EmployeeModel(Integer employeeId, String address, String phone, Date dob, String name) {\r\n        this.employeeId = employeeId;\r\n        this.address = address;\r\n        this.phone = phone;\r\n        this.dob = dob;\r\n        this.name = name;\r\n    }\r\n\r\n    public EmployeeModel(Employee employee) {\r\n        this.employeeId = employee.getEmployeeId();\r\n        this.address = employee.getAddress();\r\n        this.phone = employee.getPhone();\r\n        this.dob = employee.getDob();\r\n        this.name = employee.getName();\r\n    }\r\n\r\n    public String getName() {\r\n        return name;\r\n    }\r\n\r\n    public void setName(String name) {\r\n        this.name = name;\r\n    }\r\n\r\n    public EmployeeModel() {\r\n        this.dob = new Date();\r\n    }\r\n\r\n    public Integer getEmployeeId() {\r\n        return employeeId;\r\n    }\r\n\r\n    public void setEmployeeId(Integer employeeId) {\r\n        this.employeeId = employeeId;\r\n    }\r\n\r\n    public String getAddress() {\r\n        return address;\r\n    }\r\n\r\n    public void setAddress(String address) {\r\n        this.address = address;\r\n    }\r\n\r\n    public String getPhone() {\r\n        return phone;\r\n    }\r\n\r\n    public void setPhone(String phone) {\r\n        this.phone = phone;\r\n    }\r\n\r\n    public Date getDob() {\r\n        return dob;\r\n    }\r\n\r\n    public void setDob(Date dob) {\r\n        this.dob = dob;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/model/EmployeeModel.java b/src/main/java/model/EmployeeModel.java
+--- a/src/main/java/model/EmployeeModel.java	(revision 3bd538b000cda44e45c98633abdd86054428fa5f)
++++ b/src/main/java/model/EmployeeModel.java	(date 1655429568954)
+@@ -2,14 +2,19 @@
+ 
+ import entity.Employee;
+ 
++import java.util.Collection;
+ import java.util.Date;
++import java.util.List;
+ 
+ public class EmployeeModel {
+-    public Integer employeeId;
+-    public String address;
+-    public String phone;
+-    public Date dob;
+-    public String name;
++    private Integer employeeId;
++    private String address;
++    private String phone;
++    private Date dob;
++    private String name;
++
++    private List<AccountModel> accountModelList;
++
+ 
+     public EmployeeModel(Integer employeeId, String address, String phone, Date dob, String name) {
+         this.employeeId = employeeId;
+@@ -70,4 +75,12 @@
+     public void setDob(Date dob) {
+         this.dob = dob;
+     }
++
++    public List<AccountModel> getAccountModelList() {
++        return accountModelList;
++    }
++
++    public void setAccountModelList(List<AccountModel> accountModelList) {
++        this.accountModelList = accountModelList;
++    }
+ }
+Index: src/main/java/dao/AccountDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/dao/AccountDAO.java b/src/main/java/dao/AccountDAO.java
+new file mode 100644
+--- /dev/null	(date 1655391650754)
++++ b/src/main/java/dao/AccountDAO.java	(date 1655391650754)
+@@ -0,0 +1,64 @@
++package dao;
++
++import entity.Account;
++import org.hibernate.Session;
++import org.hibernate.SessionFactory;
++import org.hibernate.Transaction;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Repository;
++
++import java.util.List;
++
++@Repository
++public class AccountDAO implements DAO<Account>{
++    @Autowired
++    SessionFactory sessionFactory;
++
++    @Override
++    public List<Account> getList() {
++        return null;
++    }
++
++    @Override
++    public boolean addNew(Account account) {
++        Session session = sessionFactory.openSession();
++        Transaction transaction = session.beginTransaction();
++        try {
++            session.save(account);
++            transaction.commit();
++        } catch (Exception ex) {
++           ex.printStackTrace();
++           transaction.rollback();
++           return false;
++        } finally {
++           session.close();
++        }
++        return true;
++    }
++
++    @Override
++    public boolean deleteById(Account account) {
++        return false;
++    }
++
++    @Override
++    public boolean update(Account account) {
++        return false;
++    }
++
++    @Override
++    public boolean deleteByListId(List<Account> list) {
++        return false;
++    }
++
++    @Override
++    public Account findById(Account account) {
++        return sessionFactory.getCurrentSession().get(Account.class, account.getEmail());
++    }
++
++    public List<Account> findByEmployeeId(Integer employeeId) {
++       return sessionFactory.getCurrentSession()
++                .createQuery("FROM Account AS A  WHERE A.employee.employeeId = :employeeId AND A.status = true")
++               .setParameter("employeeId", employeeId).list();
++    }
++}
+Index: src/main/java/entity/Supplier.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/entity/Supplier.java b/src/main/java/entity/Supplier.java
+new file mode 100644
+--- /dev/null	(date 1655436959676)
++++ b/src/main/java/entity/Supplier.java	(date 1655436959676)
+@@ -0,0 +1,63 @@
++package entity;
++
++import javax.persistence.*;
++
++@Entity
++@Table(name = "NHACUNGCAP")
++public class Supplier {
++    @Id
++    @GeneratedValue(strategy = GenerationType.IDENTITY)
++    @Column(name="MANHACUNGCAP")
++    private Integer supplierId;
++
++    @Column(name="SDT")
++    private String phone;
++
++    @Column(name="DIACHI")
++    private String address;
++
++    @Column(name="TRANGTHAI")
++    private Boolean status;
++
++    public Integer getSupplierId() {
++        return supplierId;
++    }
++
++    public void setSupplierId(Integer supplierId) {
++        this.supplierId = supplierId;
++    }
++
++    public String getPhone() {
++        return phone;
++    }
++
++    public void setPhone(String phone) {
++        this.phone = phone;
++    }
++
++    public String getAddress() {
++        return address;
++    }
++
++    public void setAddress(String address) {
++        this.address = address;
++    }
++
++    public Boolean getStatus() {
++        return status;
++    }
++
++    public void setStatus(Boolean status) {
++        this.status = status;
++    }
++
++    public Supplier() {
++    }
++
++    public Supplier(Integer supplierId, String phone, String address, Boolean status) {
++        this.supplierId = supplierId;
++        this.phone = phone;
++        this.address = address;
++        this.status = status;
++    }
++}
