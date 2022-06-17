@@ -19,17 +19,16 @@ hidePass.forEach((e) => {
 
 const inputs = document.querySelectorAll('.input')
 
-inputs.forEach(input => {
+inputs.forEach(function(input) {
     input.addEventListener('blur', function(e) {
-        if(e.target.value) {
+        if(e.target.value.trim().length > 0) {
             this.classList.add('focus')
         } else {
             this.classList.remove('focus')
         }
     })
     if(input.value.trim().length !== 0) {
-		console.log(input.value)
-		this.classList.add('focus')
+		input.classList.add('focus')
 	}
 	input.addEventListener('change', function() {
 		if(this.value.trim().length !== 0) {

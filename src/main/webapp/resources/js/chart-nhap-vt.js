@@ -23,7 +23,7 @@ const borderColor = [
 //     bgColor.push(bgColor[lenOfColorArr % numOfColor])
 //     lenOfColorArr++;
 // }
-const ctxBar = document.getElementById('my-chart').getContext('2d');
+const ctxBar = document.getElementById('my-chart')?.getContext('2d');
 const data = {
     labels: ['Xi măng', 'Gạch ngói', 'Cát trắng', 'Gạch 4 ống', 'Gạch men','Xi măng', 'Gạch ngói', 'Cát trắng', 'Gạch 4 ống', 'Gạch men'],
     datasets: [{
@@ -36,26 +36,29 @@ const data = {
         borderWidth: 1
     }]
 };
-const myChartBar = new Chart(ctxBar, {
-    type: 'bar',
-    data: data,
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            title: {
-                display: true,
-                text: 'Số lượng nhập của từng loại vật tư trong tháng 06',
-                font: {
-                    family: 'IBM Plex Sans',
-                    size: 18,
-                    weight: 'bold',
-                    lineHeight: 1.2,
+if(ctxBar) {
+
+    const myChartBar = new Chart(ctxBar, {
+        type: 'bar',
+        data: data,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Số lượng nhập của từng loại vật tư trong tháng 06',
+                    font: {
+                        family: 'IBM Plex Sans',
+                        size: 18,
+                        weight: 'bold',
+                        lineHeight: 1.2,
+                    },
                 },
-            },
-            legend: {
-                display: false
+                legend: {
+                    display: false
+                }
             }
-        }
-    },
-});
+        },
+    });
+}

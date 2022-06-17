@@ -15,9 +15,8 @@
 <!--        <intercept-url pattern="/setting.htm" access="hasAnyRole('ROLE_Manager', 'ROLE_Leader', 'ROLE_Employee')" />-->
 <!--        <intercept-url pattern="/favicon.ico" access="permitAll" />-->
 			<!-- Quản lý - ROLE_1; Nhân viên ROLE_2 -->
-		<intercept-url pattern="/quanly/**" access="hasRole('ROLE_QUANLY')" />
-		<intercept-url pattern="/nhanvien/**" access="hasRole('ROLE_NHANVIEN')" />
-		<intercept-url pattern="/test.htm" access="permitAll()" />
+<!--		<intercept-url pattern="/quanly/**" access="hasRole('ROLE_QUANLY')" />-->
+<!--		<intercept-url pattern="/nhanvien/**" access="hasRole('ROLE_NHANVIEN')" />-->
         <access-denied-handler error-page="/403" />
         
 

@@ -67,7 +67,6 @@ public class SupplierService {
         Supplier supplier = new Supplier();
         supplier.setSupplierId(supplierId);
         return new SupplierModel(supplierDAO.findById(supplier));
-
     }
 
     public String editSupplier(SupplierModel supplierModel) {

@@ -45,11 +45,11 @@ public class EmployeeService {
     public String deleteEmployee(DeletedIdList list) {
         List<Employee> listEmployee = new ArrayList<Employee>();
         Employee tmp;
-        for (Integer maNV :
+        for (Integer employeeId :
                 list.getList()) {
-            if (maNV != null) {
+            if (employeeId != null) {
                 tmp = new Employee();
-                tmp.setEmployeeId(maNV);
+                tmp.setEmployeeId(employeeId);
                 listEmployee.add(tmp);
             }
         }
@@ -63,9 +63,7 @@ public class EmployeeService {
     public EmployeeModel findEmployeeById(Integer employeeId) {
         Employee employee = new Employee();
         employee.setEmployeeId(employeeId);
-        EmployeeModel employeeModel = new EmployeeModel(employeeDAO.findById(employee));
-
-        return employeeModel;
+        return new EmployeeModel(employeeDAO.findById(employee));
     }
 
     public String editEmployee(EmployeeModel employeeModel) {

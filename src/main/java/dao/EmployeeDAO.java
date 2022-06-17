@@ -12,7 +12,7 @@ public class EmployeeDAO extends DAO<Employee> {
 
     public List<Employee> getList() {
         String query = "FROM Employee AS E WHERE E.status = true";
-        return super.getList(query);
+        return getList(query);
     }
 
     @Override
@@ -21,19 +21,16 @@ public class EmployeeDAO extends DAO<Employee> {
     }
 
     @Override
-    public boolean update(Employee employee) {
-        return super.update(employee);
-    }
-
-    @Override
     public boolean deleteByListId(List<Employee> list) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
+        Employee eTmp;
 
         try {
-            for (Employee employee :
-                    list) {
-                session.delete(employee);
+            for (Employee employee : list) {
+                eTmp = session.get(Employee.class, employee.getEmployeeId());
+                eTmp.setStatus(false);
+                session.update(employee);
             }
             transaction.commit();
         } catch(Exception ex) {

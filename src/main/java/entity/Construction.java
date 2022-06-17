@@ -51,5 +51,13 @@ public class Construction {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "Construction{" +
+                "constructionId=" + constructionId +
+                ", name='" + name + '\'' +
+                ", status=" + status +
+                '}';
+    }
 
 }

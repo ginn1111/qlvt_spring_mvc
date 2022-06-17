@@ -58,7 +58,7 @@ public class ConstructionService {
         }
 
         if(constructionDAO.deleteByListId(constructionList)) {
-            return "Xoá công trình thành công!";
+            return "Xoá thành công!";
         }
         return "Có lỗi xảy ra, vui lòng thử lại.";
     }
@@ -71,15 +71,13 @@ public class ConstructionService {
 
     public String editConstruction(ConstructionModel constructionModel) {
         Construction construction = new Construction();
+        construction.setConstructionId(constructionModel.getConstructionId());
         construction.setName(constructionModel.getName());
         construction.setStatus(true);
         if(constructionDAO.update(construction)) {
-            return "Sửa công trình thành công!";
+            return "Cập nhật thành công!";
         }
-        return "Sửa công trình thất bại!";
+        return "Cập nhật thất bại!";
     }
 
-    public ConstructionModel getConstruction(Integer constructionId) {
-        return new ConstructionModel(constructionDAO.findById(new Construction(constructionId)));
-    }
 }

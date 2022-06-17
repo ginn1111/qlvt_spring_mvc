@@ -198,3 +198,18 @@
 .manage .table__item > span:nth-child(6) {
     text-align: center;
 }
+.manage__container--construction-and-warehouse {
+   grid-template-columns: 1fr 1fr;
+}
+.manage--construction-and-warehouse {
+    grid-column: unset;
+}
+.manage__table.manage__table--warehouses > table__head > span:nth-child(1),
+.manage__table.manage__table--warehouses > table__head > span:nth-child(2) {
+   flex: 1;
+    font-size: 33px;
+}
+.manage__table.manage__table--warehouses > table__head > span:nth-child(3) {
+    flex: 2;
+}
+

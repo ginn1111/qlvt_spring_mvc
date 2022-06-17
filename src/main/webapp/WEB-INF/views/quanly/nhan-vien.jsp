@@ -121,8 +121,8 @@
 
                     <%--FORM NHAN VIEN--%>
                         <form:form
-                            class="form form--workers"
-                            action="${link}#workers"
+                            class="form form--employees"
+                            action="${link}#employees"
                             method="POST"
                             modelAttribute="employeeModel"
                         >

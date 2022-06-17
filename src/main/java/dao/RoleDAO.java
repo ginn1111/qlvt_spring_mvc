@@ -13,18 +13,8 @@ public class RoleDAO extends DAO<Role> {
     }
 
     @Override
-    public boolean addNew(Role role) {
-        return super.addNew(role);
-    }
-
-    @Override
     public boolean deleteById(Role role) {
         return false;
-    }
-
-    @Override
-    public boolean update(Role role) {
-        return super.update(role);
     }
 
     @Override

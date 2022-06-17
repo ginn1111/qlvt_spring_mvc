@@ -60,6 +60,8 @@ $(function() {
     enableBtnRemove('employees');
     enableBtnRemove('workers');
     enableBtnRemove('suppliers');
+    enableBtnRemove('warehouses');
+    enableBtnRemove('constructions');
 
     $('.btn--customize.btn--add').click(function() {
         handleShowDialogEdit.call(this);

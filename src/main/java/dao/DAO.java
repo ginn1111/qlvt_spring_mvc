@@ -41,6 +41,7 @@ public abstract class DAO<T> {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
+        System.out.println(t.toString());
         try {
             session.update(t);
             transaction.commit();

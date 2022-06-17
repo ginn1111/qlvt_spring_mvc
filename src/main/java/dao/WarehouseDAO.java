@@ -1,34 +1,39 @@
 package dao;
 
 import entity.Supplier;
-import entity.Worker;
+import entity.Warehouse;
+import model.WarehouseModel;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
-public class SupplierDAO extends DAO<Supplier>{
-    public List<Supplier> getList() {
-        String query = "FROM Supplier AS E WHERE E.status = true";
+public class WarehouseDAO extends DAO<Warehouse> {
+
+    public List<Warehouse> getList() {
+        String query = "FROM Warehouse";
         return super.getList(query);
     }
 
+
     @Override
-    public boolean deleteById(Supplier supplier) {
+    public boolean deleteById(Warehouse warehouse) {
         return false;
     }
 
     @Override
-    public boolean deleteByListId(List<Supplier> list) {
+    public boolean deleteByListId(List<Warehouse> list) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
         try {
-            for (Supplier sup:
+            for (Warehouse warehouse:
                     list) {
-                session.delete(sup);
+                session.delete(warehouse);
             }
             transaction.commit();
         } catch(Exception ex) {
@@ -42,7 +47,7 @@ public class SupplierDAO extends DAO<Supplier>{
     }
 
     @Override
-    public Supplier findById(Supplier supplier) {
-        return super.sessionFactory.getCurrentSession().get(Supplier.class, supplier.getSupplierId());
+    public Warehouse findById(Warehouse warehouse) {
+        return super.sessionFactory.getCurrentSession().get(Warehouse.class, warehouse.getWarehouseId());
     }
 }

@@ -13,6 +13,9 @@ public class Warehouse {
     @Column(name = "TENKHO")
     private String name;
 
+    @Column(name = "DIACHI")
+    private String address;
+
     public Integer getWarehouseId() {
         return warehouseId;
     }
@@ -29,11 +32,23 @@ public class Warehouse {
         this.name = name;
     }
 
-    public Warehouse() {
+
+    public String getAddress() {
+        return address;
     }
 
-    public Warehouse(Integer warehouseId, String name) {
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Warehouse(Integer warehouseId, String name, String address) {
         this.warehouseId = warehouseId;
         this.name = name;
+        this.address = address;
+    }
+    public Warehouse() {
+    }
+    public Warehouse(Integer warehouseId) {
+        this.warehouseId = warehouseId;
     }
 }
