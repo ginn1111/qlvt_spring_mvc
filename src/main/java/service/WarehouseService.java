@@ -37,7 +37,7 @@ public class WarehouseService {
         warehouse.setAddress(warehouseModel.getAddress());
 
         if(warehouseDAO.addNew(warehouse)) {
-            return "Thêm nhà thành công!";
+            return "Thêm kho thành công!";
         }
         return "Thêm thất bại, có lỗi xảy ra!";
     }
