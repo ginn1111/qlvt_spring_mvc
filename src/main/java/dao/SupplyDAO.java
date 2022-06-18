@@ -1,6 +1,6 @@
 package dao;
 
-import entity.Supplier;
+import entity.Category;
 import entity.Supply;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -9,15 +9,18 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class SupplyDAO extends DAO<Supply> {
+public class SupplyDAO extends DAO<Supply>{
+
 
     public List<Supply> getList() {
-        String query = "FROM Supply";
-        return getList(query);
+        String query = "FROM Supply AS E Where E.status = true";
+        return super.getList(query);
     }
+
 
     @Override
     public boolean deleteById(Supply supply) {
+
         return false;
     }
 
@@ -25,13 +28,11 @@ public class SupplyDAO extends DAO<Supply> {
     public boolean deleteByListId(List<Supply> list) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Supply supplyTmp;
 
         try {
-            for (Supply sup: list) {
-                supplyTmp = session.get(Supply.class, sup.getSupplyId());
-                supplyTmp.setStatus(false);
-                session.update(supplyTmp);
+            for (Supply supply:
+                    list) {
+                session.delete(supply);
             }
             transaction.commit();
         } catch(Exception ex) {
@@ -46,6 +47,6 @@ public class SupplyDAO extends DAO<Supply> {
 
     @Override
     public Supply findById(Supply supply) {
-        return sessionFactory.getCurrentSession().get(Supply.class, supply.getSupplyId());
+        return super.sessionFactory.getCurrentSession().get(Supply.class, supply.getSupplyId());
     }
 }

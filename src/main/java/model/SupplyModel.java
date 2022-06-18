@@ -3,30 +3,40 @@ package model;
 import entity.Category;
 import entity.Supply;
 
+import javax.persistence.*;
+
 public class SupplyModel {
+
     private Integer supplyId;
     private String name;
-    private String img;
-    private String category;
+    private String image;
+    private String unit;
+    private CategoryModel categoryModel;
     private String producer;
-    private Integer quantity;
+    private int quantity;
 
-    public SupplyModel(Integer supplyId, String name, String img, String category, String producer, Integer quantity) {
+    public SupplyModel(Integer supplyId, String name, String image, String unit, CategoryModel categoryModel, String producer, int quantity) {
         this.supplyId = supplyId;
         this.name = name;
-        this.img = img;
-        this.category = category;
+        this.image = image;
+        this.unit = unit;
+        this.categoryModel = categoryModel;
         this.producer = producer;
         this.quantity = quantity;
+    }
+
+    public SupplyModel() {
+        this.quantity = 0;
     }
 
     public SupplyModel(Supply supply) {
         this.supplyId = supply.getSupplyId();
         this.name = supply.getName();
-        this.img = supply.getImage();
-        this.category = supply.getCategory().getName();
-        this.quantity = supply.getQuantity();
+        this.image = supply.getImage();
+        this.unit = supply.getUnit();
+        this.categoryModel = new CategoryModel(supply.getCategory());
         this.producer = supply.getProducer();
+        this.quantity = supply.getQuantity();
     }
 
     public Integer getSupplyId() {
@@ -45,20 +55,28 @@ public class SupplyModel {
         this.name = name;
     }
 
-    public String getImg() {
-        return img;
+    public String getImage() {
+        return image;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getCategory() {
-        return category;
+    public String getUnit() {
+        return unit;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public CategoryModel getCategoryModel() {
+        return categoryModel;
+    }
+
+    public void setCategoryModel(CategoryModel categoryModel) {
+        this.categoryModel = categoryModel;
     }
 
     public String getProducer() {
@@ -69,14 +87,11 @@ public class SupplyModel {
         this.producer = producer;
     }
 
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public SupplyModel() {
     }
 }
