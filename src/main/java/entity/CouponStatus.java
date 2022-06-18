@@ -32,8 +32,20 @@ public class CouponStatus {
     public CouponStatus() {
     }
 
+    public CouponStatus(Integer id) {
+        this.cpStatusId = id;
+    }
+
     public CouponStatus(Integer cpStatusId, String cpStatusName) {
         this.cpStatusId = cpStatusId;
         this.cpStatusName = cpStatusName;
+    }
+
+    @Override
+    public String toString() {
+        return "CouponStatus{" +
+                "cpStatusId=" + cpStatusId +
+                ", cpStatusName='" + cpStatusName + '\'' +
+                '}';
     }
 }

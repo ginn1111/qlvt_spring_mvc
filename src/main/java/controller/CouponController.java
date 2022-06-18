@@ -59,13 +59,12 @@ public class CouponController {
     public String newInCoupon(HttpSession session) {
         List<SupplyModel> supplyModelList = supplyService.getSupplyModelList();
         session.setAttribute("supplies", supplyModelList);
-        List<DetailInCouponModel> list = new ArrayList<>();
+        List<DetailInCouponModel> detailInCouponModelList = new ArrayList<>();
         for(int i = 0; i < supplyModelList.size(); i++) {
-            list.add(new DetailInCouponModel());
+            detailInCouponModelList.add(new DetailInCouponModel());
         }
 
         inCouponModel = new InCouponModel();
-        detailInCouponModelList = new DetailInCouponModelList(list);
         inCouponModel.setDetailInCouponModelList(detailInCouponModelList);
 
         btnTitle = "Thêm";

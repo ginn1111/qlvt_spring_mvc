@@ -1,20 +1,17 @@
 package model;
 
+import entity.DetailInCoupon;
+import entity.Supply;
+
+import javax.xml.soap.Detail;
 import java.math.BigDecimal;
 
 public class DetailInCouponModel {
-    private Integer supplyId;
+    private Integer id;
     private Integer quantity;
     private Double price;
-    private Integer inCouponId;
-
-    public Integer getSupplyId() {
-        return supplyId;
-    }
-
-    public void setSupplyId(Integer supplyId) {
-        this.supplyId = supplyId;
-    }
+    private SupplyModel supplyModel;
+    private InCouponModel inCouponModel;
 
     public Integer getQuantity() {
         return quantity;
@@ -23,16 +20,6 @@ public class DetailInCouponModel {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
-
-
-    public Integer getInCouponId() {
-        return inCouponId;
-    }
-
-    public void setInCouponId(Integer inCouponId) {
-        this.inCouponId = inCouponId;
-    }
-
     public DetailInCouponModel() {
     }
 
@@ -44,10 +31,53 @@ public class DetailInCouponModel {
         this.price = price;
     }
 
-    public DetailInCouponModel(Integer supplyId, Integer quantity, Double price, Integer inCouponId) {
-        this.supplyId = supplyId;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public SupplyModel getSupplyModel() {
+        return supplyModel;
+    }
+
+    public void setSupplyModel(SupplyModel supplyModel) {
+        this.supplyModel = supplyModel;
+    }
+
+    public InCouponModel getInCouponModel() {
+        return inCouponModel;
+    }
+
+    public void setInCouponModel(InCouponModel inCouponModel) {
+        this.inCouponModel = inCouponModel;
+    }
+
+    public DetailInCouponModel(Integer id, Integer quantity, Double price, SupplyModel supplyModel, InCouponModel inCouponModel) {
+        this.id = id;
         this.quantity = quantity;
         this.price = price;
-        this.inCouponId = inCouponId;
+        this.supplyModel = supplyModel;
+        this.inCouponModel = inCouponModel;
+    }
+
+    public DetailInCouponModel(DetailInCoupon detailInCoupon) {
+        this.inCouponModel = new InCouponModel(detailInCoupon.getInCoupon());
+        this.price = detailInCoupon.getPrice();
+        this.quantity = detailInCoupon.getQuantity();
+        this.supplyModel = new SupplyModel(detailInCoupon.getSupply());
+    }
+
+    @Override
+    public String toString() {
+        return "DetailInCouponModel{" +
+                "id=" + id +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", supplyModel=" + supplyModel +
+                ", inCouponModel=" + inCouponModel +
+                '}';
     }
 }

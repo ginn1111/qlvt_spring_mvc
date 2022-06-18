@@ -75,4 +75,15 @@ public class Supplier {
         this.address = address;
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Supplier{" +
+                "supplierId=" + supplierId +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

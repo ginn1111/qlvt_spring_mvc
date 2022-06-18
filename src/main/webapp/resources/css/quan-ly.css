@@ -188,15 +188,44 @@
 .account + .account {
     margin-top: 8px;
 }
-.supplies,
 .account {
     width: 100%;
     justify-content: space-between;
 }
+.supplies + .supplies {
+    margin-top: 8px;
+}
+.supplies {
+    width: 90%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+}
+.supplies__quantity,
+.supplies__info {
+    display: flex;
+    width: 100%;
+}
+.supplies__info {
+    align-items: center;
+    padding-bottom: 8px;
+}
+.supplies__info > input[type="checkbox"],
+.supplies__quantity > input:nth-child(1) {
+    margin-right: 16px;
+}
 .supplies > input {
-   flex: 4;
-    /*width: 10vh;*/
-   /*transition: width 200ms;*/
+    width: unset;
+}
+.supplies > input:nth-child(1) {
+    flex: 1;
+}
+.supplies > input:nth-child(5),
+.supplies > input:nth-child(4) {
+    flex: 2
+}
+.supplies > input:nth-child(3) {
+    flex: 4;
 }
 .manage--suppliers .table__item > span:nth-child(3),
 .manage .table__item > span:nth-child(4),
@@ -210,12 +239,17 @@
 .manage--construction-and-warehouse {
     grid-column: unset;
 }
-.manage__table.manage__table--warehouses > table__head > span:nth-child(1),
-.manage__table.manage__table--warehouses > table__head > span:nth-child(2) {
+.manage__table--warehouses > .table__head > span:nth-child(1),
+.manage__table--warehouses > .table__head > span:nth-child(2),
+.table__item--warehouses >  span:nth-child(3),
+.table__item--warehouses >  span:nth-child(4) {
    flex: 1;
-    font-size: 33px;
 }
-.manage__table.manage__table--warehouses > table__head > span:nth-child(3) {
+.table__item--warehouses > span:nth-child(5),
+.manage__table--warehouses > .table__head > span:nth-child(3) {
     flex: 2;
 }
-
+.table__item.table__item--incoupons > span:nth-child(8),
+.table__head--incoupons > span:nth-child(6) {
+    text-align: end;
+}

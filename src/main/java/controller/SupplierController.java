@@ -58,6 +58,7 @@ public class SupplierController {
     public String addSupplier(@ModelAttribute("supplierModel") SupplierModel supplierModel) {
         // Todo: validate
         message = supplierService.addSupplier(supplierModel);
+        System.out.println(supplierModel);
         return "redirect:/nha-cung-cap.htm";
     }
 

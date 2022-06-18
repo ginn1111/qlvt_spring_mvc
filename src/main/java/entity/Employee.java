@@ -107,4 +107,17 @@ public class Employee {
     public void setStatus(Boolean status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeId=" + employeeId +
+                ", dob=" + dob +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", status=" + status +
+                ", accountList=" + accountList +
+                '}';
+    }
 }

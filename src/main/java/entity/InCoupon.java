@@ -1,8 +1,11 @@
 package entity;
 
+import org.hibernate.annotations.Cascade;
 import org.springframework.format.annotation.DateTimeFormat;
+import sun.reflect.CallerSensitive;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -22,7 +25,7 @@ import java.util.Date;
 
         )
 })
-public class InCoupon {
+public class InCoupon implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MAPHIEUNHAP")
@@ -121,5 +124,18 @@ public class InCoupon {
 
     public InCoupon(Integer iCPId) {
         this.inCpId = iCPId;
+    }
+
+    @Override
+    public String toString() {
+        return "InCoupon{" +
+                "inCpId=" + inCpId +
+                ", employee=" + employee +
+                ", supplier=" + supplier +
+                ", date=" + date +
+                ", total=" + total +
+                ", cpStatus=" + cpStatus +
+                ", note='" + note + '\'' +
+                '}';
     }
 }

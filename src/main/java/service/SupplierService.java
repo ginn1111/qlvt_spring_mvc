@@ -40,6 +40,7 @@ public class SupplierService {
 
         // default value
         supplier.setStatus(true);
+        System.out.println(supplier);
         if(supplierDAO.addNew(supplier)) {
             return "Thêm nhà cung cấp thành công!";
         }

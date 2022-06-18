@@ -17,4 +17,8 @@ public class RoleService {
     public List<RoleModel> getRoleList() {
         return roleDAO.getList().stream().map(RoleModel::new).collect(Collectors.toList());
     }
+
+    public RoleModel findById(Integer roleId) {
+        return new RoleModel(roleDAO.findById(new Role(roleId)));
+    }
 }

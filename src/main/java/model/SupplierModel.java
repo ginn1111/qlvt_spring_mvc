@@ -58,4 +58,14 @@ public class SupplierModel {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "SupplierModel{" +
+                "supplierId=" + supplierId +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

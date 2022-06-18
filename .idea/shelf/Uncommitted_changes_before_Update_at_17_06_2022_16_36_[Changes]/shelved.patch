@@ -1,0 +1,145 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e1d562b2-a4a6-45ac-8897-c9ba5ff0c55e\" name=\"Changes\" comment=\"add dashboard page of quanly, base config structure of project\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/controller/SupplierController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/entity/Category.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/entity/Sector.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/entity/Supply.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/entity/Worker.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/model/WorkerModel.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/service/SupplierService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/service/WorkerService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/controller/ManagerController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/controller/ManagerController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/dao/WorkerDAO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/dao/WorkerDAO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/request_bean/DeletedIdEmployeeList.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/request_bean/DeletedIdList.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/service/EmployeeService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/service/EmployeeService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/service/TestService.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/controller/ManagerController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/controller/ManagerController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/dao/DAO.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/dao/DAO.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/dao/DAO2.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/dao/EmployeeDAO.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/dao/EmployeeDAO.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/dao/RoleDAO.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/dao/RoleDAO.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/dao/TestDAO.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/dao/WorkerDAO.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/dao/WorkerDAO.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/request_bean/DeletedIdEmployeeList.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/service/EmployeeService.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/service/EmployeeService.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/service/TestService.class\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Jsp File\" />\r\n        <option value=\"JavaScript File\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\r\n  </component>\r\n  <component name=\"JpbToolWindowState\">\r\n    <option name=\"myId2FirstActivated\">\r\n      <map>\r\n        <entry key=\"com.haulmont.jpb.jpaInspector\" value=\"true\" />\r\n        <entry key=\"com.haulmont.jpb.jpaPalette\" value=\"true\" />\r\n        <entry key=\"com.haulmont.jpb.jpaStructure\" value=\"true\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"myId2Visible\">\r\n      <map>\r\n        <entry key=\"com.haulmont.jpb.jpaInspector\" value=\"false\" />\r\n        <entry key=\"com.haulmont.jpb.jpaPalette\" value=\"false\" />\r\n        <entry key=\"com.haulmont.jpb.jpaStructure\" value=\"false\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2AZp2aEZNV5Ya3hlXpiYbV0IXD2\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/5510/Desktop/Freelance/VatTu/FIle/sqljdbc4.jar&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.31839082&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;com.poratu.idea.plugins.tomcat.setting.TomcatSettingConfigurable&quot;,\r\n    &quot;spring.configuration.checksum&quot;: &quot;50429b6e54d51d9147266173dd0e7b21&quot;\r\n  },\r\n  &quot;keyToStringList&quot;: {\r\n    &quot;ChangesTree.GroupingKeys&quot;: [\r\n      &quot;module&quot;,\r\n      &quot;repository&quot;,\r\n      &quot;directory&quot;\r\n    ]\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\Dev\\manage\\src\\main\\java\\utils\" />\r\n      <recent name=\"D:\\Dev\\manage\\src\\main\\webapp\\resources\\js\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Tomcat9\" type=\"com.poratu.idea.plugins.tomcat\" factoryName=\"SMART_TOMCAT_FACTORY\">\r\n      <option name=\"adminPort\" value=\"8005\" />\r\n      <option name=\"contextPath\" value=\"/manage\" />\r\n      <option name=\"docBase\" value=\"$PROJECT_DIR$/src/main/webapp\" />\r\n      <option name=\"envOptions\" />\r\n      <option name=\"passParentEnvironmentVariables\" value=\"true\" />\r\n      <option name=\"port\" value=\"8080\" />\r\n      <option name=\"tomcatInfo\">\r\n        <TomcatInfo>\r\n          <option name=\"name\" value=\"Apache Tomcat/9.0.64\" />\r\n          <option name=\"number\" value=\"0\" />\r\n          <option name=\"path\" value=\"C:\\Users\\5510\\Desktop\\Freelance\\VatTu\\FIle\\apache-tomcat-9.0.64-windows-x64\\apache-tomcat-9.0.64\" />\r\n          <option name=\"version\" value=\"9.0.64.0\" />\r\n        </TomcatInfo>\r\n      </option>\r\n      <option name=\"vmOptions\" value=\"\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e1d562b2-a4a6-45ac-8897-c9ba5ff0c55e\" name=\"Changes\" comment=\"\" />\r\n      <created>1655226757141</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1655226757141</updated>\r\n      <workItem from=\"1655258255548\" duration=\"47487000\" />\r\n      <workItem from=\"1655343809161\" duration=\"1105000\" />\r\n      <workItem from=\"1655345338885\" duration=\"1899000\" />\r\n      <workItem from=\"1655347660154\" duration=\"2679000\" />\r\n      <workItem from=\"1655350478805\" duration=\"3092000\" />\r\n      <workItem from=\"1655391311569\" duration=\"4062000\" />\r\n      <workItem from=\"1655432333431\" duration=\"13597000\" />\r\n      <workItem from=\"1655448561234\" duration=\"45000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <ignored-roots>\r\n      <path value=\"$PROJECT_DIR$/..\" />\r\n    </ignored-roots>\r\n    <MESSAGE value=\"add dashboard page of quanly, base congif structure of project\" />\r\n    <MESSAGE value=\"add dashboard page of quanly, base config structure of project\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"add dashboard page of quanly, base config structure of project\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 5be6ec024e436d0c38431447985e31fc3e6bd832)
++++ b/.idea/workspace.xml	(date 1655458484391)
+@@ -4,33 +4,29 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="e1d562b2-a4a6-45ac-8897-c9ba5ff0c55e" name="Changes" comment="add dashboard page of quanly, base config structure of project">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/SupplierController.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Category.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Sector.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Supply.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Worker.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/model/WorkerModel.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/service/SupplierService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/service/WorkerService.java" afterDir="false" />
++    <list default="true" id="e1d562b2-a4a6-45ac-8897-c9ba5ff0c55e" name="Changes" comment="feat: workerController">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ManagerController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SupplierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SupplierController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WorkerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WorkerController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/dao/SupplierDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/SupplierDAO.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/dao/WorkerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/WorkerDAO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/request_bean/DeletedIdEmployeeList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/request_bean/DeletedIdList.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/EmployeeService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/service/TestService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/model/WorkerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/WorkerModel.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/service/SupplierService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/SupplierService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/service/WorkerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/WorkerService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/navigation.tag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/navigation.tag" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/cong-nhan.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/cong-nhan.jsp" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/nha-cung-cap.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/nha-cung-cap.jsp" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/dao/DAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/DAO.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/dao/DAO2.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/dao/EmployeeDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/EmployeeDAO.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/dao/RoleDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/RoleDAO.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/dao/TestDAO.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/dao/WorkerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/WorkerDAO.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/request_bean/DeletedIdEmployeeList.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/service/EmployeeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/EmployeeService.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/service/TestService.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/quan-ly.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/quan-ly.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/includes/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/includes/header.jsp" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/quan-ly.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/quan-ly.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/controller/SupplierController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/SupplierController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/entity/Supplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/entity/Supplier.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/request_bean/DeletedIdList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/request_bean/DeletedIdList.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/service/SupplierService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/SupplierService.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/service/WorkerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/WorkerService.class" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -77,28 +73,28 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/5510/Desktop/Freelance/VatTu/FIle/sqljdbc4.jar&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.31839082&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;com.poratu.idea.plugins.tomcat.setting.TomcatSettingConfigurable&quot;,
+-    &quot;spring.configuration.checksum&quot;: &quot;50429b6e54d51d9147266173dd0e7b21&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "last_opened_file_path": "C:/Users/5510/Desktop/Freelance/VatTu/FIle/sqljdbc4.jar",
++    "nodejs_package_manager_path": "npm",
++    "project.structure.last.edited": "Project",
++    "project.structure.proportion": "0.15",
++    "project.structure.side.proportion": "0.31839082",
++    "settings.editor.selected.configurable": "com.poratu.idea.plugins.tomcat.setting.TomcatSettingConfigurable",
++    "spring.configuration.checksum": "174f7816b62e76419c396afd06125e2f"
+   },
+-  &quot;keyToStringList&quot;: {
+-    &quot;ChangesTree.GroupingKeys&quot;: [
+-      &quot;module&quot;,
+-      &quot;repository&quot;,
+-      &quot;directory&quot;
++  "keyToStringList": {
++    "ChangesTree.GroupingKeys": [
++      "module",
++      "repository",
++      "directory"
+     ]
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="D:\Dev\manage\src\main\java\utils" />
+@@ -106,19 +102,21 @@
+     </key>
+   </component>
+   <component name="RunManager">
+-    <configuration name="Tomcat9" type="com.poratu.idea.plugins.tomcat" factoryName="SMART_TOMCAT_FACTORY">
++    <configuration name="Tomcat 8.5" type="com.poratu.idea.plugins.tomcat" factoryName="SMART_TOMCAT_FACTORY">
+       <option name="adminPort" value="8005" />
+       <option name="contextPath" value="/manage" />
+       <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+-      <option name="envOptions" />
++      <option name="envOptions">
++        <map />
++      </option>
+       <option name="passParentEnvironmentVariables" value="true" />
+       <option name="port" value="8080" />
+       <option name="tomcatInfo">
+         <TomcatInfo>
+-          <option name="name" value="Apache Tomcat/9.0.64" />
++          <option name="name" value="Apache Tomcat/8.5.75" />
+           <option name="number" value="0" />
+-          <option name="path" value="C:\Users\5510\Desktop\Freelance\VatTu\FIle\apache-tomcat-9.0.64-windows-x64\apache-tomcat-9.0.64" />
+-          <option name="version" value="9.0.64.0" />
++          <option name="path" value="D:\Tools\apache-tomcat-8.5.75" />
++          <option name="version" value="8.5.75.0" />
+         </TomcatInfo>
+       </option>
+       <option name="vmOptions" value="" />
+@@ -143,6 +141,7 @@
+       <workItem from="1655391311569" duration="4062000" />
+       <workItem from="1655432333431" duration="13597000" />
+       <workItem from="1655448561234" duration="45000" />
++      <workItem from="1655454241910" duration="4187000" />
+     </task>
+     <servers />
+   </component>

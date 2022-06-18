@@ -1,6 +1,7 @@
 package service;
 
 import dao.*;
+import entity.CouponStatus;
 import entity.Employee;
 import entity.InCoupon;
 import entity.Supplier;
@@ -14,6 +15,7 @@ import request_bean.DeletedIdList;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,6 +23,8 @@ import java.util.stream.Collectors;
 public class CouponService {
     @Autowired
     InCouponDAO inCouponDAO;
+    @Autowired
+    DetailInCouponService detailInCouponService;
 //    @Autowired
 //    ExCouponDAO exCouponDAO;
 //    @Autowired
@@ -44,23 +48,16 @@ public class CouponService {
     }
     public String addInCoupon(InCouponModel inCouponModel) {
         InCoupon inCoupon = new InCoupon();
-        Employee employee = new Employee();
-        Supplier supplier = new Supplier();
-        inCoupon.setInCpId(inCouponModel.getCouponId());
-        inCoupon.setDate(inCouponModel.getDate());
-
-        employee.setEmployeeId(inCouponModel.getEmployeeModel().getEmployeeId());
-        inCoupon.setEmployee(employee);
-
-        supplier.setSupplierId(inCouponModel.getSupplierModel().getSupplierId());
-        inCoupon.setSupplier(supplier);
-
+        inCoupon.setDate(new Date());
+        inCoupon.setEmployee(new Employee(inCouponModel.getEmployeeModel().getEmployeeId()));
+        inCoupon.setSupplier(new Supplier(inCouponModel.getSupplierModel().getSupplierId()));
         inCoupon.setNote(inCouponModel.getNote());
-        inCoupon.setDate(inCouponModel.getDate());
+        inCoupon.setCpStatus(new CouponStatus(7));
+        inCoupon.setTotal(new BigDecimal("0"));
 
-        // Todo: viết trigger tính tổng tiền
-        inCoupon.setTotal(new BigDecimal("123131"));
-        if(inCouponDAO.addNew(inCoupon)) {
+        Integer couponId = inCouponDAO.addNewInCoupon(inCoupon);
+        if(couponId != null
+                && detailInCouponService.addListDetail(inCouponModel.getDetailInCouponModelList(), couponId)) {
             return "Thêm phiếu thành công!";
         }
         return "Thêm phiếu thất bại, có lỗi xảy ra!";

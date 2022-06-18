@@ -1,6 +1,7 @@
 package request_bean;
 
 import model.DetailInCouponModel;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class DetailInCouponModelList {
         return list;
     }
 
+    @ModelAttribute
     public void setList(List<DetailInCouponModel> list) {
         this.list = list;
     }

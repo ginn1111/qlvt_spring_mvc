@@ -32,9 +32,6 @@ public class RoleModel {
         this.roleId = roleId;
     }
 
-//    public String getRoleName() {
-//        return roleName.getRoleName();
-//    }
     public RoleName getRoleName() {
         return roleName;
     }

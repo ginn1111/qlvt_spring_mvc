@@ -4,7 +4,7 @@ package model;
 public class CouponModel {
     private Integer couponId;
     private EmployeeModel employeeModel;
-    private String status;
+    private CouponStatusModel couponStatusModel;
     private String note;
 
     public Integer getCouponId() {
@@ -23,14 +23,6 @@ public class CouponModel {
         this.employeeModel = employeeModel;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getNote() {
         return note;
     }
@@ -40,12 +32,31 @@ public class CouponModel {
     }
 
     public CouponModel() {
+        this.couponStatusModel = new CouponStatusModel(7);
     }
 
-    public CouponModel(Integer couponId, EmployeeModel employeeModel, String status, String note) {
+    public CouponStatusModel getCouponStatusModel() {
+        return couponStatusModel;
+    }
+
+    public void setCouponStatusModel(CouponStatusModel couponStatusModel) {
+        this.couponStatusModel = couponStatusModel;
+    }
+
+    public CouponModel(Integer couponId, EmployeeModel employeeModel, CouponStatusModel couponStatusModel, String note) {
         this.couponId = couponId;
         this.employeeModel = employeeModel;
-        this.status = status;
+        this.couponStatusModel = couponStatusModel;
         this.note = note;
+    }
+
+    @Override
+    public String toString() {
+        return "CouponModel{" +
+                "couponId=" + couponId +
+                ", employeeModel=" + employeeModel +
+                ", couponStatusModel=" + couponStatusModel +
+                ", note='" + note + '\'' +
+                '}';
     }
 }

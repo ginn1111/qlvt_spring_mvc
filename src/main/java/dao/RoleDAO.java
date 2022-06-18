@@ -24,6 +24,6 @@ public class RoleDAO extends DAO<Role> {
 
     @Override
     public Role findById(Role role) {
-        return null;
+        return sessionFactory.getCurrentSession().get(Role.class, role.getRoleId());
     }
 }

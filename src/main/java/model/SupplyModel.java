@@ -94,4 +94,19 @@ public class SupplyModel {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public SupplyModel() {
+    }
+
+    @Override
+    public String toString() {
+        return "SupplyModel{" +
+                "supplyId=" + supplyId +
+                ", name='" + name + '\'' +
+                ", img='" + img + '\'' +
+                ", category='" + category + '\'' +
+                ", producer='" + producer + '\'' +
+                ", quantity=" + quantity +
+                '}';
+    }
 }
