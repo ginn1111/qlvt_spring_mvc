@@ -20,6 +20,6 @@ public class AccountDAO extends DAO<Account> {
 
     @Override
     public Account findById(Account account) {
-        return super.sessionFactory.getCurrentSession().get(Account.class, account.getEmail());
+        return sessionFactory.getCurrentSession().get(Account.class, account.getEmail());
     }
 }

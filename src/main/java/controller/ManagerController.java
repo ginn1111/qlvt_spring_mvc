@@ -46,6 +46,8 @@ public class ManagerController {
     PayedCouponService payedCouponService;
     @Autowired
     TransCouponService transCouponService;
+    @Autowired
+    AccountService accountService;
     @RequestMapping("index")
     public String index(ModelMap model) {
 
@@ -120,14 +122,14 @@ public class ManagerController {
     // GET quanly/nhan-vien/{employeeId}.htm?update
     @RequestMapping(value="nhan-vien/{employeeId}", params = "accounts")
     public String employeeAccount(@PathVariable("employeeId") Integer employeeId, HttpSession httpSession) {
-        httpSession.setAttribute("employeeModel", employeeService.getEmployee(employeeId));
+        httpSession.setAttribute("accountModelList", employeeService.getAccountModelListOfEmployee(employeeId));
         link = "quanly/nhan-vien.htm?accounts";
         return "redirect:/quanly/nhan-vien.htm";
     }
 
     @RequestMapping(value="nhan-vien", params = "accounts", method = RequestMethod.POST)
     public String employeeAccount(@ModelAttribute("accountModel") AccountModel accountModel) {
-        System.out.println(accountModel.getEmail() + " " + accountModel.getPassword());
+        message = accountService.addNewAccount(accountModel);
         return "redirect:/quanly/nhan-vien.htm";
     }
 

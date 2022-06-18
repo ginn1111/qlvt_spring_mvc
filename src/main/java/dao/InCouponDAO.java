@@ -2,13 +2,21 @@ package dao;
 
 import entity.InCoupon;
 import entity.Number;
+import model.InCouponModel;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class InCouponDAO extends DAO<InCoupon> {
+    public List<InCoupon> getList() {
+        String query = "FROM InCoupon";
+        System.out.println(super.getList(query).size());
+        return super.getList(query);
+    }
     @Override
     public boolean deleteById(InCoupon inCoupon) {
         return false;
@@ -21,7 +29,7 @@ public class InCouponDAO extends DAO<InCoupon> {
 
     @Override
     public InCoupon findById(InCoupon inCoupon) {
-        return null;
+        return sessionFactory.getCurrentSession().get(InCoupon.class, inCoupon.getInCpId());
     }
     public Integer getNumOfCP() {
         List<Number> numbers = super.sessionFactory.getCurrentSession()

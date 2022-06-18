@@ -62,6 +62,7 @@ $(function() {
     enableBtnRemove('suppliers');
     enableBtnRemove('warehouses');
     enableBtnRemove('constructions');
+    enableBtnRemove('incoupons');
 
     $('.btn--customize.btn--add').click(function() {
         handleShowDialogEdit.call(this);

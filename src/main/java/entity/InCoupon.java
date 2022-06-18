@@ -29,7 +29,7 @@ public class InCoupon {
     private Integer inCpId;
 
     @ManyToOne
-    @JoinColumn(name = "MAPNHANVIEN")
+    @JoinColumn(name = "MANHANVIEN")
     private Employee employee;
 
     @ManyToOne
@@ -45,7 +45,7 @@ public class InCoupon {
     private BigDecimal total;
 
     @ManyToOne
-    @JoinColumn(name = "MAPTRANGTHAI")
+    @JoinColumn(name = "MATRANGTHAI")
     private CouponStatus cpStatus;
 
     @Column(name = "GHICHU")
@@ -117,5 +117,9 @@ public class InCoupon {
         this.total = total;
         this.cpStatus = cpStatus;
         this.note = note;
+    }
+
+    public InCoupon(Integer iCPId) {
+        this.inCpId = iCPId;
     }
 }

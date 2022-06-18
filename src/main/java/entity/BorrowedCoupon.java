@@ -38,7 +38,7 @@ public class BorrowedCoupon {
     private Construction construction;
 
     @ManyToOne
-    @JoinColumn(name = "MAPTRANGTHAI")
+    @JoinColumn(name = "MATRANGTHAI")
     private CouponStatus cpStatus;
 
     @Column(name = "GHICHU")

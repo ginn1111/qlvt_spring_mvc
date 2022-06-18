@@ -45,7 +45,7 @@ public class ExCoupon {
     private Construction construction;
 
     @ManyToOne
-    @JoinColumn(name = "MAPTRANGTHAI")
+    @JoinColumn(name = "MATRANGTHAI")
     private CouponStatus cpStatus;
 
     public Integer getExCpId() {

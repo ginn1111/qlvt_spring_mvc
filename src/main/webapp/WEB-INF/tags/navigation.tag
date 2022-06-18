@@ -74,7 +74,7 @@
     </c:if>
     <c:if test="${uri3 != null}">
         <li>
-            <a class="list__item" data-uri="${uri3}" href="$${link3}">
+            <a class="list__item" data-uri="${uri3}" href="${link3}">
                 <span class="icon"> <ion-icon name="${icon3}"></ion-icon>
                 </span> <span class="title">${name3}</span>
             </a>

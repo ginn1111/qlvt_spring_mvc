@@ -9,6 +9,7 @@ import model.EmployeeModel;
 import model.SupplierModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import request_bean.DeletedIdList;
 
 import java.util.ArrayList;
@@ -84,5 +85,12 @@ public class SupplierService {
 
     public SupplierModel getSupplier(Integer supplierId) {
         return new SupplierModel(supplierDAO.findById(new Supplier(supplierId)));
+    }
+
+    public List<SupplierModel> supplierList() {
+       return supplierDAO.getList()
+               .stream()
+               .map(SupplierModel::new)
+               .collect(Collectors.toList());
     }
 }

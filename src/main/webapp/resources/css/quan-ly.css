@@ -188,9 +188,15 @@
 .account + .account {
     margin-top: 8px;
 }
+.supplies,
 .account {
     width: 100%;
     justify-content: space-between;
+}
+.supplies > input {
+   flex: 4;
+    /*width: 10vh;*/
+   /*transition: width 200ms;*/
 }
 .manage--suppliers .table__item > span:nth-child(3),
 .manage .table__item > span:nth-child(4),

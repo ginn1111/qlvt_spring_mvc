@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public class BorrowedCouponDAO extends DAO<BorrowedCoupon> {
+
     @Override
     public boolean deleteById(BorrowedCoupon borrowedCoupon) {
         return false;

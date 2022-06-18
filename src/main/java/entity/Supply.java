@@ -7,9 +7,6 @@ import java.util.Date;
 
 @Entity
 @Table(name="VATTU")
-//@NamedNativeQueries(
-//        @NamedNativeQuery(name = "findEmployeeByName", query="exec sp_findEmployeeByName", resultClass = Employee.class)
-//)
 public class Supply {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,12 +30,10 @@ public class Supply {
     private String producer;
 
     @Column(name = "SOLUONG")
-    private int quantity;
+    private Integer quantity;
 
     @Column(name = "TRANGTHAI")
     private Boolean status;
-
-
 
     public Supply() {
 

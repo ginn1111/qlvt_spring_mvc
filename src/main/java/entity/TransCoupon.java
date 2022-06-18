@@ -34,7 +34,7 @@ public class TransCoupon {
     private Date date;
 
     @ManyToOne
-    @JoinColumn(name = "MAPTRANGTHAI")
+    @JoinColumn(name = "MATRANGTHAI")
     private CouponStatus cpStatus;
 
     @Column(name = "GHICHU")

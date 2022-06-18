@@ -1,28 +1,51 @@
 package model;
 
 
-enum CouponStatus {
-    UNFINISHED("Chưa hoàn thành"),
-    FINISHED("Đã hoàn thành"),
-    NOT_PAID_COMP("Chưa trả hết"),
-    PAID_COMP("Đã trả hết"),
-    WRONG("Phiếu sai"),
-    CANCEL("Phiếu huỷ"),
-    CONFIRM("Đang xác nhận");
-
-    private final String value;
-
-    CouponStatus(String value) {
-        this.value = value;
-    }
-
-    public String getStatus() {
-        return this.value;
-    }
-}
-
 public class CouponModel {
     private Integer couponId;
     private EmployeeModel employeeModel;
     private String status;
+    private String note;
+
+    public Integer getCouponId() {
+        return couponId;
+    }
+
+    public void setCouponId(Integer couponId) {
+        this.couponId = couponId;
+    }
+
+    public EmployeeModel getEmployeeModel() {
+        return employeeModel;
+    }
+
+    public void setEmployeeModel(EmployeeModel employeeModel) {
+        this.employeeModel = employeeModel;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public CouponModel() {
+    }
+
+    public CouponModel(Integer couponId, EmployeeModel employeeModel, String status, String note) {
+        this.couponId = couponId;
+        this.employeeModel = employeeModel;
+        this.status = status;
+        this.note = note;
+    }
 }
