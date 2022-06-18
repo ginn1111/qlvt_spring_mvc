@@ -134,24 +134,6 @@
                                         </label>
                                     </div>
                             <div class="form__item">
-                                <label>Ngày lập
-                                    <form:input
-                                        type="date"
-                                        path="note"
-                                        class="form__input"
-                                        placeholder="ghi chú..."
-                                        readonly="true"
-
-                                    />
-                                </label>
-                            </div>
-                            <div class="form__item">
-                                <label>Tổng tiền
-                                    <fmt:setLocale value = "vi_VN" scope="session"/>
-                                    <span><fmt:formatNumber value="${total}" type="currency"/></span>
-                                </label>
-                            </div>
-                            <div class="form__item">
                                 <label>Ghi chú
                                             <form:textarea
                                                     path="note"

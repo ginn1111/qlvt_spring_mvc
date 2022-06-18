@@ -25,12 +25,16 @@ public class EmployeeDAO extends DAO<Employee> {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         Employee eTmp;
+        int count = 0;
 
         try {
             for (Employee employee : list) {
                 eTmp = session.get(Employee.class, employee.getEmployeeId());
                 eTmp.setStatus(false);
-                session.update(employee);
+                session.update(eTmp);
+                if(++count % 10 == 0) {
+                    session.flush();
+                }
             }
             transaction.commit();
         } catch(Exception ex) {

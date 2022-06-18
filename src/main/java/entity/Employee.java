@@ -54,7 +54,7 @@ public class Employee {
     }
 
     public Employee() {
-
+       this.status = true;
     }
     public Employee(Integer employeeId) {
         this.employeeId = employeeId;

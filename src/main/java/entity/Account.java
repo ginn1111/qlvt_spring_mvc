@@ -1,6 +1,7 @@
 package entity;
 
 import model.RoleModel;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
@@ -50,6 +51,7 @@ public class Account {
     }
 
     public Account() {
+        this.status = true;
     }
 
     public Employee getEmployee() {
@@ -62,6 +64,10 @@ public class Account {
 
     public Role getRole() {
         return role;
+    }
+
+    public Account(String email) {
+        this.email = email;
     }
 
     public void setRole(Role role) {

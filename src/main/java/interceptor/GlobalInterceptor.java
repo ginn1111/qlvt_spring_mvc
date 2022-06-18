@@ -1,5 +1,6 @@
 package interceptor;
 
+import model.AccountModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -16,10 +17,12 @@ public class GlobalInterceptor extends HandlerInterceptorAdapter {
     @Transactional
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        request.setAttribute("userInfo", accountService.findAccountByEmail(
-                    SecurityContextHolder.getContext().getAuthentication().getName()
-                ).getEmployeeModel()
-        );
+        if(!SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser" )) {
+            request.setAttribute("userInfo",
+                accountService.findAccountModelByEmail(
+                    SecurityContextHolder.getContext().getAuthentication().getName()).getEmployeeModel()
+            );
+        }
         return true;
     }
 }

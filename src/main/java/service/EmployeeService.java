@@ -34,8 +34,6 @@ public class EmployeeService {
         employee.setAddress(employeeModel.getAddress());
         employee.setPhone(employeeModel.getPhone());
         employee.setDob(employeeModel.getDob());
-        // default value
-        employee.setStatus(true);
         if(employeeDAO.addNew(employee)) {
             return "Thêm nhân viên thành công!";
         }
@@ -45,15 +43,13 @@ public class EmployeeService {
     public String deleteEmployee(DeletedIdList list) {
         List<Employee> listEmployee = new ArrayList<Employee>();
         Employee tmp;
-        for (Integer employeeId :
-                list.getList()) {
+        for (Integer employeeId : list.getList()) {
             if (employeeId != null) {
                 tmp = new Employee();
                 tmp.setEmployeeId(employeeId);
                 listEmployee.add(tmp);
             }
         }
-
        if(employeeDAO.deleteByListId(listEmployee)) {
            return "Xoá nhân viên thành công!";
        }
