@@ -65,7 +65,7 @@
                     </div>
                     <c:choose>
                         <c:when test="${couponType == 'PHIEUXUAT'}">
-<%--                            <%@ include file="/WEB-INF/views/common/phieu/phieu-xuat.jsp" %>--%>
+                            <%@ include file="/WEB-INF/views/common/phieu/phieu-xuat.jsp" %>
                         </c:when>
                         <c:when test="${couponType == 'PHIEUMUON'}">
                             <%@ include file="/WEB-INF/views/common/phieu/phieu-muon.jsp" %>
@@ -98,7 +98,7 @@
                     <dialog class="modal modal--coupon" style="width: 40%">
                         <c:choose>
                             <c:when test="${couponType == 'PHIEUXUAT'}">
-<%--                                <%@ include file="/WEB-INF/views/common/phieu/form-phieu-xuat.jsp" %>--%>
+                                <%@ include file="/WEB-INF/views/common/phieu/form-phieu-xuat.jsp" %>
                             </c:when>
                             <c:when test="${couponType == 'PHIEUMUON'}">
                                 <%@ include file="/WEB-INF/views/common/phieu/form-phieu-muon.jsp" %>

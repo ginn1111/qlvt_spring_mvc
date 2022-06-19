@@ -52,6 +52,8 @@ public class BorrowedCouponController {
         List<BorrowedCouponModel> brCouponModelList = (List<BorrowedCouponModel>) resultOfBrCouponService.get(0);
         DeletedIdList deletedBrCPIdList = (DeletedIdList) resultOfBrCouponService.get(1);
 
+        System.out.println(brCouponModelList);
+
         model.addAttribute("brCouponModel", brCouponModel);
         model.addAttribute("brCouponModelList", brCouponModelList);
         model.addAttribute("deletedBrCPIdList", deletedBrCPIdList);

@@ -1,0 +1,39 @@
+<changelist name="Uncommitted_changes_before_Update_at_18_06_2022_22_38_[Changes]" date="1655566846286" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_2022_22_38_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 18/06/2022 22:38 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/service/SupplierService.class" />
+    <option name="AFTER_PATH" value="target/classes/service/SupplierService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_2022_22_38_[Changes]/SupplierService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/service/AccountService.class" />
+    <option name="AFTER_PATH" value="target/classes/service/AccountService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_2022_22_38_[Changes]/AccountService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/entity/Supplier.class" />
+    <option name="AFTER_PATH" value="target/classes/entity/Supplier.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_2022_22_38_[Changes]/Supplier.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/entity/CouponStatus.class" />
+    <option name="AFTER_PATH" value="target/classes/entity/CouponStatus.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_2022_22_38_[Changes]/CouponStatus.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/entity/InCoupon.class" />
+    <option name="AFTER_PATH" value="target/classes/entity/InCoupon.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_2022_22_38_[Changes]/InCoupon.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/controller/SupplierController.class" />
+    <option name="AFTER_PATH" value="target/classes/controller/SupplierController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_2022_22_38_[Changes]/SupplierController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682/storage_v2/_src_/database/QLVT.GfolAA/schema/dbo.sYMBAA.zip" />
+    <option name="AFTER_PATH" value=".idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682/storage_v2/_src_/database/QLVT.GfolAA/schema/dbo.sYMBAA.zip" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_06_2022_22_38_[Changes]/dbo.sYMBAA.zip" />
+  </binary>
+</changelist>

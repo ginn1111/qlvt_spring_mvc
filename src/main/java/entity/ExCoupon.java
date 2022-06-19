@@ -107,6 +107,10 @@ public class ExCoupon {
     public ExCoupon() {
     }
 
+    public ExCoupon(Integer exCpId) {
+        this.exCpId = exCpId;
+    }
+
     public ExCoupon(Integer exCpId, Employee employee, Worker worker, Date date, Construction construction, CouponStatus cpStatus, String note) {
         this.exCpId = exCpId;
         this.employee = employee;

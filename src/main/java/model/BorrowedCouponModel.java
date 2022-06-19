@@ -41,6 +41,7 @@ public class BorrowedCouponModel extends CouponModel{
         this.workerModel = new WorkerModel(borrowedCoupon.getWorker());
         this.borrowedDate = borrowedCoupon.getBorrowedDate();
         this.payedDate = borrowedCoupon.getPayedDate();
+        this.constructionModel = new ConstructionModel(borrowedCoupon.getConstruction());
     }
 
     public BorrowedCouponModel() {
