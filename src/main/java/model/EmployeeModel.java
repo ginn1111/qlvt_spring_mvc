@@ -70,4 +70,15 @@ public class EmployeeModel {
     public void setDob(Date dob) {
         this.dob = dob;
     }
+
+    @Override
+    public String toString() {
+        return "EmployeeModel{" +
+                "employeeId=" + employeeId +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", dob=" + dob +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

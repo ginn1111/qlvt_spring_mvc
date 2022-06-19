@@ -253,3 +253,9 @@
 .table__head--incoupons > span:nth-child(6) {
     text-align: end;
 }
+.table__head--supplies > span:nth-child(6),
+.table__item--supplies > span:nth-child(8) {
+    text-align: end;
+    padding-right: 58px;
+    flex-basis: 45%;
+}

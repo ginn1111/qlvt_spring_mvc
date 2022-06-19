@@ -48,4 +48,13 @@ public class CategoryModel {
     public void setSectorModel(SectorModel sectorModel) {
         this.sectorModel = sectorModel;
     }
+
+    @Override
+    public String toString() {
+        return "CategoryModel{" +
+                "categoryId=" + categoryId +
+                ", name='" + name + '\'' +
+                ", sectorModel=" + sectorModel +
+                '}';
+    }
 }

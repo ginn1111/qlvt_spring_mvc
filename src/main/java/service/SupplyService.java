@@ -8,6 +8,7 @@ import entity.Worker;
 import model.SupplyModel;
 import model.WorkerModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import request_bean.DeletedIdList;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class SupplyService {
     @Autowired
     SupplyDAO supplyDAO;
@@ -33,9 +35,9 @@ public class SupplyService {
 
     public String addSupply(SupplyModel supplyModel) {
         Supply supply = new Supply();
-        supply.setSupplyId(supplyModel.getSupplyId());
+
         supply.setName(supplyModel.getName());
-        supply.setCategory(new Category(supply.getCategory().getCategoryId()));
+        supply.setCategory(new Category(supplyModel.getCategoryModel().getCategoryId()));
         supply.setImage(supplyModel.getImage());
         supply.setProducer(supplyModel.getProducer());
         supply.setQuantity(supplyModel.getQuantity());
@@ -55,16 +57,16 @@ public class SupplyService {
 
     public String editSupply(SupplyModel supplyModel) {
         Supply supply = new Supply();
+
         supply.setSupplyId(supplyModel.getSupplyId());
         supply.setName(supplyModel.getName());
-        supply.setCategory(new Category(supply.getCategory().getCategoryId()));
+        supply.setCategory(new Category(supplyModel.getCategoryModel().getCategoryId()));
         supply.setImage(supplyModel.getImage());
         supply.setProducer(supplyModel.getProducer());
         supply.setQuantity(supplyModel.getQuantity());
         supply.setUnit(supplyModel.getUnit());
         supply.setStatus(true);
 
-        supply.setStatus(true);
         if(supplyDAO.update(supply)) {
             return "Cập nhật thành công!";
         }
@@ -87,5 +89,11 @@ public class SupplyService {
             return "Xoá vật tư thành công!";
         }
         return "Có lỗi xảy ra, vui lòng thử lại.";
+    }
+    public List<SupplyModel> getSupplyModelList() {
+        return supplyDAO.getList()
+            .stream()
+            .map(SupplyModel::new)
+            .collect(Collectors.toList());
     }
 }

@@ -22,12 +22,13 @@
         <%--Content --%>
         <div class="main__content">
             <section class="manage__container">
-                <%--WORKER--%>
-                <div id="workers" class="card manage">
+
+                <%--SUPPLY--%>
+                <div id="supplies" class="card manage">
                     <div class="manage__header">
-                        <h5 class="header__title">Công nhân</h5>
+                        <h5 class="header__title">Vật tư</h5>
                         <form
-                                action="cong-nhan.htm?search"
+                                action="vat-tu.htm?search"
                                 method="POST"
                                 class="search-box">
                             <ion-icon
@@ -42,45 +43,43 @@
                             />
                         </form>
                         <div class="header__controller">
-                            <a href="cong-nhan.htm?new#workers"
+                            <a href="vat-tu.htm?new#supplies"
                                class="btn--customize btn--add"
-                               data-control="workers"
+                               data-control="supplies"
                             >
                                 Thêm
                             </a>
-                            <button class="btn--customize btn--remove btn--remove-workers" disabled>Xoá</button>
+                            <button class="btn--customize btn--remove btn--remove-supplies" disabled>Xoá</button>
                         </div>
                     </div>
                     <div class="manage__table">
-                        <div class="table__head">
-                            <span>Mã công nhân</span><span>Tên</span><span>Ngày sinh</span>
-                            <span>Địa chỉ</span><span>Số điện thoại</span>
+                        <div class="table__head table__head--supplies">
+                            <span>Mã vật tư</span><span>Tên vật tư</span>
+                            <span>Đơn vị</span><span>Danh mục</span>
+                            <span>Nhà sản xuất</span><span>Số lượng</span>
                         </div>
-                        <form:form class="table__body custom-scroll-bar form-workers"
-                                   action="cong-nhan.htm?delete#workers" method="POST"
-                                   modelAttribute="deletedIdWorkerList">
-                            <c:if test="${workerModelList == null || workerModelList.size() == 0}">
-                                <h3 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">Không có công nhân nào >_<...</h3>
+                        <form:form class="table__body custom-scroll-bar form-supplies"
+                                   action="vat-tu.htm?delete#supplies" method="POST"
+                                   modelAttribute="deletedSupplyIdList">
+                            <c:if test="${supplyModelList == null || supplyModelList.size() == 0}">
+                                <h3 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">
+                                    Không có vật tư nào >_<...</h3>
                             </c:if>
-                            <c:if test="${workerModelList != null && workerModelList.size() != 0}">
-                                <c:forEach items="${deletedIdWorkerList.list}" varStatus="status">
-                                    <div class="table__item table__item--workers"
-                                         data-control="workers">
+                            <c:if test="${supplyModelList != null && supplyModelList.size() != 0}">
+                                <c:forEach items="${deletedSupplyIdList.list}" varStatus="status">
+                                    <div class="table__item table__item--supplies"
+                                         data-control="supplies">
+                                        <c:set var="supplyModel" value="${supplyModelList.get(status.index)}" />
                                         <form:checkbox
-                                                value="${workerModelList.get(status.index).workerId}"
+                                                value="${supplyModel.supplyId}"
                                                 path="list[${status.index}]" />
-                                        <span>${workerModelList.get(status.index).workerId}</span>
-                                        <span>${workerModelList.get(status.index).name}</span>
-                                        <span><fmt:formatDate value="${workerModelList.get(status.index).dob}" pattern="dd/MM/yyyy"/></span>
-                                        <span>${workerModelList.get(status.index).address}</span>
-                                        <c:set var="tmp" value="${workerModelList.get(status.index).phone}" />
-                                        <c:set var="phone" value="${fn:trim(tmp)}" />
-                                        <span>
-                                            ${fn:substring(phone, 0, 3)}
-                                            ${fn:substring(phone, 3, 6)}
-                                            ${fn:substring(phone, 6, 10)}
-                                        </span>
-                                        <a href="cong-nhan/${workerModelList.get(status.index).workerId}.htm?update#workers">
+                                        <span>${supplyModel.supplyId}</span>
+                                        <span>${supplyModel.name}</span>
+                                        <span>${supplyModel.unit}</span>
+                                        <span>${supplyModel.categoryModel.name}</span>
+                                        <span>${supplyModel.producer}</span>
+                                        <span>${supplyModel.quantity}</span>
+                                        <a href="vat-tu/${supplyModel.supplyId}.htm?update#supplies">
                                             <span class="table__item--edit">
                                                 <ion-icon name="pencil-outline"></ion-icon>
                                             </span>
@@ -94,7 +93,7 @@
                         </form:form>
                     </div>
                 </div>
-                <%--END WORKER--%>
+                <%--END SUPPLIES--%>
 
                 <!-- CONFIRM DIALOG -->
                 <dialog class="dialog">
@@ -105,55 +104,68 @@
                         <button class="btn--customize btn--cancel btn--safe">Huỷ</button>
                     </div>
                 </dialog>
-
                 <%--END CONFIRM DIALOG--%>
+
                 <div class="backdrop">
                     <dialog class="modal">
-                        <%--FORM WORKER--%>
+                        <%--FORM SUPPLIES--%>
                         <form:form
-                                class="form form--workers"
-                                action="${link}#workers"
+                                class="form form--supplies"
+                                action="${link}#supplies"
                                 method="POST"
-                                modelAttribute="workerModel"
+                                modelAttribute="supplyModel"
                         >
-                            <h5 class="form__title">Công nhân</h5>
-                            <form:input type="hidden" path="workerId" />
-                            <div class="form__item form__item--employee">
-                                <label>Tên
+                            <h5 class="form__title">Vật tư</h5>
+                            <form:input type="hidden" path="supplyId" />
+                            <div class="form__item">
+                                <label>Tên vật tư
                                     <form:input
                                             path="name"
                                             class="form__input"
-                                            placeholder="Tên..."
+                                            placeholder="tên..."
                                             required="required"
                                     />
                                 </label>
                             </div>
-                            <div class="form__item form__item--employee">
-                                <label>Số điện thoại
+                            <div class="form__item">
+                                <label>Nhà sản xuất
                                     <form:input
-                                            type="number"
-                                            path="phone"
+                                            path="producer"
                                             class="form__input"
-                                            placeholder="số điện thoại..." />
-                                </label>
-                            </div>
-                            <div class="form__item form__item--employee">
-                                <label>Ngày sinh
-                                    <form:input
-                                            type="date"
-                                            path="dob"
-                                            class="form__input"
-                                            format="yyyy-MM-dd"
+                                            placeholder="nhà sản xuất..."
+                                            required="required"
                                     />
                                 </label>
                             </div>
                             <div class="form__item">
-                                <label>Địa chỉ
-                                    <form:textarea
-                                            path="address"
+                                <label>Danh mục
+                                    <div class="select">
+                                        <form:select
+                                                items="${categoryModelList}"
+                                                itemLabel="name"
+                                                itemValue="categoryId"
+                                                path="categoryModel.categoryId"
+                                        />
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="form__item">
+                                <label>Đơn vị
+                                    <form:input
+                                            path="unit"
                                             class="form__input"
-                                            placeholder="địa chỉ..."
-                                            rows="3"
+                                            placeholder="đơn vị..."
+                                            required="required"
+                                    />
+                                </label>
+                            </div>
+                            <div class="form__item">
+                                <label>Số lượng
+                                    <form:input
+                                            path="quantity"
+                                            class="form__input"
+                                            required="required"
+                                            placeholder="số lượng..."
                                     />
                                 </label>
                             </div>
@@ -162,7 +174,7 @@
                                 <button type="reset" class="btn--cancel btn--customize">Huỷ</button>
                             </div>
                         </form:form>
-                        <%--END FORM WORKER--%>
+                        <%--END FORM SUPPLIES--%>
                     </dialog>
                 </div>
             </section>

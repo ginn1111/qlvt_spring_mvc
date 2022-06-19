@@ -55,4 +55,14 @@ public class AccountModel {
         this.employeeModel = employeeModel;
         this.roleId = roleId;
     }
+
+    @Override
+    public String toString() {
+        return "AccountModel{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", employeeModel=" + employeeModel.toString() +
+                ", roleId=" + roleId +
+                '}';
+    }
 }

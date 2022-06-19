@@ -95,16 +95,14 @@ public class SupplyModel {
         this.quantity = quantity;
     }
 
-    public SupplyModel() {
-    }
-
     @Override
     public String toString() {
         return "SupplyModel{" +
                 "supplyId=" + supplyId +
                 ", name='" + name + '\'' +
-                ", img='" + img + '\'' +
-                ", category='" + category + '\'' +
+                ", image='" + image + '\'' +
+                ", unit='" + unit + '\'' +
+                ", categoryModel=" + categoryModel +
                 ", producer='" + producer + '\'' +
                 ", quantity=" + quantity +
                 '}';

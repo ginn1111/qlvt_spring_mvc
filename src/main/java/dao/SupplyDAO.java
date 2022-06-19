@@ -28,11 +28,13 @@ public class SupplyDAO extends DAO<Supply>{
     public boolean deleteByListId(List<Supply> list) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
+        Supply supplyTmp;
 
         try {
-            for (Supply supply:
-                    list) {
-                session.delete(supply);
+            for (Supply supply: list) {
+                supplyTmp = session.get(Supply.class, supply.getSupplyId());
+                supplyTmp.setStatus(false);
+                session.update(supplyTmp);
             }
             transaction.commit();
         } catch(Exception ex) {
