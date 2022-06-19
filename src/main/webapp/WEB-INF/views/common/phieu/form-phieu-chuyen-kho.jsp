@@ -12,15 +12,16 @@
             type="hidden" path="employeeModel.employeeId"
             value="${requestScope.userInfo.employeeId}"
     />
+    <c:set value="${btnTitle == 'Sửa'}" var="disabled"/>
     <div class="form__item">
         <label>Kho
-            <div class="select">
+            <div class="select ${disabled ? 'disabled' : ''}">
                 <form:select
                         items="${warehouseList}"
                         itemLabel="name"
                         itemValue="warehouseId"
                         path="warehouseModel.warehouseId"
-                        readonly="${btnTitle == 'Sửa'}"
+                        disabled="${disabled}"
                 />
             </div>
         </label>

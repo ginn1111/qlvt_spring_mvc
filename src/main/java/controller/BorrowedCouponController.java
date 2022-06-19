@@ -48,7 +48,7 @@ public class BorrowedCouponController {
     public String index(ModelMap model, HttpSession httpSession) {
         httpSession.setAttribute("couponType", "PHIEUMUON");
 
-        List<Object> resultOfBrCouponService = borrowedCouponService.getBorrowedCouponModelList();
+        List<Object> resultOfBrCouponService = borrowedCouponService.getBorrowedCouponList();
         List<BorrowedCouponModel> brCouponModelList = (List<BorrowedCouponModel>) resultOfBrCouponService.get(0);
         DeletedIdList deletedBrCPIdList = (DeletedIdList) resultOfBrCouponService.get(1);
 
@@ -103,6 +103,8 @@ public class BorrowedCouponController {
 
     @RequestMapping(value = "phieu-muon", params = "update")
     public String editSupplier(@ModelAttribute("brCouponModel") BorrowedCouponModel brCouponModel) {
+        brCouponModel.setWorkerModel(BorrowedCouponController.brCouponModel.getWorkerModel());
+        brCouponModel.setConstructionModel(BorrowedCouponController.brCouponModel.getConstructionModel());
         message = borrowedCouponService.editBorrowedCoupon(brCouponModel);
         return "redirect:/phieu/phieu-muon.htm";
     }

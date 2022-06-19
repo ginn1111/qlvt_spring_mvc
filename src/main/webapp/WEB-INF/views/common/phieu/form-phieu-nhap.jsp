@@ -14,12 +14,14 @@
     />
     <div class="form__item">
         <label>Nhà cung cấp
-            <div class="select">
+            <c:set value="${btnTitle == 'Sửa'}" var="disabled"/>
+            <div class="select ${disabled ? 'disabled' : ''}">
                 <form:select
                         items="${supplierList}"
                         itemLabel="name"
                         itemValue="supplierId"
                         path="supplierModel.supplierId"
+                        disabled="${disabled}"
                 />
             </div>
         </label>

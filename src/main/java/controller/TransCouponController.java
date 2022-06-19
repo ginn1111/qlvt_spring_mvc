@@ -100,6 +100,7 @@ public class TransCouponController {
 
     @RequestMapping(value = "phieu-chuyen-kho", params = "update")
     public String editSupplier(@ModelAttribute("trCouponModel") TransCouponModel trCouponModel) {
+        trCouponModel.setWarehouseModel(TransCouponController.trCouponModel.getWarehouseModel());
         message = transCouponService.editTransCoupon(trCouponModel);
         return "redirect:/phieu/phieu-chuyen-kho.htm";
     }

@@ -92,6 +92,7 @@ public class InCouponController {
 
     @RequestMapping(value = "phieu-nhap", params = "update")
     public String editInCoupon(@ModelAttribute("inCouponModel") InCouponModel inCouponModel) {
+        inCouponModel.setSupplierModel(InCouponController.inCouponModel.getSupplierModel());
         message = inCouponService.editInCoupon(inCouponModel);
         return "redirect:/phieu/phieu-nhap.htm";
     }

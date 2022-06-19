@@ -12,15 +12,16 @@
             type="hidden" path="employeeModel.employeeId"
             value="${requestScope.userInfo.employeeId}"
     />
+    <c:set value="${btnTitle == 'Sửa'}" var="disabled"/>
     <div class="form__item">
         <label>Công nhân mượn
-            <div class="select">
+            <div class="select ${disabled ? 'disabled' : ''}">
                 <form:select
                         items="${workerList}"
                         itemLabel="name"
                         itemValue="workerId"
                         path="workerModel.workerId"
-                        readonly="${btnTitle == 'Sửa'}"
+                        disabled="${disabled}"
                 />
             </div>
         </label>
@@ -41,12 +42,13 @@
     </c:if>
     <div class="form__item form__item--brcoupons">
         <label>Công trình
-            <div class="select">
+            <div class="select ${disabled ? 'disabled' : ''}">
                 <form:select
                         items="${constructionList}"
                         itemLabel="name"
                         itemValue="constructionId"
                         path="constructionModel.constructionId"
+                        disabled="${disabled}"
                 />
             </div>
         </label>
@@ -103,7 +105,7 @@
                     <c:forEach items="${detailBorrowedCouponModelList}" var="detail" varStatus="status">
                         <li class="card card--hover supplies supplies--des">
                             <span>${detail.supplyModel.name}</span>
-                            <span>${detail.supplyModel.quantity}</span>
+                            <span>${detail.quantity}</span>
                         </li>
                     </c:forEach>
                 </ul>

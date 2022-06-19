@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class InCouponService {
+public class InCouponService implements Validation<InCouponModel> {
     @Autowired
     InCouponDAO inCouponDAO;
     @Autowired
@@ -37,6 +37,10 @@ public class InCouponService {
         return Arrays.asList(inCouponModelList, deletedIdList);
     }
     public String addInCoupon(InCouponModel inCouponModel) {
+        String validStr = validate(inCouponModel);
+        if(validStr != null) {
+           return validStr;
+        }
         InCoupon inCoupon = new InCoupon();
         inCoupon.setDate(new Date());
         inCoupon.setEmployee(new Employee(inCouponModel.getEmployeeModel().getEmployeeId()));
@@ -44,6 +48,7 @@ public class InCouponService {
         inCoupon.setNote(inCouponModel.getNote());
         inCoupon.setCpStatus(new CouponStatus(7));
         inCoupon.setTotal(new BigDecimal("0"));
+
 
         Integer couponId = inCouponDAO.addNewInCoupon(inCoupon);
         Double total = detailInCouponService.addListDetail(inCouponModel.getDetailInCouponModelList(), couponId);
@@ -114,4 +119,16 @@ public class InCouponService {
         return inCouponDAO.getNumOfCP();
     }
 
+    @Override
+    public String validate(InCouponModel inCouponModel) {
+        if(inCouponModel.getDetailInCouponModelList().size() == 0) {
+            return "Phiếu phải có ít nhất một vật tư";
+        }
+        for (DetailInCouponModel detail: inCouponModel.getDetailInCouponModelList()) {
+           if(detail.getSupplyModel().getSupplyId() != null && detail.getPrice() == null) {
+               return "Không được để trống giá!";
+           }
+        }
+        return null;
+    }
 }

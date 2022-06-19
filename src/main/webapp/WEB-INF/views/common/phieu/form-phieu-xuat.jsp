@@ -9,26 +9,29 @@
     <form:input type="hidden" path="couponId"/>
     <form:input type="hidden" path="date"/>
     <form:input type="hidden" path="employeeModel.employeeId" value="${userInfo.employeeId}"/>
+    <c:set value="${btnTitle == 'Sửa'}" var="disabled"/>
     <div class="form__item">
         <label>Công nhân
-            <div class="select">
+            <div class="select ${disabled ? 'disabled' : ''}">
                 <form:select
                         items="${workerList}"
                         itemLabel="name"
                         itemValue="workerId"
                         path="workerModel.workerId"
+                        disabled="${disabled}"
                 />
             </div>
         </label>
     </div>
     <div class="form__item">
         <label>Công trình
-            <div class="select">
+            <div class="select ${disabled ? 'disabled' : ''}">
                 <form:select
                         items="${constructionList}"
                         itemLabel="name"
                         itemValue="constructionId"
                         path="constructionModel.constructionId"
+                        disabled="${disabled}"
                 />
             </div>
         </label>

@@ -21,7 +21,7 @@ public class BorrowedCouponService {
     @Autowired
     DetailBorrowedCouponService detailBorrowedCouponService;
 
-    public List<Object> getBorrowedCouponModelList() {
+    public List<Object> getBorrowedCouponList() {
         List<BorrowedCouponModel> brCouponModelList =
                 borrowedCouponDAO.getList().stream()
                         .map(BorrowedCouponModel::new).collect(Collectors.toList());
@@ -95,6 +95,12 @@ public class BorrowedCouponService {
             return "Cập nhật thành công!";
         }
         return "Cập nhật thất bại!";
+    }
+    public List<BorrowedCouponModel> getBorrowedCouponModelList() {
+        return borrowedCouponDAO.getList()
+                .stream()
+                .map(BorrowedCouponModel::new)
+                .collect(Collectors.toList());
     }
     public Integer getNumberOfCPInMonth() {
         return borrowedCouponDAO.getNumOfCP();

@@ -102,6 +102,8 @@ public class ExCouponController {
 
     @RequestMapping(value = "phieu-xuat", params = "update")
     public String editExCoupon(@ModelAttribute("exCouponModel") ExCouponModel exCouponModel) {
+        exCouponModel.setWorkerModel(ExCouponController.exCouponModel.getWorkerModel());
+        exCouponModel.setConstructionModel(ExCouponController.exCouponModel.getConstructionModel());
         message = exCouponService.editExCoupon(exCouponModel);
         return "redirect:/phieu/phieu-xuat.htm";
     }

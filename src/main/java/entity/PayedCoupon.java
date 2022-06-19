@@ -18,11 +18,15 @@ public class PayedCoupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MAPHIEUTRA")
-    private Integer brCpId;
+    private Integer pyCpId;
 
     @ManyToOne
     @JoinColumn(name = "MANHANVIEN")
     private Employee employee;
+
+    @ManyToOne()
+    @JoinColumn(name = "MAPHIEUMUON")
+    private BorrowedCoupon borrowedCoupon;
 
     @ManyToOne
     @JoinColumn(name = "MACONGNHAN")
@@ -31,11 +35,7 @@ public class PayedCoupon {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "NGAYTRA")
-    private Date date;
-
-    @ManyToOne
-    @JoinColumn(name = "MACONGTRINH")
-    private Construction construction;
+    private Date payedDate;
 
     @ManyToOne
     @JoinColumn(name = "MATRANGTHAI")
@@ -44,12 +44,12 @@ public class PayedCoupon {
     @Column(name = "GHICHU")
     private String note;
 
-    public Integer getBrCpId() {
-        return brCpId;
+    public Integer getPyCpId() {
+        return pyCpId;
     }
 
-    public void setBrCpId(Integer brCpId) {
-        this.brCpId = brCpId;
+    public void setPyCpId(Integer pyCpId) {
+        this.pyCpId = pyCpId;
     }
 
     public Employee getEmployee() {
@@ -66,22 +66,6 @@ public class PayedCoupon {
 
     public void setWorker(Worker worker) {
         this.worker = worker;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Construction getConstruction() {
-        return construction;
-    }
-
-    public void setConstruction(Construction construction) {
-        this.construction = construction;
     }
 
     public CouponStatus getCpStatus() {
@@ -103,13 +87,33 @@ public class PayedCoupon {
     public PayedCoupon() {
     }
 
-    public PayedCoupon(Integer brCpId, Employee employee, Worker worker, Date date, Construction construction, CouponStatus cpStatus, String note) {
-        this.brCpId = brCpId;
+    public PayedCoupon(Integer pyCpId) {
+        this.pyCpId = pyCpId;
+    }
+
+    public BorrowedCoupon getBorrowedCoupon() {
+        return borrowedCoupon;
+    }
+
+    public void setBorrowedCoupon(BorrowedCoupon borrowedCoupon) {
+        this.borrowedCoupon = borrowedCoupon;
+    }
+
+    public PayedCoupon(Integer pyCpId, Employee employee, BorrowedCoupon borrowedCoupon, Worker worker, Date payedDate, CouponStatus cpStatus, String note) {
+        this.pyCpId = pyCpId;
         this.employee = employee;
+        this.borrowedCoupon = borrowedCoupon;
         this.worker = worker;
-        this.date = date;
-        this.construction = construction;
+        this.payedDate = payedDate;
         this.cpStatus = cpStatus;
         this.note = note;
+    }
+
+    public Date getPayedDate() {
+        return payedDate;
+    }
+
+    public void setPayedDate(Date payedDate) {
+        this.payedDate = payedDate;
     }
 }
