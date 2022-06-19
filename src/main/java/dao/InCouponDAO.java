@@ -1,17 +1,14 @@
 package dao;
 
-import entity.CouponStatus;
-import entity.Employee;
-import entity.InCoupon;
+import entity.*;
 import entity.Number;
+import model.DetailBorrowedCouponModel;
 import model.InCouponModel;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Repository
@@ -55,6 +52,17 @@ public class InCouponDAO extends DAO<InCoupon> {
     @Override
     public InCoupon findById(InCoupon inCoupon) {
         return sessionFactory.getCurrentSession().get(InCoupon.class, inCoupon.getInCpId());
+    }
+
+    public List<Object> findInCPById(InCoupon inCoupon) {
+        InCoupon inCP = sessionFactory.getCurrentSession().get(InCoupon.class, inCoupon.getInCpId());
+
+        List<DetailInCoupon> detailInCouponList = sessionFactory
+                .getCurrentSession()
+                .createQuery("FROM DetailInCoupon AS D WHERE D.inCoupon.inCpId = :id")
+                .setParameter("id", inCP.getInCpId())
+                .list();
+        return Arrays.asList(inCP, detailInCouponList);
     }
     public Integer getNumOfCP() {
         List<Number> numbers = super.sessionFactory.getCurrentSession()

@@ -21,6 +21,9 @@
     align-items: flex-end;
     width: 100%;
 }
+.form__item--brcoupons > label:first-child{
+   margin-right: 12px;
+}
 .form__input-checkbox > p {
     margin-right: 8px;
 }

@@ -80,4 +80,9 @@ public class ConstructionService {
         return "Cập nhật thất bại!";
     }
 
+    public List<ConstructionModel> getConstructionModelList() {
+        return constructionDAO.getList()
+                .stream().map(ConstructionModel::new)
+                .collect(Collectors.toList());
+    }
 }

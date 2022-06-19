@@ -16,7 +16,13 @@
 <!--        <intercept-url pattern="/favicon.ico" access="permitAll" />-->
 			<!-- Quản lý - ROLE_1; Nhân viên ROLE_2 -->
 		<intercept-url pattern="/quanly/**" access="hasRole('ROLE_QUANLY')" />
-		<intercept-url pattern="/nhanvien/**" access="hasRole('ROLE_NHANVIEN')" />
+		<intercept-url pattern="/nhanvien/**" access="hasRole('ROLE_QUANLY')" />
+		<intercept-url pattern="/phieu/**" access="hasAnyRole('ROLE_NHANVIEN', 'ROLE_QUANLY')" />
+		<intercept-url pattern="/kho-va-cong-trinh**" access="hasAnyRole('ROLE_NHANVIEN', 'ROLE_QUANLY')" />
+		<intercept-url pattern="/danh-muc-va-khu-vuc**" access="hasAnyRole('ROLE_NHANVIEN', 'ROLE_QUANLY')" />
+		<intercept-url pattern="/vat-tu**" access="hasAnyRole('ROLE_NHANVIEN', 'ROLE_QUANLY')" />
+		<intercept-url pattern="/cong-nhan**" access="hasAnyRole('ROLE_NHANVIEN', 'ROLE_QUANLY')" />
+		<intercept-url pattern="/nha-cung-cap**" access="hasAnyRole('ROLE_NHANVIEN', 'ROLE_QUANLY')" />
         <access-denied-handler error-page="/403" />
         
 

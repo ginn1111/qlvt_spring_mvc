@@ -62,7 +62,6 @@ $(function() {
     enableBtnRemove('suppliers');
     enableBtnRemove('warehouses');
     enableBtnRemove('constructions');
-    enableBtnRemove('incoupons');
     enableBtnRemove('supplies');
     enableBtnRemove('categories');
     enableBtnRemove('sectors');

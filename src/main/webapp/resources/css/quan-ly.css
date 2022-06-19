@@ -66,6 +66,7 @@
     color: #fff;
     font-weight: 600;
 }
+.table__item > span,
 .table__head > span {
     text-align: center;
     flex-basis: 100%;
@@ -194,6 +195,10 @@
 }
 .supplies + .supplies {
     margin-top: 8px;
+}
+.supplies.supplies--des {
+    flex-flow: row nowrap;
+    justify-content: space-between;
 }
 .supplies {
     width: 90%;

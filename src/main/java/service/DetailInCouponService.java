@@ -8,6 +8,7 @@ import model.DetailInCouponModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.soap.Detail;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,15 +17,18 @@ public class DetailInCouponService {
    @Autowired
    DetailInCouponDAO detailInCouponDAO;
 
-   public boolean addListDetail(List<DetailInCouponModel> detailInCouponModelList, Integer couponId) {
+   public Double addListDetail(List<DetailInCouponModel> detailInCouponModelList, Integer couponId) {
       Supply supply;
       InCoupon inCoupon;
       List<DetailInCoupon> detailInCouponList = new ArrayList<>();
+      Double price = 0.0;
 
       for (DetailInCouponModel detail : detailInCouponModelList) {
          if(detail.getSupplyModel().getSupplyId() == null) continue;
          supply = new Supply(detail.getSupplyModel().getSupplyId());
          inCoupon = new InCoupon(couponId);
+
+         price += detail.getPrice();
 
          detailInCouponList.add(
             new DetailInCoupon(
@@ -35,6 +39,6 @@ public class DetailInCouponService {
          );
       }
 
-      return detailInCouponDAO.addListDetail(detailInCouponList);
+      return detailInCouponDAO.addListDetail(detailInCouponList) ? price : null;
    }
 }

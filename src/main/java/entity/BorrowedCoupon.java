@@ -2,6 +2,7 @@ package entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -31,7 +32,12 @@ public class BorrowedCoupon {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "NGAYMUON")
-    private Date date;
+    private Date borrowedDate;
+
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "NGAYTRA")
+    private Date payedDate;
 
     @ManyToOne
     @JoinColumn(name = "MACONGTRINH")
@@ -43,6 +49,18 @@ public class BorrowedCoupon {
 
     @Column(name = "GHICHU")
     private String note;
+
+//    @OneToMany(mappedBy = "borrowedCoupon", fetch = FetchType.EAGER)
+//    Collection<DetailBorrowedCoupon> detailBorrowedCouponList;
+//
+//    public Collection<DetailBorrowedCoupon> getDetailBorrowedCouponList() {
+//        return detailBorrowedCouponList;
+//    }
+//
+//    public void setDetailBorrowedCouponList(Collection<DetailBorrowedCoupon> detailBorrowedCouponList) {
+//        this.detailBorrowedCouponList = detailBorrowedCouponList;
+//    }
+
 
     public Integer getBrCpId() {
         return brCpId;
@@ -66,14 +84,6 @@ public class BorrowedCoupon {
 
     public void setWorker(Worker worker) {
         this.worker = worker;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public Construction getConstruction() {
@@ -103,11 +113,32 @@ public class BorrowedCoupon {
     public BorrowedCoupon() {
     }
 
-    public BorrowedCoupon(Integer brCpId, Employee employee, Worker worker, Date date, Construction construction, CouponStatus cpStatus, String note) {
+    public Date getBorrowedDate() {
+        return borrowedDate;
+    }
+
+    public void setBorrowedDate(Date borrowedDate) {
+        this.borrowedDate = borrowedDate;
+    }
+
+    public Date getPayedDate() {
+        return payedDate;
+    }
+
+    public void setPayedDate(Date payedDate) {
+        this.payedDate = payedDate;
+    }
+
+    public BorrowedCoupon(Integer brCpId) {
+        this.brCpId = brCpId;
+    }
+
+    public BorrowedCoupon(Integer brCpId, Employee employee, Worker worker, Date borrowedDate, Date payedDate, Construction construction, CouponStatus cpStatus, String note) {
         this.brCpId = brCpId;
         this.employee = employee;
         this.worker = worker;
-        this.date = date;
+        this.borrowedDate = borrowedDate;
+        this.payedDate = payedDate;
         this.construction = construction;
         this.cpStatus = cpStatus;
         this.note = note;

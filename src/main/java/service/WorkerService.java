@@ -81,4 +81,11 @@ public class WorkerService {
         }
         return "Có lỗi xảy ra, vui lòng thử lại.";
     }
+
+    public List<WorkerModel> getWorkerModelList() {
+       return workerDAO.getList()
+               .stream()
+               .map(WorkerModel::new)
+               .collect(Collectors.toList());
+    }
 }

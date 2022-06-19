@@ -6,7 +6,10 @@ $(function () {
         if ($(this).data('uri') === suffix) {
             $(this).parent().addClass('hovered');
         }
+        if ($(this).data('uri') === 'dashboard' && suffix === 'index') {
+            $(this).parent().addClass('hovered');
+        }
     });
     if (!$('.list__item').parent().hasClass('hovered'))
-        $('[data-uri=dashboard]').parent().addClass('hovered');
+        $('[data-uri=phieu-nhap]').parent().addClass('hovered');
 });
