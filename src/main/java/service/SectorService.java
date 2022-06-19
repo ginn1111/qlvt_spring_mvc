@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class SectorService {
     @Autowired
     SectorDAO sectorDAO;
-    public List<Object> getWarehouseList() {
+    public List<Object> getSectorList() {
         List<SectorModel> sectorModelList = sectorDAO.getList().stream()
                 .map(SectorModel::new).collect(Collectors.toList());
         List<Integer> dummyList = new ArrayList<Integer>();
@@ -33,6 +33,7 @@ public class SectorService {
     public String addSector(SectorModel sectorModel) {
         Sector sector = new Sector();
         sector.setName(sectorModel.getName());
+        sector.setStatus(true);
 
         if(sectorDAO.addNew(sector)) {
             return "Thêm khu vực thành công!";
@@ -68,9 +69,16 @@ public class SectorService {
         Sector sector = new Sector();
         sector.setSectorId(sectorModel.getSectorId());
         sector.setName(sectorModel.getName());
+        sector.setStatus(true);
+
         if(sectorDAO.update(sector)) {
             return "Cập nhật thành công!";
         }
         return "Cập nhật thất bại!";
+    }
+
+    public List<SectorModel> getSectorModelList() {
+        return sectorDAO.getList()
+                .stream().map(SectorModel::new).collect(Collectors.toList());
     }
 }

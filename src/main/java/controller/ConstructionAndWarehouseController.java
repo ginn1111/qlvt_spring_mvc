@@ -2,7 +2,6 @@ package controller;
 
 
 import model.ConstructionModel;
-import model.SupplierModel;
 import model.WarehouseModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +19,7 @@ import java.util.List;
 
 @Controller
 @Transactional
-public class ConstructionController {
+public class ConstructionAndWarehouseController {
 
     private static String message = "";
     private static ConstructionModel constructionModel = new ConstructionModel();

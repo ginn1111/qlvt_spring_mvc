@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public class CategoryDAO extends DAO<Category>{
     public List<Category> getList() {
-        String query = "FROM Category";
+        String query = "FROM Category AS C WHERE C.status = true";
         return super.getList(query);
     }
 
@@ -27,11 +27,13 @@ public class CategoryDAO extends DAO<Category>{
     public boolean deleteByListId(List<Category> list) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
+        Category categoryTmp;
 
         try {
-            for (Category category:
-                    list) {
-                session.delete(category);
+            for (Category category: list) {
+                categoryTmp = session.get(Category.class, category.getCategoryId());
+                categoryTmp.setStatus(false);
+                session.delete(categoryTmp);
             }
             transaction.commit();
         } catch(Exception ex) {

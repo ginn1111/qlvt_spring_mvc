@@ -35,4 +35,12 @@ public class SectorModel {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "SectorModel{" +
+                "sectorId=" + sectorId +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

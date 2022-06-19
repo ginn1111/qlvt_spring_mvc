@@ -233,9 +233,11 @@
 .manage .table__item > span:nth-child(6) {
     text-align: center;
 }
+.manage__container--categories-and-sectors,
 .manage__container--construction-and-warehouse {
    grid-template-columns: 1fr 1fr;
 }
+.manage--categories-and-sectors,
 .manage--construction-and-warehouse {
     grid-column: unset;
 }

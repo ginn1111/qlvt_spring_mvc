@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public class SectorDAO extends DAO<Sector>{
     public List<Sector> getList() {
-        String query = "FROM Sector";
+        String query = "FROM Sector AS S WHERE S.status = true";
         return super.getList(query);
     }
 
@@ -26,11 +26,13 @@ public class SectorDAO extends DAO<Sector>{
     public boolean deleteByListId(List<Sector> list) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
+        Sector sectorTmp;
 
         try {
-            for (Sector sector:
-                    list) {
-                session.delete(sector);
+            for (Sector sector: list) {
+                sectorTmp = session.get(Sector.class, sector.getSectorId());
+                sectorTmp.setStatus(false);
+                session.delete(sectorTmp);
             }
             transaction.commit();
         } catch(Exception ex) {
