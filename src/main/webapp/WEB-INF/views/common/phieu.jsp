@@ -53,8 +53,8 @@
                                     >
                                 </c:when>
                                 <c:when test="${couponType == 'PHIEUCHUYENKHO'}">
-                                    <a href="phieu/phieu-chuyen-kho.htm?new#transcoupons"
-                                       class="btn--customize btn--add" data-control="transcoupons"
+                                    <a href="phieu/phieu-chuyen-kho.htm?new#trcoupons"
+                                       class="btn--customize btn--add" data-control="trcoupons"
                                     >
                                 </c:when>
                             </c:choose>
@@ -71,10 +71,10 @@
                             <%@ include file="/WEB-INF/views/common/phieu/phieu-muon.jsp" %>
                         </c:when>
                         <c:when test="${couponType == 'PHIEUTRA'}">
-<%--                            <%@ include file="/WEB-INF/views/common/phieu/phieu-tra.jsp" %>--%>
+                            <%@ include file="/WEB-INF/views/common/phieu/phieu-tra.jsp" %>
                         </c:when>
                         <c:when test="${couponType == 'PHIEUCHUYENKHO'}">
-<%--                            <%@ include file="/WEB-INF/views/common/phieu/phieu-chuyen-kho.jsp" %>--%>
+                            <%@ include file="/WEB-INF/views/common/phieu/phieu-chuyen-kho.jsp" %>
                         </c:when>
                         <c:when test="${couponType == 'PHIEUNHAP'}">
                             <%@ include file="/WEB-INF/views/common/phieu/phieu-nhap.jsp" %>
@@ -98,16 +98,16 @@
                     <dialog class="modal modal--coupon" style="width: 40%">
                         <c:choose>
                             <c:when test="${couponType == 'PHIEUXUAT'}">
-    <%--                            <%@ include file="/WEB-INF/views/common/phieu/form-phieu-xuat.jsp" %>--%>
+<%--                                <%@ include file="/WEB-INF/views/common/phieu/form-phieu-xuat.jsp" %>--%>
                             </c:when>
                             <c:when test="${couponType == 'PHIEUMUON'}">
                                 <%@ include file="/WEB-INF/views/common/phieu/form-phieu-muon.jsp" %>
                             </c:when>
                             <c:when test="${couponType == 'PHIEUTRA'}">
-    <%--                            <%@ include file="/WEB-INF/views/common/phieu/form-phieu-tra.jsp" %>--%>
+                                <%@ include file="/WEB-INF/views/common/phieu/form-phieu-tra.jsp" %>
                             </c:when>
                             <c:when test="${couponType == 'PHIEUCHUYENKHO'}">
-    <%--                            <%@ include file="/WEB-INF/views/common/phieu/form-phieu-chuyen-kho.jsp" %>--%>
+                                <%@ include file="/WEB-INF/views/common/phieu/form-phieu-chuyen-kho.jsp" %>
                             </c:when>
                             <c:when test="${couponType == 'PHIEUNHAP'}">
                                 <%@ include file="/WEB-INF/views/common/phieu/form-phieu-nhap.jsp" %>

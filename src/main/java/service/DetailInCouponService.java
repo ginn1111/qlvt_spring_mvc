@@ -28,7 +28,7 @@ public class DetailInCouponService {
          supply = new Supply(detail.getSupplyModel().getSupplyId());
          inCoupon = new InCoupon(couponId);
 
-         price += detail.getPrice();
+         price += detail.getPrice() * detail.getQuantity();
 
          detailInCouponList.add(
             new DetailInCoupon(

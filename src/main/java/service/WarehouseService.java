@@ -77,4 +77,10 @@ public class WarehouseService {
         return "Cập nhật thất bại!";
     }
 
+    public List<WarehouseModel> getWorkerModelList() {
+        return warehouseDAO.getList()
+                .stream()
+                .map(WarehouseModel::new)
+                .collect(Collectors.toList());
+    }
 }

@@ -18,7 +18,7 @@ public class TransCoupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MAPHIEUCHUYENKHO")
-    private Integer brCpId;
+    private Integer trCpId;
 
     @ManyToOne
     @JoinColumn(name = "MANHANVIEN")
@@ -30,7 +30,7 @@ public class TransCoupon {
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "NGAYMUON")
+    @Column(name = "THOIGIAN")
     private Date date;
 
     @ManyToOne
@@ -40,12 +40,12 @@ public class TransCoupon {
     @Column(name = "GHICHU")
     private String note;
 
-    public Integer getBrCpId() {
-        return brCpId;
+    public Integer getTrCpId() {
+        return trCpId;
     }
 
-    public void setBrCpId(Integer brCpId) {
-        this.brCpId = brCpId;
+    public void setTrCpId(Integer trCpId) {
+        this.trCpId = trCpId;
     }
 
     public Employee getEmployee() {
@@ -89,10 +89,15 @@ public class TransCoupon {
     }
 
     public TransCoupon() {
+
     }
 
-    public TransCoupon(Integer brCpId, Employee employee, Warehouse warehouse, Date date, CouponStatus cpStatus, String note) {
-        this.brCpId = brCpId;
+    public TransCoupon(Integer trCpId) {
+        this.trCpId = trCpId;
+    }
+
+    public TransCoupon(Integer trCpId, Employee employee, Warehouse warehouse, Date date, CouponStatus cpStatus, String note) {
+        this.trCpId = trCpId;
         this.employee = employee;
         this.warehouse = warehouse;
         this.date = date;
