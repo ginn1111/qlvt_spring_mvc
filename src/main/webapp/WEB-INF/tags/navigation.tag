@@ -11,6 +11,7 @@
 <%@ attribute name="link5" type="java.lang.String" %>
 <%@ attribute name="link6" type="java.lang.String" %>
 <%@ attribute name="link7" type="java.lang.String" %>
+<%@ attribute name="link8" type="java.lang.String" %>
 
 <!-- URI FOR NAV -->
 <%@ attribute name="uri1" type="java.lang.String" %>
@@ -20,6 +21,7 @@
 <%@ attribute name="uri5" type="java.lang.String" %>
 <%@ attribute name="uri6" type="java.lang.String" %>
 <%@ attribute name="uri7" type="java.lang.String" %>
+<%@ attribute name="uri8" type="java.lang.String" %>
 
 <!-- ITEM NAME FOR NAV -->
 <%@ attribute name="name1" type="java.lang.String" %>
@@ -29,6 +31,7 @@
 <%@ attribute name="name5" type="java.lang.String" %>
 <%@ attribute name="name6" type="java.lang.String" %>
 <%@ attribute name="name7" type="java.lang.String" %>
+<%@ attribute name="name8" type="java.lang.String" %>
 
 <%-- ICON FOR NAV--%>
 <%@ attribute name="icon1" type="java.lang.String" %>
@@ -38,6 +41,7 @@
 <%@ attribute name="icon5" type="java.lang.String" %>
 <%@ attribute name="icon6" type="java.lang.String" %>
 <%@ attribute name="icon7" type="java.lang.String" %>
+<%@ attribute name="icon8" type="java.lang.String" %>
 
 <ul class="list">
     <li>
@@ -109,6 +113,14 @@
             <a class="list__item" data-uri="${uri7}" href="${link7}">
 				<span class="icon"> <ion-icon name="${icon7}"></ion-icon>
                 </span> <span class="title">${name7}</span>
+            </a>
+        </li>
+    </c:if>
+    <c:if test="${uri8 != null}">
+        <li>
+            <a class="list__item" data-uri="${uri8}" href="${prefix}/${link8}">
+				<span class="icon"> <ion-icon name="${icon8}"></ion-icon>
+                </span> <span class="title">${name8}</span>
             </a>
         </li>
     </c:if>

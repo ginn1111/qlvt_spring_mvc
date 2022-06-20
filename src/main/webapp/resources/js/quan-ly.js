@@ -65,6 +65,8 @@ $(function() {
     enableBtnRemove('supplies');
     enableBtnRemove('categories');
     enableBtnRemove('sectors');
+    enableBtnRemove('empaccounts');
+    enableBtnRemove('inforaccounts');
 
     $('.btn--customize.btn--add').click(function() {
         handleShowDialogEdit.call(this);

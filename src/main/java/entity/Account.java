@@ -7,6 +7,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="TAIKHOAN")
+@NamedNativeQueries(
+        @NamedNativeQuery(
+                name = "timTaiKhoan",
+                query = "exec sp_TimTaiKhoan :key",
+                resultClass = Account.class
+        )
+)
 public class Account {
    @Id
    @Column(name="EMAIL")

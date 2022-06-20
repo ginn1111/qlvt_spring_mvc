@@ -15,6 +15,9 @@ public class RoleModel {
         return roleId;
     }
 
+    public RoleModel() {
+    }
+
     public void setRoleId(Integer roleId) {
         this.roleId = roleId;
     }
