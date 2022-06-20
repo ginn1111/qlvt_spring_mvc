@@ -53,6 +53,7 @@ public class ManagerController {
     @RequestMapping("index")
     public String index(ModelMap model) {
 
+        model.addAttribute("top5BrCouponMaturityInMonth", borrowedCouponService.getTop5BrCouponModelMaturityInMonth());
         model.addAttribute("numberOfInCP", inCouponService.getNumberOfCPInMonth());
         model.addAttribute("numberOfExCP", exCouponService.getNumberOfCPInMonth());
         model.addAttribute("numberOfBorrowedCP", borrowedCouponService.getNumberOfCPInMonth());

@@ -58,6 +58,8 @@
                     type="date"
                     class="form__input"
                     format="yyyy-MM-dd"
+                    maxlength="${requestScope.dateNow}"
+
             />
         </label>
     </div>
@@ -72,12 +74,12 @@
         </label>
     </div>
     <div class="form__item" style="margin-left: 8px; flex: 1">
-        <label>
+        <div style="font-size: 14px; width: 100%">
             <h5 class="header__title">Vật tư</h5>
             <c:if test="${btnTitle == 'Thêm'}">
                 <ul class="list__account custom-scroll-bar" style="height: 100%; overflow-y: auto">
                     <c:forEach items="${sessionScope.supplies}" var="supply" varStatus="status">
-                        <li class="card supplies">
+                        <li class="card supplies supplies--checked">
                             <div class="supplies__info">
                                 <form:checkbox
                                         path="detailBorrowedCouponModelList[${status.index}].supplyModel.supplyId"
@@ -86,12 +88,19 @@
                                 <span>${supply.name}</span>
                             </div>
                             <div class="supplies__quantity">
-                                <form:input
-                                        placeholder="số lượng..."
-                                        type="number" path="detailBorrowedCouponModelList[${status.index}].quantity"
-                                        value="${supply.quantity}" max="${supply.quantity}"
-                                        min="1" step="1"
-                                />
+                                <label>
+                                    Số lượng:
+                                    <form:input
+                                            placeholder="số lượng..."
+                                            type="number" path="detailBorrowedCouponModelList[${status.index}].quantity"
+                                            value="${supply.quantity}" max="${supply.quantity}"
+                                            min="1" step="1"
+                                    />
+                                    <span>${supply.unit}</span>
+                                </label>
+                            </div>
+                            <div class="supplies__icon">
+                                <ion-icon name="attach-outline"></ion-icon>
                             </div>
                         </li>
                     </c:forEach>
@@ -110,7 +119,7 @@
                     </c:forEach>
                 </ul>
             </c:if>
-        </label>
+        </div>
     </div>
     <div class="form__item--action">
         <button type="submit" class="btn--confirm btn--customize">${btnTitle}</button>

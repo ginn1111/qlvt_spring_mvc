@@ -161,6 +161,8 @@
                             <div class="form__item">
                                 <label>Số lượng
                                     <form:input
+                                            type="number"
+                                            min="0"
                                             path="quantity"
                                             class="form__input"
                                             required="required"

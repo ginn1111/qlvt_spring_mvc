@@ -56,7 +56,7 @@
             <c:if test="${btnTitle == 'Thêm'}">
             <ul class="list__account custom-scroll-bar" style="height: 100%; overflow-y: auto">
                     <c:forEach items="${sessionScope.supplies}" var="supply" varStatus="status">
-                        <li class="card supplies">
+                        <li class="card supplies supplies--checked">
                             <div class="supplies__info">
                                 <form:checkbox
                                         path="detailInCouponModelList[${status.index}].supplyModel.supplyId"
@@ -65,18 +65,27 @@
                                 <span>${supply.name}</span>
                             </div>
                             <div class="supplies__quantity">
-                                <form:input
-                                        placeholder="số lượng..."
-                                        type="number" path="detailInCouponModelList[${status.index}].quantity"
-                                        value="${supply.quantity}" max="${supply.quantity}"
-                                        min="1" step="1"
-                                />
-                                <form:input
-                                        placeholder="đơn giá..."
-                                        min="1"
-                                        type="number"
-                                        path="detailInCouponModelList[${status.index}].price"
-                                />
+                                <label>
+                                    <form:input
+                                            placeholder="số lượng..."
+                                            type="number" path="detailInCouponModelList[${status.index}].quantity"
+                                            value="${supply.quantity}" max="${supply.quantity}"
+                                            min="1" step="1"
+                                    />
+                                    <span>${supply.unit}</span>
+                                </label>
+                                <label>
+                                    <form:input
+                                            placeholder="đơn giá..."
+                                            min="1"
+                                            type="number"
+                                            path="detailInCouponModelList[${status.index}].price"
+                                    />
+                                    <span> đ</span>
+                                </label>
+                            </div>
+                            <div class="supplies__icon">
+                                <ion-icon name="attach-outline"></ion-icon>
                             </div>
                         </li>
                     </c:forEach>

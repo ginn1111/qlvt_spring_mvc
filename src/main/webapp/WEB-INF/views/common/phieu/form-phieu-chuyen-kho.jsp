@@ -56,7 +56,7 @@
             <c:if test="${btnTitle == 'Thêm'}">
                 <ul class="list__account custom-scroll-bar" style="height: 100%; overflow-y: auto">
                     <c:forEach items="${sessionScope.supplies}" var="supply" varStatus="status">
-                        <li class="card supplies">
+                        <li class="card supplies supplies--checked">
                             <div class="supplies__info">
                                 <form:checkbox
                                         path="detailTransCouponModelList[${status.index}].supplyModel.supplyId"
@@ -65,12 +65,18 @@
                                 <span>${supply.name}</span>
                             </div>
                             <div class="supplies__quantity">
-                                <form:input
-                                        placeholder="số lượng..."
-                                        type="number" path="detailTransCouponModelList[${status.index}].quantity"
-                                        value="${supply.quantity}" max="${supply.quantity}"
-                                        min="1" step="1"
-                                />
+                                <label>
+                                    <form:input
+                                            placeholder="số lượng..."
+                                            type="number" path="detailTransCouponModelList[${status.index}].quantity"
+                                            value="${supply.quantity}" max="${supply.quantity}"
+                                            min="1" step="1"
+                                    />
+                                    <span>${supply.unit}</span>
+                                </label>
+                            </div>
+                            <div class="supplies__icon">
+                                <ion-icon name="attach-outline"></ion-icon>
                             </div>
                         </li>
                     </c:forEach>

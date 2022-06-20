@@ -48,9 +48,7 @@
                                     >
                                 </c:when>
                                 <c:when test="${couponType == 'PHIEUTRA'}">
-                                    <a href="phieu/phieu-tra.htm?new#pycoupons"
-                                       class="btn--customize btn--add" data-control="pycoupons"
-                                    >
+                                    <a class="btn--customize btn--add btn--payed-coupon" data-control="pycoupons">
                                 </c:when>
                                 <c:when test="${couponType == 'PHIEUCHUYENKHO'}">
                                     <a href="phieu/phieu-chuyen-kho.htm?new#trcoupons"
@@ -113,6 +111,34 @@
                                 <%@ include file="/WEB-INF/views/common/phieu/form-phieu-nhap.jsp" %>
                             </c:when>
                         </c:choose>
+                        <form
+                                class="form form--pycoupons--tmp"
+                                action="phieu/phieu-tra.htm?new#pycoupons"
+                                method="POST"
+                                modelAttribute="pyCouponModel"
+                        >
+                            <h5 class="form__title">Trả cho phiếu mượn</h5>
+                            <c:if test="${borrowedCouponList.size() == 0}">
+                               <span>Không có phiếu mượn nào để trả</span>
+                            </c:if>
+                            <c:if test="${borrowedCouponList.size() != 0}">
+                                <div class="form__item form__item--pycoupons">
+                                    <label>Mã phiếu mượn
+                                        <div class="select">
+                                            <select name="brCouponId">
+                                                <c:forEach items="${borrowedCouponList}" var="brCoupon">
+                                                   <option value="${brCoupon.couponId}">${brCoupon.couponId}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="form__item--action">
+                                    <button type="submit" class="btn--confirm btn--customize">Xác nhận</button>
+                                    <button type="reset" class="btn--cancel btn--customize">Huỷ</button>
+                                </div>
+                            </c:if>
+                        </form>
                     </dialog>
                 </div>
             </section>

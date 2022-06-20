@@ -20,7 +20,7 @@
         </div>
         <div class="input-box">
 
-            <input id="password" type="password" class="input" name="password" value="123"/>
+            <input id="password" type="password" class="input" name="password" value="Thuan12312"/>
 
             <div class="toggle-password show">
                 <ion-icon name="eye-off-outline"></ion-icon>

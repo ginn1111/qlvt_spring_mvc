@@ -294,6 +294,9 @@
 
 .main__content {
     margin-top: 60px;
+    /*$add*/
+    height: 100%;
+
 }
 
 /* Responsive */

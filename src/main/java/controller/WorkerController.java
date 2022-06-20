@@ -31,7 +31,7 @@ public class WorkerController {
     @InitBinder
     public void customizeBinding (WebDataBinder binder) {
         MyUtils.DF_DATE.setLenient(false);
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(MyUtils.DF_DATE, false));
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(MyUtils.DF_DATE, true));
     }
     @Autowired
     WorkerService workerService;

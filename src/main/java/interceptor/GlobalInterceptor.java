@@ -8,16 +8,18 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import service.AccountService;
 import service.EmployeeService;
 import service.RoleService;
+import utils.MyUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
+import java.util.Calendar;
+import java.util.Date;
 
 public class GlobalInterceptor extends HandlerInterceptorAdapter {
     @Autowired
     AccountService accountService;
-
     @Autowired
     RoleService roleService;
     @Transactional
@@ -30,6 +32,7 @@ public class GlobalInterceptor extends HandlerInterceptorAdapter {
 
             //MANAGER AND EMPLOYEE
             request.setAttribute("role", roleService.findById(accountModel.getRoleId()).getRoleName());
+            request.setAttribute("dateNow", MyUtils.formatDate(MyUtils.DF_DATE, new Date()));
         }
         return true;
     }

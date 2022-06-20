@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import sun.util.resources.en.CalendarData_en;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -21,6 +22,28 @@ public class BorrowedCouponDAO extends DAO<BorrowedCoupon> {
         return getList(query);
     }
 
+    public List<BorrowedCoupon> getListBrCPNotCompOrNotPayed() {
+        // Phiếu chưa hoàn thành or chưa trả hết.
+        String query = "FROM BorrowedCoupon AS BrCP WHERE BrCP.cpStatus.cpStatusId in (4,2)";
+        return getList(query);
+    }
+
+    public List<BorrowedCoupon> getTop5BrCouponMaturityInMonth() {
+        System.out.println(
+                sessionFactory.getCurrentSession()
+                        .getNamedQuery("topPhieuMuonToiHanTrongThang")
+                        .setParameter("num", 5)
+                        .setParameter("m", 6)
+                        .setParameter("y", 2022)
+                        .list()
+        );
+        return sessionFactory.getCurrentSession()
+                .getNamedQuery("topPhieuMuonToiHanTrongThang")
+                .setParameter("num", 5)
+                .setParameter("m", Calendar.getInstance().get(Calendar.MONTH) + 1)
+                .setParameter("y", Calendar.getInstance().get(Calendar.YEAR))
+                .list();
+    }
     public List<BorrowedCoupon> getList(Integer employeeId) {
         return sessionFactory.getCurrentSession()
                 .createQuery("FROM BorrowedCoupon AS BrCP WHERE BrCP.employee.employeeId = :employeeId")

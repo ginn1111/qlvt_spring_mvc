@@ -20,4 +20,7 @@ $(function () {
     });
 
     $('.backdrop').click(hideModal);
+
+    const now = new Date();
+    $('.tickets__title').html(`Số lượng các phiếu được lập trong tháng ${('0' + (now.getMonth() + 1)).slice(-2)}`)
 })

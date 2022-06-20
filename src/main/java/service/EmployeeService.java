@@ -1,6 +1,7 @@
 package service;
 
 import dao.EmployeeDAO;
+import entity.Account;
 import entity.Employee;
 import model.AccountModel;
 import model.EmployeeModel;
@@ -92,16 +93,16 @@ public class EmployeeService {
         Employee employee = new Employee();
         employee.setEmployeeId(employeeId);
 
-        List<AccountModel> accountModelList = employeeDAO.findById(employee)
-                .getAccountList()
-                .stream()
-                .map(AccountModel::new)
-                .collect(Collectors.toList());
+        List<Account> accountList = (List<Account>) employeeDAO.findById(employee).getAccountList();
+        List<AccountModel> accountModelList = new ArrayList<>();
+        for (Account account : accountList) {
+           if(account.getStatus() == false) continue;
+           accountModelList.add(new AccountModel(account));
+        }
 
         Map<Integer, RoleModel> map = new HashMap<>();
 
-        for (AccountModel accountModel :
-                accountModelList) {
+        for (AccountModel accountModel : accountModelList) {
             map.put(accountModel.getRoleId(), roleService.findById(accountModel.getRoleId()));
         }
 

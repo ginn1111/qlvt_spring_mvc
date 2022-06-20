@@ -60,6 +60,11 @@ public class DetailPayedCouponModel {
         this.payedCouponModel = payedCouponModel;
     }
 
+    public DetailPayedCouponModel(SupplyModel supplyModel, Integer quantity) {
+        this.supplyModel = supplyModel;
+        this.quantity = quantity;
+    }
+
     @Override
     public String toString() {
         return "DetailPayedCouponModel{" +

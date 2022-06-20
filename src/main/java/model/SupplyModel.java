@@ -29,6 +29,13 @@ public class SupplyModel {
         this.quantity = 0;
     }
 
+    public SupplyModel(Integer supplyId, String name, String unit, Integer quantity) {
+        this.supplyId = supplyId;
+        this.name = name;
+        this.unit = unit;
+        this.quantity = quantity;
+    }
+
     public SupplyModel(Supply supply) {
         this.supplyId = supply.getSupplyId();
         this.name = supply.getName();

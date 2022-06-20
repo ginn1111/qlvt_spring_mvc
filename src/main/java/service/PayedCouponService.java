@@ -21,6 +21,8 @@ import java.util.stream.Collectors;
 public class PayedCouponService implements Validation<PayedCouponModel>{
     @Autowired
     PayedCouponDAO payedCouponDAO;
+    @Autowired
+    BorrowedCouponService borrowedCouponService;
 
     @Autowired
     DetailPayedCouponService detailPayedCouponService;
@@ -119,6 +121,7 @@ public class PayedCouponService implements Validation<PayedCouponModel>{
 
     @Override
     public String validate(PayedCouponModel payedCouponModel) {
+//        BorrowedCouponModel borrowedCouponModel = borrowedCouponService.findBorrowedCouponId(payedCouponModel.getBorrowedCouponModel().getCouponId());
         boolean isLeastOne = false;
         for (DetailPayedCouponModel detail :
                 payedCouponModel.getDetailPayedCouponModelList()) {

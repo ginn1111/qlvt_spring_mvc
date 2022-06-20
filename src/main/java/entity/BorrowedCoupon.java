@@ -7,14 +7,17 @@ import java.util.Date;
 
 @Entity
 @Table(name = "PHIEUMUON")
-@NamedNativeQueries(
+@NamedNativeQueries( {
         @NamedNativeQuery(
-                name="soLuongPhieuMuonTrongThang",
-                query="exec sp_SoLuongPhieuMuonTrongThang :m, :y",
-                resultClass = Number.class
-
-        )
+            name="soLuongPhieuMuonTrongThang",
+            query="exec sp_SoLuongPhieuMuonTrongThang :m, :y",
+            resultClass = Number.class
+        ), @NamedNativeQuery(
+            name = "topPhieuMuonToiHanTrongThang",
+            query="exec sp_TopPhieuMuonToiHanTrongThang :num,:m,:y",
+            resultClass = BorrowedCoupon.class
 )
+} )
 public class BorrowedCoupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -142,5 +145,19 @@ public class BorrowedCoupon {
         this.construction = construction;
         this.cpStatus = cpStatus;
         this.note = note;
+    }
+
+    @Override
+    public String toString() {
+        return "BorrowedCoupon{" +
+                "brCpId=" + brCpId +
+                ", employee=" + employee +
+                ", worker=" + worker +
+                ", borrowedDate=" + borrowedDate +
+                ", payedDate=" + payedDate +
+                ", construction=" + construction +
+                ", cpStatus=" + cpStatus +
+                ", note='" + note + '\'' +
+                '}';
     }
 }

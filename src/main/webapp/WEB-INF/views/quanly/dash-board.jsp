@@ -19,8 +19,9 @@
         <div class="main__content">
             <div class="dash-board">
                 <div class="card tickets">
+                   <h5 class="tickets__title">Số lượng các loại phiếu được lập trong tháng</h5>
                     <div class="overall">
-                        <div class="card--hover card detail">
+                        <a href="phieu/phieu-nhap.htm" class="card--hover card detail">
                             <h3 class="detail__number">
                                 ${numberOfInCP}
                             </h3>
@@ -30,8 +31,8 @@
                                 </div>
                                 <span>Phiếu nhập</span>
                             </div>
-                        </div>
-                        <div class="card--hover card detail">
+                        </a>
+                        <a href="phieu/phieu-xuat.htm" class="card--hover card detail">
                             <h3 class="detail__number">
                                 ${numberOfExCP}
                             </h3>
@@ -40,9 +41,9 @@
                                     <ion-icon name="remove-circle-outline"></ion-icon>
                                 </div>
                                 <span>Phiếu xuất</span>
-                                </div>
                             </div>
-                        <div class="card--hover card detail">
+                        </a>
+                        <a href="phieu/phieu-muon.htm" class="card--hover card detail">
                             <h3 class="detail__number">
                                 ${numberOfBorrowedCP}
                             </h3>
@@ -52,8 +53,8 @@
                                 </div>
                                 <span>Phiếu mượn</span>
                             </div>
-                        </div>
-                        <div class="card--hover card detail">
+                        </a>
+                        <a href="phieu/phieu-tra.htm" class="card--hover card detail">
                             <h3 class="detail__number">
                                 ${numberOfPayedCP}
                             </h3>
@@ -63,8 +64,8 @@
                                 </div>
                                 <span>Phiếu trả</span>
                                 </div>
-                            </div>
-                        <div class="card--hover card detail">
+                            </a>
+                        <a href="phieu/phieu-chuyen-kho.htm" class="card--hover card detail">
                             <h3 class="detail__number">
                                 ${numberOfTransCP}
                             </h3>
@@ -72,40 +73,28 @@
                                 <div class="detail__icon">
                                     <ion-icon name="move-outline"></ion-icon>
                                 </div>
-                                <span>Phiếu xuất kho</span>
+                                <span>Phiếu chuyển kho</span>
                                 </div>
-                            </div>
+                            </a>
                     </div>
                     <div class="info-container">
                         <div class="chart-container">
                             <canvas id="my-chart" style="max-height: 80vh; width: 100%"></canvas>
                         </div>
                         <div class="borrowed-tickets">
-                            <div class="card--hover card ticket" style="--i:200ms">
-                                <span>PM001</span>
-                                <span>Nguyễn Văn A</span>
-                                <span>20/06/2022</span>
-                            </div>
-                            <div class="card--hover card ticket" style="--i:400ms">
-                                <span>PM001</span>
-                                <span>Nguyễn Văn A</span>
-                                <span>20/06/2022</span>
-                            </div>
-                            <div class="card--hover card ticket" style="--i: 600ms">
-                                <span>PM001</span>
-                                <span>Nguyễn Văn A</span>
-                                <span>20/06/2022</span>
-                            </div>
-                            <div class="card--hover card ticket" style="--i: 800ms">
-                                <span>PM001</span>
-                                <span>Nguyễn Văn A</span>
-                                <span>20/06/2022</span>
-                            </div>
-                            <div class="card--hover card ticket" style="--i: 1000ms">
-                                <span>PM001</span>
-                                <span>Nguyễn Văn A</span>
-                                <span>20/06/2022</span>
-                            </div>
+                            <c:if test="${top5BrCouponMaturityInMonth.size() == 0}">
+                               <h4>Các phiếu mượn đã được trả!</h4>
+                            </c:if>
+                            <c:if test="${top5BrCouponMaturityInMonth.size() != 0}">
+                                <span>Top 5 các phiếu mượn gần tới hạn</span>
+                                <c:forEach items="${top5BrCouponMaturityInMonth}" var="maturityBrCP">
+                                    <div class="card--hover card ticket" style="--i:200ms">
+                                        <span>${maturityBrCP.couponId}</span>
+                                        <span>Công nhân: ${maturityBrCP.employeeModel.name}</span>
+                                        <span>Ngày trả: <fmt:formatDate value="${maturityBrCP.payedDate}" pattern="dd-MM-yyyy"/></span>
+                                    </div>
+                                </c:forEach>
+                            </c:if>
                         </div>
                     </div>
                 </div>

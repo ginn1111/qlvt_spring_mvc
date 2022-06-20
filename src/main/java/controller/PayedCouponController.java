@@ -76,17 +76,39 @@ public class PayedCouponController {
     }
 
     @RequestMapping(value = "phieu-tra", params = "new")
-    public String newPyCoupon(HttpSession session) {
-        List<SupplyModel> supplyModelList = supplyService.getSupplyModelList();
+    public String newPyCoupon(@RequestParam("brCouponId") Integer brCouponId, HttpSession session) {
+
+        BorrowedCouponModel borrowedCouponModel = borrowedCouponService.findBorrowedCouponId(brCouponId);
+
+        List<SupplyModel> supplyModelList = new ArrayList<>();
+
+        Integer supplyIdTmp;
+        SupplyModel supplyModelTmp;
+        for (DetailBorrowedCouponModel detail: borrowedCouponModel.getDetailBorrowedCouponModelList()) {
+            supplyIdTmp = detail.getSupplyModel().getSupplyId();
+            supplyModelTmp = supplyService.findSupplyById(supplyIdTmp);
+            if(supplyModelTmp.getQuantity() == 0) {
+                continue;
+            }
+            supplyModelList.add(
+                    new SupplyModel(
+                        supplyIdTmp
+                        ,detail.getSupplyModel().getName()
+                        ,detail.getSupplyModel().getUnit()
+                        ,Math.min(detail.getQuantity(), supplyModelTmp.getQuantity())
+                    ));
+        }
 
         session.setAttribute("supplies", supplyModelList);
 
         List<DetailPayedCouponModel> detailPayedCouponModelList = new ArrayList<>();
-        for (int i = 0; i < supplyModelList.size(); i++) {
+
+        for(int i = 0; i < supplyModelList.size(); i++) {
             detailPayedCouponModelList.add(new DetailPayedCouponModel());
         }
 
         pyCouponModel = new PayedCouponModel();
+        pyCouponModel.setBorrowedCouponModel(borrowedCouponModel);
         pyCouponModel.setDetailPayedCouponModelList(detailPayedCouponModelList);
 
         btnTitle = "Thêm";
@@ -136,6 +158,6 @@ public class PayedCouponController {
 
     @ModelAttribute("borrowedCouponList")
     public List<BorrowedCouponModel> borrowedCouponModelList() {
-        return borrowedCouponService.getBorrowedCouponModelList();
+        return borrowedCouponService.getBorrowedCouponModelListNotCompOrNotPayed();
     }
 }

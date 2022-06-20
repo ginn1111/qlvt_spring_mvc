@@ -44,11 +44,13 @@ $(function() {
             const parent = $(this).parent();
             parent.toggleClass('hovered');
             check = parent.children('input[type="checkbox"]');
+            // handle enable btnRemove
             if ($(`.table__item--${suffix}.hovered`).length > 0) {
                 $(`.btn--remove-${suffix}`).attr('disabled', false);
             } else {
                 $(`.btn--remove-${suffix}`).attr('disabled', true);
             }
+            // handle checked for checkbox
             check.prop('checked', !check.is(':checked'))
         });
     }
@@ -68,7 +70,7 @@ $(function() {
     enableBtnRemove('empaccounts');
     enableBtnRemove('inforaccounts');
 
-    $('.btn--customize.btn--add').click(function() {
+    $('.btn--customize.btn--add:not(.btn--payed-coupon)').click(function() {
         handleShowDialogEdit.call(this);
     });
 
@@ -85,6 +87,9 @@ $(function() {
     $('.table__item input[type="checkbox"]').click(function(e) {
         e.preventDefault();
     });
+    $('.supplies--checked input[type="checkbox"]').click(function(e) {
+        e.preventDefault();
+    });
 
     $('.btn--remove').click(function() {
         $('.dialog').fadeIn();
@@ -95,10 +100,21 @@ $(function() {
     });
 
     $('.btn--warning').click(function() {
-        console.log('btn confirm click')
-        console.log(formSubmit)
         if (formSubmit) {
             formSubmit.submit();
         }
     });
+
+   $('.btn--payed-coupon').click(function() {
+       showForm('pycoupons--tmp');
+       $('.btn--confirm').click(() => {
+           handleShowDialogEdit.call(this)
+       })
+   });
+
+   $('.supplies__icon').click(function(event) {
+       $(this).toggleClass('hovered');
+       const supplyCheckbox = $(this).parents('.supplies--checked').find('input[type="checkbox"]');
+       supplyCheckbox.prop('checked', !supplyCheckbox.is(':checked'))
+   })
 });

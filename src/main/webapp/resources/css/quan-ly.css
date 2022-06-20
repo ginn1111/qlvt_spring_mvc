@@ -221,21 +221,52 @@
 .supplies {
     width: 90%;
     display: flex;
-    flex-flow: column nowrap;
-    align-items: flex-start;
+    flex-flow: row;
+    align-items: center;
 }
 .supplies__quantity,
 .supplies__info {
     display: flex;
     width: 100%;
 }
+.supplies__quantity {
+    flex: 5;
+    display: flex;
+    align-items: center;
+}
+.supplies__quantity input {
+   width: 100px;
+    margin-right: 8px;
+}
+.supplies__quantity label {
+    display: flex;
+    align-items: center;
+}
+.supplies__quantity label + label {
+    margin-left: 4px;
+}
 .supplies__info {
     align-items: center;
-    padding-bottom: 8px;
+    flex: 3;
+    /*padding-bottom: 8px;*/
 }
 .supplies__info > input[type="checkbox"],
 .supplies__quantity > input:nth-child(1) {
     margin-right: 16px;
+}
+.supplies__icon.hovered {
+    color: var(--primary)
+}
+.supplies--checked input[type="checkbox"]{
+   border: none;
+    outline: none;
+    display: none;
+    appearance: none;
+}
+.supplies__icon {
+    font-size: 24px;
+    display: flex;
+    cursor: pointer;
 }
 .supplies > input {
     width: unset;

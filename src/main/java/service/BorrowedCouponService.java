@@ -10,6 +10,7 @@ import model.InCouponModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import request_bean.DeletedIdList;
+import utils.MyUtils;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -114,8 +115,8 @@ public class BorrowedCouponService implements Validation<BorrowedCouponModel> {
         }
         return "Cập nhật thất bại!";
     }
-    public List<BorrowedCouponModel> getBorrowedCouponModelList() {
-        return borrowedCouponDAO.getList()
+    public List<BorrowedCouponModel> getBorrowedCouponModelListNotCompOrNotPayed() {
+        return borrowedCouponDAO.getListBrCPNotCompOrNotPayed()
                 .stream()
                 .map(BorrowedCouponModel::new)
                 .collect(Collectors.toList());
@@ -124,8 +125,17 @@ public class BorrowedCouponService implements Validation<BorrowedCouponModel> {
         return borrowedCouponDAO.getNumOfCP();
     }
 
+    public List<BorrowedCouponModel> getTop5BrCouponModelMaturityInMonth() {
+        return borrowedCouponDAO.getTop5BrCouponMaturityInMonth()
+                .stream().map(BorrowedCouponModel::new).collect(Collectors.toList());
+    }
+
     @Override
     public String validate(BorrowedCouponModel borrowedCouponModel) {
+        if(MyUtils.formatDate(MyUtils.DF_DATE, borrowedCouponModel.getPayedDate())
+                .compareTo(MyUtils.formatDate(MyUtils.DF_DATE,new Date())) < 0) {
+            return "Ngày trả không phải là ngày trong quá khứ!";
+        }
         boolean isLeastOne = false;
         for (DetailBorrowedCouponModel detail :
                 borrowedCouponModel.getDetailBorrowedCouponModelList()) {
