@@ -105,7 +105,7 @@
                     <c:forEach items="${detailBorrowedCouponModelList}" var="detail" varStatus="status">
                         <li class="card card--hover supplies supplies--des">
                             <span>${detail.supplyModel.name}</span>
-                            <span>${detail.quantity}</span>
+                            <span>${detail.quantity} ${detail.supplyModel.unit}</span>
                         </li>
                     </c:forEach>
                 </ul>

@@ -45,12 +45,23 @@ public class PayedCouponController {
     }
 
     @RequestMapping("phieu-tra")
-    public String index(ModelMap model, HttpSession httpSession) {
+    public String index(ModelMap model, HttpSession httpSession,
+                        @RequestAttribute("role") RoleName role,
+                        @RequestAttribute("userInfo") EmployeeModel user
+    ) {
         httpSession.setAttribute("couponType", "PHIEUTRA");
 
-        List<Object> resultOfBrCouponService = payedCouponService.getPayedCouponList();
-        List<PayedCouponModel> pyCouponModelList = (List<PayedCouponModel>) resultOfBrCouponService.get(0);
-        DeletedIdList deletedPyCPIdList = (DeletedIdList) resultOfBrCouponService.get(1);
+        List<Object> resultOfPyCouponService = null;
+
+        if(role.equals(RoleName.EMPLOYEE)) {
+            resultOfPyCouponService = payedCouponService.getPayedCouponListForEmp(user.getEmployeeId());
+        } else if(role.equals(RoleName.MANAGER)) {
+            resultOfPyCouponService = payedCouponService.getPayedCouponList();
+        }
+
+        List<PayedCouponModel> pyCouponModelList = (List<PayedCouponModel>) resultOfPyCouponService.get(0);
+        DeletedIdList deletedPyCPIdList = (DeletedIdList) resultOfPyCouponService.get(1);
+
 
         model.addAttribute("pyCouponModel", pyCouponModel);
         model.addAttribute("pyCouponModelList", pyCouponModelList);
@@ -65,7 +76,7 @@ public class PayedCouponController {
     }
 
     @RequestMapping(value = "phieu-tra", params = "new")
-    public String newBrCoupon(HttpSession session) {
+    public String newPyCoupon(HttpSession session) {
         List<SupplyModel> supplyModelList = supplyService.getSupplyModelList();
 
         session.setAttribute("supplies", supplyModelList);
@@ -84,14 +95,14 @@ public class PayedCouponController {
     }
 
     @RequestMapping(value = "phieu-tra", params = "insert", method = RequestMethod.POST)
-    public String addBrCoupon(@ModelAttribute("pyCouponModel") PayedCouponModel pyCouponModel) {
+    public String addPyCoupon(@ModelAttribute("pyCouponModel") PayedCouponModel pyCouponModel) {
         // Todo: validate
         message = payedCouponService.addPayedCoupon(pyCouponModel);
         return "redirect:/phieu/phieu-tra.htm";
     }
 
     @RequestMapping(value = "phieu-tra/{pyCPId}", params = "update")
-    public String editBrCoupon(@PathVariable("pyCPId") Integer pyCPId, HttpSession session) {
+    public String editPyCoupon(@PathVariable("pyCPId") Integer pyCPId, HttpSession session) {
         pyCouponModel = payedCouponService.findPayedCouponId(pyCPId);
         session.setAttribute("detailPayedCouponModelList", pyCouponModel.getDetailPayedCouponModelList());
         btnTitle = "Sửa";
@@ -108,7 +119,7 @@ public class PayedCouponController {
     }
 
     @RequestMapping(value = "phieu-tra", params = "delete", method = RequestMethod.POST)
-    public String deleteBrCoupon(@ModelAttribute("deletedPyCPIdList") DeletedIdList deletedPyCPIdList) {
+    public String deletePyCoupon(@ModelAttribute("deletedPyCPIdList") DeletedIdList deletedPyCPIdList) {
         message = payedCouponService.deleteCoupon(deletedPyCPIdList);
         return "redirect:/phieu/phieu-tra.htm";
     }

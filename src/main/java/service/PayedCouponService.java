@@ -4,6 +4,7 @@ import dao.DetailPayedCouponService;
 import dao.PayedCouponDAO;
 import dao.PayedCouponDAO;
 import entity.*;
+import model.BorrowedCouponModel;
 import model.PayedCouponModel;
 import model.DetailPayedCouponModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,17 @@ public class PayedCouponService {
     public List<Object> getPayedCouponList() {
         List<PayedCouponModel> pyCouponModelList =
                 payedCouponDAO.getList().stream()
+                        .map(PayedCouponModel::new).collect(Collectors.toList());
+        List<Integer> dummyList = new ArrayList<>();
+        for(int i = 0; i < pyCouponModelList.size(); i++) {
+            dummyList.add(null);
+        }
+        DeletedIdList deletedIdList = new DeletedIdList(dummyList);
+        return Arrays.asList(pyCouponModelList, deletedIdList);
+    }
+    public List<Object> getPayedCouponListForEmp(Integer employeeId) {
+        List<PayedCouponModel> pyCouponModelList =
+                payedCouponDAO.getList(employeeId).stream()
                         .map(PayedCouponModel::new).collect(Collectors.toList());
         List<Integer> dummyList = new ArrayList<>();
         for(int i = 0; i < pyCouponModelList.size(); i++) {

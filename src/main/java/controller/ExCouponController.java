@@ -45,10 +45,20 @@ public class ExCouponController {
     }
 
     @RequestMapping("phieu-xuat")
-    public String index(ModelMap model, HttpSession session) {
+    public String index(ModelMap model, HttpSession session,
+                @RequestAttribute("role") RoleName role,
+                @RequestAttribute("userInfo") EmployeeModel user
+    ) {
         session.setAttribute("couponType", "PHIEUXUAT");
 
-        List<Object> resultOfExCouponService = exCouponService.getExCouponList();
+        List<Object> resultOfExCouponService = null;
+
+        if(role.equals(RoleName.EMPLOYEE)) {
+            resultOfExCouponService = exCouponService.getExCouponListForEmp(user.getEmployeeId());
+        } else if(role.equals(RoleName.MANAGER)) {
+            resultOfExCouponService = exCouponService.getExCouponList();
+        }
+
         List<ExCouponModel> exCouponModelList = (List<ExCouponModel>) resultOfExCouponService.get(0);
         DeletedIdList deletedExCPIdList = (DeletedIdList) resultOfExCouponService.get(1);
 

@@ -2,7 +2,7 @@ package dao;
 
 import entity.*;
 import entity.Number;
-import model.DetailBorrowedCouponModel;
+import model.DetailInCouponModel;
 import model.InCouponModel;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -16,6 +16,12 @@ public class InCouponDAO extends DAO<InCoupon> {
     public List<InCoupon> getList() {
         String query = "FROM InCoupon";
         return super.getList(query);
+    }
+    public List<InCoupon> getList(Integer employeeId) {
+        return sessionFactory.getCurrentSession()
+                .createQuery("FROM InCoupon AS InCP WHERE InCP.employee.employeeId = :employeeId")
+                .setParameter("employeeId", employeeId)
+                .list();
     }
     @Override
     public boolean deleteById(InCoupon inCoupon) {

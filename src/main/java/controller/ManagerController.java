@@ -27,11 +27,6 @@ public class ManagerController {
     private static AccountModel accountModel = new AccountModel();
     private static String link;
     private static String btnTitle;
-    @InitBinder
-    public void customizeBinding (WebDataBinder binder) {
-        MyUtils.DF_DATE.setLenient(false);
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(MyUtils.DF_DATE, false));
-    }
     @Autowired
     EmployeeService employeeService;
     @Autowired
@@ -48,6 +43,12 @@ public class ManagerController {
     TransCouponService transCouponService;
     @Autowired
     AccountService accountService;
+
+    @InitBinder
+    public void customizeBinding (WebDataBinder binder) {
+        MyUtils.DF_DATE.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(MyUtils.DF_DATE, true));
+    }
     @RequestMapping("index")
     public String index(ModelMap model) {
 
@@ -106,7 +107,7 @@ public class ManagerController {
     }
 
     // GET quanly/nhan-vien.htm?update
-    @RequestMapping(value="nhan-vien", params = "update")
+    @RequestMapping(value="nhan-vien", params = "update", method = RequestMethod.POST)
     public String editEmployee(@ModelAttribute("employeeModel") EmployeeModel employeeModel) {
         message = employeeService.editEmployee(employeeModel);
         return "redirect:/quanly/nhan-vien.htm";
@@ -123,7 +124,8 @@ public class ManagerController {
     @RequestMapping(value="nhan-vien/{employeeId}", params = "accounts")
     public String employeeAccount(@PathVariable("employeeId") Integer employeeId, HttpSession httpSession) {
         httpSession.setAttribute("employeeModel", employeeService.findEmployeeById(employeeId));
-        httpSession.setAttribute("accountModelList", employeeService.getAccountModelListOfEmployee(employeeId));
+        httpSession.setAttribute("accountModelList", employeeService.getAccountModelListOfEmployee(employeeId).get(0));
+        httpSession.setAttribute("accountMapRole", employeeService.getAccountModelListOfEmployee(employeeId).get(1));
         link = "quanly/nhan-vien.htm?accounts";
         return "redirect:/quanly/nhan-vien.htm";
     }

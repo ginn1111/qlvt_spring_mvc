@@ -2,19 +2,6 @@ package model;
 
 import entity.Role;
 
-enum RoleName {
-    MANAGER("Quản lý"), EMPLOYEE("Nhân viên");
-
-    private final String value;
-
-    RoleName(String value) {
-        this.value = value;
-    }
-
-    public String getRoleName() {
-        return this.value;
-    }
-}
 public class RoleModel {
     private Integer roleId;
     private RoleName roleName;
@@ -43,5 +30,13 @@ public class RoleModel {
     public RoleModel(Integer roleId, RoleName roleName) {
         this.roleId = roleId;
         this.roleName = roleName;
+    }
+
+    @Override
+    public String toString() {
+        return "RoleModel{" +
+                "roleId=" + roleId +
+                ", roleName=" + roleName.getRoleName() +
+                '}';
     }
 }

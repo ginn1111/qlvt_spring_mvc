@@ -17,6 +17,12 @@ public class TransCouponDAO extends DAO<TransCoupon> {
         String query = "FROM TransCoupon";
         return getList(query);
     }
+    public List<TransCoupon> getList(Integer employeeId) {
+        return sessionFactory.getCurrentSession()
+                .createQuery("FROM TransCoupon AS TrCP WHERE TrCP.employee.employeeId = :employeeId")
+                .setParameter("employeeId", employeeId)
+                .list();
+    }
     public Integer getNumOfCP() {
         List<Number> numbers = super.sessionFactory.getCurrentSession()
                 .getNamedQuery("soLuongPhieuChuyenKhoTrongThang")

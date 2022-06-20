@@ -43,10 +43,20 @@ public class TransCouponController {
     }
 
     @RequestMapping("phieu-chuyen-kho")
-    public String index(ModelMap model, HttpSession httpSession) {
+    public String index(ModelMap model, HttpSession httpSession,
+                        @RequestAttribute("role") RoleName role,
+                        @RequestAttribute("userInfo") EmployeeModel user
+    ) {
         httpSession.setAttribute("couponType", "PHIEUCHUYENKHO");
 
-        List<Object> resultOfTrCouponService = transCouponService.getTransCouponList();
+        List<Object> resultOfTrCouponService = null;
+
+        if(role.equals(RoleName.EMPLOYEE)) {
+            resultOfTrCouponService = transCouponService.getTransCouponListForEmp(user.getEmployeeId());
+        } else if(role.equals(RoleName.MANAGER)) {
+            resultOfTrCouponService = transCouponService.getTransCouponList();
+        }
+
         List<TransCouponModel> trCouponModelList = (List<TransCouponModel>) resultOfTrCouponService.get(0);
         DeletedIdList deletedTrCPIdList = (DeletedIdList) resultOfTrCouponService.get(1);
 

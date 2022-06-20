@@ -4,6 +4,7 @@ import dao.TransCouponDAO;
 import dao.TransCouponDAO;
 import entity.*;
 import model.TransCouponModel;
+import model.TransCouponModel;
 import model.DetailTransCouponModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,17 @@ public class TransCouponService {
                 transCouponDAO.getList().stream()
                         .map(TransCouponModel::new).collect(Collectors.toList());
         System.out.println("Service" + trCouponModelList);
+        List<Integer> dummyList = new ArrayList<>();
+        for(int i = 0; i < trCouponModelList.size(); i++) {
+            dummyList.add(null);
+        }
+        DeletedIdList deletedIdList = new DeletedIdList(dummyList);
+        return Arrays.asList(trCouponModelList, deletedIdList);
+    }
+    public List<Object> getTransCouponListForEmp(Integer employeeId) {
+        List<TransCouponModel> trCouponModelList =
+                transCouponDAO.getList(employeeId).stream()
+                        .map(TransCouponModel::new).collect(Collectors.toList());
         List<Integer> dummyList = new ArrayList<>();
         for(int i = 0; i < trCouponModelList.size(); i++) {
             dummyList.add(null);
@@ -73,12 +85,12 @@ public class TransCouponService {
 
     public TransCouponModel findTransCouponId(Integer iCPId) {
         List<Object> res = transCouponDAO.findTrCPById(new TransCoupon(iCPId));
-        TransCouponModel borrowedCouponModel = new TransCouponModel((TransCoupon) res.get(0));
+        TransCouponModel transCouponModel = new TransCouponModel((TransCoupon) res.get(0));
         List<DetailTransCouponModel> detailTransCouponModelList = ((List<DetailTransCoupon>)res.get(1))
                 .stream().map(DetailTransCouponModel::new).collect(Collectors.toList());
 
-        borrowedCouponModel.setDetailTransCouponModelList(detailTransCouponModelList);
-        return borrowedCouponModel;
+        transCouponModel.setDetailTransCouponModelList(detailTransCouponModelList);
+        return transCouponModel;
     }
 
     public String editTransCoupon(TransCouponModel trCouponModel) {

@@ -1,10 +1,10 @@
 package service;
 
-import dao.BorrowedCouponDAO;
+import dao.InCouponDAO;
 import dao.InCouponDAO;
 import entity.*;
-import model.BorrowedCouponModel;
-import model.DetailBorrowedCouponModel;
+import model.InCouponModel;
+import model.DetailInCouponModel;
 import model.DetailInCouponModel;
 import model.InCouponModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +29,17 @@ public class InCouponService implements Validation<InCouponModel> {
         List<InCouponModel> inCouponModelList = inCouponDAO.getList()
                 .stream().map(InCouponModel::new)
                 .collect(Collectors.toList());
+        List<Integer> dummyList = new ArrayList<>();
+        for(int i = 0; i < inCouponModelList.size(); i++) {
+            dummyList.add(null);
+        }
+        DeletedIdList deletedIdList = new DeletedIdList(dummyList);
+        return Arrays.asList(inCouponModelList, deletedIdList);
+    }
+    public List<Object> getInCouponListForEmp(Integer employeeId) {
+        List<InCouponModel> inCouponModelList =
+                inCouponDAO.getList(employeeId).stream()
+                        .map(InCouponModel::new).collect(Collectors.toList());
         List<Integer> dummyList = new ArrayList<>();
         for(int i = 0; i < inCouponModelList.size(); i++) {
             dummyList.add(null);

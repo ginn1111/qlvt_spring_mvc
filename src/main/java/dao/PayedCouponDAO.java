@@ -16,6 +16,12 @@ public class PayedCouponDAO extends DAO<PayedCoupon>{
         String query = "FROM PayedCoupon";
         return getList(query);
     }
+    public List<PayedCoupon> getList(Integer employeeId) {
+        return sessionFactory.getCurrentSession()
+                .createQuery("FROM PayedCoupon AS PyCP WHERE PyCP.employee.employeeId = :employeeId")
+                .setParameter("employeeId", employeeId)
+                .list();
+    }
     @Override
     public boolean deleteById(PayedCoupon payedCoupon) {
         return false;

@@ -2,6 +2,7 @@ package service;
 
 import dao.ExCouponDAO;
 import entity.*;
+import model.ExCouponModel;
 import model.DetailExCouponModel;
 import model.ExCouponModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,17 @@ public class ExCouponService {
         List<ExCouponModel> exCouponModelList = exCouponDAO.getList()
                 .stream().map(ExCouponModel::new)
                 .collect(Collectors.toList());
+        List<Integer> dummyList = new ArrayList<>();
+        for(int i = 0; i < exCouponModelList.size(); i++) {
+            dummyList.add(null);
+        }
+        DeletedIdList deletedIdList = new DeletedIdList(dummyList);
+        return Arrays.asList(exCouponModelList, deletedIdList);
+    }
+    public List<Object> getExCouponListForEmp(Integer employeeId) {
+        List<ExCouponModel> exCouponModelList =
+                exCouponDAO.getList(employeeId).stream()
+                        .map(ExCouponModel::new).collect(Collectors.toList());
         List<Integer> dummyList = new ArrayList<>();
         for(int i = 0; i < exCouponModelList.size(); i++) {
             dummyList.add(null);

@@ -20,6 +20,13 @@ public class BorrowedCouponDAO extends DAO<BorrowedCoupon> {
         String query = "FROM BorrowedCoupon";
         return getList(query);
     }
+
+    public List<BorrowedCoupon> getList(Integer employeeId) {
+        return sessionFactory.getCurrentSession()
+                .createQuery("FROM BorrowedCoupon AS BrCP WHERE BrCP.employee.employeeId = :employeeId")
+                .setParameter("employeeId", employeeId)
+                .list();
+    }
     @Override
     public boolean deleteById(BorrowedCoupon borrowedCoupon) {
         return false;

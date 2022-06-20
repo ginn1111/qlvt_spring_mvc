@@ -32,6 +32,17 @@ public class BorrowedCouponService {
         DeletedIdList deletedIdList = new DeletedIdList(dummyList);
         return Arrays.asList(brCouponModelList, deletedIdList);
     }
+    public List<Object> getBorrowedCouponListForEmp(Integer employeeId) {
+        List<BorrowedCouponModel> brCouponModelList =
+                borrowedCouponDAO.getList(employeeId).stream()
+                        .map(BorrowedCouponModel::new).collect(Collectors.toList());
+        List<Integer> dummyList = new ArrayList<>();
+        for(int i = 0; i < brCouponModelList.size(); i++) {
+            dummyList.add(null);
+        }
+        DeletedIdList deletedIdList = new DeletedIdList(dummyList);
+        return Arrays.asList(brCouponModelList, deletedIdList);
+    }
     public String addBorrowedCoupon(BorrowedCouponModel brCouponModel) {
         BorrowedCoupon brCoupon = new BorrowedCoupon();
 

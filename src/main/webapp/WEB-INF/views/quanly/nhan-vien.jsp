@@ -204,11 +204,11 @@
                                 </label>
                             </div>
                             <div class="form__item accounts-container">
-                                <ul class="list__account custom-scroll-bar">
+                                <ul class="list__account custom-scroll-bar" style="overflow-y: auto">
                                     <c:forEach items="${sessionScope.accountModelList}" var="account">
-                                        <li class="card card--hover account">
+                                        <li class="card card--hover account supplies supplies--des">
                                             <span>${account.email}</span>
-                                            <span>${account.roleId}</span>
+                                            <span>${accountMapRole.get(account.roleId).roleName.roleName}</span>
                                         </li>
                                     </c:forEach>
                                 </ul>

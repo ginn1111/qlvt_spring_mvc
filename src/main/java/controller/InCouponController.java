@@ -4,10 +4,7 @@ import model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import request_bean.DeletedIdList;
 import service.*;
 
@@ -36,10 +33,21 @@ public class InCouponController {
     CouponStatusService couponStatusService;
 
     @RequestMapping("phieu-nhap")
-    public String index(ModelMap model, HttpSession session) {
+    public String index(ModelMap model, HttpSession session,
+                        @RequestAttribute("role") RoleName role,
+                        @RequestAttribute("userInfo") EmployeeModel user
+    ) {
         session.setAttribute("couponType", "PHIEUNHAP");
 
-        List<Object> resultOfInCouponService = inCouponService.getInCouponModelList();
+        List<Object> resultOfInCouponService = null;
+
+
+        if(role.equals(RoleName.EMPLOYEE)) {
+            resultOfInCouponService = inCouponService.getInCouponListForEmp(user.getEmployeeId());
+        } else if(role.equals(RoleName.MANAGER)) {
+            resultOfInCouponService = inCouponService.getInCouponModelList();
+        }
+
         List<InCouponModel> inCouponModelList = (List<InCouponModel>) resultOfInCouponService.get(0);
         DeletedIdList deletedInCPIdList = (DeletedIdList) resultOfInCouponService.get(1);
 

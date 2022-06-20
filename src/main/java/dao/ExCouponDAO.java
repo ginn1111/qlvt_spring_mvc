@@ -1,8 +1,6 @@
 package dao;
 
-import entity.CouponStatus;
-import entity.DetailExCoupon;
-import entity.ExCoupon;
+import entity.*;
 import entity.Number;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -20,6 +18,12 @@ public class ExCouponDAO extends DAO<ExCoupon>{
                 .setParameter("m", Calendar.getInstance().get(Calendar.MONTH) + 1)
                 .setParameter("y", Calendar.getInstance().get(Calendar.YEAR)).list();
         return numbers.get(0).getNumber();
+    }
+    public List<ExCoupon> getList(Integer employeeId) {
+        return sessionFactory.getCurrentSession()
+                .createQuery("FROM ExCoupon AS ExCP WHERE ExCP.employee.employeeId = :employeeId")
+                .setParameter("employeeId", employeeId)
+                .list();
     }
     public List<ExCoupon> getList() {
         String query = "FROM ExCoupon";

@@ -4,19 +4,20 @@ import dao.EmployeeDAO;
 import entity.Employee;
 import model.AccountModel;
 import model.EmployeeModel;
+import model.RoleModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import request_bean.DeletedIdList;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
     @Autowired
     EmployeeDAO employeeDAO;
+    @Autowired
+    RoleService roleService;
     public List<Object> getEmployeeList() {
         List<EmployeeModel> employeeList = employeeDAO.getList().stream()
                 .map(EmployeeModel::new).collect(Collectors.toList());
@@ -76,14 +77,23 @@ public class EmployeeService {
         return "Sửa nhân viên thất bại!";
     }
 
-    public List<AccountModel> getAccountModelListOfEmployee(Integer employeeId) {
+    public List<Object> getAccountModelListOfEmployee(Integer employeeId) {
         Employee employee = new Employee();
         employee.setEmployeeId(employeeId);
-        return employeeDAO.findById(employee)
+        List<AccountModel> accountModelList = employeeDAO.findById(employee)
                 .getAccountList()
                 .stream()
                 .map(AccountModel::new)
                 .collect(Collectors.toList());
+
+        Map<Integer, RoleModel> map = new HashMap<>();
+
+        for (AccountModel accountModel :
+                accountModelList) {
+            map.put(accountModel.getRoleId(), roleService.findById(accountModel.getRoleId()));
+        }
+
+       return Arrays.asList(accountModelList, map);
     }
 
     public EmployeeModel getEmployee(Integer employeeId) {

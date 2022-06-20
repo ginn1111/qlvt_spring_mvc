@@ -17,17 +17,13 @@ public class AccountService {
 
     public String addNewAccount(AccountModel accountModel) {
         Account account = new Account();
-        Role role = new Role();
-        Employee employee = new Employee();
 
         account.setEmail(accountModel.getEmail());
         account.setPassword(MyUtils.passwordEncoder.encode(accountModel.getPassword()));
 
-        role.setRoleId(accountModel.getRoleId());
-        account.setRole(role);
+        account.setRole(new Role(accountModel.getRoleId()));
 
-        employee.setEmployeeId(accountModel.getEmployeeModel().getEmployeeId());
-        account.setEmployee(employee);
+        account.setEmployee(new Employee(accountModel.getEmployeeModel().getEmployeeId()));
 
         if(accountDAO.findById(account) != null) {
             return "Tài khoản đã tồn tại, vui lòng thử lại!";

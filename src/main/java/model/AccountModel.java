@@ -7,6 +7,7 @@ public class AccountModel {
     private String password;
     private EmployeeModel employeeModel;
     private Integer roleId;
+
     public String getEmail() {
         return email;
     }
@@ -26,6 +27,13 @@ public class AccountModel {
     public AccountModel() {
     }
 
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
     public AccountModel(Account account) {
        this.email = account.getEmail();
        this.password = account.getPassword();
@@ -41,20 +49,6 @@ public class AccountModel {
         this.employeeModel = employeeModel;
     }
 
-    public Integer getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
-
-    public AccountModel(String email, String password, EmployeeModel employeeModel, Integer roleId) {
-        this.email = email;
-        this.password = password;
-        this.employeeModel = employeeModel;
-        this.roleId = roleId;
-    }
 
     @Override
     public String toString() {

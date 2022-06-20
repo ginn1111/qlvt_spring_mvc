@@ -11,6 +11,7 @@ import request_bean.DeletedIdList;
 import service.*;
 import utils.MyUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -45,14 +46,22 @@ public class BorrowedCouponController {
     }
 
     @RequestMapping("phieu-muon")
-    public String index(ModelMap model, HttpSession httpSession) {
-        httpSession.setAttribute("couponType", "PHIEUMUON");
+    public String index(ModelMap model, HttpSession httpSession,
+            @RequestAttribute("role") RoleName role,
+            @RequestAttribute("userInfo") EmployeeModel user
+        ) {
+            httpSession.setAttribute("couponType", "PHIEUMUON");
 
-        List<Object> resultOfBrCouponService = borrowedCouponService.getBorrowedCouponList();
+        List<Object> resultOfBrCouponService = null;
+
+        if(role.equals(RoleName.EMPLOYEE)) {
+            resultOfBrCouponService = borrowedCouponService.getBorrowedCouponListForEmp(user.getEmployeeId());
+        } else if(role.equals(RoleName.MANAGER)) {
+             resultOfBrCouponService = borrowedCouponService.getBorrowedCouponList();
+        }
+
         List<BorrowedCouponModel> brCouponModelList = (List<BorrowedCouponModel>) resultOfBrCouponService.get(0);
         DeletedIdList deletedBrCPIdList = (DeletedIdList) resultOfBrCouponService.get(1);
-
-        System.out.println(brCouponModelList);
 
         model.addAttribute("brCouponModel", brCouponModel);
         model.addAttribute("brCouponModelList", brCouponModelList);
