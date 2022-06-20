@@ -2,6 +2,7 @@ package service;
 
 import dao.ExCouponDAO;
 import entity.*;
+import model.DetailExCouponModel;
 import model.ExCouponModel;
 import model.DetailExCouponModel;
 import model.ExCouponModel;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ExCouponService {
+public class ExCouponService implements Validation<ExCouponModel>{
     @Autowired
     ExCouponDAO exCouponDAO;
 
@@ -47,6 +48,10 @@ public class ExCouponService {
         return Arrays.asList(exCouponModelList, deletedIdList);
     }
     public String addExCoupon(ExCouponModel exCouponModel) {
+        String validStr = validate(exCouponModel);
+        if(validStr != null) {
+            return validStr;
+        }
         ExCoupon exCoupon = new ExCoupon();
 
         exCoupon.setDate(exCouponModel.getDate());
@@ -113,4 +118,15 @@ public class ExCouponService {
         return exCouponDAO.getNumOfCP();
     }
 
+    @Override
+    public String validate(ExCouponModel exCouponModel) {
+        boolean isLeastOne = false;
+        for (DetailExCouponModel detail :
+                exCouponModel.getDetailExCouponModelList()) {
+            if(!isLeastOne && detail.getSupplyModel().getSupplyId() != null) {
+                isLeastOne = true;
+            }
+        }
+        return isLeastOne ? null : "Phiếu phải có ít nhất một vật tư";
+    }
 }

@@ -132,14 +132,15 @@ public class InCouponService implements Validation<InCouponModel> {
 
     @Override
     public String validate(InCouponModel inCouponModel) {
-        if(inCouponModel.getDetailInCouponModelList().size() == 0) {
-            return "Phiếu phải có ít nhất một vật tư";
-        }
+        boolean isLeastOne = false;
         for (DetailInCouponModel detail: inCouponModel.getDetailInCouponModelList()) {
-           if(detail.getSupplyModel().getSupplyId() != null && detail.getPrice() == null) {
-               return "Không được để trống giá!";
+           if(detail.getSupplyModel().getSupplyId() != null) {
+               isLeastOne = true;
+               if(detail.getPrice() == null) {
+                   return "Không được để trống giá!";
+               }
            }
         }
-        return null;
+        return isLeastOne ? null : "Phiếu phải có ít nhất một vật tư";
     }
 }

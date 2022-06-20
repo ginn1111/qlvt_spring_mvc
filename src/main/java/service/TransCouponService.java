@@ -3,6 +3,7 @@ package service;
 import dao.TransCouponDAO;
 import dao.TransCouponDAO;
 import entity.*;
+import model.DetailBorrowedCouponModel;
 import model.TransCouponModel;
 import model.TransCouponModel;
 import model.DetailTransCouponModel;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class TransCouponService {
+public class TransCouponService implements Validation<TransCouponModel>{
 
     @Autowired
     TransCouponDAO transCouponDAO;
@@ -49,6 +50,10 @@ public class TransCouponService {
         return Arrays.asList(trCouponModelList, deletedIdList);
     }
     public String addTransCoupon(TransCouponModel trCouponModel) {
+        String validStr = validate(trCouponModel);
+        if(validStr != null) {
+            return validStr;
+        }
         TransCoupon trCoupon = new TransCoupon();
 
         trCoupon.setCpStatus(new CouponStatus(7));
@@ -112,4 +117,15 @@ public class TransCouponService {
         return transCouponDAO.getNumOfCP();
     }
 
+    @Override
+    public String validate(TransCouponModel transCouponModel) {
+        boolean isLeastOne = false;
+        for (DetailTransCouponModel detail :
+                transCouponModel.getDetailTransCouponModelList()) {
+            if(!isLeastOne && detail.getSupplyModel().getSupplyId() != null) {
+                isLeastOne = true;
+            }
+        }
+        return isLeastOne ? null : "Phiếu phải có ít nhất một vật tư";
+    }
 }

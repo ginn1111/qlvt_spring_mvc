@@ -5,6 +5,8 @@ import entity.*;
 import entity.Number;
 import model.BorrowedCouponModel;
 import model.DetailBorrowedCouponModel;
+import model.DetailExCouponModel;
+import model.InCouponModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import request_bean.DeletedIdList;
@@ -14,7 +16,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class BorrowedCouponService {
+public class BorrowedCouponService implements Validation<BorrowedCouponModel> {
     @Autowired
     BorrowedCouponDAO borrowedCouponDAO;
 
@@ -44,6 +46,11 @@ public class BorrowedCouponService {
         return Arrays.asList(brCouponModelList, deletedIdList);
     }
     public String addBorrowedCoupon(BorrowedCouponModel brCouponModel) {
+        String validStr = validate(brCouponModel);
+        if(validStr != null) {
+            return validStr;
+        }
+
         BorrowedCoupon brCoupon = new BorrowedCoupon();
 
         brCoupon.setCpStatus(new CouponStatus(7));
@@ -115,5 +122,17 @@ public class BorrowedCouponService {
     }
     public Integer getNumberOfCPInMonth() {
         return borrowedCouponDAO.getNumOfCP();
+    }
+
+    @Override
+    public String validate(BorrowedCouponModel borrowedCouponModel) {
+        boolean isLeastOne = false;
+        for (DetailBorrowedCouponModel detail :
+                borrowedCouponModel.getDetailBorrowedCouponModelList()) {
+            if(!isLeastOne && detail.getSupplyModel().getSupplyId() != null) {
+                isLeastOne = true;
+            }
+        }
+        return isLeastOne ? null : "Phiếu phải có ít nhất một vật tư";
     }
 }

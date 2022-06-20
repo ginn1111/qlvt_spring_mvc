@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class PayedCouponService {
+public class PayedCouponService implements Validation<PayedCouponModel>{
     @Autowired
     PayedCouponDAO payedCouponDAO;
 
@@ -48,6 +48,10 @@ public class PayedCouponService {
         return Arrays.asList(pyCouponModelList, deletedIdList);
     }
     public String addPayedCoupon(PayedCouponModel pyCouponModel) {
+        String validStr = validate(pyCouponModel);
+        if(validStr != null) {
+            return validStr;
+        }
         PayedCoupon pyCoupon = new PayedCoupon();
 
         pyCoupon.setCpStatus(new CouponStatus(7));
@@ -113,4 +117,15 @@ public class PayedCouponService {
         return payedCouponDAO.getNumOfCP();
     }
 
+    @Override
+    public String validate(PayedCouponModel payedCouponModel) {
+        boolean isLeastOne = false;
+        for (DetailPayedCouponModel detail :
+                payedCouponModel.getDetailPayedCouponModelList()) {
+            if(!isLeastOne && detail.getSupplyModel().getSupplyId() != null) {
+                isLeastOne = true;
+            }
+        }
+        return isLeastOne ? null : "Phiếu phải có ít nhất một vật tư";
+    }
 }

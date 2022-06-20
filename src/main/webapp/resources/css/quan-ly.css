@@ -20,11 +20,29 @@
     justify-content: space-between;
     align-items: center;
 }
+.header__title.header__title--coupon,
 .header__title {
-    width: 100%;
+    color: black;
     font-size: 18px;
+    width: 50%;
     text-transform: uppercase;
     font-weight: 600;
+}
+.header__title.header__title--coupon {
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    transition: color 200ms, border-bottom-color 200ms;
+    width: unset;
+    padding-block: 8px;
+    padding-inline: 12px;
+}
+.header__title--coupon.hovered,
+.header__title--coupon:hover {
+    color: var(--primary);
+}
+.header__title.hovered {
+    border-bottom: 3px solid var(--primary);
 }
 .header__controller {
     display: flex;

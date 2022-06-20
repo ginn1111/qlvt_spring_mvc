@@ -23,13 +23,13 @@
             <section class="manage__container">
 
                 <%--COUPONS --%>
-                <div id="incoupons" class="card manage">
+                <div id="coupons" class="card manage">
                     <div class="manage__header">
-                        <a class="header__title" href="phieu/phieu-nhap.htm">Phiếu nhập</a>
-                        <a class="header__title" href="phieu/phieu-xuat.htm">Phiếu xuất</a>
-                        <a class="header__title" href="phieu/phieu-muon.htm">Phiếu mượn</a>
-                        <a class="header__title" href="phieu/phieu-tra.htm">Phiếu trả</a>
-                        <a class="header__title" href="phieu/phieu-chuyen-kho.htm">Phiếu chuyển kho</a>
+                        <a class="header__title header__title--coupon hovered" data-uri="phieu-nhap" href="phieu/phieu-nhap.htm">Phiếu nhập</a>
+                        <a class="header__title header__title--coupon" data-uri="phieu-xuat" href="phieu/phieu-xuat.htm">Phiếu xuất</a>
+                        <a class="header__title header__title--coupon" data-uri="phieu-muon" href="phieu/phieu-muon.htm">Phiếu mượn</a>
+                        <a class="header__title header__title--coupon" data-uri="phieu-tra" href="phieu/phieu-tra.htm">Phiếu trả</a>
+                        <a class="header__title header__title--coupon" data-uri="phieu-chuyen-kho" href="phieu/phieu-chuyen-kho.htm">Phiếu chuyển kho</a>
                         <div class="header__controller">
                             <c:choose>
                                 <c:when test="${couponType == 'PHIEUNHAP'}">
