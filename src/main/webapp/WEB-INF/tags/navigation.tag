@@ -112,10 +112,4 @@
             </a>
         </li>
     </c:if>
-    <li>
-        <a class="list__item" data-uri="sign-out" href="${pageContext.request.contextPath}/logout"> <span
-            class="icon"> <ion-icon name="log-out-outline"></ion-icon>
-            </span> <span class="title">Đăng xuất</span>
-        </a>
-    </li>
 </ul>

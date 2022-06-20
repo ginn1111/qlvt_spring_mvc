@@ -4,14 +4,18 @@ $(function() {
     const splitHref = windowHref.split('/');
     const suffix = splitHref[splitHref.length - 1].split('.')[0];
 
-   let hoveredItem;
+    if(couponHeaders) {
+        let hoveredItem;
 
-    for(let i of couponHeaders) {
-        i.classList.remove('hovered');
-        if(i.dataset.uri === suffix) {
-            hoveredItem = i;
+        for(let i of couponHeaders) {
+            i.classList.remove('hovered');
+            if(i.dataset.uri === suffix) {
+                hoveredItem = i;
+            }
+        }
+
+        if(hoveredItem) {
+            hoveredItem.classList.add('hovered');
         }
     }
-
-    hoveredItem.classList.add('hovered');
 })
