@@ -13,14 +13,13 @@ import java.util.Date;
 @Table(name = "PHIEUNHAP")
 @NamedNativeQueries({
         @NamedNativeQuery(
-                name="getTopVatTuNhapTrongThang",
-                query="exec sp_getTopVatTuNhapTrongThang :num, :m, :y",
-                resultClass = InCoupon.class
-
-        ),
-        @NamedNativeQuery(
                 name="soLuongPhieuNhapTrongThang",
                 query="exec sp_SoLuongPhieuNhapTrongThang :m, :y",
+                resultClass = Number.class
+
+        ), @NamedNativeQuery(
+                name="soLuongPhieuNhapTrongThangNhanVien",
+                query="exec sp_SoLuongPhieuNhapTrongThangNhanVien :m, :y, :id",
                 resultClass = Number.class
 
         )

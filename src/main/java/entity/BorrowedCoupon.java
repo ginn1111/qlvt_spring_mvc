@@ -12,12 +12,18 @@ import java.util.Date;
             name="soLuongPhieuMuonTrongThang",
             query="exec sp_SoLuongPhieuMuonTrongThang :m, :y",
             resultClass = Number.class
-        ), @NamedNativeQuery(
+        ),
+        @NamedNativeQuery(
             name = "topPhieuMuonToiHanTrongThang",
             query="exec sp_TopPhieuMuonToiHanTrongThang :num,:m,:y",
             resultClass = BorrowedCoupon.class
-)
-} )
+        ),
+        @NamedNativeQuery(
+                name="soLuongPhieuMuonTrongThangNhanVien",
+                query="exec sp_SoLuongPhieuMuonTrongThangNhanVien :m, :y, :id",
+                resultClass = Number.class
+        ),
+})
 public class BorrowedCoupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,17 +58,6 @@ public class BorrowedCoupon {
 
     @Column(name = "GHICHU")
     private String note;
-
-//    @OneToMany(mappedBy = "borrowedCoupon", fetch = FetchType.EAGER)
-//    Collection<DetailBorrowedCoupon> detailBorrowedCouponList;
-//
-//    public Collection<DetailBorrowedCoupon> getDetailBorrowedCouponList() {
-//        return detailBorrowedCouponList;
-//    }
-//
-//    public void setDetailBorrowedCouponList(Collection<DetailBorrowedCoupon> detailBorrowedCouponList) {
-//        this.detailBorrowedCouponList = detailBorrowedCouponList;
-//    }
 
 
     public Integer getBrCpId() {

@@ -9,7 +9,7 @@
         <tg:nhanvien-nav />
     </nav>
     <div class="main active">
-        <!-- Tool bar -->
+        <!-- Toolbar -->
 
         <section class="topbar">
             <tg:topbar />
@@ -19,10 +19,11 @@
         <div class="main__content">
             <div class="dash-board">
                 <div class="card tickets">
+                    <h5 class="tickets__title">Số lượng các loại phiếu được lập trong tháng</h5>
                     <div class="overall">
-                        <div class="card--hover card detail">
+                        <a href="phieu/phieu-nhap.htm" class="card--hover card detail">
                             <h3 class="detail__number">
-                                ${numberOfInCP}
+                                ${numOfInCPInMonth}
                             </h3>
                             <div class="detail__des">
                                 <div class="detail__icon">
@@ -30,10 +31,10 @@
                                 </div>
                                 <span>Phiếu nhập</span>
                             </div>
-                        </div>
-                        <div class="card--hover card detail">
+                        </a>
+                        <a href="phieu/phieu-xuat.htm" class="card--hover card detail">
                             <h3 class="detail__number">
-                                ${numberOfExCP}
+                                ${numOfExCPInMonth}
                             </h3>
                             <div class="detail__des">
                                 <div class="detail__icon">
@@ -41,10 +42,10 @@
                                 </div>
                                 <span>Phiếu xuất</span>
                             </div>
-                        </div>
-                        <div class="card--hover card detail">
+                        </a>
+                        <a href="phieu/phieu-muon.htm" class="card--hover card detail">
                             <h3 class="detail__number">
-                                ${numberOfBorrowedCP}
+                                ${numOfBrCPInMonth}
                             </h3>
                             <div class="detail__des">
                                 <div class="detail__icon">
@@ -52,10 +53,10 @@
                                 </div>
                                 <span>Phiếu mượn</span>
                             </div>
-                        </div>
-                        <div class="card--hover card detail">
+                        </a>
+                        <a href="phieu/phieu-tra.htm" class="card--hover card detail">
                             <h3 class="detail__number">
-                                ${numberOfPayedCP}
+                                ${numOfPyCPInMonth}
                             </h3>
                             <div class="detail__des">
                                 <div class="detail__icon">
@@ -63,10 +64,10 @@
                                 </div>
                                 <span>Phiếu trả</span>
                             </div>
-                        </div>
-                        <div class="card--hover card detail">
+                        </a>
+                        <a href="phieu/phieu-chuyen-kho.htm" class="card--hover card detail">
                             <h3 class="detail__number">
-                                ${numberOfTransCP}
+                                ${numOfTrCPInMonth}
                             </h3>
                             <div class="detail__des">
                                 <div class="detail__icon">
@@ -74,38 +75,19 @@
                                 </div>
                                 <span>Phiếu xuất kho</span>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="info-container">
-                        <div class="chart-container">
-                            <canvas id="my-chart" style="max-height: 80vh; width: 100%"></canvas>
+                        <div style="display: flex; flex-flow: column nowrap; width: 60%">
+                            <div class="chart-container chart-container__in-port">
+                                <%@ include file="/WEB-INF/views/common/chart-in-port.jsp" %>
+                            </div>
+                            <div class="chart-container chart-container__ex-port">
+                                <%@ include file="/WEB-INF/views/common/chart-ex-port.jsp" %>
+                            </div>
                         </div>
                         <div class="borrowed-tickets">
-                            <div class="card--hover card ticket" style="--i:200ms">
-                                <span>PM001</span>
-                                <span>Nguyễn Văn A</span>
-                                <span>20/06/2022</span>
-                            </div>
-                            <div class="card--hover card ticket" style="--i:400ms">
-                                <span>PM001</span>
-                                <span>Nguyễn Văn A</span>
-                                <span>20/06/2022</span>
-                            </div>
-                            <div class="card--hover card ticket" style="--i: 600ms">
-                                <span>PM001</span>
-                                <span>Nguyễn Văn A</span>
-                                <span>20/06/2022</span>
-                            </div>
-                            <div class="card--hover card ticket" style="--i: 800ms">
-                                <span>PM001</span>
-                                <span>Nguyễn Văn A</span>
-                                <span>20/06/2022</span>
-                            </div>
-                            <div class="card--hover card ticket" style="--i: 1000ms">
-                                <span>PM001</span>
-                                <span>Nguyễn Văn A</span>
-                                <span>20/06/2022</span>
-                            </div>
+                            <%@ include file="/WEB-INF/views/common/top-10-phieu-muon-toi-han.jsp" %>
                         </div>
                     </div>
                 </div>

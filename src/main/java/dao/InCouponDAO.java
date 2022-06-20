@@ -17,6 +17,17 @@ public class InCouponDAO extends DAO<InCoupon> {
         String query = "FROM InCoupon";
         return super.getList(query);
     }
+
+    public Integer getNumberCouponOfEmpInMonth(Integer employeeId) {
+        List<Number> numbers = sessionFactory.getCurrentSession()
+                .getNamedQuery("soLuongPhieuNhapTrongThangNhanVien")
+                .setParameter("m", Calendar.getInstance().get(Calendar.MONTH) + 1)
+                .setParameter("y", Calendar.getInstance().get(Calendar.YEAR))
+                .setParameter("id", employeeId)
+                .list();
+
+        return numbers.get(0).getNumber();
+    }
     public List<InCoupon> getList(Integer employeeId) {
         return sessionFactory.getCurrentSession()
                 .createQuery("FROM InCoupon AS InCP WHERE InCP.employee.employeeId = :employeeId")

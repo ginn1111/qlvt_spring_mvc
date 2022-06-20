@@ -12,6 +12,17 @@ import java.util.List;
 
 @Repository
 public class ExCouponDAO extends DAO<ExCoupon>{
+
+    public Integer getNumberCouponOfEmpInMonth(Integer employeeId) {
+        List<Number> numbers = sessionFactory.getCurrentSession()
+                .getNamedQuery("soLuongPhieuXuatTrongThangNhanVien")
+                .setParameter("m", Calendar.getInstance().get(Calendar.MONTH) + 1)
+                .setParameter("y", Calendar.getInstance().get(Calendar.YEAR))
+                .setParameter("id", employeeId)
+                .list();
+
+        return numbers.get(0).getNumber();
+    }
     public Integer getNumOfCP() {
         List<Number> numbers = super.sessionFactory.getCurrentSession()
                 .getNamedQuery("soLuongPhieuXuatTrongThang")

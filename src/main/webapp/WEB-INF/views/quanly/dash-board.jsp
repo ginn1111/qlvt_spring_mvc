@@ -9,7 +9,7 @@
         <tg:quanly-nav />
     </nav>
     <div class="main active">
-        <!-- Tool bar -->
+        <!-- Toolbar -->
 
         <section class="topbar">
             <tg:topbar />
@@ -78,32 +78,20 @@
                             </a>
                     </div>
                     <div class="info-container">
-                        <div class="chart-container">
-                            <canvas id="my-chart" style="max-height: 80vh; width: 100%"></canvas>
+                        <div style="display: flex; flex-flow: column nowrap; width: 60%">
+                            <div class="chart-container chart-container__in-port">
+                                <%@ include file="/WEB-INF/views/common/chart-in-port.jsp" %>
+                            </div>
+                            <div class="chart-container chart-container__ex-port">
+                                <%@ include file="/WEB-INF/views/common/chart-ex-port.jsp" %>
+                            </div>
                         </div>
                         <div class="borrowed-tickets">
-                            <c:if test="${top5BrCouponMaturityInMonth.size() == 0}">
-                               <h4>Các phiếu mượn đã được trả!</h4>
-                            </c:if>
-                            <c:if test="${top5BrCouponMaturityInMonth.size() != 0}">
-                                <span>Top 5 các phiếu mượn gần tới hạn</span>
-                                <c:forEach items="${top5BrCouponMaturityInMonth}" var="maturityBrCP">
-                                    <div class="card--hover card ticket" style="--i:200ms">
-                                        <span>${maturityBrCP.couponId}</span>
-                                        <span>Công nhân: ${maturityBrCP.employeeModel.name}</span>
-                                        <span>Ngày trả: <fmt:formatDate value="${maturityBrCP.payedDate}" pattern="dd-MM-yyyy"/></span>
-                                    </div>
-                                </c:forEach>
-                            </c:if>
+                            <%@ include file="/WEB-INF/views/common/top-10-phieu-muon-toi-han.jsp" %>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- FROM -->
-        <div class="backdrop">
-            <dialog class="modal">
-            </dialog>
         </div>
     </div>
 </div>

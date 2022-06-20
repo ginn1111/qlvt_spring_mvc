@@ -116,6 +116,9 @@ public class TransCouponService implements Validation<TransCouponModel>{
     public Integer getNumberOfCPInMonth() {
         return transCouponDAO.getNumOfCP();
     }
+    public Integer getNumberOfCPOfEmpInMonth(Integer employeeId) {
+        return transCouponDAO.getNumberCouponOfEmpInMonth(employeeId);
+    }
 
     @Override
     public String validate(TransCouponModel transCouponModel) {

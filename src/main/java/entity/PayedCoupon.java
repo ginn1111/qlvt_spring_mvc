@@ -6,14 +6,20 @@ import java.util.Date;
 
 @Entity
 @Table(name = "PHIEUTRA")
-@NamedNativeQueries(
+@NamedNativeQueries({
         @NamedNativeQuery(
-                name="soLuongPhieuTraTrongThang",
-                query="exec sp_SoLuongPhieuTraTrongThang :m, :y",
+                name = "soLuongPhieuTraTrongThang",
+                query = "exec sp_SoLuongPhieuTraTrongThang :m, :y",
+                resultClass = Number.class
+
+        ),
+        @NamedNativeQuery(
+                name = "soLuongPhieuTraTrongThangNhanVien",
+                query = "exec sp_SoLuongPhieuTraTrongThangNhanVien :m, :y, :id",
                 resultClass = Number.class
 
         )
-)
+})
 public class PayedCoupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

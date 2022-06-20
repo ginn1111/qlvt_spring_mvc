@@ -23,6 +23,7 @@
 		<intercept-url pattern="/vat-tu**" access="hasAnyRole('ROLE_NHANVIEN', 'ROLE_QUANLY')" />
 		<intercept-url pattern="/cong-nhan**" access="hasAnyRole('ROLE_NHANVIEN', 'ROLE_QUANLY')" />
 		<intercept-url pattern="/nha-cung-cap**" access="hasAnyRole('ROLE_NHANVIEN', 'ROLE_QUANLY')" />
+		<intercept-url pattern="/thong-tin-ca-nhan**" access="hasAnyRole('ROLE_NHANVIEN', 'ROLE_QUANLY')" />
         <access-denied-handler error-page="/403" />
         
 

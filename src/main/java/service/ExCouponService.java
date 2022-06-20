@@ -2,8 +2,7 @@ package service;
 
 import dao.ExCouponDAO;
 import entity.*;
-import model.DetailExCouponModel;
-import model.ExCouponModel;
+import model.*;
 import model.DetailExCouponModel;
 import model.ExCouponModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,6 +117,9 @@ public class ExCouponService implements Validation<ExCouponModel>{
         return exCouponDAO.getNumOfCP();
     }
 
+    public Integer getNumberOfCPOfEmpInMonth(Integer employeeId) {
+        return exCouponDAO.getNumberCouponOfEmpInMonth(employeeId);
+    }
     @Override
     public String validate(ExCouponModel exCouponModel) {
         boolean isLeastOne = false;

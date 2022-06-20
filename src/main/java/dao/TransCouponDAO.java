@@ -23,6 +23,15 @@ public class TransCouponDAO extends DAO<TransCoupon> {
                 .setParameter("employeeId", employeeId)
                 .list();
     }
+    public Integer getNumberCouponOfEmpInMonth(Integer employeeId) {
+        List<Number> numbers = super.sessionFactory.getCurrentSession()
+                .getNamedQuery("soLuongPhieuChuyenKhoTrongThangNhanVien")
+                .setParameter("m", Calendar.getInstance().get(Calendar.MONTH) + 1)
+                .setParameter("y", Calendar.getInstance().get(Calendar.YEAR))
+                .setParameter("id", employeeId)
+                .list();
+        return numbers.get(0).getNumber();
+    }
     public Integer getNumOfCP() {
         List<Number> numbers = super.sessionFactory.getCurrentSession()
                 .getNamedQuery("soLuongPhieuChuyenKhoTrongThang")

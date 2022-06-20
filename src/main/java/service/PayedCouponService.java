@@ -118,10 +118,12 @@ public class PayedCouponService implements Validation<PayedCouponModel>{
     public Integer getNumberOfCPInMonth() {
         return payedCouponDAO.getNumOfCP();
     }
+    public Integer getNumberOfCPOfEmpInMonth(Integer employeeId) {
+        return payedCouponDAO.getNumberCouponOfEmpInMonth(employeeId);
+    }
 
     @Override
     public String validate(PayedCouponModel payedCouponModel) {
-//        BorrowedCouponModel borrowedCouponModel = borrowedCouponService.findBorrowedCouponId(payedCouponModel.getBorrowedCouponModel().getCouponId());
         boolean isLeastOne = false;
         for (DetailPayedCouponModel detail :
                 payedCouponModel.getDetailPayedCouponModelList()) {

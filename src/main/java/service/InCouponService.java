@@ -130,6 +130,10 @@ public class InCouponService implements Validation<InCouponModel> {
         return inCouponDAO.getNumOfCP();
     }
 
+    public Integer getNumberOfCPOfEmpInMonth(Integer employeeId) {
+        return inCouponDAO.getNumberCouponOfEmpInMonth(employeeId);
+    }
+
     @Override
     public String validate(InCouponModel inCouponModel) {
         boolean isLeastOne = false;

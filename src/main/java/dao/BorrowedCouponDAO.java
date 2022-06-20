@@ -28,18 +28,10 @@ public class BorrowedCouponDAO extends DAO<BorrowedCoupon> {
         return getList(query);
     }
 
-    public List<BorrowedCoupon> getTop5BrCouponMaturityInMonth() {
-        System.out.println(
-                sessionFactory.getCurrentSession()
-                        .getNamedQuery("topPhieuMuonToiHanTrongThang")
-                        .setParameter("num", 5)
-                        .setParameter("m", 6)
-                        .setParameter("y", 2022)
-                        .list()
-        );
+    public List<BorrowedCoupon> getTopBrCouponMaturityInMonth(Integer top) {
         return sessionFactory.getCurrentSession()
                 .getNamedQuery("topPhieuMuonToiHanTrongThang")
-                .setParameter("num", 5)
+                .setParameter("num", top)
                 .setParameter("m", Calendar.getInstance().get(Calendar.MONTH) + 1)
                 .setParameter("y", Calendar.getInstance().get(Calendar.YEAR))
                 .list();
@@ -113,6 +105,15 @@ public class BorrowedCouponDAO extends DAO<BorrowedCoupon> {
             session.close();
         }
         return res;
+    }
+    public Integer getNumberCouponOfEmpInMonth(Integer employeeId) {
+        List<Number> numbers = super.sessionFactory.getCurrentSession()
+                .getNamedQuery("soLuongPhieuMuonTrongThangNhanVien")
+                .setParameter("m", Calendar.getInstance().get(Calendar.MONTH) + 1)
+                .setParameter("y", Calendar.getInstance().get(Calendar.YEAR))
+                .setParameter("id", employeeId)
+                .list();
+        return numbers.get(0).getNumber();
     }
     public Integer getNumOfCP() {
          List<Number> numbers = super.sessionFactory.getCurrentSession()

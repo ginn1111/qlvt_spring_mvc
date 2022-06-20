@@ -7,6 +7,7 @@
 <script src="<c:url value="resources/js/topbar.js"/>"></script>
 <script src="<c:url value="resources/js/sign-in.js"/>"></script>
 <script src="<c:url value="resources/js/chart-nhap-vt.js"/>"></script>
+<script src="<c:url value="resources/js/chart-xuat-vt.js"/>"></script>
 <script src="<c:url value="resources/js/search-box.js"/>"></script>
 <script src="<c:url value="resources/js/quan-ly.js"/>"></script>
 <script src="<c:url value="resources/js/highlight-phieu-header.js"/>"></script>

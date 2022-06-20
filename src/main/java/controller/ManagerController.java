@@ -1,5 +1,8 @@
 package controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import model.EmployeeModel;
 import model.AccountModel;
 import model.RoleModel;
@@ -15,6 +18,7 @@ import utils.MyUtils;
 
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.List;
 
@@ -45,15 +49,35 @@ public class ManagerController {
     @Autowired
     AccountService accountService;
 
+    @Autowired
+    StatisticSupplyService statisticSupplyService;
+
     @InitBinder
     public void customizeBinding (WebDataBinder binder) {
         MyUtils.DF_DATE.setLenient(false);
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(MyUtils.DF_DATE, false));
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(MyUtils.DF_DATE, true));
     }
     @RequestMapping("index")
     public String index(ModelMap model) {
 
-        model.addAttribute("top5BrCouponMaturityInMonth", borrowedCouponService.getTop5BrCouponModelMaturityInMonth());
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        String jsonInPort = null, jsonExPort = null;
+        try {
+            jsonInPort = new String(
+                    ow.writeValueAsBytes(statisticSupplyService.getTop10InPortSupplyInMonth()),
+                    StandardCharsets.UTF_8
+            );
+            jsonExPort = new String(
+                    ow.writeValueAsBytes(statisticSupplyService.getTop10ExPortSupplyInMonth()),
+                    StandardCharsets.UTF_8
+            );
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
+        model.addAttribute("jsonInPort",jsonInPort);
+        model.addAttribute("jsonExPort",jsonExPort);
+        model.addAttribute("top10BrCouponMaturityInMonth", borrowedCouponService.getTopBrCouponModelMaturityInMonth(10));
         model.addAttribute("numberOfInCP", inCouponService.getNumberOfCPInMonth());
         model.addAttribute("numberOfExCP", exCouponService.getNumberOfCPInMonth());
         model.addAttribute("numberOfBorrowedCP", borrowedCouponService.getNumberOfCPInMonth());

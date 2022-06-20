@@ -65,7 +65,8 @@
     margin-top: 24px;
 }
 .dash-board .chart-container {
-    width: 60%;
+    height: 80vh;
+    width: 100%;
 }
 .borrowed-tickets {
     position: relative;

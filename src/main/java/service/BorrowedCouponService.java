@@ -124,9 +124,12 @@ public class BorrowedCouponService implements Validation<BorrowedCouponModel> {
     public Integer getNumberOfCPInMonth() {
         return borrowedCouponDAO.getNumOfCP();
     }
+    public Integer getNumberOfCPOfEmpInMonth(Integer employeeId) {
+        return borrowedCouponDAO.getNumberCouponOfEmpInMonth(employeeId);
+    }
 
-    public List<BorrowedCouponModel> getTop5BrCouponModelMaturityInMonth() {
-        return borrowedCouponDAO.getTop5BrCouponMaturityInMonth()
+    public List<BorrowedCouponModel> getTopBrCouponModelMaturityInMonth(Integer top) {
+        return borrowedCouponDAO.getTopBrCouponMaturityInMonth(top)
                 .stream().map(BorrowedCouponModel::new).collect(Collectors.toList());
     }
 

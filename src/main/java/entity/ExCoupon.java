@@ -9,18 +9,18 @@ import java.util.Date;
 @Table(name = "PHIEUXUAT")
 @NamedNativeQueries({
         @NamedNativeQuery(
-                name="getTopVatTuXuatTrongThang",
-                query="exec sp_getTopVatTuXuatTrongThang :num, :m, :y",
-                resultClass = ExCoupon.class
-
-        ),
-        @NamedNativeQuery(
                 name="soLuongPhieuXuatTrongThang",
                 query="exec sp_SoLuongPhieuXuatTrongThang :m, :y",
                 resultClass = Number.class
 
-        )}
-)
+        ),
+        @NamedNativeQuery(
+                name="soLuongPhieuXuatTrongThangNhanVien",
+                query="exec sp_SoLuongPhieuXuatTrongThangNhanVien :m, :y, :id",
+                resultClass = Number.class
+
+        )
+} )
 public class ExCoupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
