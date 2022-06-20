@@ -58,13 +58,22 @@ main.sign-in {
     box-shadow: 2px 2px 25px 5px rgb(0 0 0 /0.1);
 }
 
+.topbar h5,
 .container__sign-in .title {
     font-weight: 400;
-    background: -webkit-linear-gradient(45deg, var(--primary), lightblue);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     letter-spacing: 1px;
     margin-bottom: 28px;
+}
+.container__sign-in .title {
+    background: -webkit-linear-gradient(45deg, var(--primary), lightblue);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+.topbar h5 {
+    margin: 0;
+    background: -webkit-linear-gradient(45deg, var(--primary), black);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
 .container__sign-in .title + span > a {
@@ -84,7 +93,7 @@ main.sign-in {
     cursor: pointer;
     transition: filter 200ms linear;
     user-select: none;
-    margin-top: 32px;
+    margin-block: 32px;
 }
 
 .btn--sign-in:hover {
@@ -124,4 +133,16 @@ main.sign-in {
 
 .toggle-password.show {
     display: block;
+}
+
+@media (max-width: 1020px) {
+    .container__sign-in {
+        width: 50%;
+    }
+}
+
+@media (max-width: 769px) {
+    .container__sign-in {
+        width: 50vh;
+    }
 }

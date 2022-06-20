@@ -6,14 +6,12 @@ import model.WorkerModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import request_bean.DeletedIdList;
 import service.CategoryService;
 import service.SupplyService;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -25,6 +23,7 @@ public class SupplyController {
     private static SupplyModel supplyModel = new SupplyModel();
     private static String link;
     private static String btnTitle;
+    private static boolean isSearch = false;
 
     @Autowired
     SupplyService supplyService;
@@ -32,9 +31,17 @@ public class SupplyController {
     CategoryService categoryService;
 
     @RequestMapping("vat-tu")
-    public String supply(ModelMap model) {
+    public String supply(ModelMap model, HttpSession session) {
 
-        List<Object> resultSupplyService = supplyService.getSupplyList();
+        List<Object> resultSupplyService = null;
+
+        if(isSearch) {
+             resultSupplyService = supplyService.searchSupply((String) session.getAttribute("key"));
+             isSearch = false;
+        } else {
+            resultSupplyService = supplyService.getSupplyList();
+        }
+
         List<SupplyModel> supplyModelList = (List<SupplyModel>)resultSupplyService.get(0);
         DeletedIdList deletedIdList = (DeletedIdList) resultSupplyService.get(1);
 
@@ -81,6 +88,15 @@ public class SupplyController {
     @RequestMapping(value="vat-tu", params = "delete", method = RequestMethod.POST)
     public String deleteSupply(@ModelAttribute("deletedIdSupplyList") DeletedIdList deletedIdList) {
         message = supplyService.deleteSupply(deletedIdList);
+        return "redirect:/vat-tu.htm";
+    }
+
+    @RequestMapping(value = "vat-tu", params = "search")
+    public String search(@RequestParam("data") String data, HttpSession session) {
+        if(data.trim().length() != 0) {
+            session.setAttribute("key", data);
+            isSearch = true;
+        }
         return "redirect:/vat-tu.htm";
     }
 

@@ -58,5 +58,4 @@ public abstract class DAO<T> {
     public abstract boolean deleteByListId(List<T> list);
 
     public abstract T findById(T t);
-
 }

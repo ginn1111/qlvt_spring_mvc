@@ -20,6 +20,16 @@ public class CategoryService {
     @Autowired
     CategoryDAO categoryDAO;
 
+    public List<Object> searchCategory(String key) {
+        List<CategoryModel> categoryModelList = categoryDAO.search(key).stream()
+                .map(CategoryModel::new).collect(Collectors.toList());
+        List<Integer> dummyList = new ArrayList<Integer>();
+        for(int i = 0; i < categoryModelList.size(); i++) {
+            dummyList.add(null);
+        }
+        DeletedIdList deletedIdList = new DeletedIdList(dummyList);
+        return Arrays.asList(categoryModelList, deletedIdList);
+    }
     public List<Object> getCategoryList() {
         List<CategoryModel> categoryModelList = categoryDAO.getList().stream()
                 .map(CategoryModel::new).collect(Collectors.toList());

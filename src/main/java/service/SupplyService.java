@@ -21,6 +21,18 @@ public class SupplyService {
     @Autowired
     SupplyDAO supplyDAO;
 
+    public List<Object> searchSupply(String key) {
+        List<SupplyModel> supplyModelList = supplyDAO.search(key).stream()
+                        .map(SupplyModel::new)
+                        .collect(Collectors.toList());
+
+        List<Integer> dummyList = new ArrayList<>();
+        for(int i = 0; i < supplyModelList.size(); i++) {
+            dummyList.add(null);
+        }
+        DeletedIdList deletedSupplyIdList = new DeletedIdList(dummyList);
+        return Arrays.asList(supplyModelList, deletedSupplyIdList);
+    }
     public List<Object> getSupplyList() {
         List<SupplyModel> supplyModelList = supplyDAO.getList().stream()
                 .map(SupplyModel::new).collect(Collectors.toList());

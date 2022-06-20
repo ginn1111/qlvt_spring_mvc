@@ -19,6 +19,17 @@ import java.util.stream.Collectors;
 public class SectorService {
     @Autowired
     SectorDAO sectorDAO;
+
+    public List<Object> searchSector(String key) {
+        List<SectorModel> sectorModelList = sectorDAO.search(key).stream()
+                .map(SectorModel::new).collect(Collectors.toList());
+        List<Integer> dummyList = new ArrayList<Integer>();
+        for(int i = 0; i < sectorModelList.size(); i++) {
+            dummyList.add(null);
+        }
+        DeletedIdList deletedIdList = new DeletedIdList(dummyList);
+        return Arrays.asList(sectorModelList, deletedIdList);
+    }
     public List<Object> getSectorList() {
         List<SectorModel> sectorModelList = sectorDAO.getList().stream()
                 .map(SectorModel::new).collect(Collectors.toList());

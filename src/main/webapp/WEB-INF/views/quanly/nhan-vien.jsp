@@ -22,7 +22,7 @@
                     <div class="manage__header">
                         <h5 class="header__title">Nhân viên</h5>
                         <form
-                                action="manager/manage/employees/search.htm"
+                                action="quanly/nhan-vien.htm?search"
                                 method="POST"
                                 class="search-box">
                             <ion-icon
@@ -33,7 +33,7 @@
                                     required="required"
                                     name="data"
                                     type="search"
-                                    placeholder="Tên..."
+                                    placeholder="tên nhân viên..."
                             />
                         </form>
                         <div class="header__controller">
@@ -55,7 +55,7 @@
                                    action="quanly/nhan-vien.htm?delete#employees" method="POST"
                                    modelAttribute="deletedIdEmployeeList">
                             <c:if test="${employeeModelList == null || employeeModelList.size() == 0}">
-                               <h3 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">Không có nhân viên nào >_<...</h3>
+                                   <h3 class="nothing">Không có nhân viên nào >_<...</h3>
                             </c:if>
                             <c:if test="${employeeModelList != null && employeeModelList.size() != 0}">
                                 <c:forEach items="${deletedIdEmployeeList.list}" varStatus="status">

@@ -127,6 +127,7 @@
     margin-left: 8px;
 }
 .user__infor {
+    padding-inline: 12px;
 	display: flex;
 	align-items: center;
 }
@@ -246,6 +247,9 @@
 
 /* Responsive */
 @media (max-width: 865px) {
+    .manager__container {
+        grid-template-columns: 1fr !important;
+    }
     .navigation {
         left: -300px;
     }

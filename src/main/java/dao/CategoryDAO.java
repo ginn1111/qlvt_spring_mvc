@@ -11,6 +11,13 @@ import java.util.List;
 
 @Repository
 public class CategoryDAO extends DAO<Category>{
+
+    public List<Category> search(String key) {
+        return sessionFactory.getCurrentSession()
+                .getNamedQuery("timDanhMuc")
+                .setParameter("key", key)
+                .list();
+    }
     public List<Category> getList() {
         String query = "FROM Category AS C WHERE C.status = true";
         return super.getList(query);

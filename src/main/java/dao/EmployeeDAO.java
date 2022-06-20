@@ -10,6 +10,12 @@ import java.util.List;
 @Repository
 public class EmployeeDAO extends DAO<Employee> {
 
+    public List<Employee> search(String key) {
+        return sessionFactory.getCurrentSession()
+                .getNamedQuery("timNhanVien")
+                .setParameter("key", key)
+                .list();
+    }
     public List<Employee> getList() {
         String query = "FROM Employee AS E WHERE E.status = true";
         return getList(query);

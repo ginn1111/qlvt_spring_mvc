@@ -14,6 +14,12 @@ import java.util.stream.Collectors;
 @Repository
 public class WarehouseDAO extends DAO<Warehouse> {
 
+    public List<Warehouse> search(String key) {
+        return sessionFactory.getCurrentSession()
+                .getNamedQuery("timKho")
+                .setParameter("key", key)
+                .list();
+    }
     public List<Warehouse> getList() {
         String query = "FROM Warehouse";
         return super.getList(query);

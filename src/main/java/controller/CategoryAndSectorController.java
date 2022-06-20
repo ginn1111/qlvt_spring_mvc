@@ -7,14 +7,12 @@ import model.SectorModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import request_bean.DeletedIdList;
 import service.CategoryService;
 import service.SectorService;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -27,6 +25,8 @@ public class CategoryAndSectorController {
     private static SectorModel sectorModel = new SectorModel();
     private static String link;
     private static String btnTitle;
+    private static boolean isSearchCategory = false;
+    private static boolean isSearchSector = false;
 
     @Autowired
     CategoryService categoryService;
@@ -36,12 +36,27 @@ public class CategoryAndSectorController {
 
 
     @RequestMapping("danh-muc-va-khu-vuc")
-    public String index(ModelMap model) {
-        List<Object> resultCategoryService = categoryService.getCategoryList();
+    public String index(ModelMap model, HttpSession session) {
+        List<Object> resultCategoryService = null;
+        List<Object> resultSectorService = null;
+
+        if(isSearchSector) {
+           isSearchSector = false;
+            resultSectorService = sectorService.searchSector((String) session.getAttribute("key"));
+        } else {
+            resultSectorService = sectorService.getSectorList();
+        }
+
+        if(isSearchCategory) {
+            isSearchCategory = false;
+            resultCategoryService = categoryService.searchCategory((String) session.getAttribute("key"));
+        } else {
+            resultCategoryService = categoryService.getCategoryList();
+        }
+
         List<CategoryModel> categoryModelList = (List<CategoryModel>)resultCategoryService.get(0);
         DeletedIdList deletedCategoryIdList = (DeletedIdList) resultCategoryService.get(1);
 
-        List<Object> resultSectorService = sectorService.getSectorList();
         List<SectorModel> sectorModelList = (List<SectorModel>)resultSectorService.get(0);
         DeletedIdList deletedSectorIdList = (DeletedIdList) resultSectorService.get(1);
 
@@ -95,7 +110,15 @@ public class CategoryAndSectorController {
         return "redirect:/danh-muc-va-khu-vuc.htm";
     }
 
+    @RequestMapping(value = "danh-muc-va-khu-vuc/danh-muc", params = "search")
+    public String searchCategory (@RequestParam("data") String data, HttpSession session) {
+        if(data.trim().length() != 0) {
+            isSearchCategory = true;
+            session.setAttribute("key", data);
+        }
 
+        return "redirect:/danh-muc-va-khu-vuc.htm";
+    }
 
     @RequestMapping(value="danh-muc-va-khu-vuc/khu-vuc", params = "new")
     public String newSector() {
@@ -130,6 +153,16 @@ public class CategoryAndSectorController {
     @RequestMapping(value="danh-muc-va-khu-vuc/khu-vuc", params = "delete", method = RequestMethod.POST)
     public String deleteSector(@ModelAttribute("deletedSectorIdList") DeletedIdList deletedSectorIdList) {
         message = sectorService.deleteSector(deletedSectorIdList);
+        return "redirect:/danh-muc-va-khu-vuc.htm";
+    }
+
+    @RequestMapping(value = "danh-muc-va-khu-vuc/khu-vuc", params = "search")
+    public String searchSector(@RequestParam("data") String data, HttpSession session) {
+        if(data.trim().length() != 0) {
+            isSearchSector = true;
+            session.setAttribute("key", data);
+        }
+
         return "redirect:/danh-muc-va-khu-vuc.htm";
     }
 

@@ -39,7 +39,7 @@
                                     required="required"
                                     name="data"
                                     type="search"
-                                    placeholder="công trình..."
+                                    placeholder="tên công trình..."
                             />
                         </form>
                         <div class="header__controller">
@@ -60,8 +60,7 @@
                                    action="kho-va-cong-trinh/cong-trinh.htm?delete#constructions" method="POST"
                                    modelAttribute="deletedConstructionIdList">
                             <c:if test="${constructionModelList == null || constructionModelList.size() == 0}">
-                                <h3 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">
-                                    Không có công nhân nào >_<...</h3>
+                                    <h3 class="nothing">Không có công trình nào >_<...</h3>
                             </c:if>
                             <c:if test="${constructionModelList != null && constructionModelList.size() != 0}">
                                 <c:forEach items="${deletedConstructionIdList.list}" varStatus="status">
@@ -100,7 +99,7 @@
                                     required="required"
                                     name="data"
                                     type="search"
-                                    placeholder="kho..."
+                                    placeholder="tên kho..."
                             />
                         </form>
                         <div class="header__controller">
@@ -121,8 +120,7 @@
                                    action="kho-va-cong-trinh/kho.htm?delete#warehouses" method="POST"
                                    modelAttribute="deletedWarehouseIdList">
                             <c:if test="${warehouseModelList == null || warehouseModelList.size() == 0}">
-                                <h3 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">
-                                    Không có kho nào >_<...</h3>
+                                    <h3 class="nothing">Không có kho nào >_<...</h3>
                             </c:if>
                             <c:if test="${warehouseModelList != null && warehouseModelList.size() != 0}">
                                 <c:forEach items="${deletedWarehouseIdList.list}" varStatus="status">

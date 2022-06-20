@@ -92,7 +92,7 @@
                         <span>${detail.supplyModel.name}</span>
                         <span>${detail.quantity} ${detail.supplyModel.unit}</span>
                         <fmt:setLocale value = "vi_VN" scope="session"/>
-                        <span><fmt:formatNumber value="${detail.price}" type="currency"/></span>
+                        <span>Giá: <fmt:formatNumber value="${detail.price}" type="currency"/>/${detail.supplyModel.unit}</span>
                     </li>
                 </c:forEach>
             </ul>

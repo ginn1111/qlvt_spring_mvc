@@ -11,6 +11,13 @@ import java.util.List;
 
 @Repository
 public class SectorDAO extends DAO<Sector>{
+
+    public List<Sector> search(String key) {
+        return sessionFactory.getCurrentSession()
+                .getNamedQuery("timKhuVuc")
+                .setParameter("key", key)
+                .list();
+    }
     public List<Sector> getList() {
         String query = "FROM Sector AS S WHERE S.status = true";
         return super.getList(query);

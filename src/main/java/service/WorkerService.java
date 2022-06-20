@@ -18,6 +18,18 @@ public class WorkerService {
    @Autowired
     WorkerDAO workerDAO;
 
+    public List<Object> searchWorker(String key) {
+        List<WorkerModel> workerList = workerDAO.search(key).stream()
+                .map(WorkerModel::new).collect(Collectors.toList());
+
+        List<Integer> dummyList = new ArrayList<>();
+        for(int i = 0; i < workerList.size(); i++) {
+            dummyList.add(null);
+        }
+        DeletedIdList deletedIdEmployeeList = new DeletedIdList(dummyList);
+        return Arrays.asList(workerList, deletedIdEmployeeList);
+    }
+
     public List<Object> getWorkerList() {
         List<WorkerModel> workerList = workerDAO.getList().stream()
                 .map(WorkerModel::new).collect(Collectors.toList());

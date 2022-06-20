@@ -27,6 +27,7 @@ public class ManagerController {
     private static AccountModel accountModel = new AccountModel();
     private static String link;
     private static String btnTitle;
+    private static boolean isSearch = false;
     @Autowired
     EmployeeService employeeService;
     @Autowired
@@ -62,11 +63,20 @@ public class ManagerController {
 
     // GET quanly/nhan-vien.htm
     @RequestMapping("nhan-vien")
-    public String employee(ModelMap model) {
-        List<Object> resultEmployeeService = employeeService.getEmployeeList();
+    public String employee(ModelMap model, HttpSession session) {
+
+        List<Object> resultEmployeeService = null;
+
+        if(isSearch) {
+           isSearch = false;
+           resultEmployeeService = employeeService.searchEmployee((String) session.getAttribute("key"));
+        } else {
+
+            resultEmployeeService = employeeService.getEmployeeList();
+        }
+
         List<EmployeeModel> employeeModelList = (List<EmployeeModel>)resultEmployeeService.get(0);
         DeletedIdList deletedIdEmployeeList = (DeletedIdList) resultEmployeeService.get(1);
-
 
         model.addAttribute("employeeModelList", employeeModelList);
         model.addAttribute("deletedIdEmployeeList", deletedIdEmployeeList);
@@ -134,6 +144,15 @@ public class ManagerController {
     public String employeeAccount(@ModelAttribute("accountModel") AccountModel accountModel) {
         System.out.println(accountModel.toString());
         message = accountService.addNewAccount(accountModel);
+        return "redirect:/quanly/nhan-vien.htm";
+    }
+
+    @RequestMapping(value = "nhan-vien", params = "search")
+    public String search(@RequestParam("data") String data, HttpSession session) {
+        if(data.trim().length() != 0) {
+            session.setAttribute("key", data);
+            isSearch = true;
+        }
         return "redirect:/quanly/nhan-vien.htm";
     }
 

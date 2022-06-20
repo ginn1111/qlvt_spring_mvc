@@ -7,6 +7,13 @@ import java.util.Date;
 
 @Entity
 @Table(name="VATTU")
+@NamedNativeQueries(
+    {
+        @NamedNativeQuery(
+            name="timVatTu", query = "exec sp_TimVatTu :key", resultClass = Supply.class
+        )
+    }
+)
 public class Supply {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

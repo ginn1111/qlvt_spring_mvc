@@ -8,7 +8,7 @@
 </style>
 <tg:dialog-message message="${message}" />
 <main class="sign-in">
-    <form class="container__sign-in" style="height: 80%" action="${pageContext.request.contextPath}/j_spring_security_check" method="POST">
+    <form class="container__sign-in" action="${pageContext.request.contextPath}/j_spring_security_check" method="POST">
         <h2 class="title">Manage your work easier</h2>
 
         <div class="input-box">

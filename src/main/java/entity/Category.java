@@ -4,9 +4,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="DANHMUC")
-//@NamedNativeQueries(
-//        @NamedNativeQuery(name = "findEmployeeByName", query="exec sp_findEmployeeByName", resultClass = Employee.class)
-//)
+@NamedNativeQueries({
+       @NamedNativeQuery(
+               name = "timDanhMuc",
+               query = "exec sp_TimDanhMuc :key",
+               resultClass = Category.class
+       )
+})
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

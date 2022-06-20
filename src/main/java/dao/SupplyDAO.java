@@ -11,6 +11,12 @@ import java.util.List;
 @Repository
 public class SupplyDAO extends DAO<Supply>{
 
+    public List<Supply> search(String key) {
+       return sessionFactory.getCurrentSession()
+               .getNamedQuery("timVatTu")
+               .setParameter("key", key)
+               .list();
+    }
 
     public List<Supply> getList() {
         String query = "FROM Supply AS E Where E.status = true";

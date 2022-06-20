@@ -39,7 +39,7 @@
                                     required="required"
                                     name="data"
                                     type="search"
-                                    placeholder="Tên..."
+                                    placeholder="tên vật tư hoặc danh mục..."
                             />
                         </form>
                         <div class="header__controller">
@@ -62,8 +62,7 @@
                                    action="vat-tu.htm?delete#supplies" method="POST"
                                    modelAttribute="deletedSupplyIdList">
                             <c:if test="${supplyModelList == null || supplyModelList.size() == 0}">
-                                <h3 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">
-                                    Không có vật tư nào >_<...</h3>
+                                    <h3 class="nothing">Không có vật tư nào >_<...</h3>
                             </c:if>
                             <c:if test="${supplyModelList != null && supplyModelList.size() != 0}">
                                 <c:forEach items="${deletedSupplyIdList.list}" varStatus="status">

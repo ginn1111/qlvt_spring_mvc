@@ -20,6 +20,17 @@ public class WarehouseService {
     @Autowired
     WarehouseDAO warehouseDAO;
 
+    public List<Object> searchWarehouse(String key) {
+        List<WarehouseModel> warehouseList = warehouseDAO.search(key).stream()
+                .map(WarehouseModel::new).collect(Collectors.toList());
+        List<Integer> dummyList = new ArrayList<Integer>();
+        for(int i = 0; i < warehouseList.size(); i++) {
+            dummyList.add(null);
+        }
+        DeletedIdList deletedIdList = new DeletedIdList(dummyList);
+        return Arrays.asList(warehouseList, deletedIdList);
+    }
+
     public List<Object> getWarehouseList() {
         List<WarehouseModel> warehouseList = warehouseDAO.getList().stream()
                 .map(WarehouseModel::new).collect(Collectors.toList());

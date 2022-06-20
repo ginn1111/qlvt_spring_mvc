@@ -26,7 +26,7 @@
                 <%--CATEGORY --%>
                 <div id="categories" class="card manage manage--categories-and-sectors">
                     <div class="manage__header">
-                        <h5 class="header__title">Danh mục</h5>
+                        <h5 style="width: 30%" class="header__title">Danh mục</h5>
                         <form
                                 action="danh-muc-va-khu-vuc/danh-muc.htm?search"
                                 method="POST"
@@ -39,7 +39,7 @@
                                     required="required"
                                     name="data"
                                     type="search"
-                                    placeholder="danh mục..."
+                                    placeholder="danh mục, khu vực..."
                             />
                         </form>
                         <div class="header__controller">
@@ -61,8 +61,7 @@
                                    action="danh-muc-va-khu-vuc/danh-muc.htm?delete#categories" method="POST"
                                    modelAttribute="deletedCategoryIdList">
                             <c:if test="${categoryModelList == null || categoryModelList.size() == 0}">
-                                <h3 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">
-                                    Không có danh mục nào >_<...</h3>
+                                    <h3 class="nothing">Không có danh mục nào >_<...</h3>
                             </c:if>
                             <c:if test="${categoryModelList != null && categoryModelList.size() != 0}">
                                 <c:forEach items="${deletedCategoryIdList.list}" varStatus="status">
@@ -122,8 +121,7 @@
                                    action="danh-muc-va-khu-vuc/khu-vuc.htm?delete#sectors" method="POST"
                                    modelAttribute="deletedSectorIdList">
                             <c:if test="${sectorModelList == null || sectorModelList.size() == 0}">
-                                <h3 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">
-                                    Không có khu vực nào >_<...</h3>
+                                <h3 class="nothing"> Không có khu vực nào >_<...</h3>
                             </c:if>
                             <c:if test="${sectorModelList != null && sectorModelList.size() != 0}">
                                 <c:forEach items="${deletedSectorIdList.list}" varStatus="status">

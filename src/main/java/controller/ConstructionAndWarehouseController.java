@@ -6,14 +6,12 @@ import model.WarehouseModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import request_bean.DeletedIdList;
 import service.ConstructionService;
 import service.WarehouseService;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -26,6 +24,8 @@ public class ConstructionAndWarehouseController {
     private static WarehouseModel warehouseModel = new WarehouseModel();
     private static String link;
     private static String btnTitle;
+    private static boolean isSearchConstruction = false;
+    private static boolean isSearchWarehouse = false;
 
     @Autowired
     ConstructionService constructionService;
@@ -34,12 +34,28 @@ public class ConstructionAndWarehouseController {
     WarehouseService warehouseService;
 
     @RequestMapping("kho-va-cong-trinh")
-    public String index(ModelMap model) {
-        List<Object> resultConstructionService = constructionService.getConstructionList();
+    public String index(ModelMap model, HttpSession session) {
+
+        List<Object> resultConstructionService = null;
+        List<Object> resultWarehouseService = null;
+
+        if(isSearchConstruction) {
+            isSearchConstruction = false;
+            resultConstructionService = constructionService.searchConstruction((String) session.getAttribute("key"));
+        } else {
+             resultConstructionService = constructionService.getConstructionList();
+        }
+
+        if(isSearchWarehouse) {
+            isSearchWarehouse = false;
+            resultWarehouseService = warehouseService.searchWarehouse((String) session.getAttribute("key"));
+        } else {
+            resultWarehouseService = warehouseService.getWarehouseList();
+        }
+
         List<ConstructionModel> constructionModelList = (List<ConstructionModel>)resultConstructionService.get(0);
         DeletedIdList deletedConstructionIdList = (DeletedIdList) resultConstructionService.get(1);
 
-        List<Object> resultWarehouseService = warehouseService.getWarehouseList();
         List<WarehouseModel> warehouseModelList = (List<WarehouseModel>)resultWarehouseService.get(0);
         DeletedIdList deletedWarehouseIdList = (DeletedIdList) resultWarehouseService.get(1);
 
@@ -93,6 +109,14 @@ public class ConstructionAndWarehouseController {
         return "redirect:/kho-va-cong-trinh.htm";
     }
 
+    @RequestMapping("kho-va-cong-trinh/cong-trinh")
+    public String searchConstruction(@RequestParam("data") String data, HttpSession session) {
+        if(data.trim().length() != 0) {
+            isSearchConstruction = true;
+            session.setAttribute("key", data.trim());
+        }
+        return "redirect:/kho-va-cong-trinh.htm";
+    }
 
 
     @RequestMapping(value="kho-va-cong-trinh/kho", params = "new")
@@ -130,4 +154,14 @@ public class ConstructionAndWarehouseController {
         message = warehouseService.deleteWarehouse(deletedWarehouseIdList);
         return "redirect:/kho-va-cong-trinh.htm";
     }
+
+    @RequestMapping("kho-va-cong-trinh/kho")
+    public String searchWarehouse(@RequestParam("data") String data, HttpSession session) {
+        if(data.trim().length() != 0) {
+            isSearchWarehouse = true;
+           session.setAttribute("key", data.trim());
+        }
+        return "redirect:/kho-va-cong-trinh.htm";
+    }
 }
+

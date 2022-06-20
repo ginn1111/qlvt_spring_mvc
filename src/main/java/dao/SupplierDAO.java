@@ -10,6 +10,13 @@ import java.util.List;
 
 @Repository
 public class SupplierDAO extends DAO<Supplier>{
+
+    public List<Supplier> search(String key) {
+        return sessionFactory.getCurrentSession()
+                .getNamedQuery("timNhaCungCap")
+                .setParameter("key", key)
+                .list();
+    }
     public List<Supplier> getList() {
         String query = "FROM Supplier AS E WHERE E.status = true";
         return super.getList(query);

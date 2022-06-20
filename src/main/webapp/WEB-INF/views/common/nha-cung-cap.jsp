@@ -39,7 +39,7 @@
                                     required="required"
                                     name="data"
                                     type="search"
-                                    placeholder="Tên..."
+                                    placeholder="tên nhà cung cấp..."
                             />
                         </form>
                         <div class="header__controller">
@@ -61,7 +61,7 @@
                                    action="nha-cung-cap.htm?delete#suppliers" method="POST"
                                    modelAttribute="deletedSupplierIdList">
                             <c:if test="${supplierModelList == null || supplierModelList.size() == 0}">
-                                <h3 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">Không có công nhân nào >_<...</h3>
+                                    <h3 class="nothing">Không có nhà cung cấp nào >_<...</h3>
                             </c:if>
                             <c:if test="${supplierModelList != null && supplierModelList.size() != 0}">
                                 <c:forEach items="${deletedSupplierIdList.list}" varStatus="status">

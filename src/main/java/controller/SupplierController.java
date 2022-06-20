@@ -8,13 +8,11 @@ import model.SupplierModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import request_bean.DeletedIdList;
 import service.SupplierService;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -25,13 +23,22 @@ public class SupplierController {
     private static SupplierModel supplierModel = new SupplierModel();
     private static String link;
     private static String btnTitle;
+    private static boolean isSearch = false;
 
     @Autowired
     SupplierService supplierService;
 
     @RequestMapping("nha-cung-cap")
-    public String index(ModelMap model) {
-        List<Object> resultSupplierService = supplierService.getSupplierList();
+    public String index(ModelMap model, HttpSession session) {
+        List<Object> resultSupplierService = null;
+
+       if(isSearch) {
+           isSearch = false;
+           resultSupplierService = supplierService.searchSupplier((String) session.getAttribute("key"));
+       } else {
+           resultSupplierService = supplierService.getSupplierList();
+       }
+
         List<SupplierModel> supplierModelList = (List<SupplierModel>)resultSupplierService.get(0);
         DeletedIdList deletedSupplierIdList = (DeletedIdList) resultSupplierService.get(1);
 
@@ -79,6 +86,15 @@ public class SupplierController {
     @RequestMapping(value="nha-cung-cap", params = "delete", method = RequestMethod.POST)
     public String deleteSupplier(@ModelAttribute("deletedSupplierIdList") DeletedIdList deletedSupplierIdList) {
         message = supplierService.deleteSupplier(deletedSupplierIdList);
+        return "redirect:/nha-cung-cap.htm";
+    }
+
+    @RequestMapping(value="nha-cung-cap", params = "search")
+    public String search(@RequestParam("data") String data, HttpSession session) {
+        if(data.trim().length() != 0) {
+            isSearch = true;
+            session.setAttribute("key", data.trim());
+        }
         return "redirect:/nha-cung-cap.htm";
     }
 }

@@ -12,6 +12,7 @@ import request_bean.DeletedIdList;
 import service.WorkerService;
 import utils.MyUtils;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
@@ -25,6 +26,8 @@ public class WorkerController {
     private static String link;
     private static String btnTitle;
 
+    private static boolean isSearch;
+
     @InitBinder
     public void customizeBinding (WebDataBinder binder) {
         MyUtils.DF_DATE.setLenient(false);
@@ -34,9 +37,17 @@ public class WorkerController {
     WorkerService workerService;
 
     @RequestMapping("cong-nhan")
-    public String worker(ModelMap model) {
+    public String worker(ModelMap model, HttpSession session) {
 
-        List<Object> resultWorkerService = workerService.getWorkerList();
+        List<Object> resultWorkerService = null;
+
+        if(isSearch)  {
+            isSearch = false;
+            resultWorkerService = workerService.searchWorker((String) session.getAttribute("key"));
+        } else {
+            resultWorkerService = workerService.getWorkerList();
+        }
+
         List<WorkerModel> workerModelList = (List<WorkerModel>)resultWorkerService.get(0);
         DeletedIdList deletedIdWorkerList = (DeletedIdList) resultWorkerService.get(1);
 
@@ -87,6 +98,15 @@ public class WorkerController {
     @RequestMapping(value="cong-nhan", params = "delete", method = RequestMethod.POST)
     public String deleteWorker(@ModelAttribute("deletedIdWorkerList") DeletedIdList deletedIdList) {
         message = workerService.deleteWorker(deletedIdList);
+        return "redirect:/cong-nhan.htm";
+    }
+
+    @RequestMapping(value = "cong-nhan", params = "search")
+    public String search(@RequestParam("data") String data, HttpSession session) {
+        if(data.trim().length() !=0 ) {
+            isSearch = true;
+            session.setAttribute("key", data);
+        }
         return "redirect:/cong-nhan.htm";
     }
 }

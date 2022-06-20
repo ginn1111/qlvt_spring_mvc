@@ -22,6 +22,17 @@ public class ConstructionService {
     @Autowired
     ConstructionDAO constructionDAO;
 
+
+    public List<Object> searchConstruction(String key) {
+        List<ConstructionModel> constructionList = constructionDAO.search(key).stream()
+                .map(ConstructionModel::new).collect(Collectors.toList());
+        List<Integer> dummyList = new ArrayList<Integer>();
+        for(int i = 0; i < constructionList.size(); i++) {
+            dummyList.add(null);
+        }
+        DeletedIdList deletedConstructionIdList = new DeletedIdList(dummyList);
+        return Arrays.asList(constructionList, deletedConstructionIdList);
+    }
     public List<Object> getConstructionList() {
         List<ConstructionModel> constructionList = constructionDAO.getList().stream()
                 .map(ConstructionModel::new).collect(Collectors.toList());

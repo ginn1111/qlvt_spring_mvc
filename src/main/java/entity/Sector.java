@@ -7,9 +7,12 @@ import java.util.Date;
 
 @Entity
 @Table(name="KHUVUC")
-//@NamedNativeQueries(
-//        @NamedNativeQuery(name = "findEmployeeByName", query="exec sp_findEmployeeByName", resultClass = Employee.class)
-//)
+@NamedNativeQueries(
+        @NamedNativeQuery(
+                name = "timKhuVuc",
+                query="exec sp_TimKhuVuc :key",
+                resultClass = Sector.class)
+)
 public class Sector {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

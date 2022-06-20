@@ -38,7 +38,7 @@
                                     required="required"
                                     name="data"
                                     type="search"
-                                    placeholder="Tên..."
+                                    placeholder="tên công nhân..."
                             />
                         </form>
                         <div class="header__controller">
@@ -60,7 +60,7 @@
                                    action="cong-nhan.htm?delete#workers" method="POST"
                                    modelAttribute="deletedIdWorkerList">
                             <c:if test="${workerModelList == null || workerModelList.size() == 0}">
-                                <h3 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">Không có công nhân nào >_<...</h3>
+                                    <h3 class="nothing">Không có công nhân nào >_<...</h3>
                             </c:if>
                             <c:if test="${workerModelList != null && workerModelList.size() != 0}">
                                 <c:forEach items="${deletedIdWorkerList.list}" varStatus="status">

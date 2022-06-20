@@ -15,6 +15,13 @@ public class WorkerDAO extends DAO<Worker>{
         return false;
     }
 
+    public List<Worker> search(String key) {
+        return sessionFactory.getCurrentSession()
+                .getNamedQuery("timCongNhan")
+                .setParameter("key", key)
+                .list();
+    }
+
     public List<Worker> getList() {
        String query = "FROM Worker AS W WHERE W.status = true";
        return super.getList(query);

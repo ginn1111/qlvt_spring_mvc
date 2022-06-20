@@ -13,6 +13,12 @@ import java.util.List;
 @Repository
 public class ConstructionDAO extends DAO<Construction>{
 
+    public List<Construction> search(String key) {
+        return sessionFactory.getCurrentSession()
+                .getNamedQuery("timCongTrinh")
+                .setParameter("key", key)
+                .list();
+    }
     public List<Construction> getList() {
         String query = "FROM Construction AS C WHERE C.status=true";
         return getList(query);

@@ -21,6 +21,17 @@ import java.util.stream.Collectors;
 public class SupplierService {
     @Autowired
     SupplierDAO supplierDAO;
+
+    public List<Object> searchSupplier(String key) {
+        List<SupplierModel> supplierList = supplierDAO.search(key).stream()
+                .map(SupplierModel::new).collect(Collectors.toList());
+        List<Integer> dummyList = new ArrayList<Integer>();
+        for(int i = 0; i < supplierList.size(); i++) {
+            dummyList.add(null);
+        }
+        DeletedIdList deletedIdList = new DeletedIdList(dummyList);
+        return Arrays.asList(supplierList, deletedIdList);
+    }
     public List<Object> getSupplierList() {
         List<SupplierModel> supplierList = supplierDAO.getList().stream()
                 .map(SupplierModel::new).collect(Collectors.toList());

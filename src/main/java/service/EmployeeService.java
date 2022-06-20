@@ -18,6 +18,17 @@ public class EmployeeService {
     EmployeeDAO employeeDAO;
     @Autowired
     RoleService roleService;
+
+    public List<Object> searchEmployee(String key) {
+        List<EmployeeModel> employeeList = employeeDAO.search(key).stream()
+                .map(EmployeeModel::new).collect(Collectors.toList());
+        List<Integer> dummyList = new ArrayList<Integer>();
+        for(int i = 0; i < employeeList.size(); i++) {
+            dummyList.add(null);
+        }
+        DeletedIdList deletedIdList = new DeletedIdList(dummyList);
+        return Arrays.asList(employeeList, deletedIdList);
+    }
     public List<Object> getEmployeeList() {
         List<EmployeeModel> employeeList = employeeDAO.getList().stream()
                 .map(EmployeeModel::new).collect(Collectors.toList());
