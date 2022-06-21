@@ -1,0 +1,239 @@
+-- Vô hiệu hoá tài khoản khi nhân viên bị xoá.
+
+create trigger [dbo].[tr_update_trang_thai_nhan_vien] on [dbo].[NHANVIEN]
+after update
+as
+begin
+	declare @manv int, @tt bit
+	select @manv=MANHANVIEN, @tt=TRANGTHAI from inserted
+	if update(TRANGTHAI) and  @tt='false'
+	update TAIKHOAN set TRANGTHAI='false' where MANHANVIEN=@manv
+end
+
+-- Top vật tư nhập trong tháng.
+
+create proc [dbo].[sp_getTopVatTuNhapTrongThang]
+(@num smallint, @m varchar(02), @y varchar(4))
+as
+begin
+	select top (@num) MAVATTU, SOLUONG
+	from(
+		select MAVATTU, SUM(SOLUONG) as SOLUONG
+		from(
+			select VATTU.MAVATTU as MAVATTU, CHITIETPHIEUNHAP.SOLUONG as SOLUONG
+			from VATTU
+			inner join CHITIETPHIEUNHAP on VATTU.MAVATTU = CHITIETPHIEUNHAP.MAVATTU
+			inner join PHIEUNHAP on CHITIETPHIEUNHAP.MAPHIEUNHAP = PHIEUNHAP.MAPHIEUNHAP
+			where YEAR(THOIGIAN) = @y and MONTH(THOIGIAN) = @m
+		) as s
+		group by MAVATTU
+	) as s
+	order by SOLUONG desc
+end
+
+
+-- Top vật tư xuất trong tháng.
+
+create proc [dbo].[sp_getTopVatTuXuatTrongThang]
+(@num smallint, @m varchar(02), @y varchar(4))
+as
+begin
+	select top (@num) MAVATTU, SOLUONG
+	from(
+		select MAVATTU, SUM(SOLUONG) as SOLUONG
+		from(
+			select VATTU.MAVATTU as MAVATTU, CHITIETPHIEUXUAT.SOLUONG as SOLUONG
+			from VATTU
+			inner join CHITIETPHIEUXUAT on VATTU.MAVATTU = CHITIETPHIEUXUAT.MAVATTU
+			inner join PHIEUXUAT on CHITIETPHIEUXUAT.MAPHIEUXUAT = PHIEUXUAT.MAPHIEUXUAT
+			where YEAR(THOIGIAN) = @y and MONTH(THOIGIAN) = @m
+		) as s
+		group by MAVATTU
+	) as s
+	order by SOLUONG desc
+end
+
+-- Số lượng phiếu chuyển kho trong tháng.
+
+create PROCEDURE [dbo].[sp_SoLuongPhieuChuyenKhoTrongThang]
+(@m varchar(02), @y varchar(4))
+AS
+	select number=count(*) from PHIEUCHUYENKHO
+	where YEAR(THOIGIAN) = @y and MONTH(THOIGIAN) = @m
+
+
+-- Số lượng phiếu mượn trong tháng.
+
+create PROCEDURE [dbo].[sp_SoLuongPhieuMuonTrongThang]
+(@m int, @y int)
+AS
+	select number=count(*) from PHIEUMUON
+	where YEAR(NGAYMUON) = @y and MONTH(NGAYMUON) = @m
+
+
+-- Số lượng phiếu nhập trong tháng
+
+create PROCEDURE [dbo].[sp_SoLuongPhieuNhapTrongThang]
+(@m varchar(02), @y varchar(4))
+AS
+	select number=count(*) from PHIEUNHAP
+	where YEAR(THOIGIAN) = @y and MONTH(THOIGIAN) = @m
+	
+-- Số lượng phiếu trả trong tháng
+
+create PROCEDURE [dbo].[sp_SoLuongPhieuTraTrongThang]
+(@m varchar(02), @y varchar(4))
+AS
+	select number=count(*) from PHIEUTRA
+	where YEAR(NGAYTRA) = @y and MONTH(NGAYTRA) = @m
+
+
+
+-- Số lượng phiếu xuất trong tháng
+
+create PROCEDURE [dbo].[sp_SoLuongPhieuXuatTrongThang]
+(@m varchar(02), @y varchar(4))
+AS
+	select number=count(*) from PHIEUXUAT
+	where YEAR(THOIGIAN) = @y and MONTH(THOIGIAN) = @m
+
+--Tìm Vật tư theo tên hoặc theo danh mục
+
+create proc  [dbo].[sp_TimVatTu]
+(@key nvarchar(50))
+as 
+begin
+	select * from VATTU
+	inner join DANHMUC on VATTU.MADANHMUC = DANHMUC.MADANHMUC
+	where (DANHMUC.TENDANHMUC like '%' + @key + '%' or VATTU.TENVATTU like '%' + @key + '%') and VATTU.TRANGTHAI = 1
+end
+
+--Tìm nhân viên theo tên
+
+create proc  [dbo].[sp_TimNhanVien]
+(@key nvarchar(50))
+as 
+begin
+	select * from NHANVIEN
+	where (NHANVIEN.TEN like '%' + @key + '%') and NHANVIEN.TRANGTHAI = 1
+end
+
+
+--Tìm công nhân theo tên
+
+create proc  [dbo].[sp_TimCongNhan]
+(@key nvarchar(50))
+as 
+begin
+	select * from CONGNHAN
+	where (CONGNHAN.TENCONGNHAN like '%' + @key + '%') and CONGNHAN.TRANGTHAI = 1
+end
+
+
+--Tìm công trình theo tên
+
+create proc  [dbo].[sp_TimCongTrinh]
+(@key nvarchar(50))
+as 
+begin
+	select * from CONGTRINH
+	where (CONGTRINH.TENCONGTRINH like '%' + @key + '%') and CONGTRINH.TRANGTHAI = 1
+end
+
+--Tìm kho theo tên
+
+create proc  [dbo].[sp_TimKho]
+(@key nvarchar(50))
+as 
+begin
+	select * from KHO
+	where (KHO.TENKHO like '%' + @key + '%')
+end
+
+--Tìm danh mục theo tên hoặc theo khu vực
+
+create proc  [dbo].[sp_TimDanhMuc]
+(@key nvarchar(50))
+as 
+begin
+	select * from DANHMUC
+	inner join KHUVUC 
+	on DANHMUC.MAKHUVUC = KHUVUC.MAKHUVUC
+	where (DANHMUC.TENDANHMUC like '%' + @key + '%' or KHUVUC.TENKHUVUC like '%' + @key + '%') and DANHMUC.TRANGTHAI = 1
+end
+
+-- Tìm nhà khu vực theo tên.
+
+create proc  [dbo].[sp_TimKhuVuc]
+(@key nvarchar(50))
+as 
+begin
+	select * from KHUVUC
+	where TRANGTHAI = 1 AND TENKHUVUC like '%' + @key + '%'
+end
+
+-- Tìm nhà cung cấp theo tên.
+
+createproc  [dbo].[sp_TimNhaCungCap]
+(@key nvarchar(50))
+as 
+begin
+	select * from NHACUNGCAP
+	where TRANGTHAI = 1 AND TENNHACUNGCAP like '%' + @key + '%' 
+end
+
+-- Tìm tài khoản theo email hoặc theo tên
+
+create proc sp_TimTaiKhoan @key nvarchar(50)
+as
+begin
+	select TK.* from (select * FROM TAIKHOAN WHERE TRANGTHAI = 1) TK
+	inner join (select TEN, MANHANVIEN from NHANVIEN WHERE TRANGTHAI = 1) NV 
+	on NV.MANHANVIEN = TK.MANHANVIEN 
+	where (EMAIL like '%' + @key + '%' OR TEN like '%' + @key + '%')
+end
+
+--Top Phiếu mượn tới hạn
+
+create proc sp_TopPhieuMuonToiHanTrongThang @num int, @m int, @y int
+as
+begin
+	set ROWCOUNT @num
+	select *
+	from PHIEUMUON
+	where MONTH(NGAYTRA)=@m AND YEAR(NGAYTRA)=@y AND MATRANGTHAI in (4, 2) -- phiếu chưa hoàn thành hoặc chưa trả hết
+		order by NGAYTRA 
+end
+
+create PROCEDURE [dbo].[sp_SoLuongPhieuChuyenKhoTrongThangNhanVien]
+(@m varchar(02), @y varchar(4), @id int)
+AS
+	select count(*) as number from PHIEUCHUYENKHO
+	where YEAR(THOIGIAN) = @y and MONTH(THOIGIAN) = @m and @id = PHIEUCHUYENKHO.MANHANVIEN
+
+
+create PROCEDURE [dbo].[sp_SoLuongPhieuMuonTrongThangNhanVien]
+(@m varchar(02), @y varchar(4), @id int)
+AS
+	select count(*) as number from PHIEUMUON
+	where YEAR(NGAYMUON) = @y and MONTH(NGAYMUON) = @m and @id = PHIEUMUON.MANHANVIEN
+
+create PROCEDURE [dbo].[sp_SoLuongPhieuNhapTrongThangNhanVien]
+(@m varchar(02), @y varchar(4), @id int)
+AS
+	select count(*) as number from PHIEUNHAP
+	where YEAR(THOIGIAN) = @y and MONTH(THOIGIAN) = @m and @id = PHIEUNHAP.MANHANVIEN
+
+
+create PROCEDURE [dbo].[sp_SoLuongPhieuTraTrongThangNhanVien]
+(@m varchar(02), @y varchar(4), @id int)
+AS
+	select count(*) as number from PHIEUTRA
+	where YEAR(NGAYTRA) = @y and MONTH(NGAYTRA) = @m and @id = PHIEUTRA.MANHANVIEN
+
+
+create PROCEDURE [dbo].[sp_SoLuongPhieuXuatTrongThangNhanVien]
+(@m varchar(02), @y varchar(4), @id int)
+AS
+	select count(*) as number from PHIEUXUAT
+	where YEAR(THOIGIAN) = @y and MONTH(THOIGIAN) = @m and @id = PHIEUXUAT.MANHANVIEN
