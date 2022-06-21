@@ -4,33 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1d562b2-a4a6-45ac-8897-c9ba5ff0c55e" name="Changes" comment="add dashboard page of quanly, base config structure of project">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/SupplierController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Sector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Supply.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Worker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/WorkerModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/SupplierService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/WorkerService.java" afterDir="false" />
+    <list default="true" id="e1d562b2-a4a6-45ac-8897-c9ba5ff0c55e" name="Changes" comment="feat: load data for 2 chart. some UI, add dashboard for employee.">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682/storage_v2/_src_/database/QLVT.GfolAA/schema/dbo.sYMBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682/storage_v2/_src_/database/QLVT.GfolAA/schema/dbo.sYMBAA.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682/storage_v2/_src_/database/QLVT.GfolAA/schema/dbo.sYMBAA.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a636f8c-1bc3-4e7f-b2e2-b1dcb6f2d682/storage_v2/_src_/database/QLVT.GfolAA/schema/dbo.sYMBAA.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/EmployeeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/WorkerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/WorkerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/request_bean/DeletedIdEmployeeList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/request_bean/DeletedIdList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/TestService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/nhan-vien.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/DAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/DAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/DAO2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/EmployeeDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/EmployeeDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/RoleDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/RoleDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/TestDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/WorkerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/WorkerDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/request_bean/DeletedIdEmployeeList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/EmployeeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/EmployeeService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/TestService.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,15 +18,25 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
         <option value="Jsp File" />
         <option value="JavaScript File" />
-        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/controller/ManagerController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/dao/StatisticSupplyDAO.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/entity/statistic/StatisticSupply.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/service/StatisticSupplyService.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/quanly/dash-board.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -77,48 +65,57 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/5510/Desktop/Freelance/VatTu/FIle/sqljdbc4.jar&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.31839082&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.poratu.idea.plugins.tomcat.setting.TomcatSettingConfigurable&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;50429b6e54d51d9147266173dd0e7b21&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Dev/manage/sqljdbc4.jar",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.31839082",
+    "settings.editor.selected.configurable": "com.poratu.idea.plugins.tomcat.setting.TomcatSettingConfigurable",
+    "spring.configuration.checksum": "174f7816b62e76419c396afd06125e2f"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ChangesTree.GroupingKeys&quot;: [
-      &quot;module&quot;,
-      &quot;repository&quot;,
-      &quot;directory&quot;
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "module",
+      "repository",
+      "directory"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Dev\manage\src\main\java\service" />
+      <recent name="D:\Dev\manage\src\main\java\dao" />
+      <recent name="D:\Dev\manage\src\main\java\entity" />
+      <recent name="D:\Dev\manage\src\main\java\model" />
       <recent name="D:\Dev\manage\src\main\java\utils" />
-      <recent name="D:\Dev\manage\src\main\webapp\resources\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Dev\manage\src\main\webapp\WEB-INF\views\common" />
+      <recent name="D:\Dev\manage\src\main\webapp\WEB-INF\views\common\phieu" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Tomcat9" type="com.poratu.idea.plugins.tomcat" factoryName="SMART_TOMCAT_FACTORY">
+    <configuration name="Tomcat 8.5" type="com.poratu.idea.plugins.tomcat" factoryName="SMART_TOMCAT_FACTORY">
       <option name="adminPort" value="8005" />
       <option name="contextPath" value="/manage" />
       <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
-      <option name="envOptions" />
+      <option name="envOptions">
+        <map />
+      </option>
       <option name="passParentEnvironmentVariables" value="true" />
       <option name="port" value="8080" />
       <option name="tomcatInfo">
         <TomcatInfo>
-          <option name="name" value="Apache Tomcat/9.0.64" />
+          <option name="name" value="Apache Tomcat/8.5.75" />
           <option name="number" value="0" />
-          <option name="path" value="C:\Users\5510\Desktop\Freelance\VatTu\FIle\apache-tomcat-9.0.64-windows-x64\apache-tomcat-9.0.64" />
-          <option name="version" value="9.0.64.0" />
+          <option name="path" value="D:\Tools\apache-tomcat-8.5.75" />
+          <option name="version" value="8.5.75.0" />
         </TomcatInfo>
       </option>
       <option name="vmOptions" value="" />
@@ -143,7 +140,126 @@
       <workItem from="1655391311569" duration="4062000" />
       <workItem from="1655432333431" duration="13597000" />
       <workItem from="1655448561234" duration="45000" />
+      <workItem from="1655544021521" duration="22559000" />
+      <workItem from="1655605325046" duration="5751000" />
+      <workItem from="1655619713375" duration="12129000" />
+      <workItem from="1655632520166" duration="7236000" />
+      <workItem from="1655642701022" duration="21301000" />
+      <workItem from="1655688949769" duration="51775000" />
     </task>
+    <task id="LOCAL-00001" summary="fix: add account for employee, delete employee">
+      <created>1655546373338</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655546373338</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: add  InCoupon Controller, UI">
+      <created>1655566699345</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1655566699345</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: Supply UI.&#10;fix: Coupon Controller.">
+      <created>1655608392645</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1655608392645</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: Category, Sector UI.&#10;fix: Category, Sector Controller.">
+      <created>1655611070303</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1655611070303</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: InCoupon UI, BorrowedCoupon Controller, UI">
+      <created>1655648304552</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1655648304553</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: add TransCoupon Controller, UI&#10;fix: InCoupon Service">
+      <created>1655652286495</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655652286495</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat: ExCoupon Controller, UI.&#10;fix: BorrowedCoupon UI.">
+      <created>1655656026680</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655656026680</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: PayedCoupon Controller, UI ;DetailPayedCoupon (DAO, entity, Model, Service)&#10;fix: InCoupon (prop: total)&#10;refactor: phieu.jsp">
+      <created>1655664150694</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1655664150694</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fix: add supply navigation for employee.">
+      <created>1655664489716</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1655664489716</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: author coupon for manager and employee.">
+      <created>1655694687362</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1655694687362</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat: one coupon have the least one supply (binding).&#10;fix: UI for coupon header.">
+      <created>1655696975663</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1655696975663</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat: search employee, supply, supplier, worker, construction, warehouse, category, sector.&#10;fix: some UI.">
+      <created>1655707388522</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1655707388522</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat: change logout on top bar and some animation.">
+      <created>1655710695191</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1655710695191</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feat: change information and password of user. Account Controller, UI.">
+      <created>1655720103862</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1655720103862</updated>
+    </task>
+    <task id="LOCAL-00015" summary="feat: update UI coupon.&#10;fix: some bug.">
+      <created>1655740670789</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1655740670789</updated>
+    </task>
+    <task id="LOCAL-00016" summary="feat: load data for 2 chart. some UI, add dashboard for employee.">
+      <created>1655752335949</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1655752335949</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +283,33 @@
     </ignored-roots>
     <MESSAGE value="add dashboard page of quanly, base congif structure of project" />
     <MESSAGE value="add dashboard page of quanly, base config structure of project" />
-    <option name="LAST_COMMIT_MESSAGE" value="add dashboard page of quanly, base config structure of project" />
+    <MESSAGE value="fix: add account for employee, delete employee" />
+    <MESSAGE value="feat: add  InCoupon Controller, UI" />
+    <MESSAGE value="feat: Supply UI.&#10;fix: Coupon Controller." />
+    <MESSAGE value="feat: Category, Sector UI.&#10;fix: Category, Sector Controller." />
+    <MESSAGE value="feat: InCoupon UI, BorrowedCoupon Controller, UI" />
+    <MESSAGE value="feat: add TransCoupon Controller, UI&#10;fix: InCoupon Service" />
+    <MESSAGE value="feat: ExCoupon Controller, UI.&#10;fix: BorrowedCoupon UI." />
+    <MESSAGE value="feat: PayedCoupon Controller, UI ;DetailPayedCoupon (DAO, entity, Model, Service)&#10;fix: InCoupon (prop: total)&#10;refactor: phieu.jsp" />
+    <MESSAGE value="fix: add supply navigation for employee." />
+    <MESSAGE value="feat: author coupon for manager and employee." />
+    <MESSAGE value="feat: one coupon have the least one supply (binding).&#10;fix: UI for coupon header." />
+    <MESSAGE value="feat: search employee, supply, supplier, worker, construction, warehouse, category, sector.&#10;fix: some UI." />
+    <MESSAGE value="feat: change logout on top bar and some animation." />
+    <MESSAGE value="feat: change information and password of user. Account Controller, UI." />
+    <MESSAGE value="feat: update UI coupon.&#10;fix: some bug." />
+    <MESSAGE value="feat: load data for 2 chart. some UI, add dashboard for employee." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: load data for 2 chart. some UI, add dashboard for employee." />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="service.AccountService" memberName="accountDAO" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

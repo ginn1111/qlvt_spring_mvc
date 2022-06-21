@@ -42,7 +42,7 @@
 0|root||263|view server state|G
 0|root||265|view server state|G</Grants>
       <PermissionsCheckSum>56063928636</PermissionsCheckSum>
-      <ServerVersion>15.0.2080</ServerVersion>
+      <ServerVersion>15.0.2095</ServerVersion>
     </root>
     <database id="2" parent="1" name="BANDONGHO_TTCS">
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
@@ -413,7 +413,7 @@
 1989582126|||2|execute|D
 2005582183|||0|execute|G
 2005582183|||2|execute|D</Grants>
-      <IntrospectionTimestamp>2022-06-16.01:04:22.497</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2022-06-19.01:08:25.700</IntrospectionTimestamp>
       <ObjectId>1</ObjectId>
       <PermissionsCheckSum>16147333695</PermissionsCheckSum>
     </schema>
@@ -433,7 +433,42 @@ int</ExtendedProperties>
       <RoutineType>scalar-fun</RoutineType>
       <SourceTextLength>1647</SourceTextLength>
     </routine>
-    <routine id="77" parent="73" name="sp_alterdiagram">
+    <routine id="77" parent="73" name="sp_SoLuongPhieuChuyenKhoTrongThang">
+      <CreatedTimestamp>2022-06-17.17:10:53.120</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-17.19:27:41.163</ModifiedTimestamp>
+      <ObjectId>34099162</ObjectId>
+      <RoutineType>proc</RoutineType>
+      <SourceTextLength>193</SourceTextLength>
+    </routine>
+    <routine id="78" parent="73" name="sp_SoLuongPhieuMuonTrongThang">
+      <CreatedTimestamp>2022-06-17.17:11:11.310</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-17.20:32:01.823</ModifiedTimestamp>
+      <ObjectId>50099219</ObjectId>
+      <RoutineType>proc</RoutineType>
+      <SourceTextLength>167</SourceTextLength>
+    </routine>
+    <routine id="79" parent="73" name="sp_SoLuongPhieuNhapTrongThang">
+      <CreatedTimestamp>2022-06-17.19:29:21.337</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-17.19:29:21.337</ModifiedTimestamp>
+      <ObjectId>338100245</ObjectId>
+      <RoutineType>proc</RoutineType>
+      <SourceTextLength>182</SourceTextLength>
+    </routine>
+    <routine id="80" parent="73" name="sp_SoLuongPhieuTraTrongThang">
+      <CreatedTimestamp>2022-06-17.17:11:16.153</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-17.19:28:22.083</ModifiedTimestamp>
+      <ObjectId>66099276</ObjectId>
+      <RoutineType>proc</RoutineType>
+      <SourceTextLength>179</SourceTextLength>
+    </routine>
+    <routine id="81" parent="73" name="sp_SoLuongPhieuXuatTrongThang">
+      <CreatedTimestamp>2022-06-17.17:11:21.353</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-17.20:55:37.320</ModifiedTimestamp>
+      <ObjectId>82099333</ObjectId>
+      <RoutineType>proc</RoutineType>
+      <SourceTextLength>183</SourceTextLength>
+    </routine>
+    <routine id="82" parent="73" name="sp_alterdiagram">
       <CreatedTimestamp>2022-06-15.05:23:19.307</CreatedTimestamp>
       <ExtendedProperties>microsoft_database_tools_support
 1
@@ -443,7 +478,7 @@ int</ExtendedProperties>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>1501</SourceTextLength>
     </routine>
-    <routine id="78" parent="73" name="sp_creatediagram">
+    <routine id="83" parent="73" name="sp_creatediagram">
       <CreatedTimestamp>2022-06-15.05:23:19.300</CreatedTimestamp>
       <ExtendedProperties>microsoft_database_tools_support
 1
@@ -453,7 +488,7 @@ int</ExtendedProperties>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>1223</SourceTextLength>
     </routine>
-    <routine id="79" parent="73" name="sp_dropdiagram">
+    <routine id="84" parent="73" name="sp_dropdiagram">
       <CreatedTimestamp>2022-06-15.05:23:19.313</CreatedTimestamp>
       <ExtendedProperties>microsoft_database_tools_support
 1
@@ -463,7 +498,21 @@ int</ExtendedProperties>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>896</SourceTextLength>
     </routine>
-    <routine id="80" parent="73" name="sp_helpdiagramdefinition">
+    <routine id="85" parent="73" name="sp_getTopVatTuNhapTrongThang">
+      <CreatedTimestamp>2022-06-17.17:11:28.053</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-17.17:11:28.053</ModifiedTimestamp>
+      <ObjectId>98099390</ObjectId>
+      <RoutineType>proc</RoutineType>
+      <SourceTextLength>556</SourceTextLength>
+    </routine>
+    <routine id="86" parent="73" name="sp_getTopVatTuXuatTrongThang">
+      <CreatedTimestamp>2022-06-17.17:11:37.460</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-17.17:11:37.460</ModifiedTimestamp>
+      <ObjectId>114099447</ObjectId>
+      <RoutineType>proc</RoutineType>
+      <SourceTextLength>555</SourceTextLength>
+    </routine>
+    <routine id="87" parent="73" name="sp_helpdiagramdefinition">
       <CreatedTimestamp>2022-06-15.05:23:19.280</CreatedTimestamp>
       <ExtendedProperties>microsoft_database_tools_support
 1
@@ -473,7 +522,7 @@ int</ExtendedProperties>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>921</SourceTextLength>
     </routine>
-    <routine id="81" parent="73" name="sp_helpdiagrams">
+    <routine id="88" parent="73" name="sp_helpdiagrams">
       <CreatedTimestamp>2022-06-15.05:23:19.273</CreatedTimestamp>
       <ExtendedProperties>microsoft_database_tools_support
 1
@@ -483,7 +532,7 @@ int</ExtendedProperties>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>658</SourceTextLength>
     </routine>
-    <routine id="82" parent="73" name="sp_renamediagram">
+    <routine id="89" parent="73" name="sp_renamediagram">
       <CreatedTimestamp>2022-06-15.05:23:19.303</CreatedTimestamp>
       <ExtendedProperties>microsoft_database_tools_support
 1
@@ -493,7 +542,7 @@ int</ExtendedProperties>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>1721</SourceTextLength>
     </routine>
-    <routine id="83" parent="73" name="sp_upgraddiagrams">
+    <routine id="90" parent="73" name="sp_upgraddiagrams">
       <CreatedTimestamp>2022-06-15.05:23:19.267</CreatedTimestamp>
       <ExtendedProperties>microsoft_database_tools_support
 1
@@ -503,112 +552,112 @@ int</ExtendedProperties>
       <RoutineType>proc</RoutineType>
       <SourceTextLength>1463</SourceTextLength>
     </routine>
-    <table id="84" parent="73" name="CHITIETPHIEUCHUYENKHO">
-      <CreatedTimestamp>2022-06-15.05:23:09.600</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.600</ModifiedTimestamp>
-      <ObjectId>1797581442</ObjectId>
+    <table id="91" parent="73" name="CHITIETPHIEUCHUYENKHO">
+      <CreatedTimestamp>2022-06-19.01:07:25.427</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:07:25.450</ModifiedTimestamp>
+      <ObjectId>1026102696</ObjectId>
     </table>
-    <table id="85" parent="73" name="CHITIETPHIEUMUON">
-      <CreatedTimestamp>2022-06-15.05:23:09.577</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.577</ModifiedTimestamp>
-      <ObjectId>1525580473</ObjectId>
+    <table id="92" parent="73" name="CHITIETPHIEUMUON">
+      <CreatedTimestamp>2022-06-19.01:07:05.940</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:07:05.963</ModifiedTimestamp>
+      <ObjectId>962102468</ObjectId>
     </table>
-    <table id="86" parent="73" name="CHITIETPHIEUNHAP">
-      <CreatedTimestamp>2022-06-15.05:23:09.563</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.563</ModifiedTimestamp>
-      <ObjectId>1381579960</ObjectId>
+    <table id="93" parent="73" name="CHITIETPHIEUNHAP">
+      <CreatedTimestamp>2022-06-19.01:06:36.563</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:06:36.587</ModifiedTimestamp>
+      <ObjectId>898102240</ObjectId>
     </table>
-    <table id="87" parent="73" name="CHITIETPHIEUTRA">
-      <CreatedTimestamp>2022-06-15.05:23:09.587</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.587</ModifiedTimestamp>
-      <ObjectId>1669580986</ObjectId>
+    <table id="94" parent="73" name="CHITIETPHIEUTRA">
+      <CreatedTimestamp>2022-06-19.01:05:39.120</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:05:39.143</ModifiedTimestamp>
+      <ObjectId>722101613</ObjectId>
     </table>
-    <table id="88" parent="73" name="CHITIETPHIEUXUAT">
-      <CreatedTimestamp>2022-06-15.05:23:09.557</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.557</ModifiedTimestamp>
-      <ObjectId>1253579504</ObjectId>
+    <table id="95" parent="73" name="CHITIETPHIEUXUAT">
+      <CreatedTimestamp>2022-06-19.01:06:06.913</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:06:06.937</ModifiedTimestamp>
+      <ObjectId>786101841</ObjectId>
     </table>
-    <table id="89" parent="73" name="CONGNHAN">
+    <table id="96" parent="73" name="CONGNHAN">
       <CreatedTimestamp>2022-06-15.05:23:09.520</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.583</ModifiedTimestamp>
       <ObjectId>965578478</ObjectId>
     </table>
-    <table id="90" parent="73" name="CONGTRINH">
+    <table id="97" parent="73" name="CONGTRINH">
       <CreatedTimestamp>2022-06-15.05:23:09.547</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.573</ModifiedTimestamp>
       <ObjectId>1013578649</ObjectId>
     </table>
-    <table id="91" parent="73" name="DANHMUC">
+    <table id="98" parent="73" name="DANHMUC">
       <CreatedTimestamp>2022-06-15.05:23:09.510</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.517</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-06-17.16:33:53.897</ModifiedTimestamp>
       <ObjectId>789577851</ObjectId>
     </table>
-    <table id="92" parent="73" name="KHO">
+    <table id="99" parent="73" name="KHO">
       <CreatedTimestamp>2022-06-15.05:23:09.550</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.597</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-06-17.15:16:32.203</ModifiedTimestamp>
       <ObjectId>1061578820</ObjectId>
     </table>
-    <table id="93" parent="73" name="KHUVUC">
+    <table id="100" parent="73" name="KHUVUC">
       <CreatedTimestamp>2022-06-15.05:23:09.510</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.513</ModifiedTimestamp>
       <ObjectId>741577680</ObjectId>
     </table>
-    <table id="94" parent="73" name="NHACUNGCAP">
+    <table id="101" parent="73" name="NHACUNGCAP">
       <CreatedTimestamp>2022-06-15.05:23:09.517</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.560</ModifiedTimestamp>
       <ObjectId>917578307</ObjectId>
     </table>
-    <table id="95" parent="73" name="NHANVIEN">
+    <table id="102" parent="73" name="NHANVIEN">
       <CreatedTimestamp>2022-06-15.05:23:09.470</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:45:45.470</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-06-17.16:42:07.170</ModifiedTimestamp>
       <ObjectId>581577110</ObjectId>
     </table>
-    <table id="96" parent="73" name="PHIEUCHUYENKHO">
+    <table id="103" parent="73" name="PHIEUCHUYENKHO">
       <CreatedTimestamp>2022-06-15.05:23:09.593</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.600</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:07:25.437</ModifiedTimestamp>
       <ObjectId>1717581157</ObjectId>
     </table>
-    <table id="97" parent="73" name="PHIEUMUON">
+    <table id="104" parent="73" name="PHIEUMUON">
       <CreatedTimestamp>2022-06-15.05:23:09.570</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.587</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:07:05.953</ModifiedTimestamp>
       <ObjectId>1429580131</ObjectId>
     </table>
-    <table id="98" parent="73" name="PHIEUNHAP">
+    <table id="105" parent="73" name="PHIEUNHAP">
       <CreatedTimestamp>2022-06-15.05:23:09.560</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.567</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:06:36.573</ModifiedTimestamp>
       <ObjectId>1301579675</ObjectId>
     </table>
-    <table id="99" parent="73" name="PHIEUTRA">
+    <table id="106" parent="73" name="PHIEUTRA">
       <CreatedTimestamp>2022-06-15.05:23:09.580</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.590</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:05:39.133</ModifiedTimestamp>
       <ObjectId>1573580644</ObjectId>
     </table>
-    <table id="100" parent="73" name="PHIEUXUAT">
+    <table id="107" parent="73" name="PHIEUXUAT">
       <CreatedTimestamp>2022-06-15.05:23:09.553</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.560</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:06:06.927</ModifiedTimestamp>
       <ObjectId>1157579162</ObjectId>
     </table>
-    <table id="101" parent="73" name="TAIKHOAN">
+    <table id="108" parent="73" name="TAIKHOAN">
       <CreatedTimestamp>2022-06-15.05:45:45.123</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:45:45.470</ModifiedTimestamp>
       <ObjectId>2021582240</ObjectId>
     </table>
-    <table id="102" parent="73" name="TRANGTHAIPHIEU">
+    <table id="109" parent="73" name="TRANGTHAIPHIEU">
       <CreatedTimestamp>2022-06-15.05:23:09.550</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.597</ModifiedTimestamp>
       <ObjectId>1109578991</ObjectId>
     </table>
-    <table id="103" parent="73" name="VAITRO">
+    <table id="110" parent="73" name="VAITRO">
       <CreatedTimestamp>2022-06-15.05:23:09.503</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:45:45.453</ModifiedTimestamp>
       <ObjectId>629577281</ObjectId>
     </table>
-    <table id="104" parent="73" name="VATTU">
+    <table id="111" parent="73" name="VATTU">
       <CreatedTimestamp>2022-06-15.05:23:09.513</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.600</ModifiedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:07:25.437</ModifiedTimestamp>
       <ObjectId>853578079</ObjectId>
     </table>
-    <table id="105" parent="73" name="sysdiagrams">
+    <table id="112" parent="73" name="sysdiagrams">
       <CreatedTimestamp>2022-06-15.05:23:19.270</CreatedTimestamp>
       <ExtendedProperties>microsoft_database_tools_support
 1
@@ -616,307 +665,481 @@ int</ExtendedProperties>
       <ModifiedTimestamp>2022-06-15.05:23:19.270</ModifiedTimestamp>
       <ObjectId>1861581670</ObjectId>
     </table>
-    <argument id="106" parent="76">
+    <argument id="113" parent="76">
       <ArgumentDirection>R</ArgumentDirection>
       <DataType>int|0s</DataType>
     </argument>
-    <argument id="107" parent="77" name="@diagramname">
+    <argument id="114" parent="77" name="@m">
+      <DataType>varchar(2 char)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="115" parent="77" name="@y">
+      <DataType>varchar(4 char)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="116" parent="78" name="@m">
+      <DataType>int|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="117" parent="78" name="@y">
+      <DataType>int|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="118" parent="79" name="@m">
+      <DataType>varchar(2 char)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="119" parent="79" name="@y">
+      <DataType>varchar(4 char)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="120" parent="80" name="@m">
+      <DataType>varchar(2 char)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="121" parent="80" name="@y">
+      <DataType>varchar(4 char)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="122" parent="81" name="@m">
+      <DataType>varchar(2 char)|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="123" parent="81" name="@y">
+      <DataType>varchar(4 char)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="124" parent="82" name="@diagramname">
       <DataType>sysname|0s</DataType>
       <Position>1</Position>
     </argument>
-    <argument id="108" parent="77" name="@owner_id">
+    <argument id="125" parent="82" name="@owner_id">
       <DataType>int|0s</DataType>
       <DefaultExpression>null</DefaultExpression>
       <Position>2</Position>
     </argument>
-    <argument id="109" parent="77" name="@version">
+    <argument id="126" parent="82" name="@version">
       <DataType>int|0s</DataType>
       <Position>3</Position>
     </argument>
-    <argument id="110" parent="77" name="@definition">
+    <argument id="127" parent="82" name="@definition">
       <DataType>varbinary(max)|0s</DataType>
       <Position>4</Position>
     </argument>
-    <argument id="111" parent="78" name="@diagramname">
+    <argument id="128" parent="83" name="@diagramname">
       <DataType>sysname|0s</DataType>
       <Position>1</Position>
     </argument>
-    <argument id="112" parent="78" name="@owner_id">
+    <argument id="129" parent="83" name="@owner_id">
       <DataType>int|0s</DataType>
       <DefaultExpression>null</DefaultExpression>
       <Position>2</Position>
     </argument>
-    <argument id="113" parent="78" name="@version">
+    <argument id="130" parent="83" name="@version">
       <DataType>int|0s</DataType>
       <Position>3</Position>
     </argument>
-    <argument id="114" parent="78" name="@definition">
+    <argument id="131" parent="83" name="@definition">
       <DataType>varbinary(max)|0s</DataType>
       <Position>4</Position>
     </argument>
-    <argument id="115" parent="79" name="@diagramname">
+    <argument id="132" parent="84" name="@diagramname">
       <DataType>sysname|0s</DataType>
       <Position>1</Position>
     </argument>
-    <argument id="116" parent="79" name="@owner_id">
+    <argument id="133" parent="84" name="@owner_id">
       <DataType>int|0s</DataType>
       <DefaultExpression>null</DefaultExpression>
       <Position>2</Position>
     </argument>
-    <argument id="117" parent="80" name="@diagramname">
+    <argument id="134" parent="85" name="@num">
+      <DataType>smallint|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="135" parent="85" name="@m">
+      <DataType>varchar(2 char)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="136" parent="85" name="@y">
+      <DataType>varchar(4 char)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="137" parent="86" name="@num">
+      <DataType>smallint|0s</DataType>
+      <Position>1</Position>
+    </argument>
+    <argument id="138" parent="86" name="@m">
+      <DataType>varchar(2 char)|0s</DataType>
+      <Position>2</Position>
+    </argument>
+    <argument id="139" parent="86" name="@y">
+      <DataType>varchar(4 char)|0s</DataType>
+      <Position>3</Position>
+    </argument>
+    <argument id="140" parent="87" name="@diagramname">
       <DataType>sysname|0s</DataType>
       <Position>1</Position>
     </argument>
-    <argument id="118" parent="80" name="@owner_id">
+    <argument id="141" parent="87" name="@owner_id">
       <DataType>int|0s</DataType>
       <DefaultExpression>null</DefaultExpression>
       <Position>2</Position>
     </argument>
-    <argument id="119" parent="81" name="@diagramname">
+    <argument id="142" parent="88" name="@diagramname">
       <DataType>sysname|0s</DataType>
       <DefaultExpression>NULL</DefaultExpression>
       <Position>1</Position>
     </argument>
-    <argument id="120" parent="81" name="@owner_id">
+    <argument id="143" parent="88" name="@owner_id">
       <DataType>int|0s</DataType>
       <DefaultExpression>NULL</DefaultExpression>
       <Position>2</Position>
     </argument>
-    <argument id="121" parent="82" name="@diagramname">
+    <argument id="144" parent="89" name="@diagramname">
       <DataType>sysname|0s</DataType>
       <Position>1</Position>
     </argument>
-    <argument id="122" parent="82" name="@owner_id">
+    <argument id="145" parent="89" name="@owner_id">
       <DataType>int|0s</DataType>
       <DefaultExpression>null</DefaultExpression>
       <Position>2</Position>
     </argument>
-    <argument id="123" parent="82" name="@new_diagramname">
+    <argument id="146" parent="89" name="@new_diagramname">
       <DataType>sysname|0s</DataType>
       <Position>3</Position>
     </argument>
-    <column id="124" parent="84" name="MAVATTU">
-      <DataType>int|0s</DataType>
-      <Position>1</Position>
-    </column>
-    <column id="125" parent="84" name="SOLUONG">
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="126" parent="84" name="MAPHIEUCHUYENKHO">
-      <DataType>int|0s</DataType>
-      <Position>3</Position>
-    </column>
-    <foreign-key id="127" parent="84" name="FK__CHITIETPH__MAVAT__6C190EBB">
-      <ColNames>MAVATTU</ColNames>
-      <CreatedTimestamp>2022-06-15.05:23:09.600</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.600</ModifiedTimestamp>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>1813581499</ObjectId>
-      <RefColNames>MAVATTU</RefColNames>
-      <RefKeyName>PK__VATTU__CEEC52FABD26A0F3</RefKeyName>
-      <RefTableId>853578079</RefTableId>
-      <RefTableName>VATTU</RefTableName>
-    </foreign-key>
-    <foreign-key id="128" parent="84" name="FK__CHITIETPH__MAPHI__6D0D32F4">
-      <ColNames>MAPHIEUCHUYENKHO</ColNames>
-      <CreatedTimestamp>2022-06-15.05:23:09.600</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.600</ModifiedTimestamp>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>1829581556</ObjectId>
-      <RefColNames>MAPHIEUCHUYENKHO</RefColNames>
-      <RefKeyName>PK__PHIEUCHU__90DCEA344032A37A</RefKeyName>
-      <RefTableId>1717581157</RefTableId>
-      <RefTableName>PHIEUCHUYENKHO</RefTableName>
-    </foreign-key>
-    <column id="129" parent="85" name="MAVATTU">
-      <DataType>int|0s</DataType>
-      <Position>1</Position>
-    </column>
-    <column id="130" parent="85" name="SOLUONG">
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="131" parent="85" name="MAPHIEUMUON">
-      <DataType>int|0s</DataType>
-      <Position>3</Position>
-    </column>
-    <foreign-key id="132" parent="85" name="FK__CHITIETPH__MAVAT__5BE2A6F2">
-      <ColNames>MAVATTU</ColNames>
-      <CreatedTimestamp>2022-06-15.05:23:09.577</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.577</ModifiedTimestamp>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>1541580530</ObjectId>
-      <RefColNames>MAVATTU</RefColNames>
-      <RefKeyName>PK__VATTU__CEEC52FABD26A0F3</RefKeyName>
-      <RefTableId>853578079</RefTableId>
-      <RefTableName>VATTU</RefTableName>
-    </foreign-key>
-    <foreign-key id="133" parent="85" name="FK__CHITIETPH__MAPHI__5CD6CB2B">
-      <ColNames>MAPHIEUMUON</ColNames>
-      <CreatedTimestamp>2022-06-15.05:23:09.577</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.577</ModifiedTimestamp>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>1557580587</ObjectId>
-      <RefColNames>MAPHIEUMUON</RefColNames>
-      <RefKeyName>PK__PHIEUMUO__3F97C76B18753F5A</RefKeyName>
-      <RefTableId>1429580131</RefTableId>
-      <RefTableName>PHIEUMUON</RefTableName>
-    </foreign-key>
-    <column id="134" parent="86" name="MAVATTU">
-      <DataType>int|0s</DataType>
-      <Position>1</Position>
-    </column>
-    <column id="135" parent="86" name="SOLUONG">
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="136" parent="86" name="GIATHANH">
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-    </column>
-    <column id="137" parent="86" name="MAPHIEUNHAP">
-      <DataType>int|0s</DataType>
-      <Position>4</Position>
-    </column>
-    <foreign-key id="138" parent="86" name="FK__CHITIETPH__MAVAT__534D60F1">
-      <ColNames>MAVATTU</ColNames>
-      <CreatedTimestamp>2022-06-15.05:23:09.567</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.567</ModifiedTimestamp>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>1397580017</ObjectId>
-      <RefColNames>MAVATTU</RefColNames>
-      <RefKeyName>PK__VATTU__CEEC52FABD26A0F3</RefKeyName>
-      <RefTableId>853578079</RefTableId>
-      <RefTableName>VATTU</RefTableName>
-    </foreign-key>
-    <foreign-key id="139" parent="86" name="FK__CHITIETPH__MAPHI__5441852A">
-      <ColNames>MAPHIEUNHAP</ColNames>
-      <CreatedTimestamp>2022-06-15.05:23:09.567</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.567</ModifiedTimestamp>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>1413580074</ObjectId>
-      <RefColNames>MAPHIEUNHAP</RefColNames>
-      <RefKeyName>PK__PHIEUNHA__0F2275ABDE352977</RefKeyName>
-      <RefTableId>1301579675</RefTableId>
-      <RefTableName>PHIEUNHAP</RefTableName>
-    </foreign-key>
-    <column id="140" parent="87" name="MAVATTU">
-      <DataType>int|0s</DataType>
-      <Position>1</Position>
-    </column>
-    <column id="141" parent="87" name="SOLUONG">
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="142" parent="87" name="MAPHIEUTRA">
-      <DataType>int|0s</DataType>
-      <Position>3</Position>
-    </column>
-    <foreign-key id="143" parent="87" name="FK__CHITIETPH__MAVAT__6477ECF3">
-      <ColNames>MAVATTU</ColNames>
-      <CreatedTimestamp>2022-06-15.05:23:09.590</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.590</ModifiedTimestamp>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>1685581043</ObjectId>
-      <RefColNames>MAVATTU</RefColNames>
-      <RefKeyName>PK__VATTU__CEEC52FABD26A0F3</RefKeyName>
-      <RefTableId>853578079</RefTableId>
-      <RefTableName>VATTU</RefTableName>
-    </foreign-key>
-    <foreign-key id="144" parent="87" name="FK__CHITIETPH__MAPHI__656C112C">
-      <ColNames>MAPHIEUTRA</ColNames>
-      <CreatedTimestamp>2022-06-15.05:23:09.590</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.590</ModifiedTimestamp>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>1701581100</ObjectId>
-      <RefColNames>MAPHIEUTRA</RefColNames>
-      <RefKeyName>PK__PHIEUTRA__515E98C284D5AC4B</RefKeyName>
-      <RefTableId>1573580644</RefTableId>
-      <RefTableName>PHIEUTRA</RefTableName>
-    </foreign-key>
-    <column id="145" parent="88" name="MAVATTU">
-      <DataType>int|0s</DataType>
-      <Position>1</Position>
-    </column>
-    <column id="146" parent="88" name="SOLUONG">
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="147" parent="88" name="MAPHIEUXUAT">
-      <DataType>int|0s</DataType>
-      <Position>3</Position>
-    </column>
-    <foreign-key id="148" parent="88" name="FK__CHITIETPH__MAVAT__4BAC3F29">
-      <ColNames>MAVATTU</ColNames>
-      <CreatedTimestamp>2022-06-15.05:23:09.557</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.557</ModifiedTimestamp>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>1269579561</ObjectId>
-      <RefColNames>MAVATTU</RefColNames>
-      <RefKeyName>PK__VATTU__CEEC52FABD26A0F3</RefKeyName>
-      <RefTableId>853578079</RefTableId>
-      <RefTableName>VATTU</RefTableName>
-    </foreign-key>
-    <foreign-key id="149" parent="88" name="FK__CHITIETPH__MAPHI__4CA06362">
-      <ColNames>MAPHIEUXUAT</ColNames>
-      <CreatedTimestamp>2022-06-15.05:23:09.557</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.557</ModifiedTimestamp>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>1285579618</ObjectId>
-      <RefColNames>MAPHIEUXUAT</RefColNames>
-      <RefKeyName>PK__PHIEUXUA__85BAF66384476240</RefKeyName>
-      <RefTableId>1157579162</RefTableId>
-      <RefTableName>PHIEUXUAT</RefTableName>
-    </foreign-key>
-    <column id="150" parent="89" name="MACONGNHAN">
+    <column id="147" parent="91" name="IDCTPCK">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="151" parent="89" name="TENCONGNHAN">
+    <column id="148" parent="91" name="MAVATTU">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="149" parent="91" name="SOLUONG">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="150" parent="91" name="MAPHIEUCHUYENKHO">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="151" parent="91" name="FK__CHITIETPH__MAVAT__6C190EBB">
+      <ColNames>MAVATTU</ColNames>
+      <CreatedTimestamp>2022-06-19.01:07:25.433</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:07:25.433</ModifiedTimestamp>
+      <ObjectId>1058102810</ObjectId>
+      <RefColNames>MAVATTU</RefColNames>
+      <RefKeyName>PK__VATTU__CEEC52FABD26A0F3</RefKeyName>
+      <RefTableId>853578079</RefTableId>
+      <RefTableName>VATTU</RefTableName>
+    </foreign-key>
+    <foreign-key id="152" parent="91" name="FK__CHITIETPH__MAPHI__6D0D32F4">
+      <ColNames>MAPHIEUCHUYENKHO</ColNames>
+      <CreatedTimestamp>2022-06-19.01:07:25.437</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:07:25.437</ModifiedTimestamp>
+      <ObjectId>1074102867</ObjectId>
+      <RefColNames>MAPHIEUCHUYENKHO</RefColNames>
+      <RefKeyName>PK__PHIEUCHU__90DCEA344032A37A</RefKeyName>
+      <RefTableId>1717581157</RefTableId>
+      <RefTableName>PHIEUCHUYENKHO</RefTableName>
+    </foreign-key>
+    <index id="153" parent="91" name="PK_CHITIETPHIEUCHUYENKHO">
+      <Clustering>1</Clustering>
+      <ColNames>MAVATTU
+MAPHIEUCHUYENKHO</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+    </index>
+    <key id="154" parent="91" name="PK_CHITIETPHIEUCHUYENKHO">
+      <ColNames>MAVATTU
+MAPHIEUCHUYENKHO</ColNames>
+      <CreatedTimestamp>2022-06-19.01:07:25.433</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:07:25.433</ModifiedTimestamp>
+      <ObjectId>1042102753</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_CHITIETPHIEUCHUYENKHO</UnderlyingIndexName>
+    </key>
+    <column id="155" parent="92" name="IDCTPM">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="156" parent="92" name="MAVATTU">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="157" parent="92" name="SOLUONG">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="158" parent="92" name="MAPHIEUMUON">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="159" parent="92" name="FK__CHITIETPH__MAVAT__5BE2A6F2">
+      <ColNames>MAVATTU</ColNames>
+      <CreatedTimestamp>2022-06-19.01:07:05.950</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:07:05.950</ModifiedTimestamp>
+      <ObjectId>994102582</ObjectId>
+      <RefColNames>MAVATTU</RefColNames>
+      <RefKeyName>PK__VATTU__CEEC52FABD26A0F3</RefKeyName>
+      <RefTableId>853578079</RefTableId>
+      <RefTableName>VATTU</RefTableName>
+    </foreign-key>
+    <foreign-key id="160" parent="92" name="FK__CHITIETPH__MAPHI__5CD6CB2B">
+      <ColNames>MAPHIEUMUON</ColNames>
+      <CreatedTimestamp>2022-06-19.01:07:05.953</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:07:05.953</ModifiedTimestamp>
+      <ObjectId>1010102639</ObjectId>
+      <RefColNames>MAPHIEUMUON</RefColNames>
+      <RefKeyName>PK__PHIEUMUO__3F97C76B18753F5A</RefKeyName>
+      <RefTableId>1429580131</RefTableId>
+      <RefTableName>PHIEUMUON</RefTableName>
+    </foreign-key>
+    <index id="161" parent="92" name="PK_CHITIETPHIEUMUON">
+      <Clustering>1</Clustering>
+      <ColNames>MAVATTU
+MAPHIEUMUON</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+    </index>
+    <key id="162" parent="92" name="PK_CHITIETPHIEUMUON">
+      <ColNames>MAVATTU
+MAPHIEUMUON</ColNames>
+      <CreatedTimestamp>2022-06-19.01:07:05.950</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:07:05.950</ModifiedTimestamp>
+      <ObjectId>978102525</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_CHITIETPHIEUMUON</UnderlyingIndexName>
+    </key>
+    <column id="163" parent="93" name="IDCTPN">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="164" parent="93" name="MAVATTU">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="165" parent="93" name="SOLUONG">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="166" parent="93" name="GIATHANH">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="167" parent="93" name="MAPHIEUNHAP">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="168" parent="93" name="FK__CHITIETPH__MAVAT__534D60F1">
+      <ColNames>MAVATTU</ColNames>
+      <CreatedTimestamp>2022-06-19.01:06:36.573</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:06:36.573</ModifiedTimestamp>
+      <ObjectId>930102354</ObjectId>
+      <RefColNames>MAVATTU</RefColNames>
+      <RefKeyName>PK__VATTU__CEEC52FABD26A0F3</RefKeyName>
+      <RefTableId>853578079</RefTableId>
+      <RefTableName>VATTU</RefTableName>
+    </foreign-key>
+    <foreign-key id="169" parent="93" name="FK__CHITIETPH__MAPHI__5441852A">
+      <ColNames>MAPHIEUNHAP</ColNames>
+      <CreatedTimestamp>2022-06-19.01:06:36.573</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:06:36.573</ModifiedTimestamp>
+      <ObjectId>946102411</ObjectId>
+      <RefColNames>MAPHIEUNHAP</RefColNames>
+      <RefKeyName>PK__PHIEUNHA__0F2275ABDE352977</RefKeyName>
+      <RefTableId>1301579675</RefTableId>
+      <RefTableName>PHIEUNHAP</RefTableName>
+    </foreign-key>
+    <index id="170" parent="93" name="PK_CHITIETPHIEUNHAP">
+      <Clustering>1</Clustering>
+      <ColNames>MAVATTU
+MAPHIEUNHAP</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+    </index>
+    <key id="171" parent="93" name="PK_CHITIETPHIEUNHAP">
+      <ColNames>MAVATTU
+MAPHIEUNHAP</ColNames>
+      <CreatedTimestamp>2022-06-19.01:06:36.570</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:06:36.570</ModifiedTimestamp>
+      <ObjectId>914102297</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_CHITIETPHIEUNHAP</UnderlyingIndexName>
+    </key>
+    <column id="172" parent="94" name="IDCTPT">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="173" parent="94" name="MAVATTU">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="174" parent="94" name="SOLUONG">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="175" parent="94" name="MAPHIEUTRA">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="176" parent="94" name="FK__CHITIETPH__MAVAT__6477ECF3">
+      <ColNames>MAVATTU</ColNames>
+      <CreatedTimestamp>2022-06-19.01:05:39.130</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:05:39.130</ModifiedTimestamp>
+      <ObjectId>754101727</ObjectId>
+      <RefColNames>MAVATTU</RefColNames>
+      <RefKeyName>PK__VATTU__CEEC52FABD26A0F3</RefKeyName>
+      <RefTableId>853578079</RefTableId>
+      <RefTableName>VATTU</RefTableName>
+    </foreign-key>
+    <foreign-key id="177" parent="94" name="FK__CHITIETPH__MAPHI__656C112C">
+      <ColNames>MAPHIEUTRA</ColNames>
+      <CreatedTimestamp>2022-06-19.01:05:39.130</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:05:39.130</ModifiedTimestamp>
+      <ObjectId>770101784</ObjectId>
+      <RefColNames>MAPHIEUTRA</RefColNames>
+      <RefKeyName>PK__PHIEUTRA__515E98C284D5AC4B</RefKeyName>
+      <RefTableId>1573580644</RefTableId>
+      <RefTableName>PHIEUTRA</RefTableName>
+    </foreign-key>
+    <index id="178" parent="94" name="PK_CHITIETPHIEUTRA">
+      <Clustering>1</Clustering>
+      <ColNames>MAVATTU
+MAPHIEUTRA</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+    </index>
+    <key id="179" parent="94" name="PK_CHITIETPHIEUTRA">
+      <ColNames>MAVATTU
+MAPHIEUTRA</ColNames>
+      <CreatedTimestamp>2022-06-19.01:05:39.130</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:05:39.130</ModifiedTimestamp>
+      <ObjectId>738101670</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_CHITIETPHIEUTRA</UnderlyingIndexName>
+    </key>
+    <column id="180" parent="95" name="IDCTPX">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="181" parent="95" name="MAVATTU">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="182" parent="95" name="SOLUONG">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="183" parent="95" name="MAPHIEUXUAT">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="184" parent="95" name="FK__CHITIETPH__MAVAT__4BAC3F29">
+      <ColNames>MAVATTU</ColNames>
+      <CreatedTimestamp>2022-06-19.01:06:06.923</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:06:06.923</ModifiedTimestamp>
+      <ObjectId>818101955</ObjectId>
+      <RefColNames>MAVATTU</RefColNames>
+      <RefKeyName>PK__VATTU__CEEC52FABD26A0F3</RefKeyName>
+      <RefTableId>853578079</RefTableId>
+      <RefTableName>VATTU</RefTableName>
+    </foreign-key>
+    <foreign-key id="185" parent="95" name="FK__CHITIETPH__MAPHI__4CA06362">
+      <ColNames>MAPHIEUXUAT</ColNames>
+      <CreatedTimestamp>2022-06-19.01:06:06.927</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:06:06.927</ModifiedTimestamp>
+      <ObjectId>834102012</ObjectId>
+      <RefColNames>MAPHIEUXUAT</RefColNames>
+      <RefKeyName>PK__PHIEUXUA__85BAF66384476240</RefKeyName>
+      <RefTableId>1157579162</RefTableId>
+      <RefTableName>PHIEUXUAT</RefTableName>
+    </foreign-key>
+    <index id="186" parent="95" name="PK_CHITIETPHIEUXUAT">
+      <Clustering>1</Clustering>
+      <ColNames>MAVATTU
+MAPHIEUXUAT</ColNames>
+      <Position>1</Position>
+      <Unique>1</Unique>
+    </index>
+    <key id="187" parent="95" name="PK_CHITIETPHIEUXUAT">
+      <ColNames>MAVATTU
+MAPHIEUXUAT</ColNames>
+      <CreatedTimestamp>2022-06-19.01:06:06.923</CreatedTimestamp>
+      <ModifiedTimestamp>2022-06-19.01:06:06.923</ModifiedTimestamp>
+      <ObjectId>802101898</ObjectId>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PK_CHITIETPHIEUXUAT</UnderlyingIndexName>
+    </key>
+    <column id="188" parent="96" name="MACONGNHAN">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="189" parent="96" name="TENCONGNHAN">
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="152" parent="89" name="SDT">
+    <column id="190" parent="96" name="SDT">
       <DataType>nvarchar(10 char)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="153" parent="89" name="DIACHI">
+    <column id="191" parent="96" name="DIACHI">
       <DataType>nvarchar(max)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="154" parent="89" name="NGAYSINH">
+    <column id="192" parent="96" name="NGAYSINH">
       <DataType>datetime|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="155" parent="89" name="TRANGTHAI">
+    <column id="193" parent="96" name="TRANGTHAI">
       <DataType>bit|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <index id="156" parent="89" name="PK__CONGNHAN__648D418490553D86">
+    <index id="194" parent="96" name="PK__CONGNHAN__648D418490553D86">
       <Clustering>1</Clustering>
       <ColNames>MACONGNHAN</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <index id="157" parent="89" name="UQ__CONGNHAN__13A4884EB1DCAC61">
+    <index id="195" parent="96" name="UQ__CONGNHAN__13A4884EB1DCAC61">
       <ColNames>TENCONGNHAN</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>2</Position>
       <Unique>1</Unique>
     </index>
-    <key id="158" parent="89" name="PK__CONGNHAN__648D418490553D86">
+    <key id="196" parent="96" name="PK__CONGNHAN__648D418490553D86">
       <ColNames>MACONGNHAN</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.520</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.520</ModifiedTimestamp>
@@ -925,7 +1148,7 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__CONGNHAN__648D418490553D86</UnderlyingIndexName>
     </key>
-    <key id="159" parent="89" name="UQ__CONGNHAN__13A4884EB1DCAC61">
+    <key id="197" parent="96" name="UQ__CONGNHAN__13A4884EB1DCAC61">
       <ColNames>TENCONGNHAN</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.520</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.520</ModifiedTimestamp>
@@ -933,36 +1156,36 @@ int</ExtendedProperties>
       <ObjectId>997578592</ObjectId>
       <UnderlyingIndexName>UQ__CONGNHAN__13A4884EB1DCAC61</UnderlyingIndexName>
     </key>
-    <column id="160" parent="90" name="MACONGTRINH">
+    <column id="198" parent="97" name="MACONGTRINH">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="161" parent="90" name="TENCONGTRINH">
+    <column id="199" parent="97" name="TENCONGTRINH">
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="162" parent="90" name="TRANGTHAI">
+    <column id="200" parent="97" name="TRANGTHAI">
       <DataType>bit|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <index id="163" parent="90" name="PK__CONGTRIN__7AFA78B1B7C93EC4">
+    <index id="201" parent="97" name="PK__CONGTRIN__7AFA78B1B7C93EC4">
       <Clustering>1</Clustering>
       <ColNames>MACONGTRINH</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <index id="164" parent="90" name="UQ__CONGTRIN__0C5F4FFF3C614787">
+    <index id="202" parent="97" name="UQ__CONGTRIN__0C5F4FFF3C614787">
       <ColNames>TENCONGTRINH</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>2</Position>
       <Unique>1</Unique>
     </index>
-    <key id="165" parent="90" name="PK__CONGTRIN__7AFA78B1B7C93EC4">
+    <key id="203" parent="97" name="PK__CONGTRIN__7AFA78B1B7C93EC4">
       <ColNames>MACONGTRINH</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.547</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.547</ModifiedTimestamp>
@@ -971,7 +1194,7 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__CONGTRIN__7AFA78B1B7C93EC4</UnderlyingIndexName>
     </key>
-    <key id="166" parent="90" name="UQ__CONGTRIN__0C5F4FFF3C614787">
+    <key id="204" parent="97" name="UQ__CONGTRIN__0C5F4FFF3C614787">
       <ColNames>TENCONGTRINH</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.547</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.547</ModifiedTimestamp>
@@ -979,27 +1202,27 @@ int</ExtendedProperties>
       <ObjectId>1045578763</ObjectId>
       <UnderlyingIndexName>UQ__CONGTRIN__0C5F4FFF3C614787</UnderlyingIndexName>
     </key>
-    <column id="167" parent="91" name="MADANHMUC">
+    <column id="205" parent="98" name="MADANHMUC">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <SequenceIdentity>1</SequenceIdentity>
+      <SequenceIdentity>1(18)</SequenceIdentity>
     </column>
-    <column id="168" parent="91" name="TENDANHMUC">
+    <column id="206" parent="98" name="TENDANHMUC">
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="169" parent="91" name="MAKHUVUC">
+    <column id="207" parent="98" name="MAKHUVUC">
       <DataType>int|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="170" parent="91" name="TRANGTHAI">
+    <column id="208" parent="98" name="TRANGTHAI">
       <DataType>bit|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <foreign-key id="171" parent="91" name="FK__DANHMUC__MAKHUVU__31EC6D26">
+    <foreign-key id="209" parent="98" name="FK__DANHMUC__MAKHUVU__31EC6D26">
       <ColNames>MAKHUVUC</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.513</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.513</ModifiedTimestamp>
@@ -1010,20 +1233,14 @@ int</ExtendedProperties>
       <RefTableId>741577680</RefTableId>
       <RefTableName>KHUVUC</RefTableName>
     </foreign-key>
-    <index id="172" parent="91" name="PK__DANHMUC__804E2884B4494246">
+    <index id="210" parent="98" name="PK__DANHMUC__804E2884B4494246">
       <Clustering>1</Clustering>
       <ColNames>MADANHMUC</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <index id="173" parent="91" name="UQ__DANHMUC__C155821D646745CF">
-      <ColNames>TENDANHMUC</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Position>2</Position>
-      <Unique>1</Unique>
-    </index>
-    <key id="174" parent="91" name="PK__DANHMUC__804E2884B4494246">
+    <key id="211" parent="98" name="PK__DANHMUC__804E2884B4494246">
       <ColNames>MADANHMUC</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.510</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.510</ModifiedTimestamp>
@@ -1032,39 +1249,35 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__DANHMUC__804E2884B4494246</UnderlyingIndexName>
     </key>
-    <key id="175" parent="91" name="UQ__DANHMUC__C155821D646745CF">
-      <ColNames>TENDANHMUC</ColNames>
-      <CreatedTimestamp>2022-06-15.05:23:09.513</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.513</ModifiedTimestamp>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>821577965</ObjectId>
-      <UnderlyingIndexName>UQ__DANHMUC__C155821D646745CF</UnderlyingIndexName>
-    </key>
-    <column id="176" parent="92" name="MAKHO">
+    <column id="212" parent="99" name="MAKHO">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <SequenceIdentity>1</SequenceIdentity>
+      <SequenceIdentity>1(8)</SequenceIdentity>
     </column>
-    <column id="177" parent="92" name="TENKHO">
+    <column id="213" parent="99" name="TENKHO">
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <index id="178" parent="92" name="PK__KHO__7AFB3D1689727379">
+    <column id="214" parent="99" name="DIACHI">
+      <DataType>nvarchar(100 char)|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <index id="215" parent="99" name="PK__KHO__7AFB3D1689727379">
       <Clustering>1</Clustering>
       <ColNames>MAKHO</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <index id="179" parent="92" name="UQ__KHO__E1C64EC578902806">
+    <index id="216" parent="99" name="UQ__KHO__E1C64EC578902806">
       <ColNames>TENKHO</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>2</Position>
       <Unique>1</Unique>
     </index>
-    <key id="180" parent="92" name="PK__KHO__7AFB3D1689727379">
+    <key id="217" parent="99" name="PK__KHO__7AFB3D1689727379">
       <ColNames>MAKHO</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.550</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.550</ModifiedTimestamp>
@@ -1073,7 +1286,7 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__KHO__7AFB3D1689727379</UnderlyingIndexName>
     </key>
-    <key id="181" parent="92" name="UQ__KHO__E1C64EC578902806">
+    <key id="218" parent="99" name="UQ__KHO__E1C64EC578902806">
       <ColNames>TENKHO</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.550</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.550</ModifiedTimestamp>
@@ -1081,36 +1294,36 @@ int</ExtendedProperties>
       <ObjectId>1093578934</ObjectId>
       <UnderlyingIndexName>UQ__KHO__E1C64EC578902806</UnderlyingIndexName>
     </key>
-    <column id="182" parent="93" name="MAKHUVUC">
+    <column id="219" parent="100" name="MAKHUVUC">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="183" parent="93" name="TENKHUVUC">
+    <column id="220" parent="100" name="TENKHUVUC">
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="184" parent="93" name="TRANGTHAI">
+    <column id="221" parent="100" name="TRANGTHAI">
       <DataType>bit|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <index id="185" parent="93" name="PK__KHUVUC__475B8960BD7AAFB3">
+    <index id="222" parent="100" name="PK__KHUVUC__475B8960BD7AAFB3">
       <Clustering>1</Clustering>
       <ColNames>MAKHUVUC</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <index id="186" parent="93" name="UQ__KHUVUC__9752807955AC1EAF">
+    <index id="223" parent="100" name="UQ__KHUVUC__9752807955AC1EAF">
       <ColNames>TENKHUVUC</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>2</Position>
       <Unique>1</Unique>
     </index>
-    <key id="187" parent="93" name="PK__KHUVUC__475B8960BD7AAFB3">
+    <key id="224" parent="100" name="PK__KHUVUC__475B8960BD7AAFB3">
       <ColNames>MAKHUVUC</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.510</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.510</ModifiedTimestamp>
@@ -1119,7 +1332,7 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__KHUVUC__475B8960BD7AAFB3</UnderlyingIndexName>
     </key>
-    <key id="188" parent="93" name="UQ__KHUVUC__9752807955AC1EAF">
+    <key id="225" parent="100" name="UQ__KHUVUC__9752807955AC1EAF">
       <ColNames>TENKHUVUC</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.510</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.510</ModifiedTimestamp>
@@ -1127,44 +1340,44 @@ int</ExtendedProperties>
       <ObjectId>773577794</ObjectId>
       <UnderlyingIndexName>UQ__KHUVUC__9752807955AC1EAF</UnderlyingIndexName>
     </key>
-    <column id="189" parent="94" name="MANHACUNGCAP">
+    <column id="226" parent="101" name="MANHACUNGCAP">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="190" parent="94" name="TENNHACUNGCAP">
+    <column id="227" parent="101" name="TENNHACUNGCAP">
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="191" parent="94" name="SDT">
+    <column id="228" parent="101" name="SDT">
       <DataType>nvarchar(10 char)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="192" parent="94" name="DIACHI">
+    <column id="229" parent="101" name="DIACHI">
       <DataType>nvarchar(max)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="193" parent="94" name="TRANGTHAI">
+    <column id="230" parent="101" name="TRANGTHAI">
       <DataType>bit|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <index id="194" parent="94" name="PK__NHACUNGC__610AFF1FFB55937D">
+    <index id="231" parent="101" name="PK__NHACUNGC__610AFF1FFB55937D">
       <Clustering>1</Clustering>
       <ColNames>MANHACUNGCAP</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <index id="195" parent="94" name="UQ__NHACUNGC__337D65E17116E6AB">
+    <index id="232" parent="101" name="UQ__NHACUNGC__337D65E17116E6AB">
       <ColNames>TENNHACUNGCAP</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>2</Position>
       <Unique>1</Unique>
     </index>
-    <key id="196" parent="94" name="PK__NHACUNGC__610AFF1FFB55937D">
+    <key id="233" parent="101" name="PK__NHACUNGC__610AFF1FFB55937D">
       <ColNames>MANHACUNGCAP</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.517</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.517</ModifiedTimestamp>
@@ -1173,7 +1386,7 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__NHACUNGC__610AFF1FFB55937D</UnderlyingIndexName>
     </key>
-    <key id="197" parent="94" name="UQ__NHACUNGC__337D65E17116E6AB">
+    <key id="234" parent="101" name="UQ__NHACUNGC__337D65E17116E6AB">
       <ColNames>TENNHACUNGCAP</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.520</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.520</ModifiedTimestamp>
@@ -1181,48 +1394,42 @@ int</ExtendedProperties>
       <ObjectId>949578421</ObjectId>
       <UnderlyingIndexName>UQ__NHACUNGC__337D65E17116E6AB</UnderlyingIndexName>
     </key>
-    <column id="198" parent="95" name="MANHANVIEN">
+    <column id="235" parent="102" name="MANHANVIEN">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <SequenceIdentity>1(3)</SequenceIdentity>
+      <SequenceIdentity>1(1026)</SequenceIdentity>
     </column>
-    <column id="199" parent="95" name="TEN">
+    <column id="236" parent="102" name="TEN">
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="200" parent="95" name="SDT">
+    <column id="237" parent="102" name="SDT">
       <DataType>nvarchar(10 char)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="201" parent="95" name="DIACHI">
+    <column id="238" parent="102" name="DIACHI">
       <DataType>nvarchar(max)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="202" parent="95" name="NGAYSINH">
+    <column id="239" parent="102" name="NGAYSINH">
       <DataType>datetime|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="203" parent="95" name="TRANGTHAI">
+    <column id="240" parent="102" name="TRANGTHAI">
       <DataType>bit|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <index id="204" parent="95" name="PK__NHANVIEN__7E46DD914AB26EA2">
+    <index id="241" parent="102" name="PK__NHANVIEN__7E46DD914AB26EA2">
       <Clustering>1</Clustering>
       <ColNames>MANHANVIEN</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <index id="205" parent="95" name="UQ__NHANVIEN__C456F6BB64982CEF">
-      <ColNames>TEN</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Position>2</Position>
-      <Unique>1</Unique>
-    </index>
-    <key id="206" parent="95" name="PK__NHANVIEN__7E46DD914AB26EA2">
+    <key id="242" parent="102" name="PK__NHANVIEN__7E46DD914AB26EA2">
       <ColNames>MANHANVIEN</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.503</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.503</ModifiedTimestamp>
@@ -1231,42 +1438,42 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__NHANVIEN__7E46DD914AB26EA2</UnderlyingIndexName>
     </key>
-    <key id="207" parent="95" name="UQ__NHANVIEN__C456F6BB64982CEF">
-      <ColNames>TEN</ColNames>
-      <CreatedTimestamp>2022-06-15.05:23:09.503</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.503</ModifiedTimestamp>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>613577224</ObjectId>
-      <UnderlyingIndexName>UQ__NHANVIEN__C456F6BB64982CEF</UnderlyingIndexName>
-    </key>
-    <column id="208" parent="96" name="MAPHIEUCHUYENKHO">
+    <trigger id="243" parent="102" name="tr_update_trang_thai_nhan_vien">
+      <CreatedTimestamp>2022-06-17.16:42:07.170</CreatedTimestamp>
+      <Events>U</Events>
+      <ModifiedTimestamp>2022-06-17.16:42:07.170</ModifiedTimestamp>
+      <ObjectId>18099105</ObjectId>
+      <SourceTextLength>226</SourceTextLength>
+      <Turn>after-stmt</Turn>
+    </trigger>
+    <column id="244" parent="103" name="MAPHIEUCHUYENKHO">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <SequenceIdentity>1</SequenceIdentity>
+      <SequenceIdentity>1(10)</SequenceIdentity>
     </column>
-    <column id="209" parent="96" name="MANHANVIEN">
+    <column id="245" parent="103" name="MANHANVIEN">
       <DataType>int|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="210" parent="96" name="MAKHO">
+    <column id="246" parent="103" name="MAKHO">
       <DataType>int|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="211" parent="96" name="THOIGIAN">
+    <column id="247" parent="103" name="THOIGIAN">
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="212" parent="96" name="MATRANGTHAI">
+    <column id="248" parent="103" name="MATRANGTHAI">
       <DataType>int|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="213" parent="96" name="GHICHU">
+    <column id="249" parent="103" name="GHICHU">
       <DataType>nvarchar(max)|0s</DataType>
       <Position>6</Position>
     </column>
-    <foreign-key id="214" parent="96" name="FK__PHIEUCHUY__MANHA__68487DD7">
+    <foreign-key id="250" parent="103" name="FK__PHIEUCHUY__MANHA__68487DD7">
       <ColNames>MANHANVIEN</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.593</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.593</ModifiedTimestamp>
@@ -1277,7 +1484,7 @@ int</ExtendedProperties>
       <RefTableId>581577110</RefTableId>
       <RefTableName>NHANVIEN</RefTableName>
     </foreign-key>
-    <foreign-key id="215" parent="96" name="FK__PHIEUCHUY__MAKHO__693CA210">
+    <foreign-key id="251" parent="103" name="FK__PHIEUCHUY__MAKHO__693CA210">
       <ColNames>MAKHO</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.597</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.597</ModifiedTimestamp>
@@ -1288,7 +1495,7 @@ int</ExtendedProperties>
       <RefTableId>1061578820</RefTableId>
       <RefTableName>KHO</RefTableName>
     </foreign-key>
-    <foreign-key id="216" parent="96" name="FK__PHIEUCHUY__MATRA__6A30C649">
+    <foreign-key id="252" parent="103" name="FK__PHIEUCHUY__MATRA__6A30C649">
       <ColNames>MATRANGTHAI</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.597</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.597</ModifiedTimestamp>
@@ -1299,14 +1506,14 @@ int</ExtendedProperties>
       <RefTableId>1109578991</RefTableId>
       <RefTableName>TRANGTHAIPHIEU</RefTableName>
     </foreign-key>
-    <index id="217" parent="96" name="PK__PHIEUCHU__90DCEA344032A37A">
+    <index id="253" parent="103" name="PK__PHIEUCHU__90DCEA344032A37A">
       <Clustering>1</Clustering>
       <ColNames>MAPHIEUCHUYENKHO</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <key id="218" parent="96" name="PK__PHIEUCHU__90DCEA344032A37A">
+    <key id="254" parent="103" name="PK__PHIEUCHU__90DCEA344032A37A">
       <ColNames>MAPHIEUCHUYENKHO</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.593</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.593</ModifiedTimestamp>
@@ -1315,43 +1522,43 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__PHIEUCHU__90DCEA344032A37A</UnderlyingIndexName>
     </key>
-    <column id="219" parent="97" name="MAPHIEUMUON">
+    <column id="255" parent="104" name="MAPHIEUMUON">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <SequenceIdentity>1</SequenceIdentity>
+      <SequenceIdentity>1(9)</SequenceIdentity>
     </column>
-    <column id="220" parent="97" name="MANHANVIEN">
+    <column id="256" parent="104" name="MANHANVIEN">
       <DataType>int|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="221" parent="97" name="MACONGNHAN">
+    <column id="257" parent="104" name="MACONGNHAN">
       <DataType>int|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="222" parent="97" name="NGAYMUON">
+    <column id="258" parent="104" name="NGAYMUON">
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="223" parent="97" name="NGAYTRA">
+    <column id="259" parent="104" name="NGAYTRA">
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="224" parent="97" name="MACONGTRINH">
+    <column id="260" parent="104" name="MACONGTRINH">
       <DataType>int|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="225" parent="97" name="MATRANGTHAI">
+    <column id="261" parent="104" name="MATRANGTHAI">
       <DataType>int|0s</DataType>
       <Position>7</Position>
     </column>
-    <column id="226" parent="97" name="GHICHU">
+    <column id="262" parent="104" name="GHICHU">
       <DataType>nvarchar(max)|0s</DataType>
       <Position>8</Position>
     </column>
-    <foreign-key id="227" parent="97" name="FK__PHIEUMUON__MANHA__571DF1D5">
+    <foreign-key id="263" parent="104" name="FK__PHIEUMUON__MANHA__571DF1D5">
       <ColNames>MANHANVIEN</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.570</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.570</ModifiedTimestamp>
@@ -1362,7 +1569,7 @@ int</ExtendedProperties>
       <RefTableId>581577110</RefTableId>
       <RefTableName>NHANVIEN</RefTableName>
     </foreign-key>
-    <foreign-key id="228" parent="97" name="FK__PHIEUMUON__MACON__5812160E">
+    <foreign-key id="264" parent="104" name="FK__PHIEUMUON__MACON__5812160E">
       <ColNames>MACONGNHAN</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.570</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.570</ModifiedTimestamp>
@@ -1373,7 +1580,7 @@ int</ExtendedProperties>
       <RefTableId>965578478</RefTableId>
       <RefTableName>CONGNHAN</RefTableName>
     </foreign-key>
-    <foreign-key id="229" parent="97" name="FK__PHIEUMUON__MACON__59063A47">
+    <foreign-key id="265" parent="104" name="FK__PHIEUMUON__MACON__59063A47">
       <ColNames>MACONGTRINH</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.573</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.573</ModifiedTimestamp>
@@ -1384,7 +1591,7 @@ int</ExtendedProperties>
       <RefTableId>1013578649</RefTableId>
       <RefTableName>CONGTRINH</RefTableName>
     </foreign-key>
-    <foreign-key id="230" parent="97" name="FK__PHIEUMUON__MATRA__59FA5E80">
+    <foreign-key id="266" parent="104" name="FK__PHIEUMUON__MATRA__59FA5E80">
       <ColNames>MATRANGTHAI</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.573</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.573</ModifiedTimestamp>
@@ -1395,14 +1602,14 @@ int</ExtendedProperties>
       <RefTableId>1109578991</RefTableId>
       <RefTableName>TRANGTHAIPHIEU</RefTableName>
     </foreign-key>
-    <index id="231" parent="97" name="PK__PHIEUMUO__3F97C76B18753F5A">
+    <index id="267" parent="104" name="PK__PHIEUMUO__3F97C76B18753F5A">
       <Clustering>1</Clustering>
       <ColNames>MAPHIEUMUON</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <key id="232" parent="97" name="PK__PHIEUMUO__3F97C76B18753F5A">
+    <key id="268" parent="104" name="PK__PHIEUMUO__3F97C76B18753F5A">
       <ColNames>MAPHIEUMUON</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.570</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.570</ModifiedTimestamp>
@@ -1411,39 +1618,39 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__PHIEUMUO__3F97C76B18753F5A</UnderlyingIndexName>
     </key>
-    <column id="233" parent="98" name="MAPHIEUNHAP">
+    <column id="269" parent="105" name="MAPHIEUNHAP">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <SequenceIdentity>1</SequenceIdentity>
+      <SequenceIdentity>1(8)</SequenceIdentity>
     </column>
-    <column id="234" parent="98" name="MANHANVIEN">
+    <column id="270" parent="105" name="MANHANVIEN">
       <DataType>int|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="235" parent="98" name="MANHACUNGCAP">
+    <column id="271" parent="105" name="MANHACUNGCAP">
       <DataType>int|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="236" parent="98" name="THOIGIAN">
+    <column id="272" parent="105" name="THOIGIAN">
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="237" parent="98" name="TONGTIEN">
+    <column id="273" parent="105" name="TONGTIEN">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="238" parent="98" name="MATRANGTHAI">
+    <column id="274" parent="105" name="MATRANGTHAI">
       <DataType>int|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="239" parent="98" name="GHICHU">
+    <column id="275" parent="105" name="GHICHU">
       <DataType>nvarchar(max)|0s</DataType>
       <Position>7</Position>
     </column>
-    <foreign-key id="240" parent="98" name="FK__PHIEUNHAP__MANHA__4F7CD00D">
+    <foreign-key id="276" parent="105" name="FK__PHIEUNHAP__MANHA__4F7CD00D">
       <ColNames>MANHANVIEN</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.560</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.560</ModifiedTimestamp>
@@ -1454,7 +1661,7 @@ int</ExtendedProperties>
       <RefTableId>581577110</RefTableId>
       <RefTableName>NHANVIEN</RefTableName>
     </foreign-key>
-    <foreign-key id="241" parent="98" name="FK__PHIEUNHAP__MANHA__5070F446">
+    <foreign-key id="277" parent="105" name="FK__PHIEUNHAP__MANHA__5070F446">
       <ColNames>MANHACUNGCAP</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.560</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.560</ModifiedTimestamp>
@@ -1465,7 +1672,7 @@ int</ExtendedProperties>
       <RefTableId>917578307</RefTableId>
       <RefTableName>NHACUNGCAP</RefTableName>
     </foreign-key>
-    <foreign-key id="242" parent="98" name="FK__PHIEUNHAP__MATRA__5165187F">
+    <foreign-key id="278" parent="105" name="FK__PHIEUNHAP__MATRA__5165187F">
       <ColNames>MATRANGTHAI</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.560</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.560</ModifiedTimestamp>
@@ -1476,14 +1683,14 @@ int</ExtendedProperties>
       <RefTableId>1109578991</RefTableId>
       <RefTableName>TRANGTHAIPHIEU</RefTableName>
     </foreign-key>
-    <index id="243" parent="98" name="PK__PHIEUNHA__0F2275ABDE352977">
+    <index id="279" parent="105" name="PK__PHIEUNHA__0F2275ABDE352977">
       <Clustering>1</Clustering>
       <ColNames>MAPHIEUNHAP</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <key id="244" parent="98" name="PK__PHIEUNHA__0F2275ABDE352977">
+    <key id="280" parent="105" name="PK__PHIEUNHA__0F2275ABDE352977">
       <ColNames>MAPHIEUNHAP</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.560</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.560</ModifiedTimestamp>
@@ -1492,38 +1699,38 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__PHIEUNHA__0F2275ABDE352977</UnderlyingIndexName>
     </key>
-    <column id="245" parent="99" name="MAPHIEUTRA">
+    <column id="281" parent="106" name="MAPHIEUTRA">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <SequenceIdentity>1</SequenceIdentity>
+      <SequenceIdentity>1(5)</SequenceIdentity>
     </column>
-    <column id="246" parent="99" name="MANHANVIEN">
+    <column id="282" parent="106" name="MANHANVIEN">
       <DataType>int|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="247" parent="99" name="MACONGNHAN">
+    <column id="283" parent="106" name="MACONGNHAN">
       <DataType>int|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="248" parent="99" name="MAPHIEUMUON">
+    <column id="284" parent="106" name="MAPHIEUMUON">
       <DataType>int|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="249" parent="99" name="NGAYTRA">
+    <column id="285" parent="106" name="NGAYTRA">
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="250" parent="99" name="MATRANGTHAI">
+    <column id="286" parent="106" name="MATRANGTHAI">
       <DataType>int|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="251" parent="99" name="GHICHU">
+    <column id="287" parent="106" name="GHICHU">
       <DataType>nvarchar(max)|0s</DataType>
       <Position>7</Position>
     </column>
-    <foreign-key id="252" parent="99" name="FK__PHIEUTRA__MANHAN__5FB337D6">
+    <foreign-key id="288" parent="106" name="FK__PHIEUTRA__MANHAN__5FB337D6">
       <ColNames>MANHANVIEN</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.583</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.583</ModifiedTimestamp>
@@ -1534,7 +1741,7 @@ int</ExtendedProperties>
       <RefTableId>581577110</RefTableId>
       <RefTableName>NHANVIEN</RefTableName>
     </foreign-key>
-    <foreign-key id="253" parent="99" name="FK__PHIEUTRA__MACONG__60A75C0F">
+    <foreign-key id="289" parent="106" name="FK__PHIEUTRA__MACONG__60A75C0F">
       <ColNames>MACONGNHAN</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.583</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.583</ModifiedTimestamp>
@@ -1545,7 +1752,7 @@ int</ExtendedProperties>
       <RefTableId>965578478</RefTableId>
       <RefTableName>CONGNHAN</RefTableName>
     </foreign-key>
-    <foreign-key id="254" parent="99" name="FK__PHIEUTRA__MAPHIE__619B8048">
+    <foreign-key id="290" parent="106" name="FK__PHIEUTRA__MAPHIE__619B8048">
       <ColNames>MAPHIEUMUON</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.583</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.583</ModifiedTimestamp>
@@ -1556,7 +1763,7 @@ int</ExtendedProperties>
       <RefTableId>1429580131</RefTableId>
       <RefTableName>PHIEUMUON</RefTableName>
     </foreign-key>
-    <foreign-key id="255" parent="99" name="FK__PHIEUTRA__MATRAN__628FA481">
+    <foreign-key id="291" parent="106" name="FK__PHIEUTRA__MATRAN__628FA481">
       <ColNames>MATRANGTHAI</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.587</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.587</ModifiedTimestamp>
@@ -1567,14 +1774,14 @@ int</ExtendedProperties>
       <RefTableId>1109578991</RefTableId>
       <RefTableName>TRANGTHAIPHIEU</RefTableName>
     </foreign-key>
-    <index id="256" parent="99" name="PK__PHIEUTRA__515E98C284D5AC4B">
+    <index id="292" parent="106" name="PK__PHIEUTRA__515E98C284D5AC4B">
       <Clustering>1</Clustering>
       <ColNames>MAPHIEUTRA</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <key id="257" parent="99" name="PK__PHIEUTRA__515E98C284D5AC4B">
+    <key id="293" parent="106" name="PK__PHIEUTRA__515E98C284D5AC4B">
       <ColNames>MAPHIEUTRA</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.583</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.583</ModifiedTimestamp>
@@ -1583,38 +1790,38 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__PHIEUTRA__515E98C284D5AC4B</UnderlyingIndexName>
     </key>
-    <column id="258" parent="100" name="MAPHIEUXUAT">
+    <column id="294" parent="107" name="MAPHIEUXUAT">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <SequenceIdentity>1</SequenceIdentity>
+      <SequenceIdentity>1(7)</SequenceIdentity>
     </column>
-    <column id="259" parent="100" name="MANHANVIEN">
+    <column id="295" parent="107" name="MANHANVIEN">
       <DataType>int|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="260" parent="100" name="MACONGNHAN">
+    <column id="296" parent="107" name="MACONGNHAN">
       <DataType>int|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="261" parent="100" name="THOIGIAN">
+    <column id="297" parent="107" name="THOIGIAN">
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="262" parent="100" name="MACONGTRINH">
+    <column id="298" parent="107" name="MACONGTRINH">
       <DataType>int|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="263" parent="100" name="MATRANGTHAI">
+    <column id="299" parent="107" name="MATRANGTHAI">
       <DataType>int|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="264" parent="100" name="GHICHU">
+    <column id="300" parent="107" name="GHICHU">
       <DataType>nvarchar(max)|0s</DataType>
       <Position>7</Position>
     </column>
-    <foreign-key id="265" parent="100" name="FK__PHIEUXUAT__MANHA__46E78A0C">
+    <foreign-key id="301" parent="107" name="FK__PHIEUXUAT__MANHA__46E78A0C">
       <ColNames>MANHANVIEN</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.553</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.553</ModifiedTimestamp>
@@ -1625,7 +1832,7 @@ int</ExtendedProperties>
       <RefTableId>581577110</RefTableId>
       <RefTableName>NHANVIEN</RefTableName>
     </foreign-key>
-    <foreign-key id="266" parent="100" name="FK__PHIEUXUAT__MACON__47DBAE45">
+    <foreign-key id="302" parent="107" name="FK__PHIEUXUAT__MACON__47DBAE45">
       <ColNames>MACONGNHAN</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.553</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.553</ModifiedTimestamp>
@@ -1636,7 +1843,7 @@ int</ExtendedProperties>
       <RefTableId>965578478</RefTableId>
       <RefTableName>CONGNHAN</RefTableName>
     </foreign-key>
-    <foreign-key id="267" parent="100" name="FK__PHIEUXUAT__MACON__48CFD27E">
+    <foreign-key id="303" parent="107" name="FK__PHIEUXUAT__MACON__48CFD27E">
       <ColNames>MACONGTRINH</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.557</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.557</ModifiedTimestamp>
@@ -1647,7 +1854,7 @@ int</ExtendedProperties>
       <RefTableId>1013578649</RefTableId>
       <RefTableName>CONGTRINH</RefTableName>
     </foreign-key>
-    <foreign-key id="268" parent="100" name="FK__PHIEUXUAT__MATRA__49C3F6B7">
+    <foreign-key id="304" parent="107" name="FK__PHIEUXUAT__MATRA__49C3F6B7">
       <ColNames>MATRANGTHAI</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.557</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.557</ModifiedTimestamp>
@@ -1658,14 +1865,14 @@ int</ExtendedProperties>
       <RefTableId>1109578991</RefTableId>
       <RefTableName>TRANGTHAIPHIEU</RefTableName>
     </foreign-key>
-    <index id="269" parent="100" name="PK__PHIEUXUA__85BAF66384476240">
+    <index id="305" parent="107" name="PK__PHIEUXUA__85BAF66384476240">
       <Clustering>1</Clustering>
       <ColNames>MAPHIEUXUAT</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <key id="270" parent="100" name="PK__PHIEUXUA__85BAF66384476240">
+    <key id="306" parent="107" name="PK__PHIEUXUA__85BAF66384476240">
       <ColNames>MAPHIEUXUAT</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.553</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.553</ModifiedTimestamp>
@@ -1674,30 +1881,30 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__PHIEUXUA__85BAF66384476240</UnderlyingIndexName>
     </key>
-    <column id="271" parent="101" name="EMAIL">
+    <column id="307" parent="108" name="EMAIL">
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="272" parent="101" name="MATKHAU">
+    <column id="308" parent="108" name="MATKHAU">
       <DataType>nvarchar(100 char)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="273" parent="101" name="MAVAITRO">
+    <column id="309" parent="108" name="MAVAITRO">
       <DataType>int|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="274" parent="101" name="MANHANVIEN">
+    <column id="310" parent="108" name="MANHANVIEN">
       <DataType>int|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="275" parent="101" name="TRANGTHAI">
+    <column id="311" parent="108" name="TRANGTHAI">
       <DataType>bit|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <foreign-key id="276" parent="101" name="FK__TAIKHOAN__MAVAIT__2A4B4B5E">
+    <foreign-key id="312" parent="108" name="FK__TAIKHOAN__MAVAIT__2A4B4B5E">
       <ColNames>MAVAITRO</ColNames>
       <CreatedTimestamp>2022-06-15.05:45:45.453</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:45:45.453</ModifiedTimestamp>
@@ -1707,7 +1914,7 @@ int</ExtendedProperties>
       <RefTableId>629577281</RefTableId>
       <RefTableName>VAITRO</RefTableName>
     </foreign-key>
-    <foreign-key id="277" parent="101" name="FK__TAIKHOAN__MANHAN__2B3F6F97">
+    <foreign-key id="313" parent="108" name="FK__TAIKHOAN__MANHAN__2B3F6F97">
       <ColNames>MANHANVIEN</ColNames>
       <CreatedTimestamp>2022-06-15.05:45:45.470</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:45:45.470</ModifiedTimestamp>
@@ -1717,13 +1924,13 @@ int</ExtendedProperties>
       <RefTableId>581577110</RefTableId>
       <RefTableName>NHANVIEN</RefTableName>
     </foreign-key>
-    <index id="278" parent="101" name="PK__TAIKHOAN__161CF725797B3481">
+    <index id="314" parent="108" name="PK__TAIKHOAN__161CF725797B3481">
       <Clustering>1</Clustering>
       <ColNames>EMAIL</ColNames>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <key id="279" parent="101" name="PK__TAIKHOAN__161CF725797B3481">
+    <key id="315" parent="108" name="PK__TAIKHOAN__161CF725797B3481">
       <ColNames>EMAIL</ColNames>
       <CreatedTimestamp>2022-06-15.05:45:45.450</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:45:45.450</ModifiedTimestamp>
@@ -1731,31 +1938,31 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__TAIKHOAN__161CF725797B3481</UnderlyingIndexName>
     </key>
-    <column id="280" parent="102" name="MATRANGTHAI">
+    <column id="316" parent="109" name="MATRANGTHAI">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="281" parent="102" name="TENTRANGTHAI">
+    <column id="317" parent="109" name="TENTRANGTHAI">
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <index id="282" parent="102" name="PK__TRANGTHA__06B362F11D918395">
+    <index id="318" parent="109" name="PK__TRANGTHA__06B362F11D918395">
       <Clustering>1</Clustering>
       <ColNames>MATRANGTHAI</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <index id="283" parent="102" name="UQ__TRANGTHA__A9622C0D64D06173">
+    <index id="319" parent="109" name="UQ__TRANGTHA__A9622C0D64D06173">
       <ColNames>TENTRANGTHAI</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>2</Position>
       <Unique>1</Unique>
     </index>
-    <key id="284" parent="102" name="PK__TRANGTHA__06B362F11D918395">
+    <key id="320" parent="109" name="PK__TRANGTHA__06B362F11D918395">
       <ColNames>MATRANGTHAI</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.550</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.550</ModifiedTimestamp>
@@ -1764,7 +1971,7 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__TRANGTHA__06B362F11D918395</UnderlyingIndexName>
     </key>
-    <key id="285" parent="102" name="UQ__TRANGTHA__A9622C0D64D06173">
+    <key id="321" parent="109" name="UQ__TRANGTHA__A9622C0D64D06173">
       <ColNames>TENTRANGTHAI</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.553</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.553</ModifiedTimestamp>
@@ -1772,31 +1979,31 @@ int</ExtendedProperties>
       <ObjectId>1141579105</ObjectId>
       <UnderlyingIndexName>UQ__TRANGTHA__A9622C0D64D06173</UnderlyingIndexName>
     </key>
-    <column id="286" parent="103" name="MAVAITRO">
+    <column id="322" parent="110" name="MAVAITRO">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>1(3)</SequenceIdentity>
     </column>
-    <column id="287" parent="103" name="TENVAITRO">
+    <column id="323" parent="110" name="TENVAITRO">
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <index id="288" parent="103" name="PK__VAITRO__131CB7F8CA720F07">
+    <index id="324" parent="110" name="PK__VAITRO__131CB7F8CA720F07">
       <Clustering>1</Clustering>
       <ColNames>MAVAITRO</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <index id="289" parent="103" name="UQ__VAITRO__ED164845FA5E533A">
+    <index id="325" parent="110" name="UQ__VAITRO__ED164845FA5E533A">
       <ColNames>TENVAITRO</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>2</Position>
       <Unique>1</Unique>
     </index>
-    <key id="290" parent="103" name="PK__VAITRO__131CB7F8CA720F07">
+    <key id="326" parent="110" name="PK__VAITRO__131CB7F8CA720F07">
       <ColNames>MAVAITRO</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.503</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.503</ModifiedTimestamp>
@@ -1805,7 +2012,7 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__VAITRO__131CB7F8CA720F07</UnderlyingIndexName>
     </key>
-    <key id="291" parent="103" name="UQ__VAITRO__ED164845FA5E533A">
+    <key id="327" parent="110" name="UQ__VAITRO__ED164845FA5E533A">
       <ColNames>TENVAITRO</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.507</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.507</ModifiedTimestamp>
@@ -1813,45 +2020,45 @@ int</ExtendedProperties>
       <ObjectId>661577395</ObjectId>
       <UnderlyingIndexName>UQ__VAITRO__ED164845FA5E533A</UnderlyingIndexName>
     </key>
-    <column id="292" parent="104" name="MAVATTU">
+    <column id="328" parent="111" name="MAVATTU">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <SequenceIdentity>1</SequenceIdentity>
+      <SequenceIdentity>1(44)</SequenceIdentity>
     </column>
-    <column id="293" parent="104" name="TENVATTU">
+    <column id="329" parent="111" name="TENVATTU">
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="294" parent="104" name="HINHANH">
+    <column id="330" parent="111" name="HINHANH">
       <DataType>nvarchar(max)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="295" parent="104" name="DONVI">
+    <column id="331" parent="111" name="DONVI">
       <DataType>nvarchar(30 char)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="296" parent="104" name="MADANHMUC">
+    <column id="332" parent="111" name="MADANHMUC">
       <DataType>int|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="297" parent="104" name="NHASANXUAT">
+    <column id="333" parent="111" name="NHASANXUAT">
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="298" parent="104" name="SOLUONG">
+    <column id="334" parent="111" name="SOLUONG">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="299" parent="104" name="TRANGTHAI">
+    <column id="335" parent="111" name="TRANGTHAI">
       <DataType>bit|0s</DataType>
       <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
-    <foreign-key id="300" parent="104" name="FK__VATTU__MADANHMUC__35BCFE0A">
+    <foreign-key id="336" parent="111" name="FK__VATTU__MADANHMUC__35BCFE0A">
       <ColNames>MADANHMUC</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.517</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.517</ModifiedTimestamp>
@@ -1862,20 +2069,14 @@ int</ExtendedProperties>
       <RefTableId>789577851</RefTableId>
       <RefTableName>DANHMUC</RefTableName>
     </foreign-key>
-    <index id="301" parent="104" name="PK__VATTU__CEEC52FABD26A0F3">
+    <index id="337" parent="111" name="PK__VATTU__CEEC52FABD26A0F3">
       <Clustering>1</Clustering>
       <ColNames>MAVATTU</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <index id="302" parent="104" name="UQ__VATTU__AA3FA33246A7DD7B">
-      <ColNames>TENVATTU</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Position>2</Position>
-      <Unique>1</Unique>
-    </index>
-    <key id="303" parent="104" name="PK__VATTU__CEEC52FABD26A0F3">
+    <key id="338" parent="111" name="PK__VATTU__CEEC52FABD26A0F3">
       <ColNames>MAVATTU</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:09.513</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:09.513</ModifiedTimestamp>
@@ -1884,52 +2085,44 @@ int</ExtendedProperties>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__VATTU__CEEC52FABD26A0F3</UnderlyingIndexName>
     </key>
-    <key id="304" parent="104" name="UQ__VATTU__AA3FA33246A7DD7B">
-      <ColNames>TENVATTU</ColNames>
-      <CreatedTimestamp>2022-06-15.05:23:09.517</CreatedTimestamp>
-      <ModifiedTimestamp>2022-06-15.05:23:09.517</ModifiedTimestamp>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>885578193</ObjectId>
-      <UnderlyingIndexName>UQ__VATTU__AA3FA33246A7DD7B</UnderlyingIndexName>
-    </key>
-    <column id="305" parent="105" name="name">
+    <column id="339" parent="112" name="name">
       <DataType>sysname|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="306" parent="105" name="principal_id">
+    <column id="340" parent="112" name="principal_id">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="307" parent="105" name="diagram_id">
+    <column id="341" parent="112" name="diagram_id">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <SequenceIdentity>1(2)</SequenceIdentity>
     </column>
-    <column id="308" parent="105" name="version">
+    <column id="342" parent="112" name="version">
       <DataType>int|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="309" parent="105" name="definition">
+    <column id="343" parent="112" name="definition">
       <DataType>varbinary(max)|0s</DataType>
       <Position>5</Position>
     </column>
-    <index id="310" parent="105" name="PK__sysdiagr__C2B05B6178F309E9">
+    <index id="344" parent="112" name="PK__sysdiagr__C2B05B6178F309E9">
       <Clustering>1</Clustering>
       <ColNames>diagram_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Position>1</Position>
       <Unique>1</Unique>
     </index>
-    <index id="311" parent="105" name="UK_principal_name">
+    <index id="345" parent="112" name="UK_principal_name">
       <ColNames>principal_id
 name</ColNames>
       <Position>2</Position>
       <Unique>1</Unique>
     </index>
-    <key id="312" parent="105" name="PK__sysdiagr__C2B05B6178F309E9">
+    <key id="346" parent="112" name="PK__sysdiagr__C2B05B6178F309E9">
       <ColNames>diagram_id</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:19.270</CreatedTimestamp>
       <ModifiedTimestamp>2022-06-15.05:23:19.270</ModifiedTimestamp>
@@ -1938,7 +2131,7 @@ name</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>PK__sysdiagr__C2B05B6178F309E9</UnderlyingIndexName>
     </key>
-    <key id="313" parent="105" name="UK_principal_name">
+    <key id="347" parent="112" name="UK_principal_name">
       <ColNames>principal_id
 name</ColNames>
       <CreatedTimestamp>2022-06-15.05:23:19.270</CreatedTimestamp>
