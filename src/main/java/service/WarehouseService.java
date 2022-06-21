@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class WarehouseService {
+public class WarehouseService implements Validation<WarehouseModel> {
 
     @Autowired
     WarehouseDAO warehouseDAO;
@@ -43,6 +43,10 @@ public class WarehouseService {
     }
 
     public String addWarehouse(WarehouseModel warehouseModel) {
+        String validStr = validate(warehouseModel);
+        if(validStr != null) {
+            return validStr;
+        }
         Warehouse warehouse = new Warehouse();
         warehouse.setName(warehouseModel.getName());
         warehouse.setAddress(warehouseModel.getAddress());
@@ -66,9 +70,9 @@ public class WarehouseService {
         }
 
         if(warehouseDAO.deleteByListId(warehouseList)) {
-            return "Xoá thành công!";
+            return "Xoá kho thành công!";
         }
-        return "Có lỗi xảy ra, vui lòng thử lại.";
+        return "Kho đã được lập phiếu, không thể xoá!";
     }
 
     public WarehouseModel findWarehouseById(Integer warehouseId) {
@@ -78,6 +82,10 @@ public class WarehouseService {
     }
 
     public String editWarehouse(WarehouseModel warehouseModel) {
+        String validStr = validate(warehouseModel);
+        if(validStr != null) {
+            return validStr;
+        }
         Warehouse warehouse = new Warehouse();
         warehouse.setWarehouseId(warehouseModel.getWarehouseId());
         warehouse.setName(warehouseModel.getName());
@@ -93,5 +101,13 @@ public class WarehouseService {
                 .stream()
                 .map(WarehouseModel::new)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public String validate(WarehouseModel warehouseModel) {
+        if(warehouseModel.getName().trim().length() == 0) {
+            return "Tên không được để trống!";
+        }
+        return null;
     }
 }

@@ -22,8 +22,14 @@ public class InformationService implements Validation<ChangeAccount>{
     EmployeeDAO employeeDAO;
     @Autowired
     AccountService accountService;
+    @Autowired
+    EmployeeService employeeService;
 
     public String updateInformation(EmployeeModel employeeModel) {
+        String validStr = employeeService.validate(employeeModel);
+        if(validStr != null) {
+            return validStr;
+        }
         Employee employee = new Employee();
         employee.setEmployeeId(employeeModel.getEmployeeId());
         employee.setName(employeeModel.getName());
@@ -66,4 +72,5 @@ public class InformationService implements Validation<ChangeAccount>{
         }
         return null;
     }
+
 }

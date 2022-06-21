@@ -15,10 +15,12 @@ import request_bean.DeletedIdList;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
-public class SupplierService {
+public class SupplierService implements Validation<SupplierModel> {
     @Autowired
     SupplierDAO supplierDAO;
 
@@ -44,6 +46,10 @@ public class SupplierService {
     }
 
     public String addSupplier(SupplierModel supplierModel) {
+        String validStr = validate(supplierModel);
+        if(validStr != null) {
+            return validStr;
+        }
         Supplier supplier = new Supplier();
         supplier.setName(supplierModel.getName());
         supplier.setAddress(supplierModel.getAddress());
@@ -73,7 +79,7 @@ public class SupplierService {
         if(supplierDAO.deleteByListId(listSupplier)) {
             return "Xoá nhà cung cấp thành công!";
         }
-        return "Có lỗi xảy ra, vui lòng thử lại.";
+        return "Nhà cung cấp đã lập phiếu nhập, không thể xoá!";
     }
 
     public SupplierModel findSupplierById(Integer supplierId) {
@@ -83,6 +89,10 @@ public class SupplierService {
     }
 
     public String editSupplier(SupplierModel supplierModel) {
+        String validStr = validate(supplierModel);
+        if(validStr != null) {
+            return validStr;
+        }
         Supplier supplier = new Supplier();
         supplier.setSupplierId(supplierModel.getSupplierId());
         supplier.setName(supplierModel.getName());
@@ -104,5 +114,22 @@ public class SupplierService {
                .stream()
                .map(SupplierModel::new)
                .collect(Collectors.toList());
+    }
+
+    @Override
+    public String validate(SupplierModel supplierModel) {
+        if(supplierModel.getName().trim().length() == 0) {
+            return "Tên không được để trống!";
+        }
+        String phone = supplierModel.getPhone();
+        if(phone != null && phone.trim().length() != 0) {
+            phone = phone.trim();
+            Pattern pattern = Pattern.compile(regexPhone);
+            Matcher matcher = pattern.matcher(phone);
+            if(!matcher.matches()) {
+                return "Số điện thoại không hợp lệ";
+            }
+        }
+        return null;
     }
 }

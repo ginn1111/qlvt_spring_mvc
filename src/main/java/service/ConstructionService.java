@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ConstructionService {
+public class ConstructionService implements Validation<ConstructionModel> {
     @Autowired
     ConstructionDAO constructionDAO;
 
@@ -45,6 +45,10 @@ public class ConstructionService {
     }
 
     public String addConstruction(ConstructionModel constructionModel) {
+        String validStr = validate(constructionModel);
+        if(validStr != null) {
+            return validStr;
+        }
         Construction construction = new Construction();
         construction.setName(constructionModel.getName());
 
@@ -81,6 +85,10 @@ public class ConstructionService {
     }
 
     public String editConstruction(ConstructionModel constructionModel) {
+        String validStr = validate(constructionModel);
+        if(validStr != null) {
+            return validStr;
+        }
         Construction construction = new Construction();
         construction.setConstructionId(constructionModel.getConstructionId());
         construction.setName(constructionModel.getName());
@@ -95,5 +103,13 @@ public class ConstructionService {
         return constructionDAO.getList()
                 .stream().map(ConstructionModel::new)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public String validate(ConstructionModel constructionModel) {
+        if(constructionModel.getName().trim().length() == 0) {
+            return "Tên không được để trống!";
+        }
+        return null;
     }
 }

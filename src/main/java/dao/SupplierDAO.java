@@ -33,8 +33,7 @@ public class SupplierDAO extends DAO<Supplier>{
         Transaction transaction = session.beginTransaction();
 
         try {
-            for (Supplier sup:
-                    list) {
+            for (Supplier sup: list) {
                 session.delete(sup);
             }
             transaction.commit();

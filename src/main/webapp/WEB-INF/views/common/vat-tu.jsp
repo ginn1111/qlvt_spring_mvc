@@ -115,65 +115,70 @@
                                 modelAttribute="supplyModel"
                         >
                             <h5 class="form__title">Vật tư</h5>
-                            <form:input type="hidden" path="supplyId" />
-                            <div class="form__item">
-                                <label>Tên vật tư
-                                    <form:input
-                                            path="name"
-                                            class="form__input"
-                                            placeholder="tên..."
-                                            required="required"
-                                    />
-                                </label>
-                            </div>
-                            <div class="form__item">
-                                <label>Nhà sản xuất
-                                    <form:input
-                                            path="producer"
-                                            class="form__input"
-                                            placeholder="nhà sản xuất..."
-                                            required="required"
-                                    />
-                                </label>
-                            </div>
-                            <div class="form__item">
-                                <label>Danh mục
-                                    <div class="select">
-                                        <form:select
-                                                items="${categoryModelList}"
-                                                itemLabel="name"
-                                                itemValue="categoryId"
-                                                path="categoryModel.categoryId"
+                            <c:if test="${categoryModelList == null || categoryModelList.size() == 0}">
+                                <span>Không có danh mục nào!</span>
+                            </c:if>
+                            <c:if test="${categoryModelList.size() > 0}">
+                                <form:input type="hidden" path="supplyId" />
+                                <div class="form__item">
+                                    <label>Tên vật tư
+                                        <form:input
+                                                path="name"
+                                                class="form__input"
+                                                placeholder="tên..."
+                                                required="required"
                                         />
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="form__item">
-                                <label>Đơn vị
-                                    <form:input
-                                            path="unit"
-                                            class="form__input"
-                                            placeholder="đơn vị..."
-                                            required="required"
-                                    />
-                                </label>
-                            </div>
-                            <div class="form__item">
-                                <label>Số lượng
-                                    <form:input
-                                            type="number"
-                                            min="0"
-                                            path="quantity"
-                                            class="form__input"
-                                            required="required"
-                                            placeholder="số lượng..."
-                                    />
-                                </label>
-                            </div>
-                            <div class="form__item--action">
-                                <button type="submit" class="btn--confirm btn--customize">${btnTitle}</button>
-                                <button type="reset" class="btn--cancel btn--customize">Huỷ</button>
-                            </div>
+                                    </label>
+                                </div>
+                                <div class="form__item">
+                                    <label>Nhà sản xuất
+                                        <form:input
+                                                path="producer"
+                                                class="form__input"
+                                                placeholder="nhà sản xuất..."
+                                                required="required"
+                                        />
+                                    </label>
+                                </div>
+                                <div class="form__item">
+                                    <label>Danh mục
+                                        <div class="select">
+                                            <form:select
+                                                    items="${categoryModelList}"
+                                                    itemLabel="name"
+                                                    itemValue="categoryId"
+                                                    path="categoryModel.categoryId"
+                                            />
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="form__item">
+                                    <label>Đơn vị
+                                        <form:input
+                                                path="unit"
+                                                class="form__input"
+                                                placeholder="đơn vị..."
+                                                required="required"
+                                        />
+                                    </label>
+                                </div>
+                                <div class="form__item">
+                                    <label>Số lượng
+                                        <form:input
+                                                type="number"
+                                                min="0"
+                                                path="quantity"
+                                                class="form__input"
+                                                required="required"
+                                                placeholder="số lượng..."
+                                        />
+                                    </label>
+                                </div>
+                                <div class="form__item--action">
+                                    <button type="submit" class="btn--confirm btn--customize">${btnTitle}</button>
+                                    <button type="reset" class="btn--cancel btn--customize">Huỷ</button>
+                                </div>
+                            </c:if>
                         </form:form>
                         <%--END FORM SUPPLIES--%>
                     </dialog>

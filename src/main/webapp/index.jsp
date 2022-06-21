@@ -12,7 +12,7 @@
         <h2 class="title">Manage your work easier</h2>
 
         <div class="input-box">
-            <input id="username" type="email" class="input" name="username" value="ql01@gmail.com"/>
+            <input id="username" type="email" class="input" name="username"/>
             <label for="username">
                 <ion-icon name="mail-outline"></ion-icon>
                 <span>Email</span>
@@ -20,7 +20,7 @@
         </div>
         <div class="input-box">
 
-            <input id="password" type="password" class="input" name="password" value="Thuan12312"/>
+            <input id="password" type="password" class="input" name="password"/>
 
             <div class="toggle-password show">
                 <ion-icon name="eye-off-outline"></ion-icon>

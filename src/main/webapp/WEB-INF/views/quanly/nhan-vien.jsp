@@ -182,13 +182,24 @@
                             <div class="form__item">
                                 <label>
                                     Email
-                                    <form:input class="form__input" path="email" type="email" placeholder="email..."/>
+                                    <form:input
+                                            class="form__input"
+                                            path="email"
+                                            type="email"
+                                            required="required"
+                                            placeholder="email..."/>
                                 </label>
                             </div>
                             <div class="form__item">
                                 <label>
                                     Mật khẩu
-                                    <form:input class="form__input" path="password" type="password" placeholder="mật khẩu..."/>
+                                    <form:input
+                                            class="form__input"
+                                            path="password"
+                                            type="password"
+                                            placeholder="mật khẩu..."
+                                            required="required"
+                                    />
                                 </label>
                             </div>
                             <div class="form__item">

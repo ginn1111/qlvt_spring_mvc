@@ -2,6 +2,7 @@ package service;
 
 import dao.DetailBorrowedCouponDAO;
 import entity.*;
+import model.BorrowedCouponModel;
 import model.DetailBorrowedCouponModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,4 +36,23 @@ public class DetailBorrowedCouponService {
 
         return detailBorrowedCouponDAO.addListDetail(detailBorrowedCouponList);
     }
+
+//    public boolean editDetailBorrowedCouponList(List<DetailBorrowedCouponModel> detailBorrowedCouponModelList, Integer brCPId) {
+//        DetailBorrowedCoupon detailBorrowedCoupon;
+//        List<DetailBorrowedCoupon> detailBorrowedCouponList = new ArrayList<>();
+//        BorrowedCoupon
+//
+//        for (DetailBorrowedCouponModel detail: detailBorrowedCouponModelList) {
+//           detailBorrowedCoupon = new DetailBorrowedCoupon(
+//
+//           );
+//        }
+//
+//        DetailBorrowedCoupon detailBorrowedCoupon = new DetailBorrowedCoupon();
+//        detailBorrowedCoupon.setId(detailBorrowedCouponModel.getId());
+//        detailBorrowedCoupon.setQuantity(detailBorrowedCouponModel.getQuantity());
+//        detailBorrowedCoupon.setBorrowedCoupon(new BorrowedCoupon(detailBorrowedCouponModel.getBorrowedCouponModel().getCouponId()));
+//        detailBorrowedCoupon.setSupply(new Supply(detailBorrowedCouponModel.getSupplyModel().getSupplyId()));
+//        return detailBorrowedCouponDAO.update(detailBorrowedCoupon);
+//    }
 }

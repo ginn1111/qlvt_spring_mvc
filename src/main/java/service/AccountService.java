@@ -14,10 +14,12 @@ import request_bean.DeletedEmailList;
 import utils.MyUtils;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
-public class AccountService {
+public class AccountService implements  Validation<AccountModel> {
     @Autowired
     AccountDAO accountDAO;
 
@@ -69,6 +71,10 @@ public class AccountService {
     }
 
     public String addNewAccount(AccountModel accountModel) {
+        String validStr = validate(accountModel);
+        if(validStr != null) {
+            return validStr;
+        }
         Account account = new Account();
 
         account.setEmail(accountModel.getEmail());
@@ -123,4 +129,22 @@ public class AccountService {
         return "Có lỗi xảy ra, vui lòng thử lại!";
     }
 
+    @Override
+    public String validate(AccountModel accountModel) {
+        if(accountModel.getEmail().trim().length() == 0) {
+            return "Email không được để trống!";
+        }
+        Pattern pattern = Pattern.compile(regexEmail);
+        Matcher matcher = pattern.matcher(accountModel.getEmail());
+        if(!matcher.matches()) {
+            return "Email không hợp lệ!";
+        }
+        Pattern patternPassword = Pattern.compile(regexPassword);
+        Matcher matchPassword = patternPassword.matcher(accountModel.getPassword());
+        if(!matchPassword.matches()) {
+            return "Mật khẩu cần có ít nhất một chữ cái thường, 1 chữ cái in, 1 chữ số," +
+                    " không có khoảng trắng và có ít nhất 8 ký tự!";
+        }
+        return null;
+    }
 }

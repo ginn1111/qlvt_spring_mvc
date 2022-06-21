@@ -143,6 +143,9 @@ public class InCouponService implements Validation<InCouponModel> {
                if(detail.getPrice() == null) {
                    return "Không được để trống giá!";
                }
+               if(detail.getQuantity() == null) {
+                   return "Không được để trống số lượng!";
+               }
            }
         }
         return isLeastOne ? null : "Phiếu phải có ít nhất một vật tư";

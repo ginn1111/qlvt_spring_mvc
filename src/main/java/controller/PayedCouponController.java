@@ -119,6 +119,7 @@ public class PayedCouponController {
     @RequestMapping(value = "phieu-tra", params = "insert", method = RequestMethod.POST)
     public String addPyCoupon(@ModelAttribute("pyCouponModel") PayedCouponModel pyCouponModel) {
         // Todo: validate
+        pyCouponModel.setBorrowedCouponModel(PayedCouponController.pyCouponModel.getBorrowedCouponModel());
         message = payedCouponService.addPayedCoupon(pyCouponModel);
         return "redirect:/phieu/phieu-tra.htm";
     }

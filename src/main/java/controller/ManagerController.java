@@ -167,7 +167,6 @@ public class ManagerController {
 
     @RequestMapping(value="nhan-vien", params = "accounts", method = RequestMethod.POST)
     public String employeeAccount(@ModelAttribute("accountModel") AccountModel accountModel) {
-        System.out.println(accountModel.toString());
         message = accountService.addNewAccount(accountModel);
         return "redirect:/quanly/nhan-vien.htm";
     }

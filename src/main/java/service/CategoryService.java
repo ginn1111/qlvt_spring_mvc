@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class CategoryService {
+public class CategoryService implements Validation<CategoryModel> {
     @Autowired
     CategoryDAO categoryDAO;
 
@@ -42,6 +42,10 @@ public class CategoryService {
     }
 
     public String addCategory(CategoryModel categoryModel) {
+        String validStr = validate(categoryModel);
+        if(validStr != null) {
+            return validStr;
+        }
         Category category = new Category();
 
         category.setName(categoryModel.getName());
@@ -77,6 +81,10 @@ public class CategoryService {
     }
 
     public String editCategory(CategoryModel categoryModel) {
+        String validStr = validate(categoryModel);
+        if(validStr != null) {
+            return validStr;
+        }
         Category category = new Category();
         category.setCategoryId(categoryModel.getCategoryId());
         category.setName(categoryModel.getName());
@@ -93,5 +101,13 @@ public class CategoryService {
                .stream()
                .map(CategoryModel::new)
                .collect(Collectors.toList());
+    }
+
+    @Override
+    public String validate(CategoryModel categoryModel) {
+        if(categoryModel.getName().trim().length() == 0) {
+            return "Tên không được để trống!";
+        }
+        return null;
     }
 }

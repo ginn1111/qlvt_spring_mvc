@@ -43,4 +43,8 @@ public class DetailBorrowedCouponDAO extends DAO<BorrowedCoupon> {
         }
         return true;
     }
+//    public boolean update(DetailBorrowedCoupon detailBorrowedCoupon) {
+//        return update(detailBorrowedCoupon);
+//    }
+
 }

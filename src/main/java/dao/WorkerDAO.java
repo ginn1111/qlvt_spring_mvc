@@ -33,8 +33,7 @@ public class WorkerDAO extends DAO<Worker>{
         Transaction transaction = session.beginTransaction();
 
         try {
-            for (Worker worker:
-                    list) {
+            for (Worker worker: list) {
                 session.delete(worker);
             }
             transaction.commit();

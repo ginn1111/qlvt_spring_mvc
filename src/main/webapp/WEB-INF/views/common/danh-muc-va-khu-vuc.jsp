@@ -168,33 +168,38 @@
                                 modelAttribute="categoryModel"
                         >
                             <h5 class="form__title">Danh mục</h5>
-                            <form:input type="hidden" path="categoryId"/>
-                            <div class="form__item form__item--employee">
-                                <label>Tên danh mục
-                                    <form:input
-                                            path="name"
-                                            class="form__input"
-                                            placeholder="tên danh mục..."
-                                            required="required"
-                                    />
-                                </label>
-                            </div>
-                            <div class="form__item">
-                                <label>Khu vực
-                                    <div class="select">
-                                        <form:select
-                                            items="${sectorModelList}"
-                                            itemLabel="name"
-                                            itemValue="sectorId"
-                                            path="sectorModel.sectorId"
+                            <c:if test="${sectorModelList == null || sectorModelList.size() == 0}">
+                               <span>Không có khu vực nào!</span>
+                            </c:if>
+                                <c:if test="${sectorModelList.size() > 0}">
+                                <form:input type="hidden" path="categoryId"/>
+                                <div class="form__item form__item--employee">
+                                    <label>Tên danh mục
+                                        <form:input
+                                                path="name"
+                                                class="form__input"
+                                                placeholder="tên danh mục..."
+                                                required="required"
                                         />
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="form__item--action">
-                                <button type="submit" class="btn--confirm btn--customize">${btnTitle}</button>
-                                <button type="reset" class="btn--cancel btn--customize">Huỷ</button>
-                            </div>
+                                    </label>
+                                </div>
+                                <div class="form__item">
+                                    <label>Khu vực
+                                        <div class="select">
+                                            <form:select
+                                                items="${sectorModelList}"
+                                                itemLabel="name"
+                                                itemValue="sectorId"
+                                                path="sectorModel.sectorId"
+                                            />
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="form__item--action">
+                                    <button type="submit" class="btn--confirm btn--customize">${btnTitle}</button>
+                                    <button type="reset" class="btn--cancel btn--customize">Huỷ</button>
+                                </div>
+                            </c:if>
                         </form:form>
                         <%--END FORM CATEGORIES--%>
 

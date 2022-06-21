@@ -37,8 +37,7 @@ public class WarehouseDAO extends DAO<Warehouse> {
         Transaction transaction = session.beginTransaction();
 
         try {
-            for (Warehouse warehouse:
-                    list) {
+            for (Warehouse warehouse: list) {
                 session.delete(warehouse);
             }
             transaction.commit();

@@ -9,12 +9,15 @@ import model.RoleModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import request_bean.DeletedIdList;
+import utils.MyUtils;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
-public class EmployeeService {
+public class EmployeeService implements Validation<EmployeeModel> {
     @Autowired
     EmployeeDAO employeeDAO;
     @Autowired
@@ -42,6 +45,11 @@ public class EmployeeService {
     }
 
     public String addEmployee(EmployeeModel employeeModel) {
+        String validStr = validate(employeeModel);
+        if(validStr != null) {
+            return validStr;
+        }
+
         Employee employee = new Employee();
         employee.setName(employeeModel.getName());
         employee.setAddress(employeeModel.getAddress());
@@ -76,6 +84,10 @@ public class EmployeeService {
     }
 
     public String editEmployee(EmployeeModel employeeModel) {
+        String validStr = validate(employeeModel);
+        if(validStr != null) {
+            return validStr;
+        }
         Employee employee = new Employee();
         employee.setEmployeeId(employeeModel.getEmployeeId());
         employee.setName(employeeModel.getName());
@@ -111,5 +123,22 @@ public class EmployeeService {
 
     public EmployeeModel getEmployee(Integer employeeId) {
         return new EmployeeModel(employeeDAO.findById(new Employee(employeeId)));
+    }
+
+    @Override
+    public String validate(EmployeeModel employeeModel) {
+        if(employeeModel.getName().trim().length() == 0) {
+            return "Tên không được để trống!";
+        }
+        String phone = employeeModel.getPhone();
+        if(phone != null && phone.trim().length() != 0) {
+            phone = phone.trim();
+            Pattern pattern = Pattern.compile(regexPhone);
+            Matcher matcher = pattern.matcher(phone);
+            if(!matcher.matches()) {
+                return "Số điện thoại không hợp lệ";
+            }
+        }
+        return null;
     }
 }

@@ -11,10 +11,12 @@ import request_bean.DeletedIdList;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
-public class WorkerService {
+public class WorkerService implements Validation<WorkerModel> {
    @Autowired
     WorkerDAO workerDAO;
 
@@ -43,6 +45,10 @@ public class WorkerService {
     }
 
     public String addWorker(WorkerModel workerModel) {
+        String validStr = validate(workerModel);
+        if(validStr != null) {
+            return validStr;
+        }
         Worker worker = new Worker();
         worker.setWorkerId(workerModel.getWorkerId());
         worker.setAddress(workerModel.getAddress());
@@ -63,6 +69,10 @@ public class WorkerService {
     }
 
     public String editWorker(WorkerModel workerModel) {
+        String validStr = validate(workerModel);
+        if(validStr != null) {
+            return validStr;
+        }
         Worker worker = new Worker();
         worker.setWorkerId(workerModel.getWorkerId());
         worker.setName(workerModel.getName());
@@ -91,7 +101,7 @@ public class WorkerService {
         if(workerDAO.deleteByListId(workerList)) {
             return "Xoá công nhân thành công!";
         }
-        return "Có lỗi xảy ra, vui lòng thử lại.";
+        return "Công nhân đã được lập phiếu, không thể xoá!";
     }
 
     public List<WorkerModel> getWorkerModelList() {
@@ -99,5 +109,22 @@ public class WorkerService {
                .stream()
                .map(WorkerModel::new)
                .collect(Collectors.toList());
+    }
+
+    @Override
+    public String validate(WorkerModel workerModel) {
+        if(workerModel.getName().trim().length() == 0) {
+            return "Tên không được để trống!";
+        }
+        String phone = workerModel.getPhone();
+        if(phone != null && phone.trim().length() != 0) {
+            phone = phone.trim();
+            Pattern pattern = Pattern.compile(regexPhone);
+            Matcher matcher = pattern.matcher(phone);
+            if(!matcher.matches()) {
+                return "Số điện thoại không hợp lệ";
+            }
+        }
+        return null;
     }
 }

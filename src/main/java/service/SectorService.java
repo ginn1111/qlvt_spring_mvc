@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class SectorService {
+public class SectorService implements Validation<SectorModel> {
     @Autowired
     SectorDAO sectorDAO;
 
@@ -42,6 +42,10 @@ public class SectorService {
     }
 
     public String addSector(SectorModel sectorModel) {
+        String validStr = validate(sectorModel);
+        if(validStr != null) {
+            return validStr;
+        }
         Sector sector = new Sector();
         sector.setName(sectorModel.getName());
         sector.setStatus(true);
@@ -77,6 +81,10 @@ public class SectorService {
     }
 
     public String editSector(SectorModel sectorModel) {
+        String validStr = validate(sectorModel);
+        if(validStr != null) {
+            return validStr;
+        }
         Sector sector = new Sector();
         sector.setSectorId(sectorModel.getSectorId());
         sector.setName(sectorModel.getName());
@@ -91,5 +99,13 @@ public class SectorService {
     public List<SectorModel> getSectorModelList() {
         return sectorDAO.getList()
                 .stream().map(SectorModel::new).collect(Collectors.toList());
+    }
+
+    @Override
+    public String validate(SectorModel sectorModel) {
+        if(sectorModel.getName().trim().length() == 0) {
+            return "Tên không được để trống!";
+        }
+        return null;
     }
 }

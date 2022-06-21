@@ -65,7 +65,8 @@ public class PayedCouponService implements Validation<PayedCouponModel>{
 
         Integer couponId = payedCouponDAO.addNewPayedCoupon(pyCoupon);
         if(couponId != null
-                && detailPayedCouponService.addListDetail(pyCouponModel.getDetailPayedCouponModelList(), couponId)) {
+                && detailPayedCouponService.addListDetail(pyCouponModel.getDetailPayedCouponModelList(), couponId)
+            ) {
             return "Thêm phiếu thành công!";
         }
         return "Thêm phiếu thất bại, có lỗi xảy ra!";

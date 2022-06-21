@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class SupplyService {
+public class SupplyService implements Validation<SupplyModel> {
     @Autowired
     SupplyDAO supplyDAO;
 
@@ -46,6 +46,10 @@ public class SupplyService {
     }
 
     public String addSupply(SupplyModel supplyModel) {
+        String validStr = validate(supplyModel);
+        if(validStr != null)  {
+            return validStr;
+        }
         Supply supply = new Supply();
 
         supply.setName(supplyModel.getName());
@@ -68,6 +72,10 @@ public class SupplyService {
     }
 
     public String editSupply(SupplyModel supplyModel) {
+        String validStr = validate(supplyModel);
+        if(validStr != null)  {
+            return validStr;
+        }
         Supply supply = new Supply();
 
         supply.setSupplyId(supplyModel.getSupplyId());
@@ -107,5 +115,19 @@ public class SupplyService {
             .stream()
             .map(SupplyModel::new)
             .collect(Collectors.toList());
+    }
+
+    @Override
+    public String validate(SupplyModel supplyModel) {
+        if(supplyModel.getName().trim().length() == 0) {
+            return "Tên vật tư không được để trống!";
+        }
+        if(supplyModel.getProducer().trim().length() == 0) {
+            return "Tên nhà sản xuất không được để trống!";
+        }
+        if(supplyModel.getUnit().trim().length() == 0) {
+            return "Tên đơn vị  không được để trống!";
+        }
+        return null;
     }
 }
